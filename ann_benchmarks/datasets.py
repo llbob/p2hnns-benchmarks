@@ -128,63 +128,6 @@ param: train and test are arrays of arrays of indices.
 """
 
 
-def write_sparse_output(train: numpy.ndarray, test: numpy.ndarray, fn: str, distance: str, dimension: int, count: int = 100) -> None:
-    """
-    Writes the provided sparse training and testing data to an HDF5 file. It also computes 
-    and stores the nearest neighbors and their distances for the test set using a 
-    brute-force approach.
-    
-    Args:
-        train (numpy.ndarray): The sparse training data.
-        test (numpy.ndarray): The sparse testing data.
-        filename (str): The name of the HDF5 file to which data should be written.
-        distance_metric (str): The distance metric to use for computing nearest neighbors.
-        dimension (int): The dimensionality of the data.
-        neighbors_count (int, optional): The number of nearest neighbors to compute for 
-            each point in the test set. Defaults to 100.
-    """
-    from ann_benchmarks.algorithms.bruteforce.module import BruteForceBLAS
-
-    with h5py.File(fn, "w") as f:
-        f.attrs["type"] = "sparse"
-        f.attrs["distance"] = distance
-        f.attrs["dimension"] = dimension
-        f.attrs["point_type"] = "bit"
-        print(f"train size: {train.shape[0]} * {dimension}")
-        print(f"test size:  {test.shape[0]} * {dimension}")
-
-        # Ensure the sets are sorted
-        train = numpy.array([sorted(t) for t in train])
-        test = numpy.array([sorted(t) for t in test])
-
-        # Flatten and write train and test sets
-        flat_train = numpy.concatenate(train)
-        flat_test = numpy.concatenate(test)
-        f.create_dataset("train", data=flat_train)
-        f.create_dataset("test", data=flat_test)
-
-        # Create datasets for neighbors and distances
-        neighbors_ds = f.create_dataset("neighbors", (len(test), count), dtype=int)
-        distances_ds = f.create_dataset("distances", (len(test), count), dtype=float)
-
-        # Write sizes of train and test sets
-        f.create_dataset("size_train", data=[len(t) for t in train])
-        f.create_dataset("size_test", data=[len(t) for t in test])
-
-        # Fit the brute-force k-NN model
-        bf = BruteForceBLAS(distance, precision=flat_train.dtype)
-        bf.fit(train)
-
-        for i, x in enumerate(test):
-            if i % 1000 == 0:
-                print(f"{i}/{len(test)}...")
-            # Query the model and sort results by distance
-            res = list(bf.query_with_distances(x, count))
-            res.sort(key=lambda t: t[-1])
-
-            # Save neighbors indices and distances
-            neighbors_ds[i] = [idx for idx, _ in res]
-            distances_ds[i] = [dist for _, dist in res]
 
 
 def train_test_split(X: numpy.ndarray, test_size: int = 10000, dimension: int = None) -> Tuple[numpy.ndarray, numpy.ndarray]:
@@ -437,40 +380,6 @@ def sift_hamming(out_fn: str, fn: str) -> None:
         write_output(X_train, X_test, out_fn, "hamming", "bit")
 
 
-def kosarak(out_fn: str) -> None:
-    import gzip
-
-    local_fn = "kosarak.dat.gz"
-    # only consider sets with at least min_elements many elements
-    min_elements = 20
-    url = "http://fimi.uantwerpen.be/data/%s" % local_fn
-    download(url, local_fn)
-
-    X = []
-    dimension = 0
-    with gzip.open("kosarak.dat.gz", "r") as f:
-        content = f.readlines()
-        # preprocess data to find sets with more than 20 elements
-        # keep track of used ids for reenumeration
-        for line in content:
-            if len(line.split()) >= min_elements:
-                X.append(list(map(int, line.split())))
-                dimension = max(dimension, max(X[-1]) + 1)
-
-    X_train, X_test = train_test_split(numpy.array(X), test_size=500, dimension=dimension)
-    write_sparse_output(X_train, X_test, out_fn, "jaccard", dimension)
-
-
-def random_jaccard(out_fn: str, n: int = 10000, size: int = 50, universe: int = 80) -> None:
-    random.seed(1)
-    l = list(range(universe))
-    X = []
-    for i in range(n):
-        X.append(random.sample(l, size))
-
-    X_train, X_test = train_test_split(numpy.array(X), test_size=100, dimension=universe)
-    write_sparse_output(X_train, X_test, out_fn, "jaccard", universe)
-
 
 def lastfm(out_fn: str, n_dimensions: int, test_size: int = 50000) -> None:
     # This tests out ANN methods for retrieval on simple matrix factorization
@@ -511,55 +420,6 @@ def lastfm(out_fn: str, n_dimensions: int, test_size: int = 50000) -> None:
     # after that transformation a cosine lookup will return the same results
     # as the inner product on the untransformed data
     write_output(item_factors, user_factors, out_fn, "angular")
-
-
-def movielens(fn: str, ratings_file: str, out_fn: str, separator: str = "::", ignore_header: bool = False) -> None:
-    import zipfile
-
-    url = "http://files.grouplens.org/datasets/movielens/%s" % fn
-
-    download(url, fn)
-    with zipfile.ZipFile(fn) as z:
-        file = z.open(ratings_file)
-        if ignore_header:
-            file.readline()
-
-        print("preparing %s" % out_fn)
-
-        users = {}
-        X = []
-        dimension = 0
-        for line in file:
-            el = line.decode("UTF-8").split(separator)
-
-            userId = el[0]
-            itemId = int(el[1])
-            rating = float(el[2])
-
-            if rating < 3:  # We only keep ratings >= 3
-                continue
-
-            if userId not in users:
-                users[userId] = len(users)
-                X.append([])
-
-            X[users[userId]].append(itemId)
-            dimension = max(dimension, itemId + 1)
-
-        X_train, X_test = train_test_split(numpy.array(X), test_size=500, dimension=dimension)
-        write_sparse_output(X_train, X_test, out_fn, "jaccard", dimension)
-
-
-def movielens1m(out_fn: str) -> None:
-    movielens("ml-1m.zip", "ml-1m/ratings.dat", out_fn)
-
-
-def movielens10m(out_fn: str) -> None:
-    movielens("ml-10m.zip", "ml-10M100K/ratings.dat", out_fn)
-
-
-def movielens20m(out_fn: str) -> None:
-    movielens("ml-20m.zip", "ml-20m/ratings.csv", out_fn, ",", True)
 
 def dbpedia_entities_openai_1M(out_fn, n = None):
     from sklearn.model_selection import train_test_split
@@ -613,18 +473,12 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "random-xs-16-hamming": lambda out_fn: random_bitstring(out_fn, 16, 10000, 100),
     "random-s-128-hamming": lambda out_fn: random_bitstring(out_fn, 128, 50000, 1000),
     "random-l-256-hamming": lambda out_fn: random_bitstring(out_fn, 256, 100000, 1000),
-    "random-s-jaccard": lambda out_fn: random_jaccard(out_fn, n=10000, size=20, universe=40),
-    "random-l-jaccard": lambda out_fn: random_jaccard(out_fn, n=100000, size=70, universe=100),
     "sift-128-euclidean": sift,
     "nytimes-256-angular": lambda out_fn: nytimes(out_fn, 256),
     "nytimes-16-angular": lambda out_fn: nytimes(out_fn, 16),
     "word2bits-800-hamming": lambda out_fn: word2bits(out_fn, "400K", "w2b_bitlevel1_size800_vocab400K"),
     "lastfm-64-dot": lambda out_fn: lastfm(out_fn, 64),
     "sift-256-hamming": lambda out_fn: sift_hamming(out_fn, "sift.hamming.256"),
-    "kosarak-jaccard": lambda out_fn: kosarak(out_fn),
-    "movielens1m-jaccard": movielens1m,
-    "movielens10m-jaccard": movielens10m,
-    "movielens20m-jaccard": movielens20m,
     "coco-i2i-512-angular": lambda out_fn: coco(out_fn, "i2i"),
     "coco-t2i-512-angular": lambda out_fn: coco(out_fn, "t2i"),
 }

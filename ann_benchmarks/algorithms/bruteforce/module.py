@@ -11,7 +11,7 @@ class BruteForce(BaseANN):
         self._metric = metric
         self.name = "BruteForce()"
 
-    def fit(self, X):
+    def index(self, X):
         metric = {"angular": "cosine", "euclidean": "l2", "hamming": "hamming"}[self._metric]
         self._nbrs = sklearn.neighbors.NearestNeighbors(algorithm="brute", metric=metric)
         self._nbrs.fit(X)
@@ -28,7 +28,7 @@ class BruteForceBLAS(BaseANN):
     """kNN search that uses a linear scan = brute force."""
 
     def __init__(self, metric, precision=numpy.float32):
-        if metric not in ("angular", "euclidean", "hamming", "jaccard"):
+        if metric not in ("angular", "euclidean", "hamming"):
             raise NotImplementedError("BruteForceBLAS doesn't support metric %s" % metric)
         elif metric == "hamming" and precision != numpy.bool_:
             raise NotImplementedError(
@@ -38,7 +38,7 @@ class BruteForceBLAS(BaseANN):
         self._precision = precision
         self.name = "BruteForceBLAS()"
 
-    def fit(self, X):
+    def index(self, X):
         """Initialize the search index."""
         if self._metric == "angular":
             # precompute (squared) length of each vector
@@ -58,8 +58,6 @@ class BruteForceBLAS(BaseANN):
             lens = (X**2).sum(-1)
             self.index = numpy.ascontiguousarray(X, dtype=self._precision)
             self.lengths = numpy.ascontiguousarray(lens, dtype=self._precision)
-        elif self._metric == "jaccard":
-            self.index = X
         else:
             # shouldn't get past the constructor!
             assert False, "invalid metric"
@@ -70,10 +68,6 @@ class BruteForceBLAS(BaseANN):
     def query_with_distances(self, v, n):
         """Find indices of `n` most similar vectors from the index to query
         vector `v`."""
-
-        if self._metric != "jaccard":
-            # use same precision for query as for index
-            v = numpy.ascontiguousarray(v, dtype=self.index.dtype)
 
         # HACK we ignore query length as that's a constant
         # not affecting the final ordering
@@ -86,8 +80,6 @@ class BruteForceBLAS(BaseANN):
         elif self._metric == "hamming":
             # Just compute hamming distance using euclidean distance
             dists = self.lengths - 2 * numpy.dot(self.index, v)
-        elif self._metric == "jaccard":
-            dists = [pd[self._metric].distance(v, e) for e in self.index]
         else:
             # shouldn't get past the constructor!
             assert False, "invalid metric"
