@@ -31,7 +31,7 @@ class BaseANN(object):
         """
         pass
 
-    def query(self, q: numpy.array, n: int) -> numpy.array:
+    def query(self, q: numpy.array, b: float, n: int) -> numpy.array:
         """Performs a query on the algorithm to find the nearest neighbors. 
 
         Note: This is a placeholder method to be implemented by subclasses.

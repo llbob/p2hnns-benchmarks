@@ -12,12 +12,17 @@ class BruteForce(BaseANN):
         self.name = "BruteForce()"
 
     def index(self, X):
-        metric = {"angular": "cosine", "euclidean": "l2", "hamming": "hamming"}[self._metric]
-        self._nbrs = sklearn.neighbors.NearestNeighbors(algorithm="brute", metric=metric)
-        self._nbrs.fit(X)
+        self._data = X
 
-    def query(self, v, n):
-        return list(self._nbrs.kneighbors([v], return_distance=False, n_neighbors=n)[0])
+
+    def query(self, q, b, n):
+        qnorm = numpy.linalg.norm(q)
+        distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
+        n_smallest = numpy.argpartition(distances, n)[:n]
+        return self._data[n_smallest]
+
+
+        # Sort the dot products in descending order
 
     def query_with_distances(self, v, n):
         (distances, positions) = self._nbrs.kneighbors([v], return_distance=True, n_neighbors=n)
