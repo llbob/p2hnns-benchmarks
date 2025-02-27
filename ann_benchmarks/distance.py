@@ -15,10 +15,6 @@ class Metric(NamedTuple):
     distance_valid: Callable[[float], bool]
 
 metrics = {
-    "hamming": Metric(
-        distance=lambda a, b: np.mean(a.astype(np.bool_) ^ b.astype(np.bool_)),
-        distance_valid=lambda a: True
-    ),
     "euclidean": Metric(
         distance=lambda a, b: euclidean(a, b),
         distance_valid=lambda a: True
