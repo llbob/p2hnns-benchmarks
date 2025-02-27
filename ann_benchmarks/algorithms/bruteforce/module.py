@@ -1,5 +1,4 @@
 import numpy
-import sklearn.neighbors
 
 from ...distance import compute_distance, metrics as pd
 from ..base.module import BaseANN
@@ -69,11 +68,10 @@ class BruteForceBLAS(BaseANN):
         if self._metric == "angular" or self._metric == "euclidean":
             # use the same distance function for both metrics
             qnorm = numpy.linalg.norm(q)
-            dists = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
+            dists = numpy.abs(numpy.dot(self.index, q) + b)/qnorm
         else:
             # shouldn't get past the constructor!
             assert False, "invalid metric"
-        # partition-sort by distance, get `n` closest
         
         nearest_indices = numpy.argpartition(dists, n)[:n]
         indices = [idx for idx in nearest_indices if pd[self._metric].distance_valid(dists[idx])]

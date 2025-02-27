@@ -138,30 +138,33 @@ def write_output(points: numpy.ndarray, hyperplanes: Tuple[numpy.ndarray, numpy.
     """
     from ann_benchmarks.algorithms.bruteforce.module import BruteForceBLAS
 
+    normals, biases = hyperplanes
+    
     with h5py.File(fn, "w") as f:
         f.attrs["type"] = "dense"
         f.attrs["distance"] = distance
         f.attrs["dimension"] = len(points[0])
         f.attrs["point_type"] = point_type
         print(f"points size: {points.shape[0]} * {points.shape[1]}")
-        print(f"hyperplanes size:  {hyperplanes.shape[0]} * {hyperplanes.shape[1]}")
+        print(f"hyperplane normals size:  {normals.shape[0]} * {normals.shape[1]}")
         f.create_dataset("points", data=points)
-        f.create_dataset("hyperplanes", data=hyperplanes)
+        f.create_dataset("normals", data=normals)
+        f.create_dataset("biases", data=biases)
 
         # Create datasets for neighbors and distances
-        neighbors_ds = f.create_dataset("neighbors", (len(hyperplanes), count), dtype=int)
-        distances_ds = f.create_dataset("distances", (len(hyperplanes), count), dtype=float)
+        neighbors_ds = f.create_dataset("neighbors", (len(normals), count), dtype=int)
+        distances_ds = f.create_dataset("distances", (len(normals), count), dtype=float)
 
         # Fit the brute-force k-NN model
         bf = BruteForceBLAS(distance, precision=points.dtype)
         bf.index(points)
 
-        for i, (x) in enumerate(zip(hyperplanes)):
+        for i, (normal, bias) in enumerate(zip(normals, biases)):
             if i % 1000 == 0:
-                print(f"{i}/{len(hyperplanes)}...")
+                print(f"{i}/{len(normals)}...")
 
-            # Query the model and sort results by distance
-            res = list(bf.query_with_distances(x, count))
+            # Query the model with both normal and bias
+            res = list(bf.query_with_distances(normal, bias, count))
             res.sort(key=lambda t: t[-1])
 
             # Save neighbors indices and distances
@@ -211,7 +214,7 @@ def glove(out_fn: str, d: int) -> None:
             v = [float(x) for x in line.strip().split()[1:]]
             X.append(numpy.array(v))
         # X_train, X_test = train_test_split(X)
-        points, hyperplanes = construct_p2h_dataset(X)
+        points, hyperplanes = construct_p2h_dataset(numpy.array(X))
         write_output(points, hyperplanes, out_fn, "angular")
 
 
