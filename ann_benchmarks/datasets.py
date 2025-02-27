@@ -75,15 +75,60 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     return hdf5_file, dimension
 
 
-def write_output(train: numpy.ndarray, test: numpy.ndarray, fn: str, distance: str, point_type: str = "float", count: int = 100) -> None:
+def construct_p2h_dataset(X: numpy.ndarray, test_size: int = 10000, dimension: int = None) -> Tuple[numpy.ndarray, numpy.ndarray]:
+    """
+    Construct a dataset of points and hyperplanes.
+    
+    Args:
+        X (numpy.ndarray): Input data array
+        test_size (int, optional): The number of samples to include in the test set. 
+            Defaults to 10000.
+        dimension (int, optional): The dimensionality of the data. If not provided, 
+            it will be inferred from the second dimension of X. Defaults to None.
+
+    Returns:
+        Tuple[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]: A tuple containing:
+            - points: The input data points
+            - hyperplanes: A tuple of (normals, biases) defining the hyperplanes
+    """
+    points = X
+    hyperplanes = create_hyperplanes(points)
+    return points, hyperplanes
+
+def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[numpy.ndarray, numpy.ndarray]:
+    """
+    Create random hyperplanes and biases using numpy. 
+    
+    Args:
+        X (numpy.ndarray): Input data array
+    
+    Returns:
+        Tuple[numpy.ndarray, numpy.ndarray]: Hyperplane normals and their biases
+    """
+    # Generate all random indices at once
+    idx = numpy.random.randint(X.shape[0], size=(n_hyperplanes, 3))
+    
+    # Get all random points at once using fancy indexing
+    rand_points = X[idx]  # Shape: (n_hyperplanes, 3, dimension)
+    
+    # Calculate hyperplane normals (rand_1 - rand_2)
+    hyperplanes = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
+    
+    # Calculate biases using dot product
+    biases = numpy.sum(hyperplanes * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
+    
+    return hyperplanes, biases
+    
+
+def write_output(points: numpy.ndarray, hyperplanes: Tuple[numpy.ndarray, numpy.ndarray], fn: str, distance: str, point_type: str = "float", count: int = 100) -> None:
     """
     Writes the provided training and testing data to an HDF5 file. It also computes 
     and stores the nearest neighbors and their distances for the test set using a 
     brute-force approach.
     
     Args:
-        train (numpy.ndarray): The training data.
-        test (numpy.ndarray): The testing data.
+        points (numpy.ndarray): The points.
+        hyperplanes (Tuple[numpy.ndarray, numpy.ndarray]): A tuple of (hyperplane normals, hyperplane biases) defining the hyperplanes.
         filename (str): The name of the HDF5 file to which data should be written.
         distance_metric (str): The distance metric to use for computing nearest neighbors.
         point_type (str, optional): The type of the data points. Defaults to "float".
@@ -95,24 +140,24 @@ def write_output(train: numpy.ndarray, test: numpy.ndarray, fn: str, distance: s
     with h5py.File(fn, "w") as f:
         f.attrs["type"] = "dense"
         f.attrs["distance"] = distance
-        f.attrs["dimension"] = len(train[0])
+        f.attrs["dimension"] = len(points[0])
         f.attrs["point_type"] = point_type
-        print(f"train size: {train.shape[0]} * {train.shape[1]}")
-        print(f"test size:  {test.shape[0]} * {test.shape[1]}")
-        f.create_dataset("train", data=train)
-        f.create_dataset("test", data=test)
+        print(f"points size: {points.shape[0]} * {points.shape[1]}")
+        print(f"hyperplanes size:  {hyperplanes.shape[0]} * {hyperplanes.shape[1]}")
+        f.create_dataset("points", data=points)
+        f.create_dataset("hyperplanes", data=hyperplanes)
 
         # Create datasets for neighbors and distances
-        neighbors_ds = f.create_dataset("neighbors", (len(test), count), dtype=int)
-        distances_ds = f.create_dataset("distances", (len(test), count), dtype=float)
+        neighbors_ds = f.create_dataset("neighbors", (len(hyperplanes), count), dtype=int)
+        distances_ds = f.create_dataset("distances", (len(hyperplanes), count), dtype=float)
 
         # Fit the brute-force k-NN model
-        bf = BruteForceBLAS(distance, precision=train.dtype)
-        bf.index(train)
+        bf = BruteForceBLAS(distance, precision=points.dtype)
+        bf.index(points)
 
-        for i, x in enumerate(test):
+        for i, (x) in enumerate(zip(hyperplanes)):
             if i % 1000 == 0:
-                print(f"{i}/{len(test)}...")
+                print(f"{i}/{len(hyperplanes)}...")
 
             # Query the model and sort results by distance
             res = list(bf.query_with_distances(x, count))
@@ -164,8 +209,9 @@ def glove(out_fn: str, d: int) -> None:
         for line in z.open(z_fn):
             v = [float(x) for x in line.strip().split()[1:]]
             X.append(numpy.array(v))
-        X_train, X_test = train_test_split(X)
-        write_output(numpy.array(X_train), numpy.array(X_test), out_fn, "angular")
+        # X_train, X_test = train_test_split(X)
+        points, hyperplanes = construct_p2h_dataset(X)
+        write_output(points, hyperplanes, out_fn, "angular")
 
 
 def _load_texmex_vectors(f: Any, n: int, k: int) -> numpy.ndarray:
