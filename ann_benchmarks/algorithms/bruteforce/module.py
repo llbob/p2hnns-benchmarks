@@ -12,7 +12,11 @@ class BruteForce(BaseANN):
         self.name = "BruteForce()"
 
     def index(self, X):
-        self._data = X
+        if self._metric == "euclidean":
+            self._data = X
+        elif self._metric == "angular":
+            self._data = X/numpy.linalg.norm(X, axis=-1, keepdims=True)
+
 
 
     def query(self, q, b, n):
@@ -22,9 +26,12 @@ class BruteForce(BaseANN):
         return self._data[n_smallest]
 
 
-    def query_with_distances(self, v, n):
-        (distances, positions) = self._nbrs.kneighbors([v], return_distance=True, n_neighbors=n)
-        return zip(list(positions[0]), list(distances[0]))
+    def query_with_distances(self, q, b, n):
+        qnorm = numpy.linalg.norm(q)
+        distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
+        n_smallest = numpy.argpartition(distances, n)[:n]
+        return zip(self._data[n_smallest], distances[n_smallest])
+
 
 
 class BruteForceBLAS(BaseANN):
