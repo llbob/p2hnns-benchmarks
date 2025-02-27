@@ -113,12 +113,12 @@ def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[nu
     rand_points = X[idx]  # Shape: (n_hyperplanes, 3, dimension)
     
     # Calculate hyperplane normals (rand_1 - rand_2)
-    hyperplanes = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
+    normalvectors = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
     
     # Calculate biases using dot product
-    biases = numpy.sum(hyperplanes * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
+    biases = numpy.sum(normalvectors * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
     
-    return hyperplanes, biases
+    return normalvectors, biases
     
 
 def write_output(points: numpy.ndarray, hyperplanes: Tuple[numpy.ndarray, numpy.ndarray], fn: str, distance: str, point_type: str = "float", count: int = 100) -> None:
