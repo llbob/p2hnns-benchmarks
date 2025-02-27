@@ -108,7 +108,7 @@ def write_output(train: numpy.ndarray, test: numpy.ndarray, fn: str, distance: s
 
         # Fit the brute-force k-NN model
         bf = BruteForceBLAS(distance, precision=train.dtype)
-        bf.fit(train)
+        bf.index(train)
 
         for i, x in enumerate(test):
             if i % 1000 == 0:

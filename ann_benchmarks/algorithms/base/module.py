@@ -21,13 +21,13 @@ class BaseANN(object):
 
         return psutil.Process().memory_info().rss / 1024
 
-    def fit(self, X: numpy.array) -> None:
+    def index(self, X: numpy.array) -> None:
         """Fits the ANN algorithm to the provided data. 
 
         Note: This is a placeholder method to be implemented by subclasses.
 
         Args:
-            X (numpy.array): The data to fit the algorithm to.
+            X (numpy.array): The data to index the algorithm to.
         """
         pass
 
