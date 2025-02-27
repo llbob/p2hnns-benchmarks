@@ -101,6 +101,7 @@ def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[nu
     
     Args:
         X (numpy.ndarray): Input data array
+        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
     
     Returns:
         Tuple[numpy.ndarray, numpy.ndarray]: Hyperplane normals and their biases
