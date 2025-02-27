@@ -333,94 +333,6 @@ def random_float(out_fn: str, n_dims: int, n_samples: int, centers: int, distanc
     write_output(X_train, X_test, out_fn, distance)
 
 
-def random_bitstring(out_fn: str, n_dims: int, n_samples: int, n_queries: int) -> None:
-    import sklearn.datasets
-
-    Y, _ = sklearn.datasets.make_blobs(n_samples=n_samples, n_features=n_dims, centers=n_queries, random_state=1)
-    X = numpy.zeros((n_samples, n_dims), dtype=numpy.bool_)
-    for i, vec in enumerate(Y):
-        X[i] = numpy.array([v > 0 for v in vec], dtype=numpy.bool_)
-
-    X_train, X_test = train_test_split(X, test_size=n_queries)
-    write_output(X_train, X_test, out_fn, "hamming", "bit")
-
-
-def sift_hamming(out_fn: str, fn: str) -> None:
-    import tarfile
-
-    local_fn = fn + ".tar.gz"
-    url = "http://web.stanford.edu/~maxlam/word_vectors/compressed/%s/%s.tar.gz" % (path, fn)  # noqa
-    download(url, local_fn)
-    print("parsing vectors in %s..." % local_fn)
-    with tarfile.open(local_fn, "r:gz") as t:
-        f = t.extractfile(fn)
-        n_words, k = [int(z) for z in next(f).strip().split()]
-        X = numpy.zeros((n_words, k), dtype=numpy.bool_)
-        for i in range(n_words):
-            X[i] = numpy.array([float(z) > 0 for z in next(f).strip().split()[1:]], dtype=numpy.bool_)
-
-        X_train, X_test = train_test_split(X, test_size=1000)
-        write_output(X_train, X_test, out_fn, "hamming", "bit")
-
-
-def sift_hamming(out_fn: str, fn: str) -> None:
-    import tarfile
-
-    local_fn = fn + ".tar.gz"
-    url = "http://sss.projects.itu.dk/ann-benchmarks/datasets/%s.tar.gz" % fn
-    download(url, local_fn)
-    print("parsing vectors in %s..." % local_fn)
-    with tarfile.open(local_fn, "r:gz") as t:
-        f = t.extractfile(fn)
-        lines = f.readlines()
-        X = numpy.zeros((len(lines), 256), dtype=numpy.bool_)
-        for i, line in enumerate(lines):
-            X[i] = numpy.array([int(x) > 0 for x in line.decode().strip()], dtype=numpy.bool_)
-        X_train, X_test = train_test_split(X, test_size=1000)
-        write_output(X_train, X_test, out_fn, "hamming", "bit")
-
-
-
-def lastfm(out_fn: str, n_dimensions: int, test_size: int = 50000) -> None:
-    # This tests out ANN methods for retrieval on simple matrix factorization
-    # based recommendation algorithms. The idea being that the query/test
-    # vectors are user factors and the train set are item factors from
-    # the matrix factorization model.
-
-    # Since the predictor is a dot product, we transform the factors first
-    # as described in this
-    # paper: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/XboxInnerProduct.pdf  # noqa
-    # This hopefully replicates the experiments done in this post:
-    # http://www.benfrederickson.com/approximate-nearest-neighbours-for-recommender-systems/  # noqa
-
-    # The dataset is from "Last.fm Dataset - 360K users":
-    # http://www.dtic.upf.edu/~ocelma/MusicRecommendationDataset/lastfm-360K.html  # noqa
-
-    # This requires the implicit package to generate the factors
-    # (on my desktop/gpu this only takes 4-5 seconds to train - but
-    # could take 1-2 minutes on a laptop)
-    import implicit
-    from implicit.approximate_als import augment_inner_product_matrix
-    from implicit.datasets.lastfm import get_lastfm
-
-    # train an als model on the lastfm data
-    _, _, play_counts = get_lastfm()
-    model = implicit.als.AlternatingLeastSquares(factors=n_dimensions)
-    model.fit(implicit.nearest_neighbours.bm25_weight(play_counts, K1=100, B=0.8))
-
-    # transform item factors so that each one has the same norm,
-    # and transform the user factors such by appending a 0 column
-    _, item_factors = augment_inner_product_matrix(model.item_factors)
-    user_factors = numpy.append(model.user_factors, numpy.zeros((model.user_factors.shape[0], 1)), axis=1)
-
-    # only query the first 50k users (speeds things up signficantly
-    # without changing results)
-    user_factors = user_factors[:test_size]
-
-    # after that transformation a cosine lookup will return the same results
-    # as the inner product on the untransformed data
-    write_output(item_factors, user_factors, out_fn, "angular")
-
 def dbpedia_entities_openai_1M(out_fn, n = None):
     from sklearn.model_selection import train_test_split
     from datasets import load_dataset
@@ -470,15 +382,9 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "random-s-100-euclidean": lambda out_fn: random_float(out_fn, 100, 100000, 1000, "euclidean"),
     "random-xs-20-angular": lambda out_fn: random_float(out_fn, 20, 10000, 100, "angular"),
     "random-s-100-angular": lambda out_fn: random_float(out_fn, 100, 100000, 1000, "angular"),
-    "random-xs-16-hamming": lambda out_fn: random_bitstring(out_fn, 16, 10000, 100),
-    "random-s-128-hamming": lambda out_fn: random_bitstring(out_fn, 128, 50000, 1000),
-    "random-l-256-hamming": lambda out_fn: random_bitstring(out_fn, 256, 100000, 1000),
     "sift-128-euclidean": sift,
     "nytimes-256-angular": lambda out_fn: nytimes(out_fn, 256),
     "nytimes-16-angular": lambda out_fn: nytimes(out_fn, 16),
-    "word2bits-800-hamming": lambda out_fn: word2bits(out_fn, "400K", "w2b_bitlevel1_size800_vocab400K"),
-    "lastfm-64-dot": lambda out_fn: lastfm(out_fn, 64),
-    "sift-256-hamming": lambda out_fn: sift_hamming(out_fn, "sift.hamming.256"),
     "coco-i2i-512-angular": lambda out_fn: coco(out_fn, "i2i"),
     "coco-t2i-512-angular": lambda out_fn: coco(out_fn, "t2i"),
 }
