@@ -22,8 +22,6 @@ class BruteForce(BaseANN):
         return self._data[n_smallest]
 
 
-        # Sort the dot products in descending order
-
     def query_with_distances(self, v, n):
         (distances, positions) = self._nbrs.kneighbors([v], return_distance=True, n_neighbors=n)
         return zip(list(positions[0]), list(distances[0]))
