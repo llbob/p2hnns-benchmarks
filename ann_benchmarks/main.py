@@ -254,6 +254,7 @@ def create_workers_and_execute(definitions: List[Definition], args: argparse.Nam
     memory_margin = 500e6  # reserve some extra memory for misc stuff
     mem_limit = int((psutil.virtual_memory().available - memory_margin) / args.parallelism)
 
+    # From the multiprocessing library, we create a list of processes that will run the run_worker function
     try:
         workers = [multiprocessing.Process(target=run_worker, args=(i + 1, mem_limit, args, task_queue)) for i in range(args.parallelism)]
         [worker.start() for worker in workers]
