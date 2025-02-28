@@ -179,25 +179,25 @@ param: train and test are arrays of arrays of indices.
 
 
 
-def train_test_split(X: numpy.ndarray, test_size: int = 10000, dimension: int = None) -> Tuple[numpy.ndarray, numpy.ndarray]:
-    """
-    Splits the provided dataset into a training set and a testing set.
+# def train_test_split(X: numpy.ndarray, test_size: int = 10000, dimension: int = None) -> Tuple[numpy.ndarray, numpy.ndarray]:
+#     """
+#     Splits the provided dataset into a training set and a testing set.
     
-    Args:
-        X (numpy.ndarray): The dataset to split.
-        test_size (int, optional): The number of samples to include in the test set. 
-            Defaults to 10000.
-        dimension (int, optional): The dimensionality of the data. If not provided, 
-            it will be inferred from the second dimension of X. Defaults to None.
+#     Args:
+#         X (numpy.ndarray): The dataset to split.
+#         test_size (int, optional): The number of samples to include in the test set. 
+#             Defaults to 10000.
+#         dimension (int, optional): The dimensionality of the data. If not provided, 
+#             it will be inferred from the second dimension of X. Defaults to None.
 
-    Returns:
-        Tuple[numpy.ndarray, numpy.ndarray]: A tuple containing the training set and the testing set.
-    """
-    from sklearn.model_selection import train_test_split as sklearn_train_test_split
+#     Returns:
+#         Tuple[numpy.ndarray, numpy.ndarray]: A tuple containing the training set and the testing set.
+#     """
+#     from sklearn.model_selection import train_test_split as sklearn_train_test_split
 
-    dimension = dimension if not None else X.shape[1]
-    print(f"Splitting {X.shape[0]}*{dimension} into train/test")
-    return sklearn_train_test_split(X, test_size=test_size, random_state=1)
+#     dimension = dimension if not None else X.shape[1]
+#     print(f"Splitting {X.shape[0]}*{dimension} into train/test")
+#     return sklearn_train_test_split(X, test_size=test_size, random_state=1)
 
 
 def glove(out_fn: str, d: int) -> None:
@@ -247,9 +247,10 @@ def sift(out_fn: str) -> None:
     fn = os.path.join("data", "sift.tar.tz")
     download(url, fn)
     with tarfile.open(fn, "r:gz") as t:
-        train = _get_irisa_matrix(t, "sift/sift_base.fvecs")
-        test = _get_irisa_matrix(t, "sift/sift_query.fvecs")
-        write_output(train, test, out_fn, "euclidean")
+        points = _get_irisa_matrix(t, "sift/sift_base.fvecs")
+        # test = _get_irisa_matrix(t, "sift/sift_query.fvecs")
+        hyperplanes = create_hyperplanes(points)
+        write_output(points, hyperplanes, out_fn, "euclidean")
 
 
 def gist(out_fn: str) -> None:
@@ -260,8 +261,9 @@ def gist(out_fn: str) -> None:
     download(url, fn)
     with tarfile.open(fn, "r:gz") as t:
         train = _get_irisa_matrix(t, "gist/gist_base.fvecs")
-        test = _get_irisa_matrix(t, "gist/gist_query.fvecs")
-        write_output(train, test, out_fn, "euclidean")
+        # test = _get_irisa_matrix(t, "gist/gist_query.fvecs")
+        points, hyperplanes = construct_p2h_dataset(train)
+        write_output(points, hyperplanes, out_fn, "euclidean")
 
 
 def _load_mnist_vectors(fn: str) -> numpy.ndarray:
@@ -298,8 +300,9 @@ def mnist(out_fn: str) -> None:
     download("http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz", "mnist-train.gz")  # noqa
     download("http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz", "mnist-test.gz")  # noqa
     train = _load_mnist_vectors("mnist-train.gz")
-    test = _load_mnist_vectors("mnist-test.gz")
-    write_output(train, test, out_fn, "euclidean")
+    # test = _load_mnist_vectors("mnist-test.gz")
+    points, hyperplanes = construct_p2h_dataset(train)
+    write_output(points, hyperplanes, out_fn, "euclidean")
 
 
 def fashion_mnist(out_fn: str) -> None:
@@ -312,8 +315,9 @@ def fashion_mnist(out_fn: str) -> None:
         "fashion-mnist-test.gz",
     )
     train = _load_mnist_vectors("fashion-mnist-train.gz")
-    test = _load_mnist_vectors("fashion-mnist-test.gz")
-    write_output(train, test, out_fn, "euclidean")
+    # test = _load_mnist_vectors("fashion-mnist-test.gz")
+    points, hyperplanes = construct_p2h_dataset(train)
+    write_output(points, hyperplanes, out_fn, "euclidean")
 
 
 # Creates a 'deep image descriptor' dataset using the 'deep10M.fvecs' sample
@@ -338,8 +342,9 @@ def deep_image(out_fn: str) -> None:
     dim = fv.view(numpy.int32)[0]
     fv = fv.reshape(-1, dim + 1)[:, 1:]
 
-    X_train, X_test = train_test_split(fv)
-    write_output(X_train, X_test, out_fn, "angular")
+    # X_train, X_test = train_test_split(fv)
+    points, hyperplanes = construct_p2h_dataset(fv)
+    write_output(points, hyperplanes, out_fn, "angular")
 
 
 def transform_bag_of_words(filename: str, n_dimensions: int, out_fn: str) -> None:
@@ -363,8 +368,9 @@ def transform_bag_of_words(filename: str, n_dimensions: int, out_fn: str) -> Non
         B = TfidfTransformer().fit_transform(A)
         print("reducing dimensionality...")
         C = random_projection.GaussianRandomProjection(n_components=n_dimensions).fit_transform(B)
-        X_train, X_test = train_test_split(C)
-        write_output(numpy.array(X_train), numpy.array(X_test), out_fn, "angular")
+        # X_train, X_test = train_test_split(C)
+        points, hyperplanes = construct_p2h_dataset(C)
+        write_output(points, hyperplanes, out_fn, "angular")
 
 
 def nytimes(out_fn: str, n_dimensions: int) -> None:
@@ -379,12 +385,13 @@ def random_float(out_fn: str, n_dims: int, n_samples: int, centers: int, distanc
     import sklearn.datasets
 
     X, _ = sklearn.datasets.make_blobs(n_samples=n_samples, n_features=n_dims, centers=centers, random_state=1)
-    X_train, X_test = train_test_split(X, test_size=0.1)
-    write_output(X_train, X_test, out_fn, distance)
+    # X_train, X_test = train_test_split(X, test_size=0.1)
+    points, hyperplanes = construct_p2h_dataset(X)
+    write_output(points, hyperplanes, out_fn, distance)
 
 
 def dbpedia_entities_openai_1M(out_fn, n = None):
-    from sklearn.model_selection import train_test_split
+    # from sklearn.model_selection import train_test_split
     from datasets import load_dataset
     import numpy as np
 
@@ -395,9 +402,10 @@ def dbpedia_entities_openai_1M(out_fn, n = None):
     embeddings = data.to_pandas()['openai'].to_numpy()
     embeddings = np.vstack(embeddings).reshape((-1, 1536))
 
-    X_train, X_test = train_test_split(embeddings, test_size=10_000, random_state=42)
+    # X_train, X_test = train_test_split(embeddings, test_size=10_000, random_state=42)
+    points, hyperplanes = construct_p2h_dataset(embeddings)
 
-    write_output(X_train, X_test, out_fn, "angular")
+    write_output(points, hyperplanes, out_fn, "angular")
 
 def coco(out_fn: str, kind: str):
     assert kind in ('t2i', 'i2i')
@@ -409,14 +417,16 @@ def coco(out_fn: str, kind: str):
     with h5py.File(local_fn, "r") as f:
         img_X = f['img_feats'][:]
 
-        X_train, X_test = train_test_split(img_X, test_size=10_000)
+        # X_train, X_test = train_test_split(img_X, test_size=10_000)
+        points, hyperplanes = construct_p2h_dataset(img_X)
 
         if kind == 't2i':
             # there are 5 captions per image, take the first one
             txt_X = f['txt_feats'][::5]
-            _, X_test = train_test_split(txt_X, test_size=10_000)
+            # _, X_test = train_test_split(txt_X, test_size=10_000)
+            points, hyperplanes = construct_p2h_dataset(txt_X)
 
-    write_output(X_train, X_test, out_fn, "angular")
+    write_output(points, hyperplanes, out_fn, "angular")
 
 
 DATASETS: Dict[str, Callable[[str], None]] = {
