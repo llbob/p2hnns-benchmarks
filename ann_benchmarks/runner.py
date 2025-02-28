@@ -19,14 +19,15 @@ from .distance import dataset_transform, metrics
 from .results import store_results
 
 
-def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.array, distance: str, count: int, 
-                         run_count: int, batch: bool) -> Tuple[dict, list]:
+def run_individual_query(algo: BaseANN, X_points: numpy.ndarray, 
+                         hyperplanes: Tuple[numpy.ndarray, numpy.ndarray], 
+                         distance: str, count: int, run_count: int, batch: bool) -> Tuple[dict, list]:
     """Run a search query using the provided algorithm and report the results.
 
     Args:
-        algo (BaseANN): An instantiated ANN algorithm.
-        X_train (numpy.array): The training data.
-        X_test (numpy.array): The testing data.
+        algo (BaseANN): An instantiated P2HNNS algorithm.
+        X_points (numpy.array): The points data.
+        hyperplanes (Tuple[numpy.ndarray, numpy.ndarray]): Tuple of (normals, biases) for hyperplane queries.
         distance (str): The type of distance metric to use.
         count (int): The number of nearest neighbors to return.
         run_count (int): The number of times to run the query.
@@ -35,6 +36,7 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
     Returns:
         tuple: A tuple with the attributes of the algorithm run and the results.
     """
+    normals, biases = hyperplanes
     prepared_queries = (batch and hasattr(algo, "prepare_batch_query")) or (
         (not batch) and hasattr(algo, "prepare_query")
     )
@@ -45,11 +47,12 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
         # a bit dumb but can't be a scalar since of Python's scoping rules
         n_items_processed = [0]
 
-        def single_query(v: numpy.array) -> Tuple[float, List[Tuple[int, float]]]:
-            """Executes a single query on an instantiated, ANN algorithm.
+        def single_query(normal: numpy.array, bias: float) -> Tuple[float, List[Tuple[int, float]]]:
+            """Executes a single query on an instantiated, P2HNNS algorithm.
 
             Args:
-                v (numpy.array): Vector to query.
+                normal (numpy.array): Normal vector of the hyperplane.
+                bias (float): Bias of the hyperplane.
 
             Returns:
                 List[Tuple[float, List[Tuple[int, float]]]]: Tuple containing
@@ -57,25 +60,27 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
                     2. Result pairs consisting of (point index, distance to candidate data )
             """
             if prepared_queries:
-                algo.prepare_query(v, count)
+                algo.prepare_query(normal, bias, count)
                 start = time.time()
                 algo.run_prepared_query()
                 total = time.time() - start
                 candidates = algo.get_prepared_query_results()
             else:
                 start = time.time()
-                candidates = algo.query(v, count)
+                candidates = algo.query(normal, bias, count)
                 total = time.time() - start
 
             # make sure all returned indices are unique
             assert len(candidates) == len(set(candidates)), "Implementation returned duplicated candidates"
 
             candidates = [
-                (int(idx), float(metrics[distance].distance(v, X_train[idx]))) for idx in candidates  # noqa
+                (int(idx), float(metrics[distance].distance(X_points[idx], normal)))
+                for idx in candidates  # noqa
             ]
+            
             n_items_processed[0] += 1
             if n_items_processed[0] % 1000 == 0:
-                print("Processed %d/%d queries..." % (n_items_processed[0], len(X_test)))
+                print("Processed %d/%d queries..." % (n_items_processed[0], len(normals)))
             if len(candidates) > count:
                 print(
                     "warning: algorithm %s returned %d results, but count"
@@ -83,52 +88,54 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
                 )
             return (total, candidates)
 
-        def batch_query(X: numpy.array) -> List[Tuple[float, List[Tuple[int, float]]]]:
-            """Executes a batch of queries on an instantiated, ANN algorithm.
+        def batch_query(normals_batch: numpy.array, biases_batch: numpy.array) -> List[Tuple[float, List[Tuple[int, float]]]]:
+            """Executes a batch of hyperplane queries on an instantiated P2HNNS algorithm.
 
             Args:
-                X (numpy.array): Array containing multiple vectors to query.
+                normals_batch (numpy.array): Array of normal vectors.
+                biases_batch (numpy.array): Array of biases.
 
             Returns:
                 List[Tuple[float, List[Tuple[int, float]]]]: List of tuples, each containing
                     1. Total time taken for each query 
-                    2. Result pairs consisting of (point index, distance to candidate data )
+                    2. Result pairs consisting of (point index, distance to hyperplane)
             """
-            # TODO: consider using a dataclass to represent return value.
             if prepared_queries:
-                algo.prepare_batch_query(X, count)
+                algo.prepare_batch_query(normals_batch, biases_batch, count)
                 start = time.time()
                 algo.run_batch_query()
                 total = time.time() - start
             else:
                 start = time.time()
-                algo.batch_query(X, count)
+                algo.batch_query(normals_batch, biases_batch, count)
                 total = time.time() - start
+                
             results = algo.get_batch_results()
             if hasattr(algo, "get_batch_latencies"):
                 batch_latencies = algo.get_batch_latencies()
             else:
-                batch_latencies = [total / float(len(X))] * len(X)
+                batch_latencies = [total / float(len(normals_batch))] * len(normals_batch)
 
             # make sure all returned indices are unique
             for res in results:
                 assert len(res) == len(set(res)), "Implementation returned duplicated candidates"
 
             candidates = [
-                [(int(idx), float(metrics[distance].distance(v, X_train[idx]))) for idx in single_results]  # noqa
-                for v, single_results in zip(X, results)
+                [(int(idx), float(metrics[distance].distance(X_points[idx], normal)))
+                 for idx in single_results]  # noqa
+                for normal, single_results in zip(normals_batch, results)
             ]
             return [(latency, v) for latency, v in zip(batch_latencies, candidates)]
 
         if batch:
-            results = batch_query(X_test)
+            results = batch_query(normals, biases)
         else:
-            results = [single_query(x) for x in X_test]
+            results = [single_query(normal, bias) for normal, bias in zip(normals, biases)]
 
         total_time = sum(time for time, _ in results)
         total_candidates = sum(len(candidates) for _, candidates in results)
-        search_time = total_time / len(X_test)
-        avg_candidates = total_candidates / len(X_test)
+        search_time = total_time / len(normals)
+        avg_candidates = total_candidates / len(normals)
         best_search_time = min(best_search_time, search_time)
 
     verbose = hasattr(algo, "query_verbose")
@@ -149,8 +156,8 @@ def run_individual_query(algo: BaseANN, X_train: numpy.array, X_test: numpy.arra
 
 
 def load_and_transform_dataset(dataset_name: str) -> Tuple[
-        Union[numpy.ndarray, List[numpy.ndarray]],
-        Union[numpy.ndarray, List[numpy.ndarray]],
+        numpy.ndarray,
+        Tuple[numpy.ndarray, numpy.ndarray],
         str]:
     """Loads and transforms the dataset.
 
@@ -159,20 +166,26 @@ def load_and_transform_dataset(dataset_name: str) -> Tuple[
 
     Returns:
         Tuple: Transformed datasets.
+        points: The data points to index
+        hyperplanes: A tuple of (normals, biases) for querying
+        distance: The distance metric to use
     """
     D, dimension = get_dataset(dataset_name)
-    X_train = numpy.array(D["train"])
-    X_test = numpy.array(D["test"])
+
+    points = numpy.array(D["points"])
+    normals = numpy.array(D["normals"])
+    biases = numpy.array(D["biases"])
+    hyperplanes = (normals, biases)
+    
+    print(f"Got a points set of size ({points.shape[0]} * {dimension})")
+    print(f"Got {normals.shape[0]} hyperplane queries")
+    
     distance = D.attrs["distance"]
-
-    print(f"Got a train set of size ({X_train.shape[0]} * {dimension})")
-    print(f"Got {len(X_test)} queries")
-
-    train, test = dataset_transform(D)
-    return train, test, distance
+    return points, hyperplanes, distance
 
 
-def build_index(algo: BaseANN, X_train: numpy.ndarray) -> Tuple:
+
+def build_index(algo: BaseANN, X_points: numpy.ndarray) -> Tuple:
     """Builds the ANN index for a given ANN algorithm on the training data.
 
     Args:
@@ -184,7 +197,7 @@ def build_index(algo: BaseANN, X_train: numpy.ndarray) -> Tuple:
     """
     t0 = time.time()
     memory_usage_before = algo.get_memory_usage()
-    algo.index(X_train)
+    algo.index(X_points)
     build_time = time.time() - t0
     index_size = algo.get_memory_usage() - memory_usage_before
 
@@ -195,7 +208,7 @@ def build_index(algo: BaseANN, X_train: numpy.ndarray) -> Tuple:
 
 
 def run(definition: Definition, dataset_name: str, count: int, run_count: int, batch: bool) -> None:
-    """Run the algorithm benchmarking.
+    """Run the algorithm benchmarking for point-to-hyperplane queries.
 
     Args:
         definition (Definition): The algorithm definition.
@@ -212,13 +225,13 @@ error: query argument groups have been specified for {definition.module}.{defini
 algorithm instantiated from it does not implement the set_query_arguments \
 function"""
 
-    X_train, X_test, distance = load_and_transform_dataset(dataset_name)
+    X_points, hyperplanes, distance = load_and_transform_dataset(dataset_name)
 
     try:
         if hasattr(algo, "supports_prepared_queries"):
             algo.supports_prepared_queries()
 
-        build_time, index_size = build_index(algo, X_train)
+        build_time, index_size = build_index(algo, X_points)
 
         query_argument_groups = definition.query_argument_groups or [[]]  # Ensure at least one iteration
 
@@ -227,7 +240,7 @@ function"""
             if query_arguments:
                 algo.set_query_arguments(*query_arguments)
             
-            descriptor, results = run_individual_query(algo, X_train, X_test, distance, count, run_count, batch)
+            descriptor, results = run_individual_query(algo, X_points, hyperplanes, distance, count, run_count, batch)
 
             descriptor.update({
                 "build_time": build_time,

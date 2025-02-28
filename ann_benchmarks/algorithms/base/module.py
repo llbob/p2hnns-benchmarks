@@ -32,12 +32,11 @@ class BaseANN(object):
         pass
 
     def query(self, q: numpy.array, b: float, n: int) -> numpy.array:
-        """Performs a query on the algorithm to find the nearest neighbors. 
-
-        Note: This is a placeholder method to be implemented by subclasses.
+        """Performs a hyperplane query on the algorithm to find the nearest neighbors.
 
         Args:
-            q (numpy.array): The vector to find the nearest neighbors of.
+            q (numpy.array): The normal vector of the hyperplane.
+            b (float): The bias of the hyperplane.
             n (int): The number of nearest neighbors to return.
 
         Returns:
@@ -45,19 +44,17 @@ class BaseANN(object):
         """
         return []  # array of candidate indices
 
-    def batch_query(self, X: numpy.array, n: int) -> None:
-        """Performs multiple queries at once and lets the algorithm figure out how to handle it.
-
-        The default implementation uses a ThreadPool to parallelize query processing.
+    def batch_query(self, normals: numpy.array, biases: numpy.array, n: int) -> None:
+        """Performs multiple hyperplane queries at once.
 
         Args:
-            X (numpy.array): An array of vectors to find the nearest neighbors of.
+            normals (numpy.array): Array of normal vectors.
+            biases (numpy.array): Array of biases.
             n (int): The number of nearest neighbors to return for each query.
-        Returns: 
-            None: self.get_batch_results() is responsible for retrieving batch result
         """
         pool = ThreadPool()
-        self.res = pool.map(lambda q: self.query(q, n), X)
+        self.res = pool.map(lambda args: self.query(args[0], args[1], n), 
+                            zip(normals, biases))
 
     def get_batch_results(self) -> numpy.array:
         """Retrieves the results of a batch query (from .batch_query()).

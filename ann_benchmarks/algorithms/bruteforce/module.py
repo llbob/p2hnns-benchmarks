@@ -22,10 +22,13 @@ class BruteForce(BaseANN):
 
 
     def query_with_distances(self, q, b, n):
+        """Find indices and distances of `n` most similar vectors from the index to query
+        hyperplane with normal vector `q` and bias `b`."""
         qnorm = numpy.linalg.norm(q)
         distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
         n_smallest = numpy.argpartition(distances, n)[:n]
-        return zip(self._data[n_smallest], distances[n_smallest])
+        # Return (index, distance) pairs
+        return [(idx, distances[idx]) for idx in n_smallest]
 
 
 

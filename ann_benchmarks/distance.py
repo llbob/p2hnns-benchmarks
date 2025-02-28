@@ -79,8 +79,12 @@ def dataset_transform(dataset: h5py.Dataset) -> Tuple[Union[np.ndarray, List[np.
         dataset (h5py.Dataset): The input dataset in HDF5 format.
 
     Returns:
-        Tuple[Union[np.ndarray, List[np.ndarray]], Union[np.ndarray, List[np.ndarray]]]: Tuple of training and testing data in conventional format.
+        Tuple: (points, hyperplanes).
     """
     
-    return np.array(dataset["train"]), np.array(dataset["test"])
+    points = np.array(dataset["points"])
+    normals = np.array(dataset["normals"])
+    biases = np.array(dataset["biases"])
+    return points, (normals, biases)
+    
 
