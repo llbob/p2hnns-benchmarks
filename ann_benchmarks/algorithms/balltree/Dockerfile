@@ -15,17 +15,18 @@ WORKDIR /home/app
 # Copy the algorithm code
 COPY . /home/app/
 
-# Build the Ball-Tree implementation
-RUN cd external_repo/methods && \
-    g++ -fopenmp -O3 -o p2h_search main.cc util.cc pri_queue.cc qalsh.cc rqalsh.cc
+# Find OpenMP headers in the container
+RUN find / -name omp.h 2>/dev/null > omp_locations.txt || echo "omp.h not found"
+RUN if [ -s omp_locations.txt ]; then \
+      INCLUDE_PATH=$(head -n 1 omp_locations.txt | xargs dirname); \
+      echo "Found omp.h at ${INCLUDE_PATH}"; \
+      cd external_repo/methods && \
+      g++ -fopenmp -I${INCLUDE_PATH} -O3 -o p2h_search main.cc util.cc pri_queue.cc qalsh.cc rqalsh.cc; \
+    else \
+      echo "Trying default paths"; \
+      cd external_repo/methods && \
+      g++ -fopenmp -O3 -o p2h_search main.cc util.cc pri_queue.cc qalsh.cc rqalsh.cc; \
+    fi
 
-# Create a wrapper script to run the algorithm on CIFAR
-RUN echo '#!/bin/bash\n\
-cd /home/app/external_repo/methods\n\
-./p2h_search -alg 2 -n 50000 -qn 100 -d 513 -leaf 1000 -cf config -dt float32 \
--dn Cifar -ds /home/app/data/bin/cifar/Cifar.ds -qs /home/app/data/bin/cifar/Cifar.q \
--ts /home/app/data/bin/cifar/Cifar.gt -op /home/app/results/\n\
-' > /home/app/run_balltree.sh && chmod +x /home/app/run_balltree.sh
-
-# Override the entrypoint to use our wrapper script
-ENTRYPOINT ["/home/app/run_balltree.sh"]
+# Use the standard entrypoint from the base image
+ENTRYPOINT ["python3", "-u", "run_algorithm.py"]
