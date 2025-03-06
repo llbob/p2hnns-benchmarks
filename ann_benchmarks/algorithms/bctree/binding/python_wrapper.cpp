@@ -17,15 +17,20 @@ namespace p2h
 	public:
 		std::unique_ptr<BC_Tree<float>> bc_tree;
 
-		void preprocess(int n, int d, int leaf, float *data)
+		void preprocess(int n, int d, int leaf, py::array_t<float> data)
 		{
-			bc_tree.reset(new BC_Tree<float>(n, d, leaf, data));
+			py::buffer_info buf = data.request();
+			float* ptr = static_cast<float*>(buf.ptr);
+			bc_tree.reset(new BC_Tree<float>(n, d, leaf, ptr));
 		}
 
-		std::vector<int> search(int top_k, int cand, float c, float *query)
+		std::vector<int> search(int top_k, int cand, float c, py::array_t<float> query)
 		{
+			py::buffer_info buf = query.request();
+			float* ptr = static_cast<float*>(buf.ptr);
+			
 			MinK_List list(top_k);
-			bc_tree->nns(top_k, cand, c, query, &list);
+			bc_tree->nns(top_k, cand, c, ptr, &list);
 
 			std::vector<int> return_list;
 			for (int i = 0; i < list.size(); ++i)
