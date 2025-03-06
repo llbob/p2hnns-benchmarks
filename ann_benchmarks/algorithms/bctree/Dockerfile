@@ -45,3 +45,4 @@ COPY ann_benchmarks/algorithms/bctree/setup.py \
 # Install the wrapper
 WORKDIR /home/app/BC-Tree
 RUN python3 setup.py build_ext --inplace
+RUN python3 -c 'import bc_tree'
