@@ -1,17 +1,17 @@
 import numpy
-import bc_tree
+import b_tree
 from ..base.module import BaseANN
 
 class B_tree(BaseANN):
     def __init__(self, metric, method_param):
         if metric not in ("angular", "euclidean"):
-            raise NotImplementedError("BC_tree doesn't support metric %s" % metric)
+            raise NotImplementedError("B_tree doesn't support metric %s" % metric)
         self._metric = metric
         self._max_leaf_size = method_param["max_leaf_size"]
         self._candidates = method_param["candidates"]
         self._c = 10.0
-        self._tree = bc_tree.BCTree()
-        self.name = f"BC_tree(leaf_size={self._max_leaf_size}, candidates={self._candidates}, c={self._c})"
+        self._tree = b_tree.BTree()
+        self.name = f"B_tree(leaf_size={self._max_leaf_size}, candidates={self._candidates}, c={self._c})"
 
     def index(self, X):
         # Convert to float32 as required by the C++ implementation
@@ -25,7 +25,7 @@ class B_tree(BaseANN):
 
         # int   n,                        // number of data points
         # int   d,                        // dimension of data points
-        # int   leaf,                     // leaf size of bc-tree
+        # int   leaf,                     // leaf size of b-tree
         # const DType *data);             // data points
         self._tree.preprocess(n, d, self._max_leaf_size, data_array)
 

@@ -44,8 +44,8 @@ COPY ann_benchmarks/algorithms/balltree/binding/setup.py \
 # Build the module in /home/app
 WORKDIR /home/app/BC-Tree
 RUN python3 setup.py build_ext --inplace
-RUN cp bc_tree*.so /home/app/
+RUN cp b_tree*.so /home/app/
 
 # Test import from /home/app
 WORKDIR /home/app
-RUN python3 -c 'import bc_tree'
+RUN python3 -c 'import b_tree'

@@ -16,13 +16,13 @@ namespace p2h
 	// const DType *data)                  // data points
 	{
 	public:
-		std::unique_ptr<Ball_Tree<float>> bc_tree;
+		std::unique_ptr<Ball_Tree<float>> b_tree;
 
 		void preprocess(int n, int d, int leaf, py::array_t<float> data)
 		{
 			py::buffer_info buf = data.request();
 			float* ptr = static_cast<float*>(buf.ptr);
-			bc_tree.reset(new Ball_Tree<float>(n, d, leaf, ptr));
+			b_tree.reset(new Ball_Tree<float>(n, d, leaf, ptr));
 		}
 
 		std::vector<int> search(int top_k, int cand, float c, py::array_t<float> query)
@@ -31,7 +31,7 @@ namespace p2h
 			float* ptr = static_cast<float*>(buf.ptr);
 			
 			MinK_List list(top_k);
-			bc_tree->nns(top_k, cand, c, ptr, &list);
+			b_tree->nns(top_k, cand, c, ptr, &list);
 
 			std::vector<int> return_list;
 			for (int i = 0; i < list.size(); ++i)
@@ -43,9 +43,9 @@ namespace p2h
 		}
 	};
 
-	PYBIND11_MODULE(bc_tree, m)
+	PYBIND11_MODULE(b_tree, m)
 	{
-		py::class_<WrapperBTree>(m, "BCTree")
+		py::class_<WrapperBTree>(m, "BTree")
 			.def(py::init<>())
 			.def("preprocess", &WrapperBTree::preprocess)
 			.def("search", &WrapperBTree::search);

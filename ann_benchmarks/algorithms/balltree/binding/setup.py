@@ -19,7 +19,7 @@ else:
     os.environ['LDFLAGS'] = '-mmacosx-version-min=10.9'
 
 module = Extension(
-    'bc_tree',
+    'b_tree',
     sources=['python_wrapper_bt.cpp', 'methods/pri_queue.cc'], 
     library_dirs=["methods/"],
     extra_compile_args=extra_args,
@@ -28,8 +28,8 @@ module = Extension(
     include_dirs=['methods/', 'external/pybind11/include', 'libs'])
 
 setup(
-    name='bc_tree',
+    name='b_tree',
     version='0.1',
-    description='BCTree Implementation',
+    description='BTree Implementation',
     ext_modules=[module]
 )
