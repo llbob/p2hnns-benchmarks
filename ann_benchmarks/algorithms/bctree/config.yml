@@ -1,5 +1,5 @@
 float:
-  angular:
+  any:
   - base_args: ['@metric']
     constructor: BC_tree
     disabled: false
@@ -7,27 +7,7 @@ float:
     module: ann_benchmarks.algorithms.bctree
     name: bctree
     run_groups:
-      bctree_default:
-        args: [[10], [100], [1.0]]  # leaf_size, candidates, c
-      bctree_leaf_size:
-        args: [[5, 10, 20, 50], [100], [1.0]]  # varying leaf_size
-      bctree_candidates:
-        args: [[10], [50, 100, 200, 500], [1.0]]  # varying candidates
-      bctree_c:
-        args: [[10], [100], [0.5, 1.0, 2.0, 4.0]]  # varying c parameter
-  euclidean:
-  - base_args: ['@metric']
-    constructor: BC_tree
-    disabled: false
-    docker_tag: ann-benchmarks-bctree
-    module: ann_benchmarks.algorithms.bctree
-    name: bctree
-    run_groups:
-      bctree_default:
-        args: [[10], [100], [1.0]]
-      bctree_leaf_size:
-        args: [[5, 10, 20, 50], [100], [1.0]]
-      bctree_candidates:
-        args: [[10], [50, 100, 200, 500], [1.0]]
-      bctree_c:
-        args: [[10], [100], [0.5, 1.0, 2.0, 4.0]]
+      BC_tree:
+        args:
+          max_leaf_size: [100, 200, 500, 1000, 2000, 5000, 10000]
+          candidates: [10, 50, 100, 500, 1000, 5000, 10000, 20000, 30000, 40000]
