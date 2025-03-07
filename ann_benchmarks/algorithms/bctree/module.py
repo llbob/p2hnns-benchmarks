@@ -35,6 +35,8 @@ class BC_tree(BaseANN):
         
         # Perform the search
         results = self._tree.search(n, self._candidates, self._c, q)
+        if any(idx < 0 or idx >= len(self._data) for idx in results):
+            raise IndexError("Search returned out-of-bounds indices")
         return results
 
     def get_memory_usage(self):

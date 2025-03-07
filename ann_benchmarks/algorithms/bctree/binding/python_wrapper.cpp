@@ -35,7 +35,8 @@ namespace p2h
 			std::vector<int> return_list;
 			for (int i = 0; i < list.size(); ++i)
 			{
-				return_list.push_back(list.ith_id(i));
+				// we need to subtract 1 because the ids are 1-indexed in the C++ code
+				return_list.push_back(list.ith_id(i)-1);
 			}
 			return return_list;
 		}
