@@ -1,0 +1,13 @@
+float:
+  any:
+  - base_args: ['@metric']
+    constructor: B_tree
+    disabled: false
+    docker_tag: ann-benchmarks-balltree
+    module: ann_benchmarks.algorithms.balltree
+    name: balltree
+    run_groups:
+      B_tree:
+        args:
+          max_leaf_size: [100, 200, 500, 1000, 2000, 5000, 10000]
+          candidates: [10, 50, 100, 500, 1000, 5000, 10000, 20000, 30000, 40000]

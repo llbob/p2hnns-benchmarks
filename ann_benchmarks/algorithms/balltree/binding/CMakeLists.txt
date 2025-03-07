@@ -16,7 +16,7 @@ include_directories(${pybind11_INCLUDE_DIRS})
 include_directories(${CMAKE_SOURCE_DIR}/methods)
 
 # Add the executable
-add_library(bc_tree MODULE python_wrapper_bct.cpp)
+add_library(bc_tree MODULE python_wrapper_bt.cpp)
 
 # Link libraries
 target_link_libraries(bc_tree PRIVATE pybind11::module OpenMP::OpenMP_CXX)

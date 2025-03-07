@@ -20,7 +20,7 @@ else:
 
 module = Extension(
     'bc_tree',
-    sources=['python_wrapper_bct.cpp', 'methods/pri_queue.cc'], 
+    sources=['python_wrapper_bt.cpp', 'methods/pri_queue.cc'], 
     library_dirs=["methods/"],
     extra_compile_args=extra_args,
     extra_link_args=extra_link_args,

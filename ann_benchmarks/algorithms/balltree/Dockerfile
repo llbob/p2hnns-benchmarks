@@ -36,9 +36,9 @@ RUN git clone https://github.com/HuangQiang/BC-Tree.git && \
     rm -rf pybind11/.git
 
 # Copy the setup files from the algorithm directory
-COPY ann_benchmarks/algorithms/bctree/binding/setup.py \
-     ann_benchmarks/algorithms/bctree/binding/python_wrapper_bct.cpp \
-     ann_benchmarks/algorithms/bctree/binding/CMakeLists.txt \
+COPY ann_benchmarks/algorithms/balltree/binding/setup.py \
+     ann_benchmarks/algorithms/balltree/binding/python_wrapper_bt.cpp \
+     ann_benchmarks/algorithms/balltree/binding/CMakeLists.txt \
      /home/app/BC-Tree/
 
 # Build the module in /home/app
