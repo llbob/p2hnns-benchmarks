@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>ANN-Benchmarks</title>
+        <title>P2HNNS-Benchmarks</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -27,7 +27,7 @@
             <nav class="navbar navbar-inverse navbar-fixed-top">
               <div class="container">
                 <div class="navbar-header">
-                  <a class="navbar-brand" href="index.html">ANN Benchmarks</a>
+                  <a class="navbar-brand" href="index.html">P2HNNS Benchmarks</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
@@ -48,8 +48,7 @@
 
                     <div class="container">
             <h1>Info</h1>
-            <p>ANN-Benchmarks is a benchmarking environment for approximate nearest neighbor algorithms search. This website contains the current benchmarking results. Please visit <a href="http://github.com/erikbern/ann-benchmarks/">http://github.com/erikbern/ann-benchmarks/</a> to get an overview over evaluated data sets and algorithms. Make a pull request on <a href="http://github.com/erikbern/ann-benchmarks/">Github</a> to add your own code or improvements to the
-            benchmarking system.
+            <p>P2HNNS-benchmarks is a benchmarking environment for approximate nearest neighbor search algorithms. This website contains the current benchmarking results. Please visit <a href="https://github.com/llbob/p2hnns-benchmarks/">P2HNNS-benchmarks</a> to get an overview of the evaluated datasets and algorithms. Make a pull request on <a href="https://github.com/llbob/p2hnns-benchmarks/">GitHub</a> to add your own code or improvements to the benchmarking system. We acknowledge and give full credit to the original <a href="https://github.com/erikbern/ann-benchmarks/">ANN-BENCHMARKS</a> repository, developed by Martin Aumueller, Erik Bernhardsson, and Alec Faitfull, from which this project is forked.
             </p>
             <div id="results">
             <h1>Benchmarking Results</h1>
@@ -86,8 +85,21 @@
                         <hr />
                                                                 <h2 id="algorithms">Results by Algorithm</h2>
                     <ul class="list-inline"><b>Algorithms:</b>
+                                                    <li><a href="#nh">nh</a></li>
                                                     <li><a href="#bctree">bctree</a></li>
+                                                    <li><a href="#balltree">balltree</a></li>
                                             </ul>
+                                        <a href="./nh.html">
+                        <div class="row" id="nh">
+                            <div class = "col-md-4 bg-success">
+                                <h4>nh</h4>
+                        </div>
+                        <div class = "col-md-8">
+                            <img class = "img-responsive" src="nh.png" />
+                        </div>
+                    </div>
+                    </a>
+                    <hr />
                                         <a href="./bctree.html">
                         <div class="row" id="bctree">
                             <div class = "col-md-4 bg-success">
@@ -99,11 +111,22 @@
                     </div>
                     </a>
                     <hr />
+                                        <a href="./balltree.html">
+                        <div class="row" id="balltree">
+                            <div class = "col-md-4 bg-success">
+                                <h4>balltree</h4>
+                        </div>
+                        <div class = "col-md-8">
+                            <img class = "img-responsive" src="balltree.png" />
+                        </div>
+                    </div>
+                    </a>
+                    <hr />
                                                                             
             <div id="contact">
             <h2>Contact</h2>
-            <p>ANN-Benchmarks has been developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). Please use
-            <a href="https://github.com/erikbern/ann-benchmarks/">Github</a> to submit your implementation or improvements.</p>
+            <p>P2HNNS-benchmarks is a fork of the original <a href="https://github.com/erikbern/ann-benchmarks/">ANN-BENCHMARKS</a> repository, which was developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). This fork, reconfigured by Søren Majlund Jensen and Christian Porsmose Stender, includes minor modifications to address the P2HNNS problem. We acknowledge and give full credit to the original developers for their work. 
+              Please use <a href="https://github.com/llbob/p2hnns-benchmarks/">GitHub</a> to submit your implementations or improvements.</p>
             </div>
         </div>
     </body>
