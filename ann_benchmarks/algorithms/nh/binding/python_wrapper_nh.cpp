@@ -42,7 +42,7 @@ namespace p2h
 			for (int i = 0; i < list.size(); ++i)
 			{
 				// we need to subtract 1 because the ids are 1-indexed in the C++ code
-				return_list.push_back(list.ith_id(i)-1);
+				return_list.push_back(list.ith_id(i));
 			}
 			return return_list;
 		}

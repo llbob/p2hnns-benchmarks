@@ -22,7 +22,7 @@ class NH(BaseANN):
         
         n, d = self._data.shape
         # Ensure the array is contiguous in memory and get pointer to data
-        data_array = numpy.ascontiguousarray(self._data.flatten())
+        data_array = numpy.ascontiguousarray(self._data.ravel())
 
         # int   n,                            // number of input data
         # int   d,                            // dimension of input data
@@ -39,7 +39,7 @@ class NH(BaseANN):
             q = q / numpy.linalg.norm(q)
         
         # Convert query to float32 and ensure contiguous
-        q = numpy.ascontiguousarray(q.astype(numpy.float32).flatten())
+        q = numpy.ascontiguousarray(q.astype(numpy.float32))
 		# int   top_k,                    // top_k value
         # int   cand,                     // number of candidates
         # const float *query,             // input query

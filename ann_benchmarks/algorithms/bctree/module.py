@@ -16,6 +16,7 @@ class BC_tree(BaseANN):
     def index(self, X):
         # Convert to float32 as required by the C++ implementation
         self._data = X.astype(numpy.float32)
+
         if self._metric == "angular":
             self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
         
