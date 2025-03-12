@@ -6,6 +6,9 @@ import numpy as np
 def norm(a):
     return np.sum(a**2) ** 0.5
 
+def p2hdist(x, H):
+    normal, bias = H
+    return np.abs(np.dot(normal, x) + bias)/norm(normal)
 
 def euclidean(a, b):
     return norm(a - b)
@@ -16,11 +19,11 @@ class Metric(NamedTuple):
 
 metrics = {
     "euclidean": Metric(
-        distance=lambda a, b: euclidean(a, b),
+        distance=lambda x, H: p2hdist(x, H),
         distance_valid=lambda a: True
     ),
     "angular": Metric(
-        distance=lambda a, b: 1 - np.dot(a, b) / (norm(a) * norm(b)),
+        distance=lambda x, H: p2hdist(x, H),
         distance_valid=lambda a: True
     ),
 }
