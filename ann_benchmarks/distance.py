@@ -28,25 +28,25 @@ metrics = {
     ),
 }
 
-def compute_distance(metric: str, a: np.ndarray, b: np.ndarray) -> float:
-    """
-    Compute the distance between two points according to a specified metric.
+# def compute_distance(metric: str, a: np.ndarray, b: np.ndarray) -> float:
+#     """
+#     Compute the distance between two points according to a specified metric.
 
-    Args:
-        metric (str): The name of the metric to use. Must be a key in the 'metrics' dictionary.
-        a (np.ndarray): The first point.
-        b (np.ndarray): The second point.
+#     Args:
+#         metric (str): The name of the metric to use. Must be a key in the 'metrics' dictionary.
+#         a (np.ndarray): The first point.
+#         b (np.ndarray): The second point.
 
-    Returns:
-        float: The computed distance.
+#     Returns:
+#         float: The computed distance.
 
-    Raises:
-        KeyError: If the specified metric is not found in the 'metrics' dictionary.
-    """
-    if metric not in metrics:
-        raise KeyError(f"Unknown metric '{metric}'. Known metrics are {list(metrics.keys())}")
+#     Raises:
+#         KeyError: If the specified metric is not found in the 'metrics' dictionary.
+#     """
+#     if metric not in metrics:
+#         raise KeyError(f"Unknown metric '{metric}'. Known metrics are {list(metrics.keys())}")
 
-    return metrics[metric].distance(a, b)
+#     return metrics[metric].distance(a, b)
 
 
 def is_distance_valid(metric: str, distance: float) -> bool:

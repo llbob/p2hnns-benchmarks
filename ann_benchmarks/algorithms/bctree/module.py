@@ -20,6 +20,10 @@ class BC_tree(BaseANN):
         if self._metric == "angular":
             self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
         
+        # add a column of ones to the data to align with the distance formula in the C++ code
+        ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
+        self._data = numpy.hstack((self._data, ones_column))
+
         n, d = self._data.shape
         # Ensure the array is contiguous in memory and get pointer to data
         data_array = numpy.ascontiguousarray(self._data.flatten())
@@ -35,6 +39,8 @@ class BC_tree(BaseANN):
         # Normalize query if using angular distance
         if self._metric == "angular":
             q = q / numpy.linalg.norm(q)
+
+        q = numpy.append(q, b).astype(numpy.float32)
         
         # Convert query to float32 and ensure contiguous
         q = numpy.ascontiguousarray(q.astype(numpy.float32).flatten())

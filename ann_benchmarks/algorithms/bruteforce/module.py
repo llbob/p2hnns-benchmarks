@@ -1,6 +1,6 @@
 import numpy
 
-from ...distance import compute_distance, metrics as pd
+from ...distance import metrics as pd
 from ..base.module import BaseANN
 
 class BruteForce(BaseANN):
@@ -31,7 +31,7 @@ class BruteForce(BaseANN):
             b_adjusted = b / qnorm
             distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted)
         elif self._metric == "euclidean":
-            distances = numpy.abs(numpy.dot(self._data, q) + b)
+            distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
         else:
             assert False, "invalid metric"
         
@@ -73,13 +73,13 @@ class BruteForceBLAS(BaseANN):
         
         # HACK we ignore query length as that's a constant
         # not affecting the final ordering
+        qnorm = numpy.linalg.norm(q)
         if self._metric == "angular":
-            qnorm = numpy.linalg.norm(q)
             q_normalized = q / qnorm
             b_adjusted = b / qnorm
             distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted)
         elif self._metric == "euclidean":
-            distances = numpy.abs(numpy.dot(self.index, q) + b)
+            distances = numpy.abs(numpy.dot(self.index, q) + b)/qnorm
         else:
             assert False, "invalid metric"
         
