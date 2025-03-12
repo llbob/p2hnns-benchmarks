@@ -121,7 +121,7 @@ def run_individual_query(algo: BaseANN, X_points: numpy.ndarray,
                 assert len(res) == len(set(res)), "Implementation returned duplicated candidates"
 
             candidates = [
-                [(int(idx), float(metrics[distance].distance(X_points[idx], (normal, bias))))
+                [(int(idx), float(metrics[distance].distance(X_points[idx], (normal, biases_batch[i]))))
                  for idx in single_results]  # noqa
                 for normal, single_results in zip(normals_batch, results)
             ]
