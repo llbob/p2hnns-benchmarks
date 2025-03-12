@@ -15,22 +15,28 @@ class BruteForce(BaseANN):
             self._data = X
         elif self._metric == "angular":
             self._data = X/numpy.linalg.norm(X, axis=-1, keepdims=True)
-
+        else:
+            assert False, "invalid metric"
 
     def query(self, q, b, n):
         return [index for index, _ in self.query_with_distances(q, b, n)]
-
 
     def query_with_distances(self, q, b, n):
         """Find indices and distances of `n` most similar vectors from the index to query
         hyperplane with normal vector `q` and bias `b`."""
         qnorm = numpy.linalg.norm(q)
-        distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
-        n_smallest = numpy.argpartition(distances, n)[:n]
-        # Return (index, distance) pairs
-        return [(idx, distances[idx]) for idx in n_smallest]
-
-
+        
+        if self._metric == "angular":
+            q_normalized = q / qnorm
+            b_adjusted = b / qnorm
+            distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted)
+        elif self._metric == "euclidean":
+            distances = numpy.abs(numpy.dot(self._data, q) + b)
+        else:
+            assert False, "invalid metric"
+        
+        nearest_indices = numpy.argpartition(distances, n)[:n]
+        return [(idx, distances[idx]) for idx in nearest_indices]
 
 class BruteForceBLAS(BaseANN):
     """kNN search to a hyperplane that uses a linear scan = brute force."""
@@ -56,32 +62,26 @@ class BruteForceBLAS(BaseANN):
             self.index = numpy.ascontiguousarray(X, dtype=self._precision)
             self.lengths = numpy.ascontiguousarray(lens, dtype=self._precision)
         else:
-            # shouldn't get past the constructor!
             assert False, "invalid metric"
 
     def query(self, q, b, n):
         return [index for index, _ in self.query_with_distances(q, b, n)]
 
     def query_with_distances(self, q, b, n):
-        """Find indices of `n` most similar vectors from the index to query
+        """Find indices and distances of `n` most similar vectors from the index to query
         hyperplane with normal vector `q` and bias `b`."""
-
+        
         # HACK we ignore query length as that's a constant
         # not affecting the final ordering
-        if self._metric == "angular" or self._metric == "euclidean":
-            # use the same distance function for both metrics
+        if self._metric == "angular":
             qnorm = numpy.linalg.norm(q)
-            dists = numpy.abs(numpy.dot(self.index, q) + b)/qnorm
+            q_normalized = q / qnorm
+            b_adjusted = b / qnorm
+            distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted)
+        elif self._metric == "euclidean":
+            distances = numpy.abs(numpy.dot(self.index, q) + b)
         else:
-            # shouldn't get past the constructor!
             assert False, "invalid metric"
         
-        nearest_indices = numpy.argpartition(dists, n)[:n]
-        indices = [idx for idx in nearest_indices if pd[self._metric].distance_valid(dists[idx])]
-
-        def fix(index):
-            ep = self.index[index]
-            ev = q
-            return (index, pd[self._metric].distance(ep, ev))
-
-        return map(fix, indices)
+        nearest_indices = numpy.argpartition(distances, n)[:n]
+        return [(idx, distances[idx]) for idx in nearest_indices]
