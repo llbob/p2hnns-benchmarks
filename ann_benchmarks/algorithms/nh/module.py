@@ -3,16 +3,14 @@ import nh
 from ..base.module import BaseANN
 
 class NH(BaseANN):
-    def __init__(self, metric, method_param):
+    def __init__(self, metric, m_hashers, scale_factor):
         if metric not in ("angular", "euclidean"):
             raise NotImplementedError("NH doesn't support metric %s" % metric)
         self._metric = metric
-        self._m_hashers = method_param["m_hashers"]
-        self._scale_factor = method_param["scale_factor"]
+        self._m_hashers = m_hashers
+        self._scale_factor = scale_factor
         self._bucket_width = 0.1
-        self._candidates = method_param["candidates"]
         self._tree = nh.NH()
-        self.name = f"NH(m={self._m_hashers}, s={self._scale_factor}, w={self._bucket_width}), candidates={self._candidates}"
 
     def index(self, X):
         # Convert to float32 as required by the C++ implementation
@@ -20,6 +18,11 @@ class NH(BaseANN):
         if self._metric == "angular":
             self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
         
+
+        # add a column of ones to the data to align with the distance formula in the C++ code
+        ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
+        self._data = numpy.hstack((self._data, ones_column))
+
         n, d = self._data.shape
         # Ensure the array is contiguous in memory and get pointer to data
         data_array = numpy.ascontiguousarray(self._data.ravel())
@@ -32,12 +35,18 @@ class NH(BaseANN):
         # const DType *data)                  // input data
         self._tree.preprocess(n, d, self._m_hashers, self._scale_factor, self._bucket_width, data_array)
 
+    def set_query_arguments(self, candidates):
+        self._candidates = candidates
+        # print(f"Setting candidates to {candidates}")
+
     def query(self, q, b, n):
         # For hyperplane queries, we need to handle the normal vector q and bias b
         # Normalize query if using angular distance
         if self._metric == "angular":
             q = q / numpy.linalg.norm(q)
         
+        q = numpy.append(q, b).astype(numpy.float32)
+
         # Convert query to float32 and ensure contiguous
         q = numpy.ascontiguousarray(q.astype(numpy.float32))
 		# int   top_k,                    // top_k value
@@ -55,3 +64,6 @@ class NH(BaseANN):
         # Return an estimate of memory usage in bytes
         # This is a rough estimate based on the data size
         return self._data.nbytes if hasattr(self, '_data') else 0
+
+    def __str__(self):
+        return "NH(m_hashers=%d, scale_facotr=%d, bucket_width=%d, candidates=%d)" % (self._m_hashers, self._scale_factor, self._bucket_width, self._candidates)
