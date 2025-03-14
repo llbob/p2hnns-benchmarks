@@ -10,6 +10,13 @@ def p2hdist(x, H):
     normal, bias = H
     return np.abs(np.dot(normal, x) + bias)/norm(normal)
 
+def ang_p2hdist(x, H):
+    q, bias = H
+    qnorm = np.linalg.norm(q)
+    q /= qnorm
+    bias /= qnorm
+    return np.abs(np.dot(q, x) + bias)
+
 def euclidean(a, b):
     return norm(a - b)
 

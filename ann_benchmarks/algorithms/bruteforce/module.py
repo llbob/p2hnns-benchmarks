@@ -5,7 +5,7 @@ from ..base.module import BaseANN
 
 class BruteForce(BaseANN):
     def __init__(self, metric):
-        if metric not in ("angular", "euclidean", "hamming"):
+        if metric not in ("angular", "euclidean"):
             raise NotImplementedError("BruteForce doesn't support metric %s" % metric)
         self._metric = metric
         self.name = "BruteForce()"

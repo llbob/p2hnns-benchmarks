@@ -39,9 +39,11 @@ class B_tree(BaseANN):
 
     def query(self, q, b, n):
         # For hyperplane queries, we need to handle the normal vector q and bias b
+        qnorm = numpy.linalg.norm(q)
         # Normalize query if using angular distance
         if self._metric == "angular":
-            q = q / numpy.linalg.norm(q)
+            q = q / qnorm
+            b = b / qnorm
 
         q = numpy.append(q, b).astype(numpy.float32)
 

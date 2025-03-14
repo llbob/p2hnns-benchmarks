@@ -15,13 +15,14 @@ class BC_tree(BaseANN):
         # Convert to float32 as required by the C++ implementation
         self._data = X.astype(numpy.float32)
 
-        if self._metric == "angular":
-            self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
         
         # add a column of ones to the data to align with the distance formula in the C++ code
         ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
         self._data = numpy.hstack((self._data, ones_column))
 
+        if self._metric == "angular":
+            self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
+            
         n, d = self._data.shape
         # Ensure the array is contiguous in memory and get pointer to data
         data_array = numpy.ascontiguousarray(self._data.ravel())
@@ -38,14 +39,16 @@ class BC_tree(BaseANN):
 
     def query(self, q, b, n):
         # For hyperplane queries, we need to handle the normal vector q and bias b
+        qnorm = numpy.linalg.norm(q)
         # Normalize query if using angular distance
         if self._metric == "angular":
-            q = q / numpy.linalg.norm(q)
-
-        q = numpy.append(q, b).astype(numpy.float32)
+            q = q / qnorm
+            b = b / qnorm
+        
+        q = numpy.append(q, b)
         
         # Convert query to float32 and ensure contiguous
-        q = numpy.ascontiguousarray(q.astype(numpy.float32).ravel())
+        q = q.ravel()
 		# int   top_k,                    // top_k value
         # int   cand,                     // number of candidates
         # float c,                        // approximation ratio
