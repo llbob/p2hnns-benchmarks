@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>balltree</title>
+        <title>glove-25-euclidean (k = 10)</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for balltree</h2>
+                                                        <h2>Plots for glove-25-euclidean (k = 10)</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,13 +57,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 91046.3273696595, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 83975.26172795509, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.43075 , y: 70640.07666435932, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.47076 , y: 67776.10621042034, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 41.34788511595468, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -136,13 +145,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 2.2268729209899902, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 2.776421546936035, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.43075 , y: 1.9314460754394531, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.47076 , y: 2.566129446029663, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 0.0001571178436279297, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -215,12 +233,20 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0015 , y: 124125456, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.47076 , y: 124125456, label: "B_tree(max_leaf_size=100, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -293,7 +319,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
@@ -370,13 +404,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 88.82155996116207 , y: 91046.3273696595, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 52.054647311924 , y: 83975.26172795509, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.03094919207580237 , y: 70640.07666435932, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.024109712107603633 , y: 67776.10621042034, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 0.01396811669577326 , y: 41.34788511595468, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -449,12 +492,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0015 , y: 10.0, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.47076 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -527,13 +579,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 1363.321943740082, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 1478.1193109241485, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.43075 , y: 1757.1534723804475, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.47076 , y: 1831.40435383873, label: "B_tree(max_leaf_size=100, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -606,13 +666,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 5.9999999999999995e-05 , y: 91046.3273696595, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 7e-05 , y: 83975.26172795509, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.41278 , y: 70640.07666435932, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.43827999999999995 , y: 67776.10621042034, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 41.34788511595468, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -685,13 +754,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 5.9999999999999995e-05 , y: 91046.3273696595, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 7e-05 , y: 83975.26172795509, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.41757 , y: 70640.07666435932, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.44189999999999996 , y: 67776.10621042034, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 41.34788511595468, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -764,13 +842,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 0.010013580322265625, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 0.010967254638671875, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.43075 , y: 0.012874603271484375, label: "B_tree(max_leaf_size=10000, candidates=10)" },
-                                                                    { x: 0.47076 , y: 0.014066696166992188, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 23.926377296447754, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -843,12 +930,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0015 , y: 0.0152587890625, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.47076 , y: 0.017881393432617188, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 29.205226898193356, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -921,12 +1017,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 0.025033950805664062, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 0.027658939361572318, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.47076 , y: 0.029325485229492188, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 58.3534622192383, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -999,12 +1105,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
+                            label: "bctree",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.00064 , y: 0.043393850326538426, label: "BC_tree(leaf_size=10000, candidates=10, c=10)" },
+                                                                    { x: 0.0015 , y: 0.062466144561767675, label: "BC_tree(leaf_size=100, candidates=10, c=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.47076 , y: 0.04149079322815063, label: "B_tree(max_leaf_size=100, candidates=10)" },
+                                                                    { x: 1.0 , y: 70.20071506500244, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},

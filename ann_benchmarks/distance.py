@@ -6,16 +6,18 @@ import numpy as np
 def norm(a):
     return np.sum(a**2) ** 0.5
 
-def p2hdist(x, H):
-    normal, bias = H
-    return np.abs(np.dot(normal, x) + bias)/norm(normal)
-
-def ang_p2hdist(x, H):
+def euc_p2hdist(x, H):
     q, bias = H
     qnorm = np.linalg.norm(q)
-    q /= qnorm
-    bias /= qnorm
-    return np.abs(np.dot(q, x) + bias)
+    return np.abs(np.dot(x, q) + bias) / qnorm
+
+def ang_p2hdist(x, H):
+    x = x / np.linalg.norm(x)
+    q, b = H
+    qnorm = np.linalg.norm(q)
+    q_normalized = q / qnorm
+    b_adjusted = b / qnorm
+    return np.abs(np.dot(x, q_normalized) + b_adjusted) / qnorm 
 
 def euclidean(a, b):
     return norm(a - b)
@@ -26,11 +28,11 @@ class Metric(NamedTuple):
 
 metrics = {
     "euclidean": Metric(
-        distance=lambda x, H: p2hdist(x, H),
+        distance=lambda x, H: euc_p2hdist(x, H),
         distance_valid=lambda a: True
     ),
     "angular": Metric(
-        distance=lambda x, H: p2hdist(x, H),
+        distance=lambda x, H: ang_p2hdist(x, H),
         distance_valid=lambda a: True
     ),
 }

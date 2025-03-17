@@ -14,7 +14,7 @@ class BruteForce(BaseANN):
         if self._metric == "euclidean":
             self._data = X
         elif self._metric == "angular":
-            self._data = X/numpy.linalg.norm(X, axis=-1, keepdims=True)
+            self._data = X / numpy.linalg.norm(X, axis=1)[:, numpy.newaxis]
         else:
             assert False, "invalid metric"
 
@@ -29,9 +29,9 @@ class BruteForce(BaseANN):
         if self._metric == "angular":
             q_normalized = q / qnorm
             b_adjusted = b / qnorm
-            distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted)
+            distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted) / qnorm
         elif self._metric == "euclidean":
-            distances = numpy.abs(numpy.dot(self._data, q) + b)/qnorm
+            distances = numpy.abs(numpy.dot(self._data, q) + b) / qnorm
         else:
             assert False, "invalid metric"
         
@@ -77,9 +77,9 @@ class BruteForceBLAS(BaseANN):
         if self._metric == "angular":
             q_normalized = q / qnorm
             b_adjusted = b / qnorm
-            distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted)
+            distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted) / qnorm
         elif self._metric == "euclidean":
-            distances = numpy.abs(numpy.dot(self.index, q) + b)/qnorm
+            distances = numpy.abs(numpy.dot(self.index, q) + b) / qnorm
         else:
             assert False, "invalid metric"
         
