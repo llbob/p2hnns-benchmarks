@@ -17,7 +17,7 @@ def ang_p2hdist(x, H):
     qnorm = np.linalg.norm(q)
     q_normalized = q / qnorm
     b_adjusted = b / qnorm
-    return np.abs(np.dot(x, q_normalized) + b_adjusted) / qnorm 
+    return np.abs(np.dot(x, q_normalized) + b_adjusted) 
 
 def euclidean(a, b):
     return norm(a - b)

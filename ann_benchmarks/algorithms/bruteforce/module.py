@@ -29,7 +29,7 @@ class BruteForce(BaseANN):
         if self._metric == "angular":
             q_normalized = q / qnorm
             b_adjusted = b / qnorm
-            distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted) / qnorm
+            distances = numpy.abs(numpy.dot(self._data, q_normalized) + b_adjusted)
         elif self._metric == "euclidean":
             distances = numpy.abs(numpy.dot(self._data, q) + b) / qnorm
         else:
@@ -77,7 +77,7 @@ class BruteForceBLAS(BaseANN):
         if self._metric == "angular":
             q_normalized = q / qnorm
             b_adjusted = b / qnorm
-            distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted) / qnorm
+            distances = numpy.abs(numpy.dot(self.index, q_normalized) + b_adjusted)
         elif self._metric == "euclidean":
             distances = numpy.abs(numpy.dot(self.index, q) + b) / qnorm
         else:
