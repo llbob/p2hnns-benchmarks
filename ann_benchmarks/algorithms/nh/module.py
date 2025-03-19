@@ -44,7 +44,7 @@ class NH(BaseANN):
         q_to_pass = q_to_pass.astype(numpy.float32)
         q_to_pass = numpy.ascontiguousarray(q_to_pass)
 
-        results = self._tree.search(n, self._candidates, q)
+        results = self._tree.search(n, self._candidates, q_to_pass)
         return results
 
     def get_memory_usage(self):

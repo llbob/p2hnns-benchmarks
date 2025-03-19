@@ -57,32 +57,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 470.64442496946117, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 361.151955416448, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 407.5685414717479, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 208.0196392015555, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 10810.259672277507, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.5501199999999999 , y: 7481.46936538942, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 5813.438464764717, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.59722 , y: 4670.54967516755, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 3918.728435825943, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.63007 , y: 3106.9931168126964, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.64525 , y: 2791.178545285153, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.65544 , y: 2288.497385714919, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 1757.9240731593798, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 1210.8703098595777, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 43.37259249457376, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 55.3668945022169, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -91,8 +89,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.3874 , y: 66149.11965278172, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38845 , y: 659.848983565618, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 53941.38382930346, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 42085.710558794315, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -165,32 +171,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 8.782490968704224, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 12.153735637664795, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 9.15559196472168, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 12.302833080291748, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.64525 , y: 1.5664262771606445, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 1.7307474613189697, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 1.744555950164795, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 0.07413315773010254, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 0.12690258026123047, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -199,7 +196,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38845 , y: 4.1884613037109375, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 9.734944581985474, label: "FH(m_hashers=8, scale_factor=4, sep_threshold=3, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 5.952316761016846, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -272,30 +278,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.00062 , y: 124125456, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.68884 , y: 124125456, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.68028 , y: 124125456, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 233148.0, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 233188.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -304,7 +301,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38845 , y: 124125456, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 124125456, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 124125456, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -377,14 +383,6 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
@@ -395,8 +393,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                             ]
                         },
@@ -405,6 +403,14 @@
                             fill: false,
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                             ]
                         },
@@ -478,31 +484,32 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.2609388889218909 , y: 470.64442496946117, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.10118631539536098 , y: 407.5685414717479, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.09661186042777603 , y: 208.0196392015555, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.10186255110043675 , y: 10810.259672277507, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.1011540051353211 , y: 8347.759075738779, label: "BC_tree(leaf_size=200, candidates=10000, c=10)" },
+                                                                    { x: 0.100820129561536 , y: 7481.46936538942, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.09986088947727516 , y: 5813.438464764717, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.09910912380426114 , y: 4670.54967516755, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.09876848471249561 , y: 3918.728435825943, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.09811505804062748 , y: 3106.9931168126964, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.0980464349693561 , y: 2791.178545285153, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.09783425321088672 , y: 2313.5446566976702, label: "BC_tree(leaf_size=100, candidates=30000, c=10)" },
+                                                                    { x: 0.09739947480727748 , y: 2288.497385714919, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.09717205451286137 , y: 1757.9240731593798, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.09688215632388579 , y: 1210.8703098595777, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 0.015567052796611946 , y: 43.37259249457376, label: "BruteForce()" },
+                                                                    { x: 0.6178461915857588 , y: 55.3668945022169, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -511,10 +518,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.044438977692666165 , y: 66149.11965278172, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.044399132748460135 , y: 63528.4031958802, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.04436184753987574 , y: 56673.65690195655, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.043667375628932255 , y: 659.848983565618, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.255980175684232 , y: 53941.38382930346, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2724006938177824 , y: 42085.710558794315, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -587,30 +600,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.00062 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.68884 , y: 10.0, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.68028 , y: 10.0, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 10.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -619,7 +623,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38845 , y: 10.0, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 10.0, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 10.0, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -692,32 +705,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 263735.1032216182, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 343693.15779245796, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 304551.1205349106, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 596700.659978223, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 11482.190045657731, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.5501199999999999 , y: 16591.053165869525, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 21351.469831894687, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.59722 , y: 26576.19865600662, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 31674.93181339531, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.63007 , y: 39950.34791944885, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.64525 , y: 44470.62557487488, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.65544 , y: 54238.84544278106, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 70609.11099358177, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 102509.29020994378, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 5375.468391223527, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 4211.686461675453, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -726,8 +737,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.3874 , y: 1876.449099421692, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38845 , y: 188111.91513740728, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 2301.117383135605, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 2949.349181751251, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -800,30 +819,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.22452999999999998 , y: 407.5685414717479, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.29923 , y: 208.0196392015555, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.13624 , y: 10810.259672277507, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.13668 , y: 8347.759075738779, label: "BC_tree(leaf_size=200, candidates=10000, c=10)" },
+                                                                    { x: 0.14464 , y: 7481.46936538942, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.1839 , y: 5813.438464764717, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.19056 , y: 4670.54967516755, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.22149999999999997 , y: 3918.728435825943, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.22966999999999999 , y: 3106.9931168126964, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.25067 , y: 2791.178545285153, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.26321 , y: 2288.497385714919, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.27354 , y: 1757.9240731593798, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.28864 , y: 1210.8703098595777, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 43.37259249457376, label: "BruteForce()" },
+                                                                    { x: 0.04618 , y: 55.3668945022169, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -832,9 +852,17 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38164 , y: 66149.11965278172, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38273999999999997 , y: 659.848983565618, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.38281 , y: 630.0302065120574, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00016 , y: 53941.38382930346, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                                    { x: 0.00022 , y: 990.0537028617584, label: "FH(m_hashers=8, scale_factor=4, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 2e-05 , y: 42085.710558794315, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -907,30 +935,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.40256 , y: 407.5685414717479, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.49466 , y: 208.0196392015555, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.32155999999999996 , y: 10810.259672277507, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.33187 , y: 8347.759075738779, label: "BC_tree(leaf_size=200, candidates=10000, c=10)" },
+                                                                    { x: 0.34138 , y: 7481.46936538942, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.38472 , y: 5813.438464764717, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.3996 , y: 4670.54967516755, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.42763999999999996 , y: 3918.728435825943, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.43815 , y: 3106.9931168126964, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.45553999999999994 , y: 2791.178545285153, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.46787 , y: 2288.497385714919, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.47355 , y: 1757.9240731593798, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.48369 , y: 1210.8703098595777, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 43.37259249457376, label: "BruteForce()" },
+                                                                    { x: 0.05064 , y: 55.3668945022169, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -939,11 +968,17 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38876 , y: 66149.11965278172, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38886 , y: 63528.4031958802, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38917999999999997 , y: 56673.65690195655, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.39024000000000003 , y: 659.848983565618, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.39033 , y: 630.0302065120574, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00206 , y: 53941.38382930346, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.00016999999999999999 , y: 42085.710558794315, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
+                                                                    { x: 0.00023 , y: 290.72936721960644, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1016,32 +1051,34 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 0.4088878631591797, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 0.5738735198974609, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 0.5838871002197266, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 0.8193254470825195, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 0.10037422180175781, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.5501199999999999 , y: 0.12278556823730469, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.55861 , y: 0.1437664031982422, label: "BC_tree(leaf_size=50, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 0.18906593322753906, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.59722 , y: 0.20837783813476562, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.60614 , y: 0.2448558807373047, label: "BC_tree(leaf_size=100, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 0.278472900390625, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.63007 , y: 0.30875205993652344, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.6397 , y: 0.3592967987060547, label: "BC_tree(leaf_size=100, candidates=30000, c=10)" },
+                                                                    { x: 0.64525 , y: 0.37407875061035156, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.65391 , y: 0.4124641418457031, label: "BC_tree(leaf_size=50, candidates=30000, c=10)" },
+                                                                    { x: 0.65544 , y: 0.4138946533203125, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 0.4792213439941406, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 0.55694580078125, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 23.419857025146484, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 18.42474937438965, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -1050,8 +1087,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.3874 , y: 0.014543533325195312, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38845 , y: 1.47247314453125, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 0.015974044799804688, label: "FH(m_hashers=8, scale_factor=4, sep_threshold=2, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 0.021457672119140625, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -1124,32 +1169,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 15.427589416503906, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 15.614509582519531, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 15.619516372680664, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 17.4818992614746, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 0.1163482666015625, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.5501199999999999 , y: 0.18979310989379866, label: "BC_tree(leaf_size=100, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 0.21458864212036116, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.59722 , y: 0.27180910110473616, label: "BC_tree(leaf_size=200, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 0.3161549568176268, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.63007 , y: 0.44680833816528304, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.64525 , y: 0.4766345024108882, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.65544 , y: 0.704538822174072, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 1.3831138610839837, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 2.417349815368652, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 28.43385934829712, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 22.398543357849118, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -1158,9 +1201,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.3874 , y: 0.017881393432617188, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38844 , y: 1.8417954444885252, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.38845 , y: 1.8565654754638672, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 0.018835067749023438, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=3, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 0.0324249267578125, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -1233,32 +1283,27 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 18.441917896270752, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 18.622164726257324, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 18.633129596710205, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 19.84431743621826, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 0.12517213821411138, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 0.22840499877929688, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 0.370025634765625, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.64525 , y: 0.7102799415588386, label: "BC_tree(leaf_size=500, candidates=40000, c=10)" },
+                                                                    { x: 0.65544 , y: 1.145131587982178, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 1.8961715698242194, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 3.053476810455323, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 29.66670274734497, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 23.471279144287113, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -1267,10 +1312,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.3874 , y: 0.026702880859375, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38831000000000004 , y: 2.1178889274597172, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.38844 , y: 2.1295595169067383, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.38845 , y: 2.133610248565674, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 0.07939338684082031, label: "FH(m_hashers=8, scale_factor=4, sep_threshold=2, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 0.04839897155761719, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
@@ -1343,32 +1394,27 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
-                            fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
-                            data: [
-                                                                    { x: 0.0006000000000000001 , y: 21.459344148635864, label: "B_tree(max_leaf_size=10000, candidates=50000)" },
-                                                                    { x: 0.00062 , y: 21.636487007141113, label: "B_tree(max_leaf_size=100, candidates=50000)" },
-                                                            ]
-                        },
-                                                {
                             label: "bctree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.62463 , y: 21.624804973602295, label: "BC_tree(leaf_size=10000, candidates=50000, c=10)" },
-                                                                    { x: 0.68884 , y: 22.779293775558486, label: "BC_tree(leaf_size=100, candidates=50000, c=10)" },
+                                                                    { x: 0.54291 , y: 0.1475811004638672, label: "BC_tree(leaf_size=500, candidates=10000, c=10)" },
+                                                                    { x: 0.59177 , y: 0.2844433784484884, label: "BC_tree(leaf_size=500, candidates=20000, c=10)" },
+                                                                    { x: 0.62359 , y: 0.5807933807373058, label: "BC_tree(leaf_size=500, candidates=30000, c=10)" },
+                                                                    { x: 0.63007 , y: 1.1622910499572754, label: "BC_tree(leaf_size=200, candidates=30000, c=10)" },
+                                                                    { x: 0.65544 , y: 1.4164490699768075, label: "BC_tree(leaf_size=200, candidates=40000, c=10)" },
+                                                                    { x: 0.6661900000000001 , y: 2.1391055583953884, label: "BC_tree(leaf_size=100, candidates=40000, c=10)" },
+                                                                    { x: 0.68028 , y: 4.705736875534072, label: "BC_tree(leaf_size=50, candidates=40000, c=10)" },
                                                             ]
                         },
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 48.628182411194544, label: "BruteForce()" },
+                                                                    { x: 0.04616 , y: 42.117359161377195, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
@@ -1377,10 +1423,16 @@
                             pointStyle: "star",
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
-                                                                    { x: 0.38679 , y: 0.04410815238952651, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.3874 , y: 0.0495915412902833, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=10)" },
-                                                                    { x: 0.38844 , y: 2.3994472026824956, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=40000)" },
-                                                                    { x: 0.38845 , y: 3.78192853927615, label: "FH(m_hashers=8, scale_factor=1, sep_threshold=3, candidates=40000)" },
+                                                                    { x: 0.00099 , y: 0.14787077903748602, label: "FH(m_hashers=16, scale_factor=4, sep_threshold=2, candidates=10)" },
+                                                            ]
+                        },
+                                                {
+                            label: "nh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0008 , y: 0.18430829048156958, label: "NH(m_hashers=8, scale_facotr=1, bucket_width=0, candidates=10)" },
                                                             ]
                         },
                                                 ]},
