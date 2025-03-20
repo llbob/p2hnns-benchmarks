@@ -1,16 +1,23 @@
 import numpy
-import bh
+import mh
 from ..base.module import BaseANN
 
-class BH(BaseANN):
-    def __init__(self, metric, m_hashers, l_hash_tables):
+class MH(BaseANN):
+    def __init__(self, metric, M_proj_vectors, m_single_hashers, l_hash_tables):
         if metric not in ("angular", "euclidean"):
-            raise NotImplementedError("BH doesn't support metric %s" % metric)
+            raise NotImplementedError("MH doesn't support metric %s" % metric)
+    # // int   n,                            // number of data  objects
+    # // int   d,                            // dimension of space
+    # // int   m,                            // #single hasher of the compond hasher
+    # // int   l,                            // #hash tables
+    # // float b,                            // interval ratio
+    # // const float *data)                  // input data
         self._metric = metric
-        self._m_hashers = m_hashers
+        self._M_proj_vectors = M_proj_vectors
+        self._m_single_hashers = m_single_hashers
         self._l_hash_tables = l_hash_tables
         self._interval_ratio = 0.9
-        self._tree = bh.BH()
+        self._tree = mh.MH()
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -25,7 +32,7 @@ class BH(BaseANN):
         
         n, d = self._data.shape
         data_array = numpy.ascontiguousarray(self._data.ravel())
-        self._tree.preprocess(n, d, self._m_hashers, self._l_hash_tables, self._interval_ratio, data_array)
+        self._tree.preprocess(n, d, self._M_proj_vectors, self._m_single_hashers, self._l_hash_tables, self._interval_ratio, data_array)
 
     def set_query_arguments(self, candidates):
         self._candidates = candidates
@@ -53,4 +60,4 @@ class BH(BaseANN):
         return self._data.nbytes if hasattr(self, '_data') else 0
 
     def __str__(self):
-        return "BH(m_hashers=%d, l_hash_tables=%d, candidates=%d)" % (self._m_hashers, self._l_hash_tables, self._candidates)
+        return "MH(M_proj_vectors=%d, m_single_hashers=%d, l_hash_tables=%d, interval_ratio=%f, candidates=%d)" % (self._M_proj_vectors, self._m_single_hashers, self._l_hash_tables, self._interval_ratio, self._candidates)

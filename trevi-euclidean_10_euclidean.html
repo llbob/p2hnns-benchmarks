@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>fh</title>
+        <title>trevi-euclidean (k = 10)</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for fh</h2>
+                                                        <h2>Plots for trevi-euclidean (k = 10)</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,27 +57,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 24.421847775247045, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -150,24 +135,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20093 , y: 5.723560810089111, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                                    { x: 0.20118 , y: 5.802422761917114, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20163999999999999 , y: 13.666149854660034, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 13.832422018051147, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 17.849512338638306, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 32.71361041069031, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -240,21 +213,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20185 , y: 124125456, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 124125456, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 1657154560, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -327,15 +291,7 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
@@ -412,27 +368,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.2528219925900922 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.2526211142761539 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.2524409470254877 , y: 3344.485061585416, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.25194049429894344 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 2.0577986132219483 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.40497105676247613 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20781062748873058 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.06148876540777651 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0993880234258674 , y: 24.421847775247045, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -505,21 +446,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20185 , y: 10.0, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 10.0, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -592,27 +524,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 6922.022887195588, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 7181.939444258881, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 37893.38246820602, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 41512.996043728635, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 21367.136797476196, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 62193.11242946548, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 111599.41220128784, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 707200.2328475235, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 67855412.71285877, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -685,27 +602,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20068999999999998 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20139 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20203000000000002 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20236 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.00151 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.0069099999999999995 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.01265 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.04553 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.75625 , y: 24.421847775247045, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -778,27 +680,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.21213 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.21225 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.21273 , y: 3344.485061585416, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.21339999999999998 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0016799999999999999 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.00766 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.01395 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.04971 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.85836 , y: 24.421847775247045, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -871,27 +758,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 0.05364418029785156, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.055789947509765625, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.29921531677246094, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.3287792205810547, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 0.03910064697265625, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 0.11920928955078125, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 0.23937225341796875, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 5.658507347106934, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 39.90960121154785, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -964,27 +836,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 0.07009506225585938, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.07033348083496094, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.3559589385986328, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.3905296325683594, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 0.13637542724609375, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 0.3948211669921875, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 7.435119152069091, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 10.241854190826416, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 43.42218637466428, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -1057,28 +914,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 0.08177757263183594, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.08559226989746094, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20118 , y: 0.38552522659301763, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.39053201675415045, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.42343378067016607, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 7.107281684875489, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 8.293888568878176, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 10.418908596038818, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 12.616643905639648, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 71.3806462287906, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},
@@ -1151,27 +992,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.20036 , y: 0.11277794837951782, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.1323246955871587, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.470162630081177, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.5076088905334505, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean (k = 10)",
+                            label: "balltree",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 11.25607681274416, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 11.378056764602663, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 13.317012310028105, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 16.1949980258943, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7627900000000001 , y: 129.54699277877816, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                             ]
                         },
                                                 ]},

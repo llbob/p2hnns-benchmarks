@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>fh</title>
+        <title>bh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for fh</h2>
+                                                        <h2>Plots for bh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -62,10 +62,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00016 , y: 101446.9534258238, label: "BH(m_hashers=32, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.00035 , y: 80213.58138965598, label: "BH(m_hashers=32, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0036700000000000005 , y: 70618.6683099386, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.0037199999999999998 , y: 62779.58389462655, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 53165.20453937603, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 47203.11963671763, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -74,10 +76,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 746.5756439642657, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 147.4865491308916, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -155,10 +163,9 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20093 , y: 5.723560810089111, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=3, candidates=5000)" },
-                                                                    { x: 0.20118 , y: 5.802422761917114, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20163999999999999 , y: 13.666149854660034, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 13.832422018051147, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.0037199999999999998 , y: 0.9526987075805664, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 1.8034050464630127, label: "BH(m_hashers=16, l_hash_tables=4, candidates=40000)" },
+                                                                    { x: 0.01098 , y: 4.014487981796265, label: "BH(m_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                             ]
                         },
                                                 {
@@ -167,7 +174,17 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 17.849512338638306, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 25.49145531654358, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1000000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.17339 , y: 321.1486327648163, label: "BH(m_hashers=256, l_hash_tables=10, candidates=1150000)" },
+                                                                    { x: 0.1802 , y: 326.0818371772766, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1000000)" },
                                                             ]
                         },
                                                 ]},
@@ -245,7 +262,7 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20185 , y: 124125456, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 124125456, label: "BH(m_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                             ]
                         },
                                                 {
@@ -254,7 +271,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 124125456, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 124125456, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1000000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 516000000, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1000000)" },
                                                             ]
                         },
                                                 ]},
@@ -342,6 +368,14 @@
                             data: [
                                                             ]
                         },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                            ]
+                        },
                                                 ]},
                         options: {
                             responsive: false,
@@ -417,10 +451,7 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.2528219925900922 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.2526211142761539 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.2524409470254877 , y: 3344.485061585416, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.25194049429894344 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2103050820711891 , y: 311.37164032061355, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 {
@@ -429,10 +460,20 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 2.0577986132219483 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.40497105676247613 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20781062748873058 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.06148876540777651 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 113.91548599894796 , y: 746.5756439642657, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                                    { x: 113.91536848331468 , y: 740.5257358710375, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1000000)" },
+                                                                    { x: 113.9139803549522 , y: 731.3422040770437, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1100000)" },
+                                                                    { x: 113.9066675524927 , y: 539.4666424966085, label: "BH(m_hashers=64, l_hash_tables=10, candidates=800000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.009994702313741943 , y: 147.4865491308916, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
+                                                                    { x: 0.009771982313304771 , y: 57.95429009681108, label: "BH(m_hashers=256, l_hash_tables=10, candidates=800000)" },
                                                             ]
                         },
                                                 ]},
@@ -510,7 +551,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20185 , y: 10.0, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.0001 , y: 0.3482, label: "BH(m_hashers=32, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00016 , y: 0.5361, label: "BH(m_hashers=32, l_hash_tables=4, candidates=1000)" },
+                                                                    { x: 0.00035 , y: 1.1652, label: "BH(m_hashers=32, l_hash_tables=8, candidates=1000)" },
+                                                                    { x: 0.0037199999999999998 , y: 7.6473, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 8.537, label: "BH(m_hashers=16, l_hash_tables=4, candidates=40000)" },
+                                                                    { x: 0.01098 , y: 9.1104, label: "BH(m_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                             ]
                         },
                                                 {
@@ -519,7 +565,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.94704 , y: 10.0, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 10.0, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1000000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 10.0, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1000000)" },
                                                             ]
                         },
                                                 ]},
@@ -597,10 +652,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 6922.022887195588, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 7181.939444258881, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 37893.38246820602, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 41512.996043728635, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00016 , y: 1223.5503562042236, label: "BH(m_hashers=32, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.00035 , y: 1547.4369034469605, label: "BH(m_hashers=32, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0036700000000000005 , y: 1757.6861610477447, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.0037199999999999998 , y: 1977.1627701187135, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 2334.712281753159, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 2629.6028092060087, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -609,10 +666,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 21367.136797476196, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 62193.11242946548, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 111599.41220128784, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 707200.2328475235, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 166259.71795825308, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 3498624.1324424744, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -690,10 +753,9 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20068999999999998 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20139 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20203000000000002 , y: 3275.6499397789557, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20236 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 1e-05 , y: 70618.6683099386, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 2e-05 , y: 53165.20453937603, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 5.9999999999999995e-05 , y: 47203.11963671763, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -702,10 +764,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.00151 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.0069099999999999995 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.01265 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.04553 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 1e-05 , y: 746.5756439642657, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.18209 , y: 147.4865491308916, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -783,10 +851,10 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.21213 , y: 17931.96266796636, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.21225 , y: 17282.999524484123, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.21273 , y: 3344.485061585416, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.21339999999999998 , y: 2990.0384898562775, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00035999999999999997 , y: 70618.6683099386, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.00039 , y: 53165.20453937603, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.0005 , y: 47203.11963671763, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0027300000000000002 , y: 311.37164032061355, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 {
@@ -795,10 +863,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0016799999999999999 , y: 5809.175893639676, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.00766 , y: 1995.8071103254929, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.01395 , y: 1112.241127006291, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.04971 , y: 175.51670691652922, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 1e-05 , y: 746.5756439642657, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.19792 , y: 147.4865491308916, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -876,10 +950,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 0.05364418029785156, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.055789947509765625, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.29921531677246094, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.3287792205810547, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.0001 , y: 0.008344650268554688, label: "BH(m_hashers=32, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00016 , y: 0.009059906005859375, label: "BH(m_hashers=32, l_hash_tables=4, candidates=40000)" },
+                                                                    { x: 0.00035 , y: 0.011205673217773438, label: "BH(m_hashers=32, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0037199999999999998 , y: 0.011444091796875, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 0.014424324035644531, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 0.015497207641601562, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -888,10 +964,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 0.03910064697265625, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 0.11920928955078125, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 0.23937225341796875, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 5.658507347106934, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 0.6833076477050781, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 6.632566452026367, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -969,10 +1051,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 0.07009506225585938, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.07033348083496094, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.3559589385986328, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.3905296325683594, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00016 , y: 0.01239776611328125, label: "BH(m_hashers=32, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.00035 , y: 0.016450881958007812, label: "BH(m_hashers=32, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0036700000000000005 , y: 0.02574920654296875, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.0037199999999999998 , y: 0.028371810913085938, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 0.03504753112792969, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 0.03814697265625, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -981,10 +1065,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 0.13637542724609375, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 0.3948211669921875, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 7.435119152069091, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 10.241854190826416, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 4.71043586730957, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 7.31210708618164, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -1062,11 +1152,12 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 0.08177757263183594, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.08559226989746094, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20118 , y: 0.38552522659301763, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.39053201675415045, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.42343378067016607, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00016 , y: 0.021219253540039062, label: "BH(m_hashers=32, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.00035 , y: 0.026705265045166068, label: "BH(m_hashers=32, l_hash_tables=8, candidates=40000)" },
+                                                                    { x: 0.0036700000000000005 , y: 0.04744529724121094, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.0037199999999999998 , y: 0.061514377593994196, label: "BH(m_hashers=16, l_hash_tables=2, candidates=10000)" },
+                                                                    { x: 0.00634 , y: 0.0710511207580567, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 0.0958466529846192, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -1075,10 +1166,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 7.107281684875489, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 8.293888568878176, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 10.418908596038818, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 12.616643905639648, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 4.778168201446534, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 9.442787170410162, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
@@ -1156,10 +1253,11 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.20036 , y: 0.11277794837951782, label: "FH(m_hashers=32, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20110999999999998 , y: 0.1323246955871587, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.20163999999999999 , y: 0.470162630081177, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.20185 , y: 0.5076088905334505, label: "FH(m_hashers=64, scale_factor=1, sep_threshold=3, candidates=5000)" },
+                                                                    { x: 0.00016 , y: 0.045300960540771776, label: "BH(m_hashers=32, l_hash_tables=4, candidates=10000)" },
+                                                                    { x: 0.00035 , y: 0.08273482322692943, label: "BH(m_hashers=32, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0036700000000000005 , y: 0.09489512443542572, label: "BH(m_hashers=16, l_hash_tables=2, candidates=1000)" },
+                                                                    { x: 0.00634 , y: 0.3190259933471724, label: "BH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.01098 , y: 0.5960636138916051, label: "BH(m_hashers=16, l_hash_tables=8, candidates=40000)" },
                                                             ]
                         },
                                                 {
@@ -1168,10 +1266,16 @@
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.030719999999999997 , y: 11.25607681274416, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=1000)" },
-                                                                    { x: 0.16737 , y: 11.378056764602663, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=5000)" },
-                                                                    { x: 0.34794 , y: 13.317012310028105, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=10000)" },
-                                                                    { x: 0.94704 , y: 16.1949980258943, label: "FH(m_hashers=16, scale_factor=1, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0005499999999999999 , y: 4.930301904678354, label: "BH(m_hashers=64, l_hash_tables=10, candidates=1100000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.1802 , y: 19.13280129432687, label: "BH(m_hashers=128, l_hash_tables=10, candidates=1150000)" },
                                                             ]
                         },
                                                 ]},
