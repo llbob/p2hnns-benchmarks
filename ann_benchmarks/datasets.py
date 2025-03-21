@@ -117,6 +117,23 @@ def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[nu
 
     # Calculate hyperplane normals (rand_1 - rand_2)
     normalvectors = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
+    
+    # Check for zero norm vectors to avoid division by zero in distance calculations later on
+    norms = numpy.linalg.norm(normalvectors, axis=1)
+    # `numpy.finfo(numpy.float32).eps` gives the machine epsilon for float32, which is approx 1.19e-07... Should be the smallest representable positive number so that 1.0 + eps != 1.0 in float32 precision
+    zero_indices = numpy.where(norms < numpy.finfo(numpy.float32).eps)[0]
+    
+    # Replace zero norm vectors if any
+    if len(zero_indices) > 0:
+        for i in zero_indices:
+            # Get new random points until we get a non-zero normal vector
+            while norms[i] < numpy.finfo(numpy.float32).eps:
+                new_idx = numpy.random.randint(X.shape[0], size=2)
+                normalvectors[i] = X[new_idx[0]] - X[new_idx[1]]
+                norms[i] = numpy.linalg.norm(normalvectors[i])
+                
+            # Update the third point for bias calculation
+            rand_points[i, 2] = X[numpy.random.randint(X.shape[0])]
 
     # Calculate biases using dot product
     biases = numpy.sum(normalvectors * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
@@ -434,7 +451,7 @@ def trevi(out_fn: str, distance: str) -> None:
     # init list to store all patch vectors in
     patch_vectors = []
     
-    # process each BMP file.. open, convert to numpy array, extract patches and flatten.NOTE: again it's rgb, so normalizing to [0, 1] by dividing by 255.
+    # process each BMP file.. open, convert to numpy array, extract patches and flatten. NOTE: again it's rgb, so normalizing to [0, 1] by dividing by 255.
     for bmp_file in bmp_files:
         img = Image.open(bmp_file)
         img_array = np.array(img)
