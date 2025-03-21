@@ -322,16 +322,25 @@ def deep_download(src, dst=None, max_size=None): # credit to big-ann benchmarks 
     )
 
 
-def deep1m(out_fn: str, distance: str) -> None:
+def deepm(out_fn: str, distance: str, count:int) -> None: 
     import struct
     import numpy as np
     
+    if count == 1_000_000:
+        name = "deep1m"
+    elif count == 10_000_000:
+        name = "deep10m"
+    elif count == 100_000_000:
+        name = "deep100m"
+    else:
+        raise ValueError("Unsupported count value. Only 1m, 10m and 100m supported.")
+    
     # the url for the full base deep1b ds
     url = "https://storage.yandexcloud.net/yandex-research/ann-datasets/DEEP/base.1B.fbin"
-    fn = os.path.join("data", "deep1m.fbin")
+    fn = os.path.join("data", f"{name}.fbin")
     
     # calculate the maximum size to download: header (8 bytes) + 1m vectors of 96 dimensions (float32)
-    max_size = 8 + (96 * 1_000_000 * 4)
+    max_size = 8 + (96 * count * 4)
     
     # use the download function from big-ann benchmarks to download just the first 1m vectors in this case
     deep_download(url, fn, max_size)
@@ -345,7 +354,7 @@ def deep1m(out_fn: str, distance: str) -> None:
         print(f"Original dataset has {nvecs} vectors of dimension {dim}")
 
         # again, to be sure, set the number of vectors to read
-        count = 1_000_000
+        count = count
         
         # read into a numpy array
         vectors = np.fromfile(f, dtype=np.float32, count=count*dim)
@@ -486,16 +495,12 @@ def trevi(out_fn: str, distance: str) -> None:
 
 
 DATASETS: Dict[str, Callable[[str], None]] = {
-    "glove-25-angular": lambda out_fn: glove(out_fn, 25, "angular"),
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
-    # "glove-100-angular": lambda out_fn: glove(out_fn, 100, "angular"),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
     "cifar-10-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
-    # "cifar-10-angular": lambda out_fn: cifar10(out_fn, "angular"),
     "sift-128-euclidean": sift,
-    "deep1m-euclidean": lambda out_fn: deep1m(out_fn, "euclidean"),
+    "deep10m-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
     "music100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
-    # "music100-angular": lambda out_fn: music100(out_fn, "angular"),
     "trevi-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
     "gist-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
 }
