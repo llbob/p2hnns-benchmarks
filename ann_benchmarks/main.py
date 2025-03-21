@@ -81,7 +81,7 @@ def parse_arguments() -> argparse.Namespace:
         "--dataset",
         metavar="NAME",
         help="the dataset to load training points from",
-        default="glove-100-angular",
+        default="glove-100-euclidean",
         choices=DATASETS.keys(),
     )
     parser.add_argument(

@@ -94,7 +94,7 @@ def create_plot(all_data, raw, x_scale, y_scale, xn, yn, fn_out, linestyles, bat
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", metavar="DATASET", default="glove-100-angular")
+    parser.add_argument("--dataset", metavar="DATASET", default="glove-100-euclidean")
     parser.add_argument("--count", default=10)
     parser.add_argument(
         "--definitions", metavar="FILE", help="load algorithm definitions from FILE", default="algos.yaml"
