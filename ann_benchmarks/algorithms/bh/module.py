@@ -10,7 +10,7 @@ class BH(BaseANN):
         self._m_hashers = m_hashers
         self._l_hash_tables = l_hash_tables
         self._interval_ratio = 0.9
-        self._tree = bh.BH()
+        self._bh_index = bh.BH()
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -25,7 +25,7 @@ class BH(BaseANN):
         
         n, d = self._data.shape
         data_array = numpy.ascontiguousarray(self._data.ravel())
-        self._tree.preprocess(n, d, self._m_hashers, self._l_hash_tables, self._interval_ratio, data_array)
+        self._bh_index.preprocess(n, d, self._m_hashers, self._l_hash_tables, self._interval_ratio, data_array)
 
     def set_query_arguments(self, candidates):
         self._candidates = candidates
@@ -44,7 +44,7 @@ class BH(BaseANN):
         q_to_pass = q_to_pass.astype(numpy.float32)
         q_to_pass = numpy.ascontiguousarray(q_to_pass)
 
-        results = self._tree.search(n, self._candidates, q_to_pass)
+        results = self._bh_index.search(n, self._candidates, q_to_pass)
         return results
 
     def get_memory_usage(self):
