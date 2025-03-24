@@ -47,6 +47,9 @@ class B_tree(BaseANN):
         results = self._tree.search(n, self._candidates, self._c, q_to_pass)
         return results
 
+    def get_additional(self):
+        return {"dist_comps": self._candidates}
+
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
         # This is a rough estimate based on the data size

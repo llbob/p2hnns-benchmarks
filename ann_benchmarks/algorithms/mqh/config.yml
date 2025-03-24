@@ -1,0 +1,39 @@
+float:
+  any:
+    - base_args: ["@metric"]
+      constructor: BT_MQH
+      disabled: false
+      docker_tag: ann-benchmarks-mqh
+      module: ann_benchmarks.algorithms.mqh
+      name: bt-mqh
+      run_groups:
+        BT_MQH:
+          args: [
+              [25, 50, 100, 200, 500, 1000], # [max_leafsize(bt)],
+            ]
+          query_args: [[10000, 20000, 35000, 50000],[100000]] # [[candidates(both)], [initial_topk(candidate selection)]]
+    - base_args: ["@metric"]
+      constructor: MH_MQH
+      disabled: false
+      docker_tag: ann-benchmarks-mqh
+      module: ann_benchmarks.algorithms.mqh
+      name: mh-mqh
+      run_groups:
+        MH_MQH:
+          args: [
+              [4, 6, 8], # [M_proj_vectors(mh)],
+              [8, 16, 32, 64, 128, 256], # [m_single_hashers(mh)],
+              [2, 4, 6, 8, 10], # l_hash_tables(mh)]
+            ]
+          query_args: [[10000, 20000, 35000, 50000],[100000]] # [[candidates(both)], [initial_topk(candidate selection)]]
+    - base_args: ["@metric"]
+      constructor: MQH
+      disabled: false
+      docker_tag: ann-benchmarks-mqh
+      module: ann_benchmarks.algorithms.mqh
+      name: mqh
+      run_groups:
+        MQH:
+          args: []
+          query_args: [[10000, 20000, 35000, 50000]]
+

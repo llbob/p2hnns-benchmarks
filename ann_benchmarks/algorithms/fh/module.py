@@ -47,6 +47,9 @@ class FH(BaseANN):
 
         results = self._fh_index.search(n, self._sep_threshold, self._candidates, q_to_pass)
         return results
+    
+    def get_additional(self):
+        return {"dist_comps": self._candidates}
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes

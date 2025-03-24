@@ -37,6 +37,9 @@ class BruteForce(BaseANN):
         
         nearest_indices = numpy.argpartition(distances, n)[:n]
         return [(idx, distances[idx]) for idx in nearest_indices]
+    
+    def get_additional(self):
+        return {"dist_comps": self._data.shape[0]}
 
 class BruteForceBLAS(BaseANN):
     """kNN search to a hyperplane that uses a linear scan = brute force."""
