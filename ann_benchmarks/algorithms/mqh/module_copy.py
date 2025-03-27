@@ -2,7 +2,6 @@ import numpy
 import b_tree
 import mh
 from ..base.module import BaseANN
-from faiss import IndexFlatL2
 
 
 class BT_MQH(BaseANN):
