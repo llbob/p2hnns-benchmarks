@@ -1,5 +1,6 @@
 import os
 import random
+import struct
 import tarfile
 from urllib.request import build_opener, install_opener, urlopen, urlretrieve
 import traceback
@@ -494,9 +495,78 @@ def trevi(out_fn: str, distance: str) -> None:
     print(f"Trevi dataset processing complete. Output saved to {out_fn}")
 
 
+def glove_bcq(out_fn: str, d: int, distance: str) -> None:
+    """
+    The point of this function is to generate a dataset where the queries are taken directly from the dataets provided for the BC-Tree implementation for the paper 'Lightweight-Yet-Efficient: Revitalizing Ball-Tree for Point-to-Hyperplane Nearest Neighbor Search' by Huang et al. 2023.
+    Link to their drive: https://drive.google.com/drive/folders/1C9JWcMyTAUYYxM55FuMrPQ1dPJQ5vhsB, last accessed 27/03/2025 by CPS.
+    """
+    import zipfile
+
+    url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
+    fn = os.path.join("data", "glove.twitter.27B.zip")
+    download(url, fn)
+    with zipfile.ZipFile(fn) as z:
+        print("preparing %s" % out_fn)
+        z_fn = "glove.twitter.27B.%dd.txt" % d
+        X = []
+        for line in z.open(z_fn):
+            v = [float(x) for x in line.strip().split()[1:]]
+            X.append(numpy.array(v))
+        points = numpy.array(X)
+        hyperplanes = read_hyperplanes_from_bin_file("GloVe100.q") # this is the file containing the hyperplanes for the BC-Tree queries fetched from their drive.
+
+        write_output(points, hyperplanes, out_fn, distance)
+
+def read_hyperplanes_from_bin_file(file_name: str) -> Tuple[numpy.ndarray, numpy.ndarray]:
+    """
+    Reads hyperplanes from a binary file and returns them as a tuple of (normalvectors, biases).
+    The function reads 100 hyperplanes from the file and repeats them 100 times to create
+    10,000 total queries for a benchmarking test to see how their query generation method performs.
+    
+    Args:
+        file_name (str): The name of the binary file containing hyperplanes
+        
+    Returns:
+        Tuple[numpy.ndarray, numpy.ndarray]: A tuple containing:
+            - normalvectors: shape (10000, d) where d is dimension
+            - biases: shape (10000,) containing bias values for each hyperplane
+    """
+    print(f"preparing hyperplanes from {file_name}")
+    
+    # correct path construction
+    filename = os.path.join("data", file_name)
+    
+    # initialize arrays for original hyperplanes
+    n_original = 100  # Num of hyperplanes in the file
+    d = 100  # d of each hyperplane normal vector
+    repetitions = 100  # numb of times to repeat the hyperplanes
+    
+    original_normalvectors = numpy.zeros((n_original, d), dtype=numpy.float32)
+    original_biases = numpy.zeros(n_original, dtype=numpy.float32)
+    
+    # read the original hyperplanes from the file
+    with open(filename, 'rb') as f:
+        for i in range(n_original):
+            # read the d-dimensional normal vector
+            normal = struct.unpack("f" * d, f.read(d * 4))
+            original_normalvectors[i] = normal
+            
+            # rread the bias value
+            bias_bytes = f.read(4)
+            original_biases[i] = struct.unpack("f", bias_bytes)[0]
+    
+    # create repeated copies of the original hyperplanes
+    normalvectors = numpy.tile(original_normalvectors, (repetitions, 1))
+    biases = numpy.tile(original_biases, repetitions)
+    
+    print(f"final hyperplane set: {normalvectors.shape[0]} hyperplanes")
+    
+    return normalvectors, biases
+
 DATASETS: Dict[str, Callable[[str], None]] = {
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
+    "glove-100-euclidean-bcq": lambda out_fn: glove_bcq(out_fn, 100, "euclidean"), # added for generating datasets for orig. BC-Tree queries
     "cifar-10-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
     "sift-128-euclidean": sift,
     "deep10m-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
