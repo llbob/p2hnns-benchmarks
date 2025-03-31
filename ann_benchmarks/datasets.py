@@ -563,8 +563,49 @@ def read_hyperplanes_from_bin_file(file_name: str) -> Tuple[numpy.ndarray, numpy
     
     return normalvectors, biases
 
+def glove_small(out_fn: str, d: int, distance: str, size: int = 10000) -> None:
+    """
+    Create a smaller version of the Glove dataset with a specified number of points.
+    
+    Args:
+        out_fn (str): The output file name
+        d (int): Dimension of the Glove vectors
+        distance (str): The distance metric to use
+        size (int, optional): Number of points to include in the dataset. Defaults to 10000.
+    """
+    import zipfile
+    import numpy as np
+
+    url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
+    fn = os.path.join("data", "glove.twitter.27B.zip")
+    download(url, fn)
+    
+    with zipfile.ZipFile(fn) as z:
+        print(f"preparing {out_fn} with {size} points")
+        z_fn = f"glove.twitter.27B.{d}d.txt"
+        
+        X = []
+        for line in z.open(z_fn):
+            if len(X) >= size:
+                break
+            v = [float(x) for x in line.strip().split()[1:]]
+            X.append(numpy.array(v))
+        
+        # If we didn't get enough points, we'll just use what we have
+        if len(X) < size:
+            print(f"Warning: Could only load {len(X)} points, which is less than the requested {size}")
+        
+        # Convert to numpy array and take only the first 'size' points
+        X = numpy.array(X[:size])
+        
+        # Create the hyperplanes
+        points, hyperplanes = construct_p2h_dataset(X, test_size=min(1000, size//10))
+        write_output(points, hyperplanes, out_fn, distance)
+
 DATASETS: Dict[str, Callable[[str], None]] = {
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
+    "glove-25-euclidean-small": lambda out_fn: glove_small(out_fn, 25, "euclidean", 10000),
+    "glove-25-euclidean-med": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
     "glove-100-euclidean-bcq": lambda out_fn: glove_bcq(out_fn, 100, "euclidean"), # added for generating datasets for orig. BC-Tree queries
     "cifar-10-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
