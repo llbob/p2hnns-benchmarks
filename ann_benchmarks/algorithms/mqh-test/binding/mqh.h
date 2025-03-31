@@ -544,6 +544,14 @@ class MQH {
             quantile_table[168] = 0.954;
             quantile_table[169] = 0.955;
         }
+        // Precomputed tables for query optimization
+        int max_inv;
+        std::vector<unsigned char> tab_inv;
+        float temp;
+        float coeff2;
+        float max_coeff;
+        std::vector<float> ttab;
+        const float PI = 3.1415926535;
 
         
         
@@ -554,6 +562,9 @@ class MQH {
         void select_sample(const std::vector<std::vector<float>>& data, 
                           std::vector<std::vector<float>>& train, 
                           int n_pts, int size, int dim);
+
+        void init_query_tables();
+
     
     public:
         MQH(int dim, int M2_ = 16, int level_ = 4, int m_level_ = 1, int m_num_ = 64);
@@ -588,6 +599,9 @@ MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) :
     
     // Initialize the quantile table
     init_quantile_table();
+    
+    // Initialize precomputed query tables
+    init_query_tables();
 }
 
 MQH::~MQH() {
@@ -698,6 +712,49 @@ void MQH::select_sample(const std::vector<std::vector<float>>& data,
             train[i][j] = data[cur_obj][j];
         }
         cur_obj += interval;
+    }
+}
+
+void MQH::init_query_tables() {
+    // Calculate temperature parameter for bit sampling based on probability theory
+    int m = m_level * m_num;
+    temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / m);
+    
+    // Calculate lower bound coefficient for bit matching threshold
+    coeff2 = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
+    
+    // Calculate upper bound coefficient for maximum allowable bit differences
+    max_coeff = Quantile(quantile_table.data(), 0.5f * (1.0f - temp) + 0.5f, quantile_table.size());
+    
+    // Create a lookup table for fast mapping between distance ratios and bit thresholds
+    max_inv = 1000; // Number of discretized intervals
+    tab_inv.resize(max_inv);
+    
+    // Calculate step size for interpolating between coefficients
+    float ratio = (max_coeff - coeff2) / max_inv;
+    for (int i = 0; i < max_inv; i++) {
+        // Interpolate between min and max coefficients
+        float temp2 = coeff2 + i * ratio;
+        
+        // Map to closest entry in quantile table
+        int temp3 = static_cast<int>(temp2 * 100);
+        if (temp3 >= static_cast<int>(quantile_table.size()))
+            temp3 = quantile_table.size() - 1;
+        
+        // Convert quantile value to Hamming distance threshold
+        temp2 = 2.0f * (quantile_table[temp3] - 0.5f) + temp;
+        
+        // Convert to actual bit count and ensure it doesn't exceed total bits
+        tab_inv[i] = static_cast<unsigned char>(temp2 * m + 1);
+        if (tab_inv[i] > m)
+            tab_inv[i] = m;
+    }
+    
+    // Create another lookup table for direct quantile-to-bits conversion
+    ttab.resize(quantile_table.size());
+    for (int i = 0; i < static_cast<int>(quantile_table.size()); i++) {
+        // Convert normalized quantile values to bit differences
+        ttab[i] = (quantile_table[i] - 0.5f) * 2.0f * m;
     }
 }
 
@@ -1122,58 +1179,17 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     std::vector<Neighbor> retset(topk + 1);
     std::vector<Neighbor> retset2(n_exact + 1);
     
-    // Calculate temperature parameter for bit sampling based on probability theory
-    float temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / m);
-    
-    // Calculate lower bound coefficient for bit matching threshold
-    float coeff2 = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
-    
-    // Calculate upper bound coefficient for maximum allowable bit differences
-    float max_coeff = Quantile(quantile_table.data(), 0.5f * (1.0f - temp) + 0.5f, quantile_table.size());
-    
-    // Create a lookup table for fast mapping between distance ratios and bit thresholds
-    int max_inv = 1000; // Number of discretized intervals
-    std::vector<unsigned char> tab_inv(max_inv);
-    
-    // Calculate step size for interpolating between coefficients
-    float ratio = (max_coeff - coeff2) / max_inv;
-    for (int i = 0; i < max_inv; i++) {
-        // Interpolate between min and max coefficients
-        float temp2 = coeff2 + i * ratio;
-        
-        // Map to closest entry in quantile table
-        int temp3 = static_cast<int>(temp2 * 100);
-        if (temp3 >= static_cast<int>(quantile_table.size()))
-            temp3 = quantile_table.size() - 1;
-        
-        // Convert quantile value to Hamming distance threshold
-        temp2 = 2.0f * (quantile_table[temp3] - 0.5f) + temp;
-        
-        // Convert to actual bit count and ensure it doesn't exceed total bits
-        tab_inv[i] = static_cast<unsigned char>(temp2 * m + 1);
-        if (tab_inv[i] > m)
-            tab_inv[i] = m;
-    }
-    
-    // Create another lookup table for direct quantile-to-bits conversion
-    std::vector<float> ttab(quantile_table.size());
-    for (int i = 0; i < static_cast<int>(quantile_table.size()); i++) {
-        // Convert normalized quantile values to bit differences
-        ttab[i] = (quantile_table[i] - 0.5f) * 2.0f * m;
-    }
-    
-    // Cosine lookup table for angle-based filtering
+    // Cosine table is computed at query time, the rest of the tables are precomputed at index time
     int cosine_inv = 100;
     std::vector<int> cosine_table(cosine_inv);
-    
-    float PI = 3.1415926535;
+
     for (int i = 0; i < cosine_inv; i++) {
         cosine_table[i] = m * acos(1.0f * i / cosine_inv) / PI + offset0;
         if (cosine_table[i] > m) {
             cosine_table[i] = m;
         }
     }
-    
+
     // Compute LSH hash codes for the query
     std::vector<unsigned long> query_proj(m_level);
     
