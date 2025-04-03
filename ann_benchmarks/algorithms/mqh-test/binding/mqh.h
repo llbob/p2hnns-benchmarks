@@ -1303,7 +1303,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
                                         table_ptrs.data(), M2);
             cur_obj += remain_size;
             
-            // Combine coarse and fine distances
+            // Combine coarse and fine distances -> The fact that we multiply by residual norm here is important, this would be related to NERQ
             float distance = cur_dist + pq_distance * residual_norm;
             
             // Store for later use

@@ -29,10 +29,9 @@ WORKDIR /home/app
 
 # Now clone the BC-Tree repo for the 'balltree' algorithm import
 # Clone BC-Tree repository
-RUN git clone https://github.com/HuangQiang/BC-Tree.git && \
-    rm -rf BC-Tree/.git && \
-    mkdir -p BC-Tree/external && \
-    cd BC-Tree/external && \
+RUN mkdir mqh-test && \
+    mkdir -p mqh-test/external && \
+    cd mqh-test/external && \
     git clone https://github.com/pybind/pybind11.git && \
     rm -rf pybind11/.git
 
@@ -41,10 +40,10 @@ COPY ann_benchmarks/algorithms/mqh-test/binding/setup_mqh.py \
      ann_benchmarks/algorithms/mqh-test/binding/python_wrapper_mqh.cpp \
      ann_benchmarks/algorithms/mqh-test/binding/visited_list_pool.h \
      ann_benchmarks/algorithms/mqh-test/binding/mqh.h \
-     /home/app/BC-Tree/
+     /home/app/mqh-test/
 
 # Build the module in /home/app
-WORKDIR /home/app/BC-Tree
+WORKDIR /home/app/mqh-test
 RUN python3 setup_mqh.py build_ext --inplace
 RUN cp pymqh*.so /home/app/
 
