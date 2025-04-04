@@ -325,13 +325,13 @@ class MQH {
         std::vector<std::vector<float>> coarse_centroids_second_half;  // Second half
         
         // PQ centroids for each subspace and level
-        std::vector<std::vector<std::vector<float>>> vec_pq;
+        std::vector<std::vector<std::vector<float>>> pq_codebooks;
         
         // Random projection vectors for LSH
         std::vector<std::vector<float>> proj_array;
         
         // Quantization cell information
-        std::vector<Q_elem> pq_M2;
+        std::vector<Q_elem> coarse_cell_mapping;
         std::vector<int> count;                     // Points per cell
         std::vector<std::vector<int>> coarse_index; // Point IDs in each cell
         
@@ -878,7 +878,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     // Initialize data structures for non-empty cells
     std::vector<std::vector<elem>> cell_to_point_ids(num_nonempty_cells);
     std::vector<int> n_temp(num_nonempty_cells, 0);
-    pq_M2.resize(num_nonempty_cells);
+    coarse_cell_mapping.resize(num_nonempty_cells);
     count.resize(num_nonempty_cells);
     
     // Create compact mapping
@@ -888,17 +888,17 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             cell_to_point_ids[num_nonempty_cells].resize(count_all[i]);
             map_table[i] = num_nonempty_cells;
             
-            pq_M2[num_nonempty_cells].id1 = i / L;
-            pq_M2[num_nonempty_cells].id2 = i % L;
-            pq_M2[num_nonempty_cells].num = count_all[i];
+            coarse_cell_mapping[num_nonempty_cells].id1 = i / L;
+            coarse_cell_mapping[num_nonempty_cells].id2 = i % L;
+            coarse_cell_mapping[num_nonempty_cells].num = count_all[i];
             count[num_nonempty_cells] = count_all[i];
             
             num_nonempty_cells++;
         }
     }
     
-    // Compute residual vectors
-    std::vector<float> vec(dim);
+    // Compute residual vectors by way of reconstructing the vectors from their quantized forms
+    std::vector<float> reconstructed_vector(dim);
     
     for (int i = 0; i < n_pts; i++) {
         int temp = centroid_ids_first_half[i] * L + centroid_ids_second_half[i];
@@ -908,13 +908,13 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         
         // Reconstruct quantized vector
         for (int j = 0; j < dim / 2; j++) {
-            vec[j] = coarse_centroids_first_half[centroid_ids_first_half[i]][j];
-            vec[j + dim / 2] = coarse_centroids_second_half[centroid_ids_second_half[i]][j];
+            reconstructed_vector[j] = coarse_centroids_first_half[centroid_ids_first_half[i]][j];
+            reconstructed_vector[j + dim / 2] = coarse_centroids_second_half[centroid_ids_second_half[i]][j];
         }
         
         // Compute residual (original - quantized)
         for (int j = 0; j < dim; j++) {
-            residual_vec[i][j] = data[i][j] - vec[j];
+            residual_vec[i][j] = data[i][j] - reconstructed_vector[j];
         }
         
         // Calculate residual norm
@@ -958,8 +958,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
     
     // Initialize product quantization centroids
-    int d2 = dim / M2;
-    vec_pq.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(d2)));
+    int M2_dim = dim / M2;
+    pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
     
     // Storage for PQ codes
     std::vector<std::vector<unsigned char>> pq_id(n_pts, std::vector<unsigned char>(M2));
@@ -973,7 +973,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
     
     // Compute binary hash codes for normalized residual vectors
-    std::vector<std::vector<unsigned long>> rough_code(n_pts, std::vector<unsigned long>(m_level));
+    std::vector<std::vector<unsigned long>> bin_hash_codes(n_pts, std::vector<unsigned long>(m_level));
     
     for (int i = 0; i < n_pts; i++) {
         for (int j = 0; j < m_level; j++) {
@@ -992,12 +992,12 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                     code_num = code_num << 1;
                 }
             }
-            rough_code[i][j] = code_num;
+            bin_hash_codes[i][j] = code_num;
         }
     }
     
     // Prepare for multilevel PQ
-    std::vector<std::vector<float>> residual_pq(n_sample, std::vector<float>(d2));
+    std::vector<std::vector<float>> pq_training_samples(n_sample, std::vector<float>(M2_dim));
     
     // Begin multilevel product quantization
     for (int k = 0; k < level; k++) {
@@ -1009,8 +1009,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 if (zero_flag[j] == true) {
                     continue;
                 }
-                for (int l = 0; l < d2; l++) {
-                    residual_pq[ccount][l] = residual_vec[j][i * d2 + l];
+                for (int l = 0; l < M2_dim; l++) {
+                    pq_training_samples[ccount][l] = residual_vec[j][i * M2_dim + l];
                 }
                 ccount++;
                 if (ccount >= n_sample) {
@@ -1019,7 +1019,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             }
             
             // Run K-means for this subspace
-            K_means(residual_pq, vec_pq[k * M2 + i], ccount, d2);
+            K_means(pq_training_samples, pq_codebooks[k * M2 + i], ccount, M2_dim);
         }
         
         // Assign each point to closest centroid in each subspace
@@ -1031,8 +1031,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 // Find closest centroid from the L options
                 for (int j = 0; j < L; j++) {
                     float sum = 0;
-                    for (int l = 0; l < d2; l++) {
-                        float diff = residual_vec[n][i * d2 + l] - vec_pq[k * M2 + i][j][l];
+                    for (int l = 0; l < M2_dim; l++) {
+                        float diff = residual_vec[n][i * M2_dim + l] - pq_codebooks[k * M2 + i][j][l];
                         sum += diff * diff;
                     }
                     
@@ -1053,8 +1053,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         for (int n = 0; n < n_pts; n++) {
             for (int j = 0; j < M2; j++) {
                 int temp_M = k * M2 + j;
-                for (int l = 0; l < d2; l++) {
-                    residual_vec[n][j * d2 + l] -= vec_pq[temp_M][pq_id[n][j]][l];
+                for (int l = 0; l < M2_dim; l++) {
+                    residual_vec[n][j * M2_dim + l] -= pq_codebooks[temp_M][pq_id[n][j]][l];
                 }
             }
             
@@ -1104,7 +1104,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             
             // Copy hash codes
             for (int jj = 0; jj < m_level; jj++) {
-                memcpy(cur_loc, &rough_code[point_id][jj], sizeof(unsigned long));
+                memcpy(cur_loc, &bin_hash_codes[point_id][jj], sizeof(unsigned long));
                 cur_loc += sizeof(unsigned long);
             }
         }
@@ -1230,18 +1230,18 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
         for (int l = 0; l < M2; l++) {
             for (int k = 0; k < L; k++) {
                 table2[j][l][k] = compare_short(query.data() + l * (dim / M2), 
-                                               vec_pq[j * M2 + l][k].data(), dim / M2);
+                                               pq_codebooks[j * M2 + l][k].data(), dim / M2);
             }
         }
     }
     
     // Calculate distance from query to each coarse quantization cell
     std::vector<std::pair<int, float>> cell_distances;
-    cell_distances.reserve(pq_M2.size());
+    cell_distances.reserve(coarse_cell_mapping.size());
     
-    for (int j = 0; j < static_cast<int>(pq_M2.size()); j++) {
-        unsigned char a = pq_M2[j].id1;
-        unsigned char b = pq_M2[j].id2;
+    for (int j = 0; j < static_cast<int>(coarse_cell_mapping.size()); j++) {
+        unsigned char a = coarse_cell_mapping[j].id1;
+        unsigned char b = coarse_cell_mapping[j].id2;
         
         float dist = table_1[a] + table_2[b] - u;
         cell_distances.push_back(std::make_pair(j, dist));
