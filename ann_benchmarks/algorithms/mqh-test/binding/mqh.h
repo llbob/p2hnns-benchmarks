@@ -1255,11 +1255,10 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
                  return std::abs(a.second) < std::abs(b.second);
              });
     
-    // First-pass: collect candidates
+    // Combined first+second pass: collect and refine candidates in one loop
     int count_final_results = 0;   // Counter for final results
-    int count_candidates = 0;  // Counter for first-pass candidates
-    int points_examined = 0;
-    
+    int points_examined = 0;       // Track total points examined for early termination
+
     // Calculate offset for accessing PQ codes in memory layout
     int offset00 = sizeof(float) + m_level * sizeof(unsigned long);
     int offset1 = m_level * sizeof(unsigned long);
@@ -1267,121 +1266,104 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     int offset3 = sizeof(float) + M2 + m_level * sizeof(unsigned long);
     int round1_offset = sizeof(float) + sizeof(unsigned long) * m_level + sizeof(float);
     int remain_size = size_per_element_ - sizeof(int) - (3 * sizeof(float)) - 
-                     (m_level * sizeof(unsigned long));
-    
+                    (m_level * sizeof(unsigned long));
+
+    // Set up table pointers once before the loop (optimization)
+    std::vector<float*> table_ptrs(M2);
+    for (int i = 0; i < M2; i++) {
+        table_ptrs[i] = table2[0][i].data();
+    }
+
+    // Current distance threshold (starts at infinity)
+    float cur_val = std::numeric_limits<float>::max();
+
     // Process cells in order of distance
     for (const auto& cell_dist : cell_distances) {
         int cell_idx = cell_dist.first;
         float cur_dist = cell_dist.second;
         int cell_size = count[cell_idx];
         
+        // Skip entire cell if its coarse distance exceeds our current threshold
+        // Only apply this after we have some results
+        if (count_final_results >= topk && 
+            std::abs(cur_dist) > cur_val + delta_flag * std::abs(cur_dist)) {
+            continue;
+        }
+        
         // Process each point in this cell
         for (int l = 0; l < cell_size; l++) {
             points_examined++;
             
-            // Early termination if examined too many points
-            if (points_examined > thres_pq) {
+            // Early termination if examined enough points
+            if (points_examined >= thres_pq) {
                 break;
             }
             
             // Get point data
             char* cur_obj = &index_[cell_idx][l * size_per_element_];
             int point_id = *reinterpret_cast<int*>(cur_obj);
-            cur_obj += sizeof(int);
             
+            // Skip if already processed (using visited list)
+            if (visited_array[point_id] == visited_array_tag) {
+                continue;
+            }
+            
+            cur_obj += sizeof(int);
             float residual_norm = *reinterpret_cast<float*>(cur_obj);
             char* cur_obj_1 = cur_obj + sizeof(float);
-            cur_obj = cur_obj_1 + round1_offset;
             
-            // Calculate PQ distance
-            // Create an array of pointers to table rows
-            std::vector<float*> table_ptrs(M2);
-            for (int i = 0; i < M2; i++) {
-                table_ptrs[i] = table2[0][i].data();
-            }
-
-            // Call pq_dist with the array of pointers
-            float pq_distance = pq_dist(reinterpret_cast<unsigned char*>(cur_obj), 
-                                        table_ptrs.data(), M2);
-            cur_obj += remain_size;
-            
-            // Combine coarse and fine distances -> The fact that we multiply by residual norm here is important, this would be related to NERQ
-            float distance = cur_dist + pq_distance * residual_norm;
-            
-            // Store for later use
-            *reinterpret_cast<float*>(cur_obj_1) = distance;
-            
-            // Use absolute distance
-            if (distance < 0) {
-                distance = -distance;
-            }
-            
-            // Add to candidate set
-            Neighbor nn;
-            nn.id = point_id;
-            nn.distance = distance;
-            
-            if (count_candidates == 0) {
-                candidates[0] = nn;
-            } else {
-                if (count_candidates >= num_candidates) {
-                    if (distance >= candidates[num_candidates - 1].distance) {
-                        continue;
-                    }
-                    InsertIntoPool(candidates.data(), num_candidates, nn);
-                } else {
-                    InsertIntoPool(candidates.data(), count_candidates, nn);
+            // Quick filter: if we have results and coarse distance exceeds threshold
+            if (count_final_results >= topk) {
+                float coarse_distance = std::abs(cur_dist);
+                if (coarse_distance > cur_val + delta_flag * residual_norm) {
+                    continue;
                 }
             }
-            count_candidates++;
+            
+            // Skip calculating PQ distance and go straight to exact distance
+            // Mark as visited
+            visited_array[point_id] = visited_array_tag;
+            
+            // Calculate exact distance directly (combining first and second pass)
+            float exact_distance = compare_ip(data[point_id].data(), query.data(), dim) - u;
+            if (exact_distance < 0) {
+                exact_distance = -exact_distance;
+            }
+            
+            // Add to final result set
+            Neighbor nn;
+            nn.id = point_id;
+            nn.distance = exact_distance;
+            
+            if (count_final_results == 0) {
+                final_results[0] = nn;
+            } else {
+                if (count_final_results >= topk) {
+                    if (exact_distance >= final_results[topk - 1].distance) {
+                        continue;
+                    }
+                    InsertIntoPool(final_results.data(), topk, nn);
+                } else {
+                    InsertIntoPool(final_results.data(), count_final_results, nn);
+                }
+            }
+            
+            count_final_results++;
+            
+            // Update threshold
+            if (count_final_results >= topk) {
+                cur_val = final_results[topk - 1].distance;
+            }
         }
         
         // Break if we've examined enough points
-        if (points_examined > thres_pq) {
+        if (points_examined >= thres_pq) {
             break;
         }
     }
     
-    // Second-pass: Refine top candidates with exact distance calculation
-    for (int j = 0; j < std::min(num_candidates, count_candidates); j++) {
-        int point_id = candidates[j].id;
-        
-        // Skip if already processed
-        if (visited_array[point_id] == visited_array_tag) {
-            continue;
-        }
-        
-        visited_array[point_id] = visited_array_tag;
-        
-        // Calculate exact distance
-        float distance = compare_ip(data[point_id].data(), query.data(), dim) - u;
-        if (distance < 0) {
-            distance = -distance;
-        }
-        
-        // Add to final result set
-        Neighbor nn;
-        nn.id = point_id;
-        nn.distance = distance;
-        
-        if (count_final_results == 0) {
-            final_results[0] = nn;
-        } else {
-            if (count_final_results >= topk) {
-                if (distance >= final_results[topk - 1].distance) {
-                    continue;
-                }
-                InsertIntoPool(final_results.data(), topk, nn);
-            } else {
-                InsertIntoPool(final_results.data(), count_final_results, nn);
-            }
-        }
-        count_final_results++;
-    }
-    
     // Third-pass: Process remaining clusters with adaptive filtering
     points_examined = 0;
-    float cur_val = final_results[count_final_results < topk ? count_final_results - 1 : topk - 1].distance;  // Current distance threshold
     bool thres_flag = false;
     
     // Process remaining cells
@@ -1398,11 +1380,6 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
             } else {
                 points_examined += cell_size;
             }
-        }
-        
-        // Skip entire cell if distance exceeds threshold significantly -> why have this check this late why not around line 1270 
-        if (std::abs(cell_dist_val) > cur_val + delta_flag * cell_dist_val) {
-            continue;
         }
         
         // Examine each point in this cell
