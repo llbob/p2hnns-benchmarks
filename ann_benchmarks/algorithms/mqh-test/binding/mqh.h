@@ -13,21 +13,33 @@
 #include <unordered_set>
 #include "visited_list_pool.h"
 
+// Platform-specific intrinsics setup
 #ifdef _MSC_VER
-#include <intrin.h>
-#define __builtin_popcount(t) __popcnt(t)
+    // Microsoft compiler
+    #include <intrin.h>
+    #define __builtin_popcount(t) __popcnt(t)
 #else
-#if defined(MQH_ARM)
-#define NO_AVX
-#define NO_SSE
-#else
-#ifdef HAVE_X86INTRIN
-#include <x86intrin.h>
-#else
-#define AVX
-#define NO_SSE
-#endif
-#endif
+    #if defined(MQH_ARM)
+        // ARM-based systems
+        #define NO_AVX
+        #define NO_SSE
+    #else
+        // Check for x86 intrinsics
+        #if defined(HAVE_X86INTRIN)
+            #include <x86intrin.h>
+        #elif defined(__AVX__)
+            // AVX is supported by compiler
+            #include <immintrin.h>
+        #elif defined(__SSE2__)
+            // SSE2 is supported but not AVX
+            #include <emmintrin.h>
+            #define NO_AVX
+        #else
+            // No SIMD extensions detected
+            #define NO_AVX
+            #define NO_SSE
+        #endif
+    #endif
 #endif
 
 using namespace hnswlib;
