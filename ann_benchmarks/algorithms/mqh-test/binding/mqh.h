@@ -590,7 +590,7 @@ MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) :
     }
     
     dim = dim + d_supp;  // Padded dimension
-    int m = m_level * m_num;  // Total number of hash functions
+    int num_hash_functions = m_level * m_num;  // Total number of hash functions
     
     // Initialize visited list pool
     visited_list_pool_ = new VisitedListPool(1, 1);  // Will be resized in build_index
@@ -716,9 +716,9 @@ void MQH::select_sample(const std::vector<std::vector<float>>& data,
 
 // Johnson-Lindenstrauss lemma based initialization of query tables? It's about embedding points in a lower dimensional space while preserving distances
 void MQH::init_query_tables() {
-    int m = m_level * m_num;
+    int num_hash_functions = m_level * m_num;
     // Calculate sensitivity parameter for bit matches, lower values require more exact matches higher values allow more differences
-    temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / m);
+    temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / num_hash_functions);
     
     // Calculate lower bound coefficient for bit matching threshold
     coeff = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
@@ -745,16 +745,16 @@ void MQH::init_query_tables() {
         temp2 = 2.0f * (quantile_table[temp3] - 0.5f) + temp;
         
         // Convert to actual bit count and ensure it doesn't exceed total bits
-        distance_to_hamming_thresholds[i] = static_cast<unsigned char>(temp2 * m + 1);
-        if (distance_to_hamming_thresholds[i] > m)
-            distance_to_hamming_thresholds[i] = m;
+        distance_to_hamming_thresholds[i] = static_cast<unsigned char>(temp2 * num_hash_functions + 1);
+        if (distance_to_hamming_thresholds[i] > num_hash_functions)
+            distance_to_hamming_thresholds[i] = num_hash_functions;
     }
     
     // Create another lookup table for direct quantile-to-bits conversion
     hamming_thresholds.resize(quantile_table.size());
     for (int i = 0; i < static_cast<int>(quantile_table.size()); i++) {
         // Convert normalized quantile values to bit differences
-        hamming_thresholds[i] = (quantile_table[i] - 0.5f) * 2.0f * m;
+        hamming_thresholds[i] = (quantile_table[i] - 0.5f) * 2.0f * num_hash_functions;
     }
 }
 
@@ -774,7 +774,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
     
     int size = M2 * level;  // Total number of subcodebooks
-    int m = m_level * m_num;  // Total number of hash functions
+    int num_hash_functions = m_level * m_num;  // Total number of hash functions
     
     int sample_size = 100000; // Samples used for training k-means
 
@@ -965,8 +965,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     std::vector<std::vector<unsigned char>> pq_id(n_pts, std::vector<unsigned char>(M2));
     
     // Generate random projection vectors for LSH
-    proj_array.resize(m, std::vector<float>(dim));
-    for (int i = 0; i < m; i++) {
+    proj_array.resize(num_hash_functions, std::vector<float>(dim));
+    for (int i = 0; i < num_hash_functions; i++) {
         for (int j = 0; j < dim; j++) {
             proj_array[i][j] = gaussian(0.0f, 1.0f);
         }
@@ -1003,23 +1003,23 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     for (int k = 0; k < level; k++) {
         // For each subspace, train quantizers on residual subvectors
         for (int i = 0; i < M2; i++) {
-            int ccount = 0;
+            int sample_count = 0;
             // Collect training samples for this subspace
             for (int j = 0; j < n_pts; j++) {
                 if (zero_flag[j] == true) {
                     continue;
                 }
                 for (int l = 0; l < M2_dim; l++) {
-                    pq_training_samples[ccount][l] = residual_vec[j][i * M2_dim + l];
+                    pq_training_samples[sample_count][l] = residual_vec[j][i * M2_dim + l];
                 }
-                ccount++;
-                if (ccount >= n_sample) {
+                sample_count++;
+                if (sample_count >= n_sample) {
                     break;
                 }
             }
             
             // Run K-means for this subspace
-            K_means(pq_training_samples, pq_codebooks[k * M2 + i], ccount, M2_dim);
+            K_means(pq_training_samples, pq_codebooks[k * M2 + i], sample_count, M2_dim);
         }
         
         // Assign each point to closest centroid in each subspace
@@ -1145,7 +1145,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     int num_candidates = 2000;  // First-pass candidates
     int thres_pq = n_pts / 10;  // Early termination threshold
 
-    // Use passed flag if valid, otherwise use the instance flag
+    // Use passed flag if valid
     int current_flag = (query_flag != -1) ? query_flag : flag;
     
     // Pad query if necessary
@@ -1160,15 +1160,17 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
         query[i] /= query_norm;
     }
     
-    // Adjust threshold
+    // U is the bias. Divides u by the query norm to maintain the same geometric relationship andnegates the value for the distance calculation
     u = -1 * u / query_norm;
     
     // Adjust threshold
     float delta_flag = (current_flag == 1) ? 1.0f : delta;  // For guarantees vs. approximation
+
+    // TODO: offset0 is old var name for l0, should be replaced
     int offset0 = l0;
     
     // Prepare for hash bit comparison
-    int m = m_level * m_num;
+    int num_hash_functions = m_level * m_num;
     
     // Get a visited list for tracking processed points
     VisitedList* vl = visited_list_pool_->getFreeVisitedList();
@@ -1184,42 +1186,42 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     std::vector<int> cosine_table(angular_resolution);
 
     for (int i = 0; i < angular_resolution; i++) {
-        cosine_table[i] = m * acos(1.0f * i / angular_resolution) / PI + offset0;
-        if (cosine_table[i] > m) {
-            cosine_table[i] = m;
+        cosine_table[i] = num_hash_functions * acos(1.0f * i / angular_resolution) / PI + offset0;
+        if (cosine_table[i] > num_hash_functions) {
+            cosine_table[i] = num_hash_functions;
         }
     }
 
     // Compute LSH hash codes for the query
-    std::vector<unsigned long> query_proj(m_level);
+    std::vector<unsigned long> query_bin_hash_codes(m_level);
     
     for (int j = 0; j < m_level; j++) {
-        query_proj[j] = 0;
+        query_bin_hash_codes[j] = 0;
         for (int jj = 0; jj < m_num; jj++) {
             float ttmp0 = compare_ip(query.data(), proj_array[j * m_num + jj].data(), dim);
             
             if (ttmp0 >= 0) {
-                query_proj[j] += 1;
+                query_bin_hash_codes[j] += 1;
             }
             
             if (jj < m_num - 1) {
-                query_proj[j] = query_proj[j] << 1;
+                query_bin_hash_codes[j] = query_bin_hash_codes[j] << 1;
             }
         }
     }
     
     // Precompute distances to coarse quantizer centroids
-    std::vector<float> table_1(L);
-    std::vector<float> table_2(L);
+    std::vector<float> coarse_centroids_first_half_dists(L);
+    std::vector<float> coarse_centroids_second_half_dists(L);
     
     // First half
     for (int j = 0; j < L; j++) {
-        table_1[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
+        coarse_centroids_first_half_dists[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
     }
     
     // Second half
     for (int j = 0; j < L; j++) {
-        table_2[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
+        coarse_centroids_second_half_dists[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
     }
     
     // Precompute distances to PQ centroids
@@ -1243,7 +1245,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
         unsigned char a = coarse_cell_mapping[j].id1;
         unsigned char b = coarse_cell_mapping[j].id2;
         
-        float dist = table_1[a] + table_2[b] - u;
+        float dist = coarse_centroids_first_half_dists[a] + coarse_centroids_second_half_dists[b] - u;
         cell_distances.push_back(std::make_pair(j, dist));
     }
     
@@ -1254,8 +1256,8 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
              });
     
     // First-pass: collect candidates
-    int num = 0;   // Counter for final results
-    int num1 = 0;  // Counter for first-pass candidates
+    int count_final_results = 0;   // Counter for final results
+    int count_candidates = 0;  // Counter for first-pass candidates
     int points_examined = 0;
     
     // Calculate offset for accessing PQ codes in memory layout
@@ -1319,19 +1321,19 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
             nn.id = point_id;
             nn.distance = distance;
             
-            if (num1 == 0) {
+            if (count_candidates == 0) {
                 candidates[0] = nn;
             } else {
-                if (num1 >= num_candidates) {
+                if (count_candidates >= num_candidates) {
                     if (distance >= candidates[num_candidates - 1].distance) {
                         continue;
                     }
                     InsertIntoPool(candidates.data(), num_candidates, nn);
                 } else {
-                    InsertIntoPool(candidates.data(), num1, nn);
+                    InsertIntoPool(candidates.data(), count_candidates, nn);
                 }
             }
-            num1++;
+            count_candidates++;
         }
         
         // Break if we've examined enough points
@@ -1341,7 +1343,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     }
     
     // Second-pass: Refine top candidates with exact distance calculation
-    for (int j = 0; j < std::min(num_candidates, num1); j++) {
+    for (int j = 0; j < std::min(num_candidates, count_candidates); j++) {
         int point_id = candidates[j].id;
         
         // Skip if already processed
@@ -1362,24 +1364,24 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
         nn.id = point_id;
         nn.distance = distance;
         
-        if (num == 0) {
+        if (count_final_results == 0) {
             final_results[0] = nn;
         } else {
-            if (num >= topk) {
+            if (count_final_results >= topk) {
                 if (distance >= final_results[topk - 1].distance) {
                     continue;
                 }
                 InsertIntoPool(final_results.data(), topk, nn);
             } else {
-                InsertIntoPool(final_results.data(), num, nn);
+                InsertIntoPool(final_results.data(), count_final_results, nn);
             }
         }
-        num++;
+        count_final_results++;
     }
     
     // Third-pass: Process remaining clusters with adaptive filtering
     points_examined = 0;
-    float cur_val = final_results[num < topk ? num - 1 : topk - 1].distance;  // Current distance threshold
+    float cur_val = final_results[count_final_results < topk ? count_final_results - 1 : topk - 1].distance;  // Current distance threshold
     bool thres_flag = false;
     
     // Process remaining cells
@@ -1513,7 +1515,7 @@ Label2:
                 // Count bit matches
                 for (int jj = 0; jj < m_level; jj++) {
                     collision_ += fast_count(*reinterpret_cast<unsigned long*>(cur_obj), 
-                                            query_proj[jj]);
+                                            query_bin_hash_codes[jj]);
                     cur_obj += sizeof(unsigned long);
                 }
                 
@@ -1541,7 +1543,7 @@ Label2:
                         no_exact = true;
                     }
                 } else {
-                    collision_ = m - collision_;
+                    collision_ = num_hash_functions - collision_;
                     if (collision_ >= y) {
                         no_exact = true;
                     }
@@ -1558,7 +1560,7 @@ Label2:
                 visited_array[point_id] = visited_array_tag;
                 
                 // Skip if worse than current kth result
-                if (distance >= final_results[num < topk ? num - 1 : topk - 1].distance) {
+                if (distance >= final_results[count_final_results < topk ? count_final_results - 1 : topk - 1].distance) {
                     continue;
                 }
                 
@@ -1567,9 +1569,9 @@ Label2:
                 nn.id = point_id;
                 nn.distance = distance;
                 
-                if (num < topk) {
-                    InsertIntoPool(final_results.data(), num, nn);
-                    num++;
+                if (count_final_results < topk) {
+                    InsertIntoPool(final_results.data(), count_final_results, nn);
+                    count_final_results++;
                 } else {
                     InsertIntoPool(final_results.data(), topk, nn);
                     cur_val = final_results[topk - 1].distance;
@@ -1588,9 +1590,9 @@ Label2:
     
     // Prepare final results
     std::vector<Neighbor> results;
-    results.reserve(std::min(topk, num));
+    results.reserve(std::min(topk, count_final_results));
     
-    for (int i = 0; i < std::min(topk, num); i++) {
+    for (int i = 0; i < std::min(topk, count_final_results); i++) {
         results.push_back(final_results[i]);
     }
     
