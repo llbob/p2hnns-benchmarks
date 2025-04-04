@@ -208,27 +208,11 @@ struct Neighbor {
     int id;
     float distance;
     
+    //This is an overloading of the less than operator to compare two Neighbor objects
     bool operator<(const Neighbor& other) const {
         return distance < other.distance;
     }
 };
-
-// Comparison functions for sorting
-static int Elemcomp_a(const void *a, const void *b) {
-    elem x1 = *((elem *)b);
-    elem x2 = *((elem *)a);
-
-    if (x1.val > x2.val) return -1;
-    else return 1;
-}
-
-static int Elemcomp_d(const void *a, const void *b) {
-    elem x1 = *((elem *)b);
-    elem x2 = *((elem *)a);
-
-    if (x1.val > x2.val) return 1;
-    else return -1;
-}
 
 // Calculate the norm of a vector
 static float calc_norm(const float *array, int d) {
@@ -248,6 +232,7 @@ float uniform(float min,float max)  {
 	return (max - min) * frac + min;
 }
 
+// This function generates a Gaussian random number with a given mean and standard deviation
 float gaussian(float mean, float sigma){
 	float v1 = -1.0f;
 	float v2 = -1.0f;
@@ -276,7 +261,7 @@ float Quantile(float *table, float a, int size) {
 	return (1.0f * i / 100);
 }
 
-// Calculate product quantization distance
+
 static inline float pq_dist(const unsigned char *a, float **b, int size) {
     float sum = 0;
     for (int i = 0; i < size; i++) {
@@ -286,7 +271,8 @@ static inline float pq_dist(const unsigned char *a, float **b, int size) {
     return sum;
 }
 
-// Priority queue operations
+
+// inserts a new neighbor into a sorted priority queue while maintaining order.
 static inline int InsertIntoPool(Neighbor *addr, unsigned K, Neighbor nn) {
     int left = 0, right = K - 1;
     if (addr[left].distance > nn.distance) {
@@ -335,8 +321,8 @@ class MQH {
         int flag;           // Flag for precise (1) or approximate (0) search
         
         // Coarse quantization centroids
-        std::vector<std::vector<float>> vec_1;  // First half
-        std::vector<std::vector<float>> vec_2;  // Second half
+        std::vector<std::vector<float>> coarse_centroids_first_half;  // First half
+        std::vector<std::vector<float>> coarse_centroids_second_half;  // Second half
         
         // PQ centroids for each subspace and level
         std::vector<std::vector<std::vector<float>>> vec_pq;
@@ -557,12 +543,12 @@ class MQH {
             quantile_table[169] = 0.955;
         }
         // Precomputed tables for query optimization
-        int max_inv;
-        std::vector<unsigned char> tab_inv;
+        int norm_dist_resolution;
+        std::vector<unsigned char> distance_to_hamming_thresholds;
         float temp;
-        float coeff2;
+        float coeff;
         float max_coeff;
-        std::vector<float> ttab;
+        std::vector<float> hamming_thresholds;
         const float PI = 3.1415926535;
 
         
@@ -628,7 +614,7 @@ void MQH::K_means(const std::vector<std::vector<float>>& train,
     int seed_ = 1;
     int cur_obj = 0;
     std::vector<int> array_(L);
-    bool flag_ = false;
+    bool flag_ = false; // Flag to check for duplicate samples
 
     for (int i = 0; i < L; i++) {
         std::srand(seed_);
@@ -657,13 +643,13 @@ void MQH::K_means(const std::vector<std::vector<float>>& train,
     float sum, min_sum;
     int vec_id;
     std::vector<int> pvec(n_sample);
-    std::vector<int> count(L, 0);
+    std::vector<int> cluster_sizes(L, 0); // Number of points in each cluster
     int ROUND = 20;
 
     // K-means iterations
     for (int k = 0; k < ROUND; k++) {
-        // Reset counts
-        std::fill(count.begin(), count.end(), 0);
+        // Fill cluster_sizes with zeros
+        std::fill(cluster_sizes.begin(), cluster_sizes.end(), 0);
 
         // Assign each point to nearest centroid
         for (int j = 0; j < n_sample; j++) {
@@ -683,7 +669,7 @@ void MQH::K_means(const std::vector<std::vector<float>>& train,
             }
             
             pvec[j] = vec_id;
-            count[pvec[j]]++;
+            cluster_sizes[pvec[j]]++;
         }
 
         // Reset centroids
@@ -702,16 +688,17 @@ void MQH::K_means(const std::vector<std::vector<float>>& train,
 
         // Compute final centroids
         for (int j = 0; j < L; j++) {
-            if (count[j] == 0)
+            if (cluster_sizes[j] == 0)
                 continue;
                 
             for (int i = 0; i < d; i++) {
-                centroids[j][i] = centroids[j][i] / count[j];
+                centroids[j][i] = centroids[j][i] / cluster_sizes[j];
             }
         }
     }
 }
 
+// Use an interval based on a sample size and a dataset size in order to pick sample points for a training set of points
 void MQH::select_sample(const std::vector<std::vector<float>>& data, 
                       std::vector<std::vector<float>>& train, 
                       int n_pts, int size, int dim) {
@@ -727,46 +714,47 @@ void MQH::select_sample(const std::vector<std::vector<float>>& data,
     }
 }
 
+// Johnson-Lindenstrauss lemma based initialization of query tables? It's about embedding points in a lower dimensional space while preserving distances
 void MQH::init_query_tables() {
-    // Calculate temperature parameter for bit sampling based on probability theory
     int m = m_level * m_num;
+    // Calculate sensitivity parameter for bit matches, lower values require more exact matches higher values allow more differences
     temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / m);
     
     // Calculate lower bound coefficient for bit matching threshold
-    coeff2 = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
+    coeff = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
     
     // Calculate upper bound coefficient for maximum allowable bit differences
     max_coeff = Quantile(quantile_table.data(), 0.5f * (1.0f - temp) + 0.5f, quantile_table.size());
     
     // Create a lookup table for fast mapping between distance ratios and bit thresholds
-    max_inv = 1000; // Number of discretized intervals
-    tab_inv.resize(max_inv);
+    norm_dist_resolution = 1000; // Number of discretized intervals
+    distance_to_hamming_thresholds.resize(norm_dist_resolution);
     
-    // Calculate step size for interpolating between coefficients
-    float ratio = (max_coeff - coeff2) / max_inv;
-    for (int i = 0; i < max_inv; i++) {
+    // Calculate step size for interpolation
+    float ratio = (max_coeff - coeff) / norm_dist_resolution;
+    for (int i = 0; i < norm_dist_resolution; i++) {
         // Interpolate between min and max coefficients
-        float temp2 = coeff2 + i * ratio;
+        float temp2 = coeff + i * ratio;
         
         // Map to closest entry in quantile table
         int temp3 = static_cast<int>(temp2 * 100);
         if (temp3 >= static_cast<int>(quantile_table.size()))
-            temp3 = quantile_table.size() - 1;
+        temp3 = quantile_table.size() - 1;
         
         // Convert quantile value to Hamming distance threshold
         temp2 = 2.0f * (quantile_table[temp3] - 0.5f) + temp;
         
         // Convert to actual bit count and ensure it doesn't exceed total bits
-        tab_inv[i] = static_cast<unsigned char>(temp2 * m + 1);
-        if (tab_inv[i] > m)
-            tab_inv[i] = m;
+        distance_to_hamming_thresholds[i] = static_cast<unsigned char>(temp2 * m + 1);
+        if (distance_to_hamming_thresholds[i] > m)
+            distance_to_hamming_thresholds[i] = m;
     }
     
     // Create another lookup table for direct quantile-to-bits conversion
-    ttab.resize(quantile_table.size());
+    hamming_thresholds.resize(quantile_table.size());
     for (int i = 0; i < static_cast<int>(quantile_table.size()); i++) {
         // Convert normalized quantile values to bit differences
-        ttab[i] = (quantile_table[i] - 0.5f) * 2.0f * m;
+        hamming_thresholds[i] = (quantile_table[i] - 0.5f) * 2.0f * m;
     }
 }
 
@@ -800,8 +788,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     std::vector<std::vector<float>> residual_vec(n_pts, std::vector<float>(dim));
     
     // Initialize centroids for coarse quantization
-    vec_1.resize(L, std::vector<float>(dim / 2));
-    vec_2.resize(L, std::vector<float>(dim / 2));
+    coarse_centroids_first_half.resize(L, std::vector<float>(dim / 2));
+    coarse_centroids_second_half.resize(L, std::vector<float>(dim / 2));
     
     // Sample training data
     int n_sample = std::min(sample_size, n_pts);
@@ -824,12 +812,12 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
     
     // Run K-means for coarse quantization
-    K_means(train1, vec_1, n_sample, dim / 2);
-    K_means(train2, vec_2, n_sample, dim / 2);
+    K_means(train1, coarse_centroids_first_half, n_sample, dim / 2);
+    K_means(train2, coarse_centroids_second_half, n_sample, dim / 2);
     
     // Arrays for coarse quantization assignments
-    std::vector<unsigned char> vec_id1(n_pts);
-    std::vector<unsigned char> vec_id2(n_pts);
+    std::vector<unsigned char> centroid_ids_first_half(n_pts);
+    std::vector<unsigned char> centroid_ids_second_half(n_pts);
     std::vector<int> count_all(L * L, 0);
     
     // Initialize data structures for assigning points to cells
@@ -843,7 +831,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         for (int j = 0; j < L; j++) {
             float sum = 0;
             for (int l = 0; l < dim / 2; l++) {
-                sum += (data[i][l] - vec_1[j][l]) * (data[i][l] - vec_1[j][l]);
+                sum += (data[i][l] - coarse_centroids_first_half[j][l]) * (data[i][l] - coarse_centroids_first_half[j][l]);
             }
             
             if (j == 0) {
@@ -854,13 +842,13 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 min_id = j;
             }
         }
-        vec_id1[i] = min_id;
+        centroid_ids_first_half[i] = min_id;
         
         // Find closest centroid for second half
         for (int j = 0; j < L; j++) {
             float sum = 0;
             for (int l = 0; l < dim / 2; l++) {
-                sum += (data[i][l + dim / 2] - vec_2[j][l]) * (data[i][l + dim / 2] - vec_2[j][l]);
+                sum += (data[i][l + dim / 2] - coarse_centroids_second_half[j][l]) * (data[i][l + dim / 2] - coarse_centroids_second_half[j][l]);
             }
             
             if (j == 0) {
@@ -871,41 +859,41 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 min_id = j;
             }
         }
-        vec_id2[i] = min_id;
+        centroid_ids_second_half[i] = min_id;
         
         // Increment count for this combination
-        count_all[vec_id1[i] * L + vec_id2[i]]++;
+        count_all[centroid_ids_first_half[i] * L + centroid_ids_second_half[i]]++;
     }
     
     // Count non-empty cells and create mapping
-    int n_cand1 = 0;
+    int num_nonempty_cells = 0;
     std::vector<int> map_table(L * L, -1);
     
     for (int i = 0; i < L * L; i++) {
         if (count_all[i] > 0) {
-            n_cand1++;
+            num_nonempty_cells++;
         }
     }
     
     // Initialize data structures for non-empty cells
-    std::vector<std::vector<elem>> array1(n_cand1);
-    std::vector<int> n_temp(n_cand1, 0);
-    pq_M2.resize(n_cand1);
-    count.resize(n_cand1);
+    std::vector<std::vector<elem>> cell_to_point_ids(num_nonempty_cells);
+    std::vector<int> n_temp(num_nonempty_cells, 0);
+    pq_M2.resize(num_nonempty_cells);
+    count.resize(num_nonempty_cells);
     
     // Create compact mapping
-    n_cand1 = 0;
+    num_nonempty_cells = 0;
     for (int i = 0; i < L * L; i++) {
         if (count_all[i] > 0) {
-            array1[n_cand1].resize(count_all[i]);
-            map_table[i] = n_cand1;
+            cell_to_point_ids[num_nonempty_cells].resize(count_all[i]);
+            map_table[i] = num_nonempty_cells;
             
-            pq_M2[n_cand1].id1 = i / L;
-            pq_M2[n_cand1].id2 = i % L;
-            pq_M2[n_cand1].num = count_all[i];
-            count[n_cand1] = count_all[i];
+            pq_M2[num_nonempty_cells].id1 = i / L;
+            pq_M2[num_nonempty_cells].id2 = i % L;
+            pq_M2[num_nonempty_cells].num = count_all[i];
+            count[num_nonempty_cells] = count_all[i];
             
-            n_cand1++;
+            num_nonempty_cells++;
         }
     }
     
@@ -913,15 +901,15 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     std::vector<float> vec(dim);
     
     for (int i = 0; i < n_pts; i++) {
-        int temp = vec_id1[i] * L + vec_id2[i];
+        int temp = centroid_ids_first_half[i] * L + centroid_ids_second_half[i];
         int table_id = map_table[temp];
         
-        array1[table_id][n_temp[table_id]].id = i;
+        cell_to_point_ids[table_id][n_temp[table_id]].id = i;
         
         // Reconstruct quantized vector
         for (int j = 0; j < dim / 2; j++) {
-            vec[j] = vec_1[vec_id1[i]][j];
-            vec[j + dim / 2] = vec_2[vec_id2[i]][j];
+            vec[j] = coarse_centroids_first_half[centroid_ids_first_half[i]][j];
+            vec[j + dim / 2] = coarse_centroids_second_half[centroid_ids_second_half[i]][j];
         }
         
         // Compute residual (original - quantized)
@@ -935,13 +923,13 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             residual_norm += residual_vec[i][j] * residual_vec[i][j];
         }
         
-        array1[table_id][n_temp[table_id]].val = std::sqrt(residual_norm);
+        cell_to_point_ids[table_id][n_temp[table_id]].val = std::sqrt(residual_norm);
         n_temp[table_id]++;
     }
     
     // Sort points in each cell by residual norm
-    for (int i = 0; i < n_cand1; i++) {
-        std::sort(array1[i].begin(), array1[i].end(), 
+    for (int i = 0; i < num_nonempty_cells; i++) {
+        std::sort(cell_to_point_ids[i].begin(), cell_to_point_ids[i].end(), 
                  [](const elem& a, const elem& b) { return a.val < b.val; });
     }
     
@@ -1089,27 +1077,27 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                        level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
     
     // Initialize index structure for each cluster
-    coarse_index.resize(n_cand1);
-    index_.resize(n_cand1);
+    coarse_index.resize(num_nonempty_cells);
+    index_.resize(num_nonempty_cells);
     
-    for (int i = 0; i < n_cand1; i++) {
+    for (int i = 0; i < num_nonempty_cells; i++) {
         coarse_index[i].resize(count[i]);
         index_[i].resize(count[i] * size_per_element_);
         
         // Store point IDs and residual norms
         for (int j = 0; j < count[i]; j++) {
-            coarse_index[i][j] = array1[i][j].id;
+            coarse_index[i][j] = cell_to_point_ids[i][j].id;
             
             // Write point ID
-            memcpy(&index_[i][j * size_per_element_], &array1[i][j].id, sizeof(int));
+            memcpy(&index_[i][j * size_per_element_], &cell_to_point_ids[i][j].id, sizeof(int));
             
             // Write residual norm
-            memcpy(&index_[i][j * size_per_element_ + sizeof(int)], &array1[i][j].val, sizeof(float));
+            memcpy(&index_[i][j * size_per_element_ + sizeof(int)], &cell_to_point_ids[i][j].val, sizeof(float));
         }
     }
     
     // Copy hash codes to index
-    for (int i = 0; i < n_cand1; i++) {
+    for (int i = 0; i < num_nonempty_cells; i++) {
         for (int j = 0; j < count[i]; j++) {
             int point_id = coarse_index[i][j];
             char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float)];
@@ -1124,7 +1112,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     
     // Store PQ codes and norms for each level
     for (int level_idx = 0; level_idx < level; level_idx++) {
-        for (int i = 0; i < n_cand1; i++) {
+        for (int i = 0; i < num_nonempty_cells; i++) {
             for (int j = 0; j < count[i]; j++) {
                 int point_id = coarse_index[i][j];
                 
@@ -1154,7 +1142,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     
     // Constants for search
     int topk = k;
-    int n_exact = 2000;  // First-pass candidates
+    int num_candidates = 2000;  // First-pass candidates
     int thres_pq = n_pts / 10;  // Early termination threshold
 
     // Use passed flag if valid, otherwise use the instance flag
@@ -1188,15 +1176,15 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     vl_type visited_array_tag = vl->curV;
     
     // Prepare result sets
-    std::vector<Neighbor> retset(topk + 1);
-    std::vector<Neighbor> retset2(n_exact + 1);
+    std::vector<Neighbor> final_results(topk + 1);
+    std::vector<Neighbor> candidates(num_candidates + 1);
     
     // Cosine table is computed at query time, the rest of the tables are precomputed at index time
-    int cosine_inv = 100;
-    std::vector<int> cosine_table(cosine_inv);
+    int angular_resolution = 100; // represents the resolution or number of discrete steps used when converting between angular distances and bit counts
+    std::vector<int> cosine_table(angular_resolution);
 
-    for (int i = 0; i < cosine_inv; i++) {
-        cosine_table[i] = m * acos(1.0f * i / cosine_inv) / PI + offset0;
+    for (int i = 0; i < angular_resolution; i++) {
+        cosine_table[i] = m * acos(1.0f * i / angular_resolution) / PI + offset0;
         if (cosine_table[i] > m) {
             cosine_table[i] = m;
         }
@@ -1226,12 +1214,12 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     
     // First half
     for (int j = 0; j < L; j++) {
-        table_1[j] = compare_short(query.data(), vec_1[j].data(), dim / 2);
+        table_1[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
     }
     
     // Second half
     for (int j = 0; j < L; j++) {
-        table_2[j] = compare_short(query.data() + dim / 2, vec_2[j].data(), dim / 2);
+        table_2[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
     }
     
     // Precompute distances to PQ centroids
@@ -1332,15 +1320,15 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
             nn.distance = distance;
             
             if (num1 == 0) {
-                retset2[0] = nn;
+                candidates[0] = nn;
             } else {
-                if (num1 >= n_exact) {
-                    if (distance >= retset2[n_exact - 1].distance) {
+                if (num1 >= num_candidates) {
+                    if (distance >= candidates[num_candidates - 1].distance) {
                         continue;
                     }
-                    InsertIntoPool(retset2.data(), n_exact, nn);
+                    InsertIntoPool(candidates.data(), num_candidates, nn);
                 } else {
-                    InsertIntoPool(retset2.data(), num1, nn);
+                    InsertIntoPool(candidates.data(), num1, nn);
                 }
             }
             num1++;
@@ -1353,8 +1341,8 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     }
     
     // Second-pass: Refine top candidates with exact distance calculation
-    for (int j = 0; j < std::min(n_exact, num1); j++) {
-        int point_id = retset2[j].id;
+    for (int j = 0; j < std::min(num_candidates, num1); j++) {
+        int point_id = candidates[j].id;
         
         // Skip if already processed
         if (visited_array[point_id] == visited_array_tag) {
@@ -1375,15 +1363,15 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
         nn.distance = distance;
         
         if (num == 0) {
-            retset[0] = nn;
+            final_results[0] = nn;
         } else {
             if (num >= topk) {
-                if (distance >= retset[topk - 1].distance) {
+                if (distance >= final_results[topk - 1].distance) {
                     continue;
                 }
-                InsertIntoPool(retset.data(), topk, nn);
+                InsertIntoPool(final_results.data(), topk, nn);
             } else {
-                InsertIntoPool(retset.data(), num, nn);
+                InsertIntoPool(final_results.data(), num, nn);
             }
         }
         num++;
@@ -1391,7 +1379,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     
     // Third-pass: Process remaining clusters with adaptive filtering
     points_examined = 0;
-    float cur_val = retset[num < topk ? num - 1 : topk - 1].distance;  // Current distance threshold
+    float cur_val = final_results[num < topk ? num - 1 : topk - 1].distance;  // Current distance threshold
     bool thres_flag = false;
     
     // Process remaining cells
@@ -1410,7 +1398,7 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
             }
         }
         
-        // Skip entire cell if distance exceeds threshold significantly
+        // Skip entire cell if distance exceeds threshold significantly -> why have this check this late why not around line 1270 
         if (std::abs(cell_dist_val) > cur_val + delta_flag * cell_dist_val) {
             continue;
         }
@@ -1530,19 +1518,19 @@ Label2:
                 }
                 
                 // Use the quantile table and bit threshold computation
-                int y_idx = static_cast<int>(cosine_inv * x / residual_NORM);
-                if (y_idx >= cosine_inv)
-                    y_idx = cosine_inv - 1;
+                int y_idx = static_cast<int>(angular_resolution * x / residual_NORM);
+                if (y_idx >= angular_resolution)
+                    y_idx = angular_resolution - 1;
                 
                 // Apply advanced bit threshold from precomputed table
                 // This is more nuanced than the basic cosine table lookup
-                float angle_ratio = static_cast<float>(y_idx) / cosine_inv;
-                int lookup_idx = static_cast<int>(angle_ratio * max_inv);
-                if (lookup_idx >= max_inv)
-                    lookup_idx = max_inv - 1;
+                float angle_ratio = static_cast<float>(y_idx) / angular_resolution;
+                int lookup_idx = static_cast<int>(angle_ratio * norm_dist_resolution);
+                if (lookup_idx >= norm_dist_resolution)
+                    lookup_idx = norm_dist_resolution - 1;
                 
-                // Get bit threshold from tab_inv using the lookup index
-                int bit_threshold = tab_inv[lookup_idx];
+                // Get bit threshold from distance_to_hamming_thresholds using the lookup index
+                int bit_threshold = distance_to_hamming_thresholds[lookup_idx];
                 
                 // Ensure we don't exceed the bounds
                 int y = std::min(bit_threshold, cosine_table[y_idx]);
@@ -1570,7 +1558,7 @@ Label2:
                 visited_array[point_id] = visited_array_tag;
                 
                 // Skip if worse than current kth result
-                if (distance >= retset[num < topk ? num - 1 : topk - 1].distance) {
+                if (distance >= final_results[num < topk ? num - 1 : topk - 1].distance) {
                     continue;
                 }
                 
@@ -1580,11 +1568,11 @@ Label2:
                 nn.distance = distance;
                 
                 if (num < topk) {
-                    InsertIntoPool(retset.data(), num, nn);
+                    InsertIntoPool(final_results.data(), num, nn);
                     num++;
                 } else {
-                    InsertIntoPool(retset.data(), topk, nn);
-                    cur_val = retset[topk - 1].distance;
+                    InsertIntoPool(final_results.data(), topk, nn);
+                    cur_val = final_results[topk - 1].distance;
                 }
             }
         }
@@ -1603,7 +1591,7 @@ Label2:
     results.reserve(std::min(topk, num));
     
     for (int i = 0; i < std::min(topk, num); i++) {
-        results.push_back(retset[i]);
+        results.push_back(final_results[i]);
     }
     
     return results;
