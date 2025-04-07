@@ -1183,12 +1183,12 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     
     // Cosine table is computed at query time, the rest of the tables are precomputed at index time
     int angular_resolution = 100; // represents the resolution or number of discrete steps used when converting between angular distances and bit counts
-    std::vector<int> cosine_table(angular_resolution);
+    std::vector<int> angular_table(angular_resolution);
 
     for (int i = 0; i < angular_resolution; i++) {
-        cosine_table[i] = num_hash_functions * acos(1.0f * i / angular_resolution) / PI + offset0;
-        if (cosine_table[i] > num_hash_functions) {
-            cosine_table[i] = num_hash_functions;
+        angular_table[i] = num_hash_functions * acos(1.0f * i / angular_resolution) / PI + offset0;
+        if (angular_table[i] > num_hash_functions) {
+            angular_table[i] = num_hash_functions;
         }
     }
 
@@ -1381,10 +1381,11 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
     
     // Third-pass: Process remaining clusters with adaptive filtering
     points_examined = 0;
-    float cur_val = final_results[count_final_results < topk ? count_final_results - 1 : topk - 1].distance;  // Current distance threshold
+    float cur_val = final_results[topk - 1].distance;  // Current distance threshold
     bool thres_flag = false;
     
-    // Process remaining cells
+    // Process remaining cells - 
+    // NOTE: Rather than considering each point and each level for each point as done in the pseudo code, we consider each centroid and then each element within each centroid. 
     for (const auto& cell_dist : cell_distances) {
         int cell_idx = cell_dist.first;
         float cell_dist_val = cell_dist.second;
@@ -1398,11 +1399,6 @@ std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, floa
             } else {
                 points_examined += cell_size;
             }
-        }
-        
-        // Skip entire cell if distance exceeds threshold significantly -> why have this check this late why not around line 1270 
-        if (std::abs(cell_dist_val) > cur_val + delta_flag * cell_dist_val) {
-            continue;
         }
         
         // Examine each point in this cell
@@ -1519,32 +1515,26 @@ Label2:
                     cur_obj += sizeof(unsigned long);
                 }
                 
-                // Use the quantile table and bit threshold computation
+                // Calculate angle-based threshold from distance gap
                 int y_idx = static_cast<int>(angular_resolution * x / residual_NORM);
                 if (y_idx >= angular_resolution)
                     y_idx = angular_resolution - 1;
-                
-                // Apply advanced bit threshold from precomputed table
-                // This is more nuanced than the basic cosine table lookup
-                float angle_ratio = static_cast<float>(y_idx) / angular_resolution;
-                int lookup_idx = static_cast<int>(angle_ratio * norm_dist_resolution);
-                if (lookup_idx >= norm_dist_resolution)
-                    lookup_idx = norm_dist_resolution - 1;
-                
-                // Get bit threshold from distance_to_hamming_thresholds using the lookup index
-                int bit_threshold = distance_to_hamming_thresholds[lookup_idx];
-                
-                // Ensure we don't exceed the bounds
-                int y = std::min(bit_threshold, cosine_table[y_idx]);
-                
-                // Check based on left/right side
+
+                // Get bit threshold directly from cosine table
+                int y = angular_table[y_idx];
+
+                // Apply collision testing based on whether point is on left/right side of hyperplane
                 if (is_left) {
+                    // For negative side
                     if (collision_ >= y) {
+                        // Too many bit differences
                         no_exact = true;
                     }
                 } else {
+                    // For positive side
                     collision_ = num_hash_functions - collision_;
                     if (collision_ >= y) {
+                        // Too many bit differences
                         no_exact = true;
                     }
                 }
@@ -1560,7 +1550,7 @@ Label2:
                 visited_array[point_id] = visited_array_tag;
                 
                 // Skip if worse than current kth result
-                if (distance >= final_results[count_final_results < topk ? count_final_results - 1 : topk - 1].distance) {
+                if (distance >= final_results[topk - 1].distance) {
                     continue;
                 }
                 
@@ -1569,13 +1559,9 @@ Label2:
                 nn.id = point_id;
                 nn.distance = distance;
                 
-                if (count_final_results < topk) {
-                    InsertIntoPool(final_results.data(), count_final_results, nn);
-                    count_final_results++;
-                } else {
-                    InsertIntoPool(final_results.data(), topk, nn);
-                    cur_val = final_results[topk - 1].distance;
-                }
+
+                InsertIntoPool(final_results.data(), topk, nn);
+                cur_val = final_results[topk - 1].distance;
             }
         }
         
