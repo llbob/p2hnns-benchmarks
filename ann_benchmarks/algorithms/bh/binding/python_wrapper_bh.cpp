@@ -30,13 +30,13 @@ namespace p2h
 		// const float *query,                 // input query
 		// MinK_List *list)                    // top-k results (return)
 
-		std::vector<int> search(int top_k, int cand, py::array_t<float> query)
+		std::tuple<std::vector<int>, int> search(int top_k, int cand, py::array_t<float> query)
 		{
 			py::buffer_info buf = query.request();
 			float* ptr = static_cast<float*>(buf.ptr);
 			
 			MinK_List list(top_k);
-			bh->nns(top_k, cand, ptr, &list);
+			int num_lin_scans = bh->nns(top_k, cand, ptr, &list);
 
 			std::vector<int> return_list;
 			for (int i = 0; i < list.size(); ++i)
@@ -44,7 +44,7 @@ namespace p2h
 				// we need to subtract 1 because the ids are 1-indexed in the C++ code
 				return_list.push_back(list.ith_id(i)-1);
 			}
-			return return_list;
+			return std::make_tuple(return_list, num_lin_scans);
 		}
 	};
 

@@ -101,7 +101,7 @@ def candidates(queries, attrs):
 
 
 def dist_computations(queries, attrs):
-    return attrs.get("dist_comps", 0) / (attrs["run_count"] * len(queries))
+    return attrs.get("dist_comps", 0)
 
 
 all_metrics = {

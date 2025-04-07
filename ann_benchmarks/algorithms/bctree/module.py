@@ -45,11 +45,11 @@ class BC_tree(BaseANN):
         q_to_pass = q_to_pass.astype(numpy.float32)
         q_to_pass = numpy.ascontiguousarray(q_to_pass)
 
-        results = self._tree.search(n, self._candidates, self._c, q_to_pass)
+        results, self._num_lin_scans = self._tree.search(n, self._candidates, self._c, q_to_pass)
         return results
     
     def get_additional(self):
-        return {"dist_comps": self._candidates}
+        return {"dist_comps": self._num_lin_scans}
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
