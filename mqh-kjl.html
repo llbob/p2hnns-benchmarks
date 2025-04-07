@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-euclidean-med (k = 10)</title>
+        <title>mqh-kjl</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-euclidean-med (k = 10)</h2>
+                                                        <h2>Plots for mqh-kjl</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,35 +57,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.79527 , y: 4445.768680123205, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.7988000000000001 , y: 4049.8217493073603, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 3583.5936960662957, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 2361.9639416079685, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.33425 , y: 61.17037597660565, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 12.00644673466888, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.72222 , y: 702.0656290049593, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.79439 , y: 552.0106729068568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 1015.3771524695685, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 613.4334798402913, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -158,30 +146,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.78625 , y: 282.43029522895813, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.87727 , y: 0.028569459915161133, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-kjl",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.79439 , y: 16.514629125595093, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.71512 , y: 23.13098382949829, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -254,30 +233,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.78625 , y: 477405600, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.87727 , y: 2080000, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-kjl",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.79439 , y: 2000000, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.71512 , y: 2000000, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -350,28 +320,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.8142099999999999 , y: 1.0, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 2.0, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-kjl",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
-                            data: [
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                             ]
                         },
@@ -445,35 +405,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.030086353470966887 , y: 4445.768680123205, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.029749727830382523 , y: 4049.8217493073603, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.0280883723346394 , y: 3583.5936960662957, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.02277548869061151 , y: 2361.9639416079685, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.5856930839462645 , y: 61.17037597660565, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.2666911433140187 , y: 12.00644673466888, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027279353351269017 , y: 702.0656290049593, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.025720038967092265 , y: 552.0106729068568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.029841889192914996 , y: 1015.3771524695685, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.028189292179903822 , y: 613.4334798402913, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -546,30 +494,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.78625 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.87727 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-kjl",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.79439 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.71512 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -642,35 +581,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.79527 , y: 467.86059951782227, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.7988000000000001 , y: 513.6028518676759, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 580.4229431152344, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 880.6230964660645, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.33425 , y: 7804522.898184928, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 39762438.50909535, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.72222 , y: 2848.7365245819096, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.79439 , y: 3623.118352890015, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 1969.711446762085, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 3260.337209701538, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -743,35 +670,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.58369 , y: 4445.768680123205, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.58834 , y: 4049.8217493073603, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.60307 , y: 3583.5936960662957, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.72218 , y: 2361.9639416079685, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.00701 , y: 61.17037597660565, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.03129 , y: 12.00644673466888, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.45946999999999993 , y: 702.0656290049593, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.51259 , y: 552.0106729068568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.44075 , y: 1015.3771524695685, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.48034999999999994 , y: 613.4334798402913, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -844,35 +759,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.60903 , y: 4445.768680123205, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.61375 , y: 4049.8217493073603, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.62903 , y: 3583.5936960662957, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.7431 , y: 2361.9639416079685, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.0076100000000000004 , y: 61.17037597660565, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.03407 , y: 12.00644673466888, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.4944 , y: 702.0656290049593, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.54938 , y: 552.0106729068568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.46582999999999997 , y: 1015.3771524695685, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.5067 , y: 613.4334798402913, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -945,35 +848,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.79527 , y: 0.22029876708984375, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.7988000000000001 , y: 0.24318695068359375, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 0.27370452880859375, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 0.4153251647949219, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.33425 , y: 16.364574432373047, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 90.07275104522705, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.72222 , y: 1.3537406921386719, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.79439 , y: 1.7659664154052734, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 0.9758472442626953, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 1.710653305053711, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,35 +937,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.79527 , y: 0.2505779266357422, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.7988000000000001 , y: 0.2677559852600096, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 0.3037452697753906, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 0.4608631134033203, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.33425 , y: 18.565189838409424, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 170.18553018569938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.72222 , y: 1.6694307327270503, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.79439 , y: 2.5217533111572266, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 1.0755300521850581, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 2.1893978118896484, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1147,35 +1026,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
-                                                                    { x: 0.79527 , y: 0.26988983154296875, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.7988000000000001 , y: 0.2868175506591797, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 0.339508056640625, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 0.48256158828735357, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.33425 , y: 24.689908027648954, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 210.14347314834595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 {
-                            label: "mqh-kjl",
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.72222 , y: 2.386865615844728, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
                                                                     { x: 0.79439 , y: 3.4194087982177788, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 1.1508488655090332, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 2.720527648925785, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1248,33 +1115,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
+                            data: [
+                                                                    { x: 0.33425 , y: 51.35344195365939, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.78625 , y: 302.2268238067653, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
-                            data: [
-                                                                    { x: 0.7988000000000001 , y: 0.40507578849792536, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.8142099999999999 , y: 0.49614977836608903, label: "B_tree(max_leaf_size=25, candidates=10000)" },
-                                                                    { x: 0.87727 , y: 0.5714924335479743, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-kjl",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.79439 , y: 10.272016048431686, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mqh-test",
-                            fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
-                            data: [
-                                                                    { x: 0.66174 , y: 1.5337481498718264, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0)" },
-                                                                    { x: 0.71512 , y: 4.252706527709968, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1)" },
                                                             ]
                         },
                                                 ]},

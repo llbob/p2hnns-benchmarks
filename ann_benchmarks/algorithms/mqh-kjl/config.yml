@@ -1,0 +1,21 @@
+float:
+  any:
+  - base_args: ['@metric']
+    constructor: MQH_kjl
+    disabled: false
+    docker_tag: ann-benchmarks-mqh-kjl
+    module: ann_benchmarks.algorithms.mqh-kjl
+    name: mqh-kjl
+    run_groups:
+      mqh-kjl:
+        args: [
+            [16], # [M2 - number of projections]
+            [4], # [level - number of levels]
+            [1], # [m_level - max m per level]
+            [64], # [m_num - number of buckets]
+        ]
+        query_args: [
+            [5], # [l0 - hash offset]
+            [0.3], # [delta - filtering parameter]
+            [0, 1] # flag - 0 for approximate, 1 for precise
+        ]
