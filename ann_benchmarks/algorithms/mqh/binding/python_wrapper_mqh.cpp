@@ -67,9 +67,50 @@ public:
         // Return a tuple with the results and the number of linear scans
         return py::make_tuple(py::cast(indices), py::cast(distances), py::cast(num_lin_scans));
     }
+    
+    py::tuple search_with_candidates(py::array_t<float> query, int k, float b, int l0, float delta, int flag, 
+                                    py::array_t<int> candidates) {
+        // Get query vector
+        py::buffer_info q_buf = query.request();
+        
+        if (q_buf.ndim != 1) {
+            throw std::runtime_error("Query must be a 1D array");
+        }
+        
+        float* query_ptr = static_cast<float*>(q_buf.ptr);
+        std::vector<float> query_vec(query_ptr, query_ptr + q_buf.shape[0]);
+        
+        // Get candidate IDs
+        py::buffer_info c_buf = candidates.request();
+        
+        if (c_buf.ndim != 1) {
+            throw std::runtime_error("Candidates must be a 1D array");
+        }
+        
+        int* candidates_ptr = static_cast<int*>(c_buf.ptr);
+        std::vector<int> candidate_ids(candidates_ptr, candidates_ptr + c_buf.shape[0]);
+        
+        // Perform the search with provided candidates
+        auto [neighbors, num_lin_scans] = mqh->query_with_candidates(
+            query_vec, k, b, l0, delta, flag, candidate_ids);
+        
+        // Convert results to numpy arrays
+        std::vector<int> indices;
+        std::vector<float> distances;
+        
+        indices.reserve(neighbors.size());
+        distances.reserve(neighbors.size());
+        
+        for (const auto& res : neighbors) {
+            indices.push_back(res.id);
+            distances.push_back(res.distance);
+        }
+        
+        return py::make_tuple(py::cast(indices), py::cast(distances), py::cast(num_lin_scans));
+    }
 };
 
-PYBIND11_MODULE(pymqhkjl, m) {
+PYBIND11_MODULE(pymqh, m) {
     py::class_<MQHWrapper>(m, "MQH")
         .def(py::init<int, int, int, int, int>(),
             py::arg("dim"), 
@@ -84,5 +125,13 @@ PYBIND11_MODULE(pymqhkjl, m) {
             py::arg("b") = 0.0,  // renamed from u to b for clarity
             py::arg("l0") = 3,
             py::arg("delta") = 0.5,
-            py::arg("flag") = 0);
+            py::arg("flag") = 0)
+        .def("search_with_candidates", &MQHWrapper::search_with_candidates,
+            py::arg("query"),
+            py::arg("k"),
+            py::arg("b") = 0.0,
+            py::arg("l0") = 3,
+            py::arg("delta") = 0.5,
+            py::arg("flag") = 0,
+            py::arg("candidates"));
 }

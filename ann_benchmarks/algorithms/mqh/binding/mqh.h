@@ -569,7 +569,9 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::tuple<std::vector<Neighbor>, int>query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag);
+        std::tuple<std::vector<Neighbor>, int> query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag);
+        std::tuple<std::vector<Neighbor>, int> query_with_candidates(
+            const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, const std::vector<int>& external_candidates);
 
         // Getters and setters
         int get_dim() const { return dim; }
@@ -1588,6 +1590,26 @@ Label2:
     }
     
     return std::make_tuple(results, num_lin_scans);
+}
+
+std::tuple<std::vector<Neighbor>, int> MQH::query_with_candidates(
+    const std::vector<float>& query_pt, 
+    int k, 
+    float u, 
+    int l0, 
+    float delta, 
+    int query_flag,
+    const std::vector<int>& external_candidates) {
+    
+
+    // Need to have this counter, it's prepped for it.
+    // int num_lin_scans = 0;
+
+    // ...
+
+    // ...
+    // Need to have below return - prepped for it!
+    // return std::make_tuple(results, num_lin_scans);
 }
 
 #endif // MQH_H

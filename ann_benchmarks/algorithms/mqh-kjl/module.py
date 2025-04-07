@@ -59,9 +59,13 @@ class MQH_kjl(BaseANN):
                 b = b / qnorm
         
         # Call the search method with the appropriate parameters
-        indices, _ = self._mqh.search(q, n, b, self._l0, self._delta, self._flag)
+        indices, distances, self._num_lin_scans = self._mqh.search(q, n, b, self._l0, self._delta, self._flag)
+
         
         return indices
+    
+    def get_additional(self):
+        return {"dist_comps": self._num_lin_scans}
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
