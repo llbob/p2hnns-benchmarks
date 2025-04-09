@@ -1070,6 +1070,31 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 zero_flag[n] = true;
             }
         }
+        
+        // Compute binary hash codes for residual vectors at this level
+        std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
+        for (int i = 0; i < n_pts; i++) {
+            if (zero_flag[i]) continue; // Skip vectors with negligible residuals
+            
+            for (int j = 0; j < m_level; j++) {
+                unsigned long code_num = 0;
+                for (int l = 0; l < m_num; l++) {
+                    float ssum = 0;
+                    for (int ll = 0; ll < dim; ll++) {
+                        ssum += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+                    }
+                    
+                    if (ssum >= 0) {
+                        code_num += 1;
+                    }
+                    
+                    if (l < m_num - 1) {
+                        code_num = code_num << 1;
+                    }
+                }
+                level_hash_codes[i][j] = code_num;
+            }
+        }
     }
     
     // Prepare compact index structure
@@ -1110,8 +1135,32 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // Store PQ codes and norms for each level
     for (int level_idx = 0; level_idx < level; level_idx++) {
+        // Compute binary hash codes for residual vectors at this level
+        std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
+        for (int i = 0; i < n_pts; i++) {
+            if (zero_flag[i]) continue; // Skip vectors with negligible residuals
+            
+            for (int j = 0; j < m_level; j++) {
+                unsigned long code_num = 0;
+                for (int l = 0; l < m_num; l++) {
+                    float ssum = 0;
+                    for (int ll = 0; ll < dim; ll++) {
+                        ssum += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+                    }
+                    
+                    if (ssum >= 0) {
+                        code_num += 1;
+                    }
+                    
+                    if (l < m_num - 1) {
+                        code_num = code_num << 1;
+                    }
+                }
+                level_hash_codes[i][j] = code_num;
+            }
+        }
+        
         for (int i = 0; i < num_nonempty_cells; i++) {
             for (int j = 0; j < count[i]; j++) {
                 int point_id = coarse_index[i][j];
@@ -1129,6 +1178,12 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 for (int l = 0; l < M2; l++) {
                     memcpy(cur_loc, &pq_id[point_id][l], 1);
                     cur_loc += 1;
+                }
+                
+                // Write hash codes for this level
+                for (int m = 0; m < m_level; m++) {
+                    memcpy(cur_loc, &level_hash_codes[point_id][m], sizeof(unsigned long));
+                    cur_loc += sizeof(unsigned long);
                 }
             }
         }

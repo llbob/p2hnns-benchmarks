@@ -1100,6 +1100,7 @@ for (int k = 0; k < level; k++)
 		output.write((char *)&(norm2[i]), sizeof(float));
 		output.write((char *)(pq_id[i]), M2);
 	}
+	//This very important point we aremissing
 	// Generate and write LSH codes for residual vectors at this level
 	for (int i = 0; i < n_pts; i++)
 	{
