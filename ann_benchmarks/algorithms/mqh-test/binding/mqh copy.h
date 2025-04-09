@@ -335,8 +335,8 @@ class MQH {
         std::vector<int> count;                     // Points per cell
         std::vector<std::vector<int>> coarse_index; // Point IDs in each cell
         
-        // Index data structure
-        std::vector<std::vector<char>> index_;
+        // Index data structure. Instead of the originial 2D vector, we now use one long index, ordered by point ids to get better acces to points.
+        std::vector<char> index_;
         int size_per_element_;
         
         // Original data
@@ -957,9 +957,6 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // Initialize product quantization centroids
-    int M2_dim = dim / M2;
-    pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
     
     // Storage for PQ codes
     std::vector<std::vector<unsigned char>> pq_id(n_pts, std::vector<unsigned char>(M2));
@@ -972,91 +969,97 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // // Compute binary hash codes for normalized residual vectors
-    // std::vector<std::vector<unsigned long>> bin_hash_codes(n_pts, std::vector<unsigned long>(m_level));
+    // Compute binary hash codes for normalized residual vectors
+    std::vector<std::vector<unsigned long>> bin_hash_codes(n_pts, std::vector<unsigned long>(m_level));
     
-    // for (int i = 0; i < n_pts; i++) {
-    //     for (int j = 0; j < m_level; j++) {
-    //         unsigned long code_num = 0;
-    //         for (int l = 0; l < m_num; l++) {
-    //             float ip_with_proj_vec = 0;
-    //             for (int ll = 0; ll < dim; ll++) {
-    //                 ip_with_proj_vec += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
-    //             }
+    for (int i = 0; i < n_pts; i++) {
+        for (int j = 0; j < m_level; j++) {
+            unsigned long code_num = 0;
+            for (int l = 0; l < m_num; l++) {
+                float ssum = 0;
+                for (int ll = 0; ll < dim; ll++) {
+                    ssum += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+                }
                 
-    //             if (ip_with_proj_vec >= 0) {
-    //                 code_num += 1;
-    //             }
+                if (ssum >= 0) {
+                    code_num += 1;
+                }
                 
-    //             if (l < m_num - 1) {
-    //                 code_num = code_num << 1;
-    //             }
-    //         }
-    //         bin_hash_codes[i][j] = code_num;
-    //     }
-    // }
+                if (l < m_num - 1) {
+                    code_num = code_num << 1;
+                }
+            }
+            bin_hash_codes[i][j] = code_num;
+        }
+    }
     
 // =======================================================================================================================
 // Prepare compact index structure by writing coarse level info
     
-size_per_element_ = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char) + 
-level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
-
-// REMEMBER :
-//    size_per_element_ = sizeof(int) +                                 // Point ID
-//    sizeof(float) +                                                   // Coarse level residual norm 
-//    sizeof(float) +                                                   // Additional float value (VAL) to be used later
-//    2 * sizeof(unsigned char) +                                       // Coarse centroid IDs (1 byte each)
-//    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later
-
-// Initialize index structure for each cluster
-coarse_index.resize(num_nonempty_cells);
-index_.resize(n_pts * size_per_element_);
-
-for (int i = 0; i < num_nonempty_cells; i++) {
-    // coarse_index[i].resize(count[i]);
-    // index_[i].resize(count[i] * size_per_element_);
+    size_per_element_ = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char) + sizeof(unsigned long) * m_level + 
+    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
     
-    // Store point IDs and residual norms
-    for (int j = 0; j < count[i]; j++) {
-        int point_id = cell_to_point_ids[i][j].id;
-        float residual_norm = cell_to_point_ids[i][j].val;
+    // REMEMBER :
+    //    size_per_element_ = sizeof(int) +                                 // Point ID
+    //    sizeof(float) +                                                   // Coarse level residual norm 
+    //    sizeof(float) +                                                   // Additional float value (VAL) to be used later
+    //    2 * sizeof(unsigned char) +                                       // Coarse centroid IDs (1 byte each)
+    //    sizeof(unsigned long) * m_level +                                 // Level 0 hash codes
+    //    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later
+    
+    // Initialize index structure for each cluster
+    coarse_index.resize(num_nonempty_cells);
+    index_.resize(n_pts * size_per_element_);
+    
+    for (int i = 0; i < num_nonempty_cells; i++) {
+        // coarse_index[i].resize(count[i]);
+        // index_[i].resize(count[i] * size_per_element_);
         
-        //starting point of data for this point
-        char* cur_loc = &index_[point_id * size_per_element_];
-        
-        //Store point ID
-        memcpy(cur_loc, &point_id, sizeof(int));
-        cur_loc += sizeof(int);
-        
-        //Store residual norm
-        memcpy(cur_loc, &residual_norm, sizeof(float));
-        cur_loc += sizeof(float);
-        
-        //space for VAL to be used later
-        float val_placeholder = 0.0f;
-        memcpy(cur_loc, &val_placeholder, sizeof(float));
-        cur_loc += sizeof(float);
-        
-        
-        // coarse_index[i][j] = cell_to_point_ids[i][j].id;
-        
-        // Write coarse centroid IDs
-        
-        unsigned char centroid_id_first = coarse_cell_mapping[i].id1;  // Get from cell mapping
-        unsigned char centroid_id_second = coarse_cell_mapping[i].id2;
-        
-        // wrtie first coarse centroid ID
-        memcpy(cur_loc, &centroid_id_first, sizeof(unsigned char));
-        cur_loc += sizeof(unsigned char);
-        // write second coarse centroid ID
-        memcpy(cur_loc, &centroid_id_second, sizeof(unsigned char));
+        // Store point IDs and residual norms
+        for (int j = 0; j < count[i]; j++) {
+            int point_id = cell_to_point_ids[i][j].id;
+            float residual_norm = cell_to_point_ids[i][j].val;
+            
+            //starting point of data for this point
+            char* cur_loc = &index_[point_id * size_per_element_];
+            
+            //Store point ID
+            memcpy(cur_loc, point_id, sizeof(int));
+            cur_loc += sizeof(int);
+            
+            //Store residual vector
+            memcpy(&index_[point_id * size_per_element_ + offset_in_index], residual_norm, sizeof(float));
+            cur_loc += sizeof(float); // Multiply by 2 to leave space for VAL, used later.
+            
+            
+            float val_placeholder = 0.0f;
+            memcpy(cur_loc, &val_placeholder, sizeof(float));
+            cur_loc += sizeof(float);
+            
+            
+            // coarse_index[i][j] = cell_to_point_ids[i][j].id;
+            
+            // Write coarse centroid IDs
+            
+            unsigned char centroid_id_first = coarse_cell_mapping[i].id1;  // Get from cell mapping
+            unsigned char centroid_id_second = coarse_cell_mapping[i].id2;
+            
+            memcpy(cur_loc, &centroid_id_first, sizeof(unsigned char));
+            cur_loc += sizeof(unsigned char);
+            memcpy(cur_loc, &centroid_id_second, sizeof(unsigned char));
+            cur_loc += sizeof(unsigned char);
+            
+            // Write point ID
+            
+            // Write residual norm
+        }
     }
-}
-
-// =======================================================================================================================
-// Begin multilevel product quantization while writing level data to index
-
+    
+    // =======================================================================================================================
+    // Begin multilevel product quantization while writing level data to index
+    
+    
+    
 // Initialize product quantization centroids
 int M2_dim = dim / M2;
 pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
@@ -1066,7 +1069,7 @@ int coarse_offset = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char);
 // Prepare for multilevel PQ
 std::vector<std::vector<float>> pq_training_samples(n_sample, std::vector<float>(M2_dim));
 
-//outer loop for the PQ and LSH-code calculations at each level
+//Begin the level-wise PQ and LSH-code calculations
 for (int k = 0; k < level; k++) {
     // For each subspace, train quantizers on residual subvectors
     for (int i = 0; i < M2; i++) {
@@ -1088,12 +1091,12 @@ for (int k = 0; k < level; k++) {
         // Run K-means for this subspace
         K_means(pq_training_samples, pq_codebooks[k * M2 + i], sample_count, M2_dim);
     }
-
-    // Assign each point to closest centroid in each subspace and write codeword to index_
+    
+    // Assign each point to closest centroid in each subspace
     for (int n = 0; n < n_pts; n++) {
         for (int i = 0; i < M2; i++) {
             float min_sum;
-            unsigned char min_id;
+            int min_id;
             
             // Find closest centroid from the L options
             for (int j = 0; j < L; j++) {
@@ -1111,18 +1114,17 @@ for (int k = 0; k < level; k++) {
                     min_id = j;
                 }
             }
+            
             pq_id[n][i] = min_id;
         }
     }
-
+    
     // Compute new residuals by subtracting quantized vectors
     for (int n = 0; n < n_pts; n++) {
-        int offset = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char); // offset after coarse info + codewords has been written
-        char* cur_loc = &index_[n * size_per_element_ + offset];
         for (int j = 0; j < M2; j++) {
-            int cb_index = k * M2 + j;
+            int temp_M = k * M2 + j;
             for (int l = 0; l < M2_dim; l++) {
-                residual_vec[n][j * M2_dim + l] -= pq_codebooks[cb_index][pq_id[n][j]][l];
+                residual_vec[n][j * M2_dim + l] -= pq_codebooks[temp_M][pq_id[n][j]][l];
             }
         }
         
@@ -1138,20 +1140,20 @@ for (int k = 0; k < level; k++) {
             zero_flag[n] = true;
         }
     }
-
+    
     // Generate and store level-specific hash codes
     std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
-
+    
     for (int i = 0; i < n_pts; i++) {
         for (int j = 0; j < m_level; j++) {
             unsigned long code_num = 0;
             for (int l = 0; l < m_num; l++) {
-                float ip_with_proj_vec = 0;
+                float ssum = 0;
                 for (int ll = 0; ll < dim; ll++) {
-                    ip_with_proj_vec += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+                    ssum += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
                 }
                 
-                if (ip_with_proj_vec >= 0) {
+                if (ssum >= 0) {
                     code_num += 1;
                 }
                 
@@ -1162,16 +1164,16 @@ for (int k = 0; k < level; k++) {
             level_hash_codes[i][j] = code_num;
         }
     }
-
-    // Store level hash codes and codewords in index
+    
+    // Store level hash codes in index
     for (int i = 0; i < num_nonempty_cells; i++) {
         for (int j = 0; j < count[i]; j++) {
             int point_id = coarse_index[i][j];
             
             // Position pointer for this level's data
             char* cur_loc = &index_[point_id * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
-                        2 * sizeof(unsigned char) + 
-                        k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+                           sizeof(unsigned long) * m_level + 
+                           k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
             
             // Write residual norm for this level
             memcpy(cur_loc, &norm2[point_id], sizeof(float));
@@ -1191,7 +1193,45 @@ for (int k = 0; k < level; k++) {
         }
     }
 }
-
+    
+    
+    // // Copy hash codes to index
+    // for (int i = 0; i < num_nonempty_cells; i++) {
+    //     for (int j = 0; j < count[i]; j++) {
+    //         int point_id = coarse_index[i][j];
+    //         char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float)];
+            
+    //         // Copy hash codes
+    //         for (int jj = 0; jj < m_level; jj++) {
+    //             memcpy(cur_loc, &bin_hash_codes[point_id][jj], sizeof(unsigned long));
+    //             cur_loc += sizeof(unsigned long);
+    //         }
+    //     }
+    // }
+    
+    // // Store PQ codes and norms for each level
+    // for (int level_idx = 0; level_idx < level; level_idx++) {
+    //     for (int i = 0; i < num_nonempty_cells; i++) {
+    //         for (int j = 0; j < count[i]; j++) {
+    //             int point_id = coarse_index[i][j];
+                
+    //             // Position pointer for this level's data
+    //             char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
+    //                            sizeof(unsigned long) * m_level + 
+    //                            level_idx * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+                
+    //             // Write residual norm for this level
+    //             memcpy(cur_loc, &norm2[point_id], sizeof(float));
+    //             cur_loc += sizeof(float);
+                
+    //             // Write PQ codes for this level
+    //             for (int l = 0; l < M2; l++) {
+    //                 memcpy(cur_loc, &pq_id[point_id][l], 1);
+    //                 cur_loc += 1;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 std::vector<Neighbor> MQH::query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag) {
