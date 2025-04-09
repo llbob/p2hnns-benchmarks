@@ -7,32 +7,75 @@ auto point_to_centroid_ID; // point_to_centroid_ID[l][point_id] stores the ID of
 auto centroid_ips; // centroid_ips[level][centroid_id] stores the distance from the centroid with id centroid_id.
 auto is_ip_calculated; // is_ip_calculated maintain a table of booleans, that keeps track of whether the inner product of a given centroid with q is already calculated or not.
 
-float cur_val = 1.0; // current kth nearest neighbour's distance to H
-auto result_set = Set(); // result set containing k elements that are updated throughout the pruning process.
 
 
-// Precompute inner products of centroids and store in level * M2 * L vector
-std::vector<std::vector<std::vector<float>>> inner_products(
+std::vector<Neighbor> MQH::query_with_candidates(
+    const std::vector<float>& query_pt, 
+    int k, 
+    float u, 
+    int l0, 
+    float delta, 
+    int query_flag,
+    const std::vector<int>& external_candidates)
+
+//precompute inner products of coarse centroids with q
+std::vector<float> first_half_ips(L);
+std::vector<float> second_half_ips(L);
+for(int i = 0; i < L; i++) {
+    
+}
+
+
+// Precompute inner products of sub space centroids at remaining levels
+std::vector<std::vector<std::vector<float>>> level_ip(
     level, std::vector<std::vector<float>>(M2, std::vector<float>(L)));
-
+    
 for (int j = 0; j < level; j++) {
     for (int l = 0; l < M2; l++) {
         for (int k = 0; k < L; k++) {
-            inner_products[j][l][k] = compare_short(query.data() + l * (dim / M2), 
-                                            pq_codebooks[j * M2 + l][k].data(), dim / M2);
+            level_ip[j][l][k] = compare_short(query.data() + l * (dim / M2), 
+            pq_codebooks[j * M2 + l][k].data(), dim / M2);
         }
     }
 }
 
+std::vector<Neighbor> candidate_set(k); // result set containing k elements that are updated throughout the pruning process.
+float cur_val = 0.0; // current kth nearest neighbour's distance to H
 
-for(int point_ID : initial_candidates) {
+//populate running candidate set and set initial cur_val.
+for(int i = 0; i < k; i++)
+{
+    int point_id = external_candidates.pop_back();
+    float distance = compare_short(data[point_id].data(), query.data(), dim) - u;
+    if (distance < 0) {
+        distance = -distance;
+    }
+
+    //Create neighbor instance
+    Neighbor nb;
+    nb.id = point_id;
+    nb.distance = distance;
+
+    //add to candidate set at right location in PQ
+    InsertIntoPool(candidate_set.data(), k, nn);
+
+    //update current kth nearest neighbor distance if needed
+    if (distance > cur_val)
+    {
+        cur_val = distance;
+    }
+}
+
+
+
+for(int point_id : external_candidates) {
     float ip = 0.0;
     for(int l = 0; l < level; l++){
         // first find the inner product of the centroid and q at this level
-        int centroid_id = point_to_centroid_IDs[l][point_ID];
+        int centroid_id = point_to_centroid_IDs[l][point_id];
         for(int i = 0; i < M2; i++)
         {
-            ip += inner_products[l][i][]
+            ip += level_ip[l][i][]
         }
         if(is_ip_calculated[l][centroid_id])
         {
