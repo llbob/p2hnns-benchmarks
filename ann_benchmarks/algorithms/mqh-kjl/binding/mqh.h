@@ -1130,6 +1130,28 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                     memcpy(cur_loc, &pq_id[point_id][l], 1);
                     cur_loc += 1;
                 }
+
+                //Generate and write binary hash codes for this level
+                for (int l = 0; l < m_level; l++) {
+                    unsigned long code_num = 0;
+                    for (int b = 0; b < m_num; b++) {
+                        float ssum = 0;
+                        for (int ll = 0; ll < dim; ll++) {
+                            ssum += residual_vec[point_id][ll] * proj_array[l * m_num + b][ll];
+                        }
+                        
+                        if (ssum >= 0) {
+                            code_num += 1;
+                        }
+                        
+                        if (b < m_num - 1) {
+                            code_num = code_num << 1;
+                        }
+                    }
+                    memcpy(cur_loc, &code_num, sizeof(unsigned long));
+                    cur_loc += sizeof(unsigned long);
+                }
+
             }
         }
     }
