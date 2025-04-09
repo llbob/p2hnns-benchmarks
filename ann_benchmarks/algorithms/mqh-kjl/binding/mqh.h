@@ -1000,6 +1000,12 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     std::vector<std::vector<float>> pq_training_samples(n_sample, std::vector<float>(M2_dim));
     
     // Begin multilevel product quantization
+    // Initialize storage for hash codes at each level
+    std::vector<std::vector<std::vector<unsigned long>>> level_hash_codes_array(level, 
+                                            std::vector<std::vector<unsigned long>>(n_pts, 
+                                            std::vector<unsigned long>(m_level)));
+
+    // Begin multilevel product quantization
     for (int k = 0; k < level; k++) {
         // For each subspace, train quantizers on residual subvectors
         for (int i = 0; i < M2; i++) {
@@ -1068,6 +1074,39 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             // Flag vectors with negligible residuals
             if (norm2[n] < min_float) {
                 zero_flag[n] = true;
+                residual_vec[n][0] = 1;  // Set first dimension to 1
+                for (int j = 1; j < dim; j++) {
+                    residual_vec[n][j] = 0;  // Set other dimensions to 0
+                }
+            } else {
+                // Create normalized vector for hashing
+                std::vector<float> normalized_residual(dim);
+                for (int j = 0; j < dim; j++) {
+                    normalized_residual[j] = residual_vec[n][j] / norm2[n];
+                }
+                
+                // Generate hash codes for this point at this level
+                for (int j = 0; j < m_level; j++) {
+                    unsigned long code_num = 0;
+                    for (int l = 0; l < m_num; l++) {
+                        float ssum = 0;
+                        // Compute dot product with random projection vector
+                        for (int ll = 0; ll < dim; ll++) {
+                            ssum += normalized_residual[ll] * proj_array[j * m_num + l][ll];
+                        }
+                        
+                        // Set bit if projection is positive
+                        if (ssum >= 0) {
+                            code_num += 1;
+                        }
+                        
+                        // Shift bits for next projection
+                        if (l < m_num - 1) {
+                            code_num = code_num << 1;
+                        }
+                    }
+                    level_hash_codes_array[k][n][j] = code_num;
+                }
             }
         }
         
@@ -1136,6 +1175,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
     
     for (int level_idx = 0; level_idx < level; level_idx++) {
+<<<<<<< Updated upstream
         // Compute binary hash codes for residual vectors at this level
         std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
         for (int i = 0; i < n_pts; i++) {
@@ -1160,6 +1200,10 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 level_hash_codes[i][j] = code_num;
             }
         }
+=======
+        // For each level, get the hash codes we computed earlier
+        std::vector<std::vector<unsigned long>> &level_hash_codes = level_hash_codes_array[level_idx];
+>>>>>>> Stashed changes
         
         for (int i = 0; i < num_nonempty_cells; i++) {
             for (int j = 0; j < count[i]; j++) {
@@ -1167,8 +1211,8 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 
                 // Position pointer for this level's data
                 char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
-                               sizeof(unsigned long) * m_level + 
-                               level_idx * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+                            sizeof(unsigned long) * m_level + 
+                            level_idx * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
                 
                 // Write residual norm for this level
                 memcpy(cur_loc, &norm2[point_id], sizeof(float));
@@ -1180,9 +1224,15 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                     cur_loc += 1;
                 }
                 
+<<<<<<< Updated upstream
                 // Write hash codes for this level
                 for (int m = 0; m < m_level; m++) {
                     memcpy(cur_loc, &level_hash_codes[point_id][m], sizeof(unsigned long));
+=======
+                // Write LSH hash codes for this level
+                for (int l = 0; l < m_level; l++) {
+                    memcpy(cur_loc, &level_hash_codes[point_id][l], sizeof(unsigned long));
+>>>>>>> Stashed changes
                     cur_loc += sizeof(unsigned long);
                 }
             }
