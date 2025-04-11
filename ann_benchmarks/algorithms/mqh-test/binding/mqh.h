@@ -957,10 +957,6 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // Initialize product quantization centroids
-    int M2_dim = dim / M2;
-    pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
-    
     // Storage for PQ codes
     std::vector<std::vector<unsigned char>> pq_id(n_pts, std::vector<unsigned char>(M2));
     
@@ -1007,7 +1003,7 @@ level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
 //    sizeof(float) +                                                   // Coarse level residual norm 
 //    sizeof(float) +                                                   // Additional float value (VAL) to be used later
 //    2 * sizeof(unsigned char) +                                       // Coarse centroid IDs (1 byte each)
-//    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later
+//    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later. M2 = PQ_IDs, residual norm = sizeof(float), hashcode = sizeof(unsigned long)
 
 // Initialize index structure for each cluster
 coarse_index.resize(num_nonempty_cells);
@@ -1029,7 +1025,7 @@ for (int i = 0; i < num_nonempty_cells; i++) {
         memcpy(cur_loc, &point_id, sizeof(int));
         cur_loc += sizeof(int);
         
-        //Store residual norm
+        //store residual norm
         memcpy(cur_loc, &residual_norm, sizeof(float));
         cur_loc += sizeof(float);
         
@@ -1065,13 +1061,14 @@ int coarse_offset = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char);
 
 // Prepare for multilevel PQ
 std::vector<std::vector<float>> pq_training_samples(n_sample, std::vector<float>(M2_dim));
+std::vector<float> relative_norms(n_pts);
 
 //outer loop for the PQ and LSH-code calculations at each level
 for (int k = 0; k < level; k++) {
-    // For each subspace, train quantizers on residual subvectors
+    // For each subspace, train quantizers, on residual subvectors
     for (int i = 0; i < M2; i++) {
         int sample_count = 0;
-        // Collect training samples for this subspace
+        // get training samples for this subspace
         for (int j = 0; j < n_pts; j++) {
             if (zero_flag[j] == true) {
                 continue;
@@ -1085,17 +1082,17 @@ for (int k = 0; k < level; k++) {
             }
         }
         
-        // Run K-means for this subspace
+        // K-means for this subspace
         K_means(pq_training_samples, pq_codebooks[k * M2 + i], sample_count, M2_dim);
     }
 
-    // Assign each point to closest centroid in each subspace and write codeword to index_
+    // Assign each point to closest centroid in each subspace
     for (int n = 0; n < n_pts; n++) {
         for (int i = 0; i < M2; i++) {
             float min_sum;
             unsigned char min_id;
             
-            // Find closest centroid from the L options
+            // find closest centroid 
             for (int j = 0; j < L; j++) {
                 float sum = 0;
                 for (int l = 0; l < M2_dim; l++) {
@@ -1115,31 +1112,46 @@ for (int k = 0; k < level; k++) {
         }
     }
 
-    // Compute new residuals by subtracting quantized vectors
     for (int n = 0; n < n_pts; n++) {
-        int offset = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char); // offset after coarse info + codewords has been written
-        char* cur_loc = &index_[n * size_per_element_ + offset];
-        for (int j = 0; j < M2; j++) {
-            int cb_index = k * M2 + j;
+        //reconstruct vector from PQ codes
+        std::vector<float> reconstructed(dim, 0.0f);
+        for (int i = 0; i < M2; i++) {
             for (int l = 0; l < M2_dim; l++) {
-                residual_vec[n][j * M2_dim + l] -= pq_codebooks[cb_index][pq_id[n][j]][l];
+                reconstructed[i * M2_dim + l] = pq_codebooks[k * M2 + i][pq_id[n][i]][l];
             }
         }
         
-        // Calculate norm of new residual vector
+        // norm of reconstructed vector
+        float centroid_norm = calc_norm(reconstructed.data(), dim);
+        
+        // relative norm 
+        relative_norms[n] = norm2[n] / centroid_norm;
+        
+        
+        // reconstructed vector is scaled by original residual norm
+        for (int j = 0; j < dim; j++) {
+            reconstructed[j] *= relative_norms[n];
+        }
+        
+        // new residual
+        for (int j = 0; j < dim; j++) {
+            residual_vec[n][j] -= reconstructed[j];
+        }
+        
+        // norm of new residual
         float sum = 0;
         for (int j = 0; j < dim; j++) {
             sum += residual_vec[n][j] * residual_vec[n][j];
         }
         norm2[n] = std::sqrt(sum);
-        
-        // Flag vectors with negligible residuals
-        if (norm2[n] < min_float) {
-            zero_flag[n] = true;
+
+        // normalize new residual for next level's NERQ quantization
+        for(int j = 0; j < dim; j++) {
+            residual_vec[n][j] /= norm2[n];
         }
     }
 
-    // Generate and store level-specific hash codes
+    // generate hash codes for this level
     std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
 
     for (int i = 0; i < n_pts; i++) {
@@ -1163,27 +1175,27 @@ for (int k = 0; k < level; k++) {
         }
     }
 
-    // Store level hash codes and codewords in index
+    // store this leveløs hash codes and codewords in index
     for (int i = 0; i < num_nonempty_cells; i++) {
         for (int j = 0; j < count[i]; j++) {
             int point_id = coarse_index[i][j];
             
-            // Position pointer for this level's data
+            // position pointer for this level's data
             char* cur_loc = &index_[point_id * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
                         2 * sizeof(unsigned char) + 
                         k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
             
-            // Write residual norm for this level
-            memcpy(cur_loc, &norm2[point_id], sizeof(float));
-            cur_loc += sizeof(float);
-            
-            // Write PQ codes for this level
+            // write PQ codes 
             for (int l = 0; l < M2; l++) {
                 memcpy(cur_loc, &pq_id[point_id][l], 1);
                 cur_loc += 1;
             }
-            
-            // Write hash codes for this level
+                        
+            // write relative residual norm 
+            memcpy(cur_loc, &relative_norms[point_id], sizeof(float));
+            cur_loc += sizeof(float);
+
+            // write hash codes 
             for (int l = 0; l < m_level; l++) {
                 memcpy(cur_loc, &level_hash_codes[point_id][l], sizeof(unsigned long));
                 cur_loc += sizeof(unsigned long);
