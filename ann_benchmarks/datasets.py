@@ -6,8 +6,10 @@ from urllib.request import build_opener, install_opener, urlopen, urlretrieve
 import traceback
 import time, gdown
 import h5py
-import numpy
+import numpy as np
+import zipfile
 from typing import Any, Callable, Dict, Tuple
+from ann_benchmarks import generate_queries
 
 # Needed for Cloudflare's firewall
 opener = build_opener()
@@ -75,43 +77,24 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     dimension = int(hdf5_file.attrs["dimension"]) if "dimension" in hdf5_file.attrs else len(hdf5_file["points"][0])
     return hdf5_file, dimension
 
-
-def construct_p2h_dataset(
-    X: numpy.ndarray, test_size: int = 10000, dimension: int = None
-) -> Tuple[numpy.ndarray, numpy.ndarray]:
+def create_hyperplanes_rpd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
     """
-    Construct a dataset of points and hyperplanes.
+    random point distance (rpd) ?
+    Create random hyperplanes and biases using np.
+    This method generates hyperplanes by randomly selecting three points from the dataset and using them to:
+
+    Create normal vectors by taking the difference between two random points
+    Calculate biases using the dot product of the normal vector with a third random point that's been normalized to avoid that it 
 
     Args:
-        X (numpy.ndarray): Input data array
-        test_size (int, optional): The number of samples to include in the test set.
-            Defaults to 10000.
-        dimension (int, optional): The dimensionality of the data. If not provided,
-            it will be inferred from the second dimension of X. Defaults to None.
-
-    Returns:
-        Tuple[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]: A tuple containing:
-            - points: The input data points
-            - hyperplanes: A tuple of (normals, biases) defining the hyperplanes
-    """
-    points = X
-    hyperplanes = create_hyperplanes(points)
-    return points, hyperplanes
-
-
-def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[numpy.ndarray, numpy.ndarray]:
-    """
-    Create random hyperplanes and biases using numpy.
-
-    Args:
-        X (numpy.ndarray): Input data array
+        X (np.ndarray): Input data array
         n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
 
     Returns:
-        Tuple[numpy.ndarray, numpy.ndarray]: Hyperplane normals and their biases
+        Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
     """
     # Generate all random indices at once
-    idx = numpy.random.randint(X.shape[0], size=(n_hyperplanes, 3))
+    idx = np.random.randint(X.shape[0], size=(n_hyperplanes, 3))
 
     # Get all random points at once using fancy indexing
     rand_points = X[idx]  # Shape: (n_hyperplanes, 3, dimension)
@@ -120,31 +103,112 @@ def create_hyperplanes(X: numpy.ndarray, n_hyperplanes: int = 10000) -> Tuple[nu
     normalvectors = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
     
     # Check for zero norm vectors to avoid division by zero in distance calculations later on
-    norms = numpy.linalg.norm(normalvectors, axis=1)
-    # `numpy.finfo(numpy.float32).eps` gives the machine epsilon for float32, which is approx 1.19e-07... Should be the smallest representable positive number so that 1.0 + eps != 1.0 in float32 precision
-    zero_indices = numpy.where(norms < numpy.finfo(numpy.float32).eps)[0]
+    norms = np.linalg.norm(normalvectors, axis=1)
+    # `np.finfo(np.float32).eps` gives the machine epsilon for float32, which is approx 1.19e-07... Should be the smallest representable positive number so that 1.0 + eps != 1.0 in float32 precision
+    zero_indices = np.where(norms < np.finfo(np.float32).eps)[0]
     
     # Replace zero norm vectors if any
     if len(zero_indices) > 0:
         for i in zero_indices:
             # Get new random points until we get a non-zero normal vector
-            while norms[i] < numpy.finfo(numpy.float32).eps:
-                new_idx = numpy.random.randint(X.shape[0], size=2)
+            while norms[i] < np.finfo(np.float32).eps:
+                new_idx = np.random.randint(X.shape[0], size=2)
                 normalvectors[i] = X[new_idx[0]] - X[new_idx[1]]
-                norms[i] = numpy.linalg.norm(normalvectors[i])
+                norms[i] = np.linalg.norm(normalvectors[i])
                 
             # Update the third point for bias calculation
-            rand_points[i, 2] = X[numpy.random.randint(X.shape[0])]
+            rand_points[i, 2] = X[np.random.randint(X.shape[0])]
 
     # Calculate biases using dot product
-    biases = numpy.sum(normalvectors * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
+    biases = np.sum(normalvectors * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
 
     return normalvectors, biases
 
+def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    random point sample distance (rpsd) ?
+    This method generates hyperplanes by randomly selecting five points from the dataset and using them to:
+
+    create normal vectors by taking the difference between the mean of two 5 point samples of points. 
+    calculate biases using randomly generated factors that are 
+
+    Args:
+        X (np.ndarray): Input data array
+        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
+
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
+    """
+    # Generate all random indices at once
+    idx = np.random.randint(X.shape[0], size=(n_hyperplanes, 10))
+
+    # Get all random points at once using fancy indexing
+    rand_points = X[idx]  # Shape: (n_hyperplanes, 10, dimension)
+
+    # Calculate the mean of the first two samples
+    first_sample_mean = np.mean(rand_points[:, :5], axis=1)  # Shape: (n_hyperplanes, dimension)
+    second_sample_mean = np.mean(rand_points[:, 5:10], axis=1)  # Shape: (n_hyperplanes, dimension)
+
+    # Calculate hyperplane normals (rand_1 - rand_2)
+    normalvectors = first_sample_mean - second_sample_mean
+    
+    # Check for zero norm vectors to avoid division by zero in distance calculations later on
+    norms = np.linalg.norm(normalvectors, axis=1)
+    # `np.finfo(np.float32).eps` gives the machine epsilon for float32
+    zero_indices = np.where(norms < np.finfo(np.float32).eps)[0]
+    
+    # Replace zero norm vectors if any
+    if len(zero_indices) > 0:
+        for i in zero_indices:
+            # Get new random points until we get a non-zero normal vector
+            while norms[i] < np.finfo(np.float32).eps:
+                new_idx = np.random.randint(X.shape[0], size=2)
+                normalvectors[i] = X[new_idx[0]] - X[new_idx[1]]
+                norms[i] = np.linalg.norm(normalvectors[i])
+                
+    # Normalize vectors to unit length
+    unit_normals = normalvectors / norms[:, np.newaxis]
+    
+    # generate random factors between -0.2 and 1.2
+    # this determines where the hyperplane will be positioned relative to the two sample means
+    factors = np.random.uniform(-0.2, 1.2, n_hyperplanes)
+    
+    # now calculate the points through which the hyperplanes will pass
+    # when factor = 0.0: point is at second_sample_mean
+    # factor = 1.0: point is at first_sample_mean
+    # factor = 0.5 point is halfway between
+    points_between_samples = second_sample_mean + factors[:, np.newaxis] * normalvectors
+    
+    # For a point p to lie on the hyperplane, we need: unit_normal · p + bias = 0.
+    # and solving for bias: bias = -(unit_normal · p)
+    # What we effectively get is that the hyperplanes passes through these points between the samples..
+    biases = -np.sum(unit_normals * points_between_samples, axis=1)
+    
+    return unit_normals, biases
+
+def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    (bctree) method to create hyperplanes and biases.
+    
+    The implementation follows a similar approach to Qiang et als implementation in https://github.com/HuangQiang/BC-Tree
+    
+    Args:
+        X (np.ndarray): Input data array
+        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
+        
+    Returns:
+        Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
+    """
+    from ann_benchmarks.generate_queries.module import generate_hyperplanes
+    
+    # generate the hyperplanes using the C++ implementation
+    normals, biases = generate_hyperplanes(X, n_hyperplanes)
+    
+    return normals, biases
 
 def write_output(
-    points: numpy.ndarray,
-    hyperplanes: Tuple[numpy.ndarray, numpy.ndarray],
+    points: np.ndarray,
+    hyperplanes: Tuple[np.ndarray, np.ndarray],
     fn: str,
     distance: str,
     point_type: str = "float",
@@ -156,8 +220,8 @@ def write_output(
     brute-force approach.
 
     Args:
-        points (numpy.ndarray): The points.
-        hyperplanes (Tuple[numpy.ndarray, numpy.ndarray]): A tuple of (hyperplane normals, hyperplane biases) defining the hyperplanes.
+        points (np.ndarray): The points.
+        hyperplanes (Tuple[np.ndarray, np.ndarray]): A tuple of (hyperplane normals, hyperplane biases) defining the hyperplanes.
         filename (str): The name of the HDF5 file to which data should be written.
         distance_metric (str): The distance metric to use for computing nearest neighbors.
         point_type (str, optional): The type of the data points. Defaults to "float".
@@ -200,14 +264,7 @@ def write_output(
             distances_ds[i] = [dist for _, dist in res]
 
 
-"""
-param: train and test are arrays of arrays of indices.
-"""
-
-
-def glove(out_fn: str, d: int, distance: str) -> None:
-    import zipfile
-
+def glove(out_fn: str, d: int, distance: str, hyperplane_method:str = "rpd") -> None:
     url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
     fn = os.path.join("data", "glove.twitter.27B.zip")
     download(url, fn)
@@ -217,15 +274,21 @@ def glove(out_fn: str, d: int, distance: str) -> None:
         X = []
         for line in z.open(z_fn):
             v = [float(x) for x in line.strip().split()[1:]]
-            X.append(numpy.array(v))
-        points, hyperplanes = construct_p2h_dataset(numpy.array(X))
+            X.append(np.array(v))
+        points = np.array(X)
+        if hyperplane_method == "rpd":
+            hyperplanes = create_hyperplanes_rpd(points)
+        elif hyperplane_method == "bctree":
+            hyperplanes = create_hyperplanes_bctree(points)
+        elif hyperplane_method == "rpsd": # Expanded mean version of rpd
+            hyperplanes = create_hyperplanes_rpsd(points)
+        else:
+            raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
         write_output(points, hyperplanes, out_fn, distance)
 
 
-def _load_texmex_vectors(f: Any, n: int, k: int) -> numpy.ndarray:
-    import struct
-
-    v = numpy.zeros((n, k))
+def _load_texmex_vectors(f: Any, n: int, k: int) -> np.ndarray:
+    v = np.zeros((n, k))
     for i in range(n):
         f.read(4)  # ignore vec length
         v[i] = struct.unpack("f" * k, f.read(k * 4))
@@ -233,9 +296,7 @@ def _load_texmex_vectors(f: Any, n: int, k: int) -> numpy.ndarray:
     return v
 
 
-def _get_irisa_matrix(t: tarfile.TarFile, fn: str) -> numpy.ndarray:
-    import struct
-
+def _get_irisa_matrix(t: tarfile.TarFile, fn: str) -> np.ndarray:
     m = t.getmember(fn)
     f = t.extractfile(m)
     (k,) = struct.unpack("i", f.read(4))
@@ -253,15 +314,13 @@ def sift(out_fn: str) -> None:
     with tarfile.open(fn, "r:gz") as t:
         points = _get_irisa_matrix(t, "sift/sift_base.fvecs")
         # test = _get_irisa_matrix(t, "sift/sift_query.fvecs")
-        hyperplanes = create_hyperplanes(points)
+        hyperplanes = create_hyperplanes_rpd(points)
         write_output(points, hyperplanes, out_fn, "euclidean")
 
 
 def cifar10(out_fn: str, distance: str) -> None:
     import tarfile
     import pickle
-    import numpy as np
-
     url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
     fn = os.path.join("data", "cifar-10-python.tar.gz")
     download(url, fn)
@@ -277,11 +336,12 @@ def cifar10(out_fn: str, distance: str) -> None:
             X.append(batch_data[b"data"])
 
         # concat the batches
-        X = numpy.vstack(X).astype(numpy.float32)
+        X = np.vstack(X).astype(np.float32)
         
         # NOTE: cifar10 is in rgb data range [0, 255] so can simply be normalized to [0, 1] by dividing by 255..
 
-        points, hyperplanes = construct_p2h_dataset(X)
+        points = np.array(X)
+        hyperplanes = create_hyperplanes_rpd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
 def deep_download(src, dst=None, max_size=None): # credit to big-ann benchmarks for this function allowing us to download just a part of the file easily
@@ -324,9 +384,6 @@ def deep_download(src, dst=None, max_size=None): # credit to big-ann benchmarks 
 
 
 def deepm(out_fn: str, distance: str, count:int) -> None: 
-    import struct
-    import numpy as np
-    
     if count == 1_000_000:
         name = "deep1m"
     elif count == 10_000_000:
@@ -358,12 +415,13 @@ def deepm(out_fn: str, distance: str, count:int) -> None:
         count = count
         
         # read into a numpy array
-        vectors = np.fromfile(f, dtype=np.float32, count=count*dim)
-        vectors = vectors.reshape(count, dim)
+        X = np.fromfile(f, dtype=np.float32, count=count*dim)
+        X = points.reshape(count, dim)
         
         print(f"Loaded {count} vectors of dimension {dim}")
     
-    points, hyperplanes = construct_p2h_dataset(vectors)
+    points = np.array(X)
+    hyperplanes = create_hyperplanes_rpd(points)
     write_output(points, hyperplanes, out_fn, distance)
 
 
@@ -375,9 +433,6 @@ def music100(out_fn: str, distance: str) -> None:
         out_fn (str): The output file name
         distance (str): The distance metric to use
     """
-    import gdown
-    import numpy as np
-
     # google drive shared link from folder p2hnns-benchmarks (https://drive.google.com/drive/folders/1LjyGXs881JhKIsJc4jou5-qo_WhQhaLQ?usp=sharing) last checked 20/03/2025
     url = "https://drive.google.com/file/d/1n_uwPyWw8JeODAV8-GEr_Ib6eTSW_4AP/view?usp=drive_link"
 
@@ -404,9 +459,10 @@ def music100(out_fn: str, distance: str) -> None:
     databaseSize = 10**6
     dimension = 100
     try:
-        data = np.fromfile(bin_fn, dtype=np.float32).reshape(databaseSize, dimension)
+        X = np.fromfile(bin_fn, dtype=np.float32).reshape(databaseSize, dimension)
 
-        points, hyperplanes = construct_p2h_dataset(data)
+        points = np.array(X)
+        hyperplanes = create_hyperplanes_rpd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
     except Exception as e:
@@ -419,16 +475,14 @@ def gist(out_fn: str, distance: str) -> None:
     fn = os.path.join("data", "gist.tar.tz")
     download(url, fn)
     with tarfile.open(fn, "r:gz") as t:
-        points = _get_irisa_matrix(t, "gist/gist_base.fvecs")
-        # test = _get_irisa_matrix(t, "gist/gist_query.fvecs")
-        hyperplanes = create_hyperplanes(points)
+        X = _get_irisa_matrix(t, "gist/gist_base.fvecs")
+        points = np.array(X)
+        hyperplanes = create_hyperplanes_rpd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
 def trevi(out_fn: str, distance: str) -> None:
-    import zipfile
-    from PIL import Image
-    import numpy as np
     
+    from PIL import Image
     # url for the trevi dataset
     url = "https://phototour.cs.washington.edu/patches/trevi.zip"
     
@@ -479,91 +533,15 @@ def trevi(out_fn: str, distance: str) -> None:
     
     # make ds by convert to numpy array
     points = np.array(patch_vectors)
-    
-    # create hyperplanes
-    print(f"Creating hyperplanes from {len(points)} points...")
-    hyperplanes = create_hyperplanes(points)
-    
-    # write the processed data to output file
-    print(f"Writing output to {out_fn}")
+    hyperplanes = create_hyperplanes_rpd(points)
     write_output(points, hyperplanes, out_fn, distance)
     
     # clean up temp directory
     import shutil
     shutil.rmtree(extract_dir)
-    
-    print(f"Trevi dataset processing complete. Output saved to {out_fn}")
 
 
-def glove_bcq(out_fn: str, d: int, distance: str) -> None:
-    """
-    The point of this function is to generate a dataset where the queries are taken directly from the dataets provided for the BC-Tree implementation for the paper 'Lightweight-Yet-Efficient: Revitalizing Ball-Tree for Point-to-Hyperplane Nearest Neighbor Search' by Huang et al. 2023.
-    Link to their drive: https://drive.google.com/drive/folders/1C9JWcMyTAUYYxM55FuMrPQ1dPJQ5vhsB, last accessed 27/03/2025 by CPS.
-    """
-    import zipfile
-
-    url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
-    fn = os.path.join("data", "glove.twitter.27B.zip")
-    download(url, fn)
-    with zipfile.ZipFile(fn) as z:
-        print("preparing %s" % out_fn)
-        z_fn = "glove.twitter.27B.%dd.txt" % d
-        X = []
-        for line in z.open(z_fn):
-            v = [float(x) for x in line.strip().split()[1:]]
-            X.append(numpy.array(v))
-        points = numpy.array(X)
-        hyperplanes = read_hyperplanes_from_bin_file("GloVe100.q") # this is the file containing the hyperplanes for the BC-Tree queries fetched from their drive.
-
-        write_output(points, hyperplanes, out_fn, distance)
-
-def read_hyperplanes_from_bin_file(file_name: str) -> Tuple[numpy.ndarray, numpy.ndarray]:
-    """
-    Reads hyperplanes from a binary file and returns them as a tuple of (normalvectors, biases).
-    The function reads 100 hyperplanes from the file and repeats them 100 times to create
-    10,000 total queries for a benchmarking test to see how their query generation method performs.
-    
-    Args:
-        file_name (str): The name of the binary file containing hyperplanes
-        
-    Returns:
-        Tuple[numpy.ndarray, numpy.ndarray]: A tuple containing:
-            - normalvectors: shape (10000, d) where d is dimension
-            - biases: shape (10000,) containing bias values for each hyperplane
-    """
-    print(f"preparing hyperplanes from {file_name}")
-    
-    # correct path construction
-    filename = os.path.join("data", file_name)
-    
-    # initialize arrays for original hyperplanes
-    n_original = 100  # Num of hyperplanes in the file
-    d = 100  # d of each hyperplane normal vector
-    repetitions = 100  # numb of times to repeat the hyperplanes
-    
-    original_normalvectors = numpy.zeros((n_original, d), dtype=numpy.float32)
-    original_biases = numpy.zeros(n_original, dtype=numpy.float32)
-    
-    # read the original hyperplanes from the file
-    with open(filename, 'rb') as f:
-        for i in range(n_original):
-            # read the d-dimensional normal vector
-            normal = struct.unpack("f" * d, f.read(d * 4))
-            original_normalvectors[i] = normal
-            
-            # rread the bias value
-            bias_bytes = f.read(4)
-            original_biases[i] = struct.unpack("f", bias_bytes)[0]
-    
-    # create repeated copies of the original hyperplanes
-    normalvectors = numpy.tile(original_normalvectors, (repetitions, 1))
-    biases = numpy.tile(original_biases, repetitions)
-    
-    print(f"final hyperplane set: {normalvectors.shape[0]} hyperplanes")
-    
-    return normalvectors, biases
-
-def glove_small(out_fn: str, d: int, distance: str, size: int = 10000) -> None:
+def glove_small(out_fn: str, d: int, distance: str, size: int = 10000, hyperplane_method: str = "rpd") -> None:
     """
     Create a smaller version of the Glove dataset with a specified number of points.
     
@@ -573,8 +551,10 @@ def glove_small(out_fn: str, d: int, distance: str, size: int = 10000) -> None:
         distance (str): The distance metric to use
         size (int, optional): Number of points to include in the dataset. Defaults to 10000.
     """
-    import zipfile
-    import numpy as np
+    if d != 100 and hyperplane_method == "bcq":
+        raise ValueError("The BCQ hyperplane method only works with d=100")
+    
+    
 
     url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
     fn = os.path.join("data", "glove.twitter.27B.zip")
@@ -589,29 +569,51 @@ def glove_small(out_fn: str, d: int, distance: str, size: int = 10000) -> None:
             if len(X) >= size:
                 break
             v = [float(x) for x in line.strip().split()[1:]]
-            X.append(numpy.array(v))
+            X.append(np.array(v))
         
         # If we didn't get enough points, we'll just use what we have
         if len(X) < size:
             print(f"Warning: Could only load {len(X)} points, which is less than the requested {size}")
         
         # Convert to numpy array and take only the first 'size' points
-        X = numpy.array(X[:size])
+        X = np.array(X[:size])
         
-        # Create the hyperplanes
-        points, hyperplanes = construct_p2h_dataset(X, test_size=min(1000, size//10))
+        points = X
+        if hyperplane_method == "rpd":
+            hyperplanes = create_hyperplanes_rpd(points)
+        elif hyperplane_method == "bctree": # Wrapper of Qiang et al. query generation method
+            hyperplanes = create_hyperplanes_bctree(points)
+        elif hyperplane_method == "rpsd": # Expanded mean version of rpd
+            hyperplanes = create_hyperplanes_rpsd(points)
+        else:
+            raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
         write_output(points, hyperplanes, out_fn, distance)
 
 DATASETS: Dict[str, Callable[[str], None]] = {
-    "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
-    "glove-25-euclidean-small": lambda out_fn: glove_small(out_fn, 25, "euclidean", 10000),
+    # ========================================================================
+    # Here are datasets that are used as testers - both 20k points only
     "glove-25-euclidean-med": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000),
+    "glove-100-euclidean-med": lambda out_fn: glove_small(out_fn, 100, "euclidean", 20000),
+
+    # ========================================================================
+    # Here are the datasets that are used to demonstrate the hyperplane methods
+    # 25 dims - 20k points
+    "glove-25-euclidean-med-bctree": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
+    "glove-25-euclidean-med-rpd": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="rpd"),
+    "glove-25-euclidean-med-rpsd": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
+    # 100 dims
+    "glove-100-euclidean-rpd": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="rpd"),
+    "glove-100-euclidean-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="bctree"),
+    "glove-100-euclidean-rpsd": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="rpsd"),
+
+    # ========================================================================
+    # Here are the datasets that are not currently used as testers
+    "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
+    "deep10m-96-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
-    "glove-100-euclidean-bcq": lambda out_fn: glove_bcq(out_fn, 100, "euclidean"), # added for generating datasets for orig. BC-Tree queries
-    "cifar-10-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
+    "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
     "sift-128-euclidean": sift,
-    "deep10m-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
-    "music100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
-    "trevi-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
-    "gist-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
+    "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
+    "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
+    "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
 }

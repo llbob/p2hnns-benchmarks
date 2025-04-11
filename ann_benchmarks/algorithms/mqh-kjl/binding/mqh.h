@@ -1454,12 +1454,19 @@ std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& quer
             // Create an array of pointers to table rows for this level
             std::vector<float*> table_ptrs_k(M2);
 
+            /*
+                * Filtering:
+                * The current implementation of the filtering is a bit different from the pseudo code. So in level 0 here we make use of the delta_flag which is a variable that is set to 1.0 if flag parameter is set to 1, otherwise this is set to the value of the delta param. 
+                * Now in the pseudo code the flag is used for decisions on line 12 and line 14.
+                * Line 12 in the pseudo code is used to determine if we should skip the point or not and following the pseudo code it would be: 'if flag = 0 and x / NORM > delta'. Here they rewrite it to a check of either 'x >= delta * residual_NORM' or 'x >= delta_flag * NORM' which also is used to decide whether to set 'no_exact' to true, meaning for the one case of 'x >= delta_flag * NORM' we would want to ensure that we do not compute exact distances for this point. This check is run on all levels k.
+                * Line 14 in the pseudo code is used to determine if we should compute collision number or not, and if x passes the collision testing the 'no_exact' would remain its initialised value of false meaning we would compute the exact distance for this point. Now in the pseudo code line 14 is something like: 'if flag = 1 and x / NORM > delta' or 'if flag = 0 and L=level and x / NORM =< delta'. The thing is that the 1 flag test for the collision testing according to the pseudo code should be allowed to run on all levels, however this seems not to be the case in this actual implementation, rather we have some check before the level loop that considers the delta 1 flag, which in fact is a more strict check? to be continued..
+            */
             // FILTER 1: Quick reject based on coarse distance
             if (std::abs(cell_dist_val) > cur_val) {
                 x = std::abs(cell_dist_val) - cur_val;
                 
                 if (x >= delta_flag * NORM) {
-                    continue;  // Skip this point
+                    break;  // Skip this point
                 } else if (points_examined > thres_pq && x >= delta * NORM) {
                     residual_NORM = NORM;
                     if (v >= 0) {
