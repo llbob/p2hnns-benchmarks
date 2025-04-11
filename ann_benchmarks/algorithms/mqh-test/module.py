@@ -60,7 +60,8 @@ class MQH_test(BaseANN):
         
         # Call the search method with the appropriate parameters
         indices, _ = self._mqh.search(q, n, b, self._l0, self._delta, self._flag)
-        
+        indices = set(indices)
+        indices = list(indices)
         return indices
 
     def get_memory_usage(self):
