@@ -27,6 +27,11 @@ class BT_MQH(BaseANN):
         # Query parameters
         self._candidates = 100  # Default
         self._initial_topk = 100  # Default
+        
+        # Break counters
+        self._break_count1 = 0
+        self._break_count2 = 0
+        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -99,7 +104,7 @@ class BT_MQH(BaseANN):
         
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, candidate_indices)
         
         # Ensure no duplicates in the final result
@@ -114,7 +119,9 @@ class BT_MQH(BaseANN):
         return unique_indices[:n]
 
     def get_additional(self):
-        return {"dist_comps": self._num_lin_scans + self._num_lin_scans_bt}
+        return {
+            "dist_comps": self._num_lin_scans + self._num_lin_scans_bt
+        }
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
@@ -152,6 +159,11 @@ class MH_MQH(BaseANN):
         # Query parameters
         self._candidates = 100  # Default
         self._initial_topk = 100  # Default
+        
+        # Break counters
+        self._break_count1 = 0
+        self._break_count2 = 0
+        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -228,15 +240,29 @@ class MH_MQH(BaseANN):
         # Convert to numpy array
         candidate_indices = numpy.array(candidate_indices, dtype=numpy.int32)
         
+        # Remove duplicates from candidates
+        candidate_indices = numpy.unique(candidate_indices)
+        
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, candidate_indices)
         
-        return list(indices)
+        # Ensure no duplicates in the final result
+        unique_indices = []
+        seen = set()
+        for idx in indices:
+            if idx not in seen:
+                seen.add(idx)
+                unique_indices.append(idx)
+                
+        # Return only the required number of results
+        return unique_indices[:n]
 
     def get_additional(self):
-        return {"dist_comps": self._num_lin_scans + self._num_lin_scans_mh}
+        return {
+            "dist_comps": self._num_lin_scans + self._num_lin_scans_mh,
+        }
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
@@ -262,6 +288,11 @@ class MQH(BaseANN):
         self._l0 = 3  # Default parameter
         self._delta = 0.5  # Default parameter
         self._flag = 0  # Default parameter
+        
+        # Break counters
+        self._break_count1 = 0
+        self._break_count2 = 0
+        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -309,17 +340,30 @@ class MQH(BaseANN):
                 b = b / qnorm
         
         # Call the search method with the appropriate parameters
-        indices, distances, self._num_lin_scans = self._mqh.search(q, n, b, self._l0, self._delta, self._flag)
-
+        indices, distances, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search(
+            q, n, b, self._l0, self._delta, self._flag)
         
-        return indices
+        # Remove duplicates from the results
+        unique_indices = []
+        seen = set()
+        for idx in indices:
+            if idx not in seen:
+                seen.add(idx)
+                unique_indices.append(idx)
+        # count number of unique indices vs original indices
+        self._unique_count = len(unique_indices)
+        self._original_count = len(indices)
+        # Make sure we return exactly n results (or fewer if not enough unique results)
+        return unique_indices[:n]
     
     def get_additional(self):
-        return {"dist_comps": self._num_lin_scans}
+        return {
+            "dist_comps": self._num_lin_scans,
+        }
 
     def get_memory_usage(self):
         # Return an estimate of memory usage in bytes
         return self._data.nbytes if hasattr(self, "_data") else 0
 
     def __str__(self):
-        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
+        return f"OGCOUNT={self._original_count},UNIQCOUNT={self._unique_count}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
