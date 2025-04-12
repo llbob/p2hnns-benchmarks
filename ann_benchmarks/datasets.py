@@ -9,6 +9,7 @@ import h5py
 import numpy as np
 import zipfile
 from typing import Any, Callable, Dict, Tuple
+from sklearn.decomposition import PCA
 from ann_benchmarks import generate_queries
 
 # Needed for Cloudflare's firewall
@@ -341,6 +342,10 @@ def cifar10(out_fn: str, distance: str, size: int = None) -> None:
         
         # NOTE: cifar10 is in rgb data range [0, 255] so can simply be normalized to [0, 1] by dividing by 255..
         X = X[:size] if size is not None else X
+
+        # apply PCA to reduce the dimensionality to 512 from the original 3072(32x32x3), this seems to be a standard for the benchmarks we're comparing to here in the field of p2hnns
+        pca = PCA(n_components=512, random_state=42)
+        X = pca.fit_transform(X)
 
         points = np.array(X)
         hyperplanes = create_hyperplanes_rpd(points)
