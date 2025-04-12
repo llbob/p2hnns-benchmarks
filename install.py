@@ -11,15 +11,13 @@ from ann_benchmarks.main import positive_int
 
 def build_generate_queries():
     """Build the C++ component for generate_queries"""
-    print("Building generate_queries C++ component...")
-    
-    # Get paths for source and output files
+    # get paths for source and output files
     script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ann_benchmarks", "generate_queries")
     source_file = os.path.join(script_dir, "generate.cc")
     output_file = os.path.join(script_dir, "generate")
     
     # Set compilation flags based on platform
-    cxx_flags = "-std=c++11 -O3"
+    cxx_flags = "-std=c++11 -O3 -Wno-deprecated-declarations"
     if platform.system() == "Darwin":  # macOS
         cxx_flags += " -mmacosx-version-min=10.9"
     
@@ -27,17 +25,15 @@ def build_generate_queries():
     cmd = f"g++ {cxx_flags} -o {output_file} {source_file}"
     
     try:
-        print(f"Running: {cmd}")
         subprocess.run(cmd, shell=True, check=True)
-        # Make sure the executable has the right permissions
         os.chmod(output_file, 
                 os.stat(output_file).st_mode | 
                 stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
-        print("Successfully built generate_queries component")
+        print("successfully built generate_queries component")
         return True
     except Exception as e:
-        print(f"Warning: Failed to build generate_queries component: {e}")
-        print("You may need to run 'python -m ann_benchmarks.generate_queries.build' manually.")
+        print(f"Failed to build generate_queries component: {e}")
+        print("you may have to build it manually, or for now skip using the bctree queries using Qiang et al's methods")
         return False
 
 
