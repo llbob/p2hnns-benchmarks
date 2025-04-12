@@ -1114,8 +1114,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
 
     //====================================================================================================================================
     // Begin MQH pruning process starting by the outer for loop in pseudocode
-
+    int n = 0;
     for(int point_id : external_candidates) {
+        n++;
         // skip point id for now
         char *cur_loc = &index_[point_id * size_per_element_];
         // find coarse centroid IDs and initialize IP by looking up the precomputed ip in each sub space.
