@@ -1020,7 +1020,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 });
         
         //we take 1/20 of the total points.
-        int cap = n_pts;
+        int cap = n_pts/20;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
@@ -1206,8 +1206,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 float P_zero = 1 - (acos(t_zero)/PI);
                 float P_one = 1 - (acos(t_one)/PI);
 
-                int lower_collision_boundary = P_zero * m_num;
-                int upper_collision_boundary = m_num;
+                int l1 = l0/2;
+                int lower_collision_boundary = P_zero * m_num - l1;
+                int upper_collision_boundary = P_one * m_num + l1;
                 
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
