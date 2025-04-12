@@ -1016,7 +1016,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 });
         
         //we take 1/20 of the total points.
-        int cap = n_pts;
+        int cap = n_pts/10;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
@@ -1183,9 +1183,6 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
 
                 //First establish bucket with t_zero, t_one, P_zero and P_one
                 float t_zero = centroid_dist_to_boundary/actual_residual_norm;
-                if (t_zero > 1.0) {
-                    t_zero = 1.0;
-                }
                 float t_one;
                 if(positive_side) {
                     t_one = (b + cur_val - ip)/actual_residual_norm;
@@ -1194,15 +1191,11 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                     t_one = (b - cur_val - ip)/actual_residual_norm;
                 }
 
-                if (t_one > 1.0) {
-                    t_one = 1.0;
-                }
-
                 float P_zero = 1 - (acos(t_zero)/PI);
                 float P_one = 1 - (acos(t_one)/PI);
 
-                int lower_collision_boundary = P_zero * m_num;
-                int upper_collision_boundary = P_one * m_num;
+                int lower_collision_boundary = P_zero * m_num - l0/2;
+                int upper_collision_boundary = P_one * m_num + l0/2;
 
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
@@ -1210,10 +1203,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 // get collision number between query and point
                 int collision_number;
                 if(positive_side) {
-                    collision_number = m_num - fast_count(point_bit_string, query_bit_string_pos);
+                    collision_number = fast_count(point_bit_string, query_bit_string_pos);
                 }
                 else {
-                    collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
+                    collision_number = fast_count(point_bit_string, query_bit_string_neg);
                 }
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
