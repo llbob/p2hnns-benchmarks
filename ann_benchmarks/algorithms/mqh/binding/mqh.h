@@ -336,219 +336,16 @@ class MQH {
         std::vector<std::vector<int>> coarse_index; // Point IDs in each cell
         
         // Index data structure
-        std::vector<std::vector<char>> index_;
+        std::vector<char> index_;
         int size_per_element_;
         
         // Original data
         std::vector<std::vector<float>> data;
-        
-        // For search
-        VisitedListPool* visited_list_pool_;
 
         // Constants for probabilistic search guarantees
         const float epsilon = 0.99999; // Desired success probability (very close to 1)
         const float alpha = 0.673; // LSH parameter for controlling collision probability
         
-        // Lookup table for quantiles
-        std::vector<float> quantile_table;
-        
-        // Initialize the quantile table
-        void init_quantile_table() {
-            quantile_table.resize(170);
-            quantile_table[0] = 0.5;
-            quantile_table[1] = 0.504;
-            quantile_table[2] = 0.508;
-            quantile_table[3] = 0.512;
-            quantile_table[4] = 0.516;
-            quantile_table[5] = 0.52;
-            quantile_table[6] = 0.524;
-            quantile_table[7] = 0.528;
-            quantile_table[8] = 0.532;
-            quantile_table[9] = 0.536;
-        
-            quantile_table[10] = 0.54;
-            quantile_table[11] = 0.544;
-            quantile_table[12] = 0.548;
-            quantile_table[13] = 0.552;
-            quantile_table[14] = 0.556;
-            quantile_table[15] = 0.56;
-            quantile_table[16] = 0.564;
-            quantile_table[17] = 0.568;
-            quantile_table[18] = 0.571;
-            quantile_table[19] = 0.575;
-        
-            quantile_table[20] = 0.58;
-            quantile_table[21] = 0.583;
-            quantile_table[22] = 0.587;
-            quantile_table[23] = 0.591;
-            quantile_table[24] = 0.595;
-            quantile_table[25] = 0.599;
-            quantile_table[26] = 0.603;
-            quantile_table[27] = 0.606;
-            quantile_table[28] = 0.61;
-            quantile_table[29] = 0.614;
-        
-            quantile_table[30] = 0.618;
-            quantile_table[31] = 0.622;
-            quantile_table[32] = 0.626;
-            quantile_table[33] = 0.63;
-            quantile_table[34] = 0.633;
-            quantile_table[35] = 0.637;
-            quantile_table[36] = 0.641;
-            quantile_table[37] = 0.644;
-            quantile_table[38] = 0.648;
-            quantile_table[39] = 0.652;
-        
-            quantile_table[40] = 0.655;
-            quantile_table[41] = 0.659;
-            quantile_table[42] = 0.663;
-            quantile_table[43] = 0.666;
-            quantile_table[44] = 0.67;
-            quantile_table[45] = 0.674;
-            quantile_table[46] = 0.677;
-            quantile_table[47] = 0.681;
-            quantile_table[48] = 0.684;
-            quantile_table[49] = 0.688;
-        
-            quantile_table[50] = 0.692;
-            quantile_table[51] = 0.695;
-            quantile_table[52] = 0.699;
-            quantile_table[53] = 0.702;
-            quantile_table[54] = 0.705;
-            quantile_table[55] = 0.709;
-            quantile_table[56] = 0.712;
-            quantile_table[57] = 0.716;
-            quantile_table[58] = 0.719;
-            quantile_table[59] = 0.722;
-        
-            quantile_table[60] = 0.726;
-            quantile_table[61] = 0.729;
-            quantile_table[62] = 0.732;
-            quantile_table[63] = 0.736;
-            quantile_table[64] = 0.74;
-            quantile_table[65] = 0.742;
-            quantile_table[66] = 0.745;
-            quantile_table[67] = 0.749;
-            quantile_table[68] = 0.752;
-            quantile_table[69] = 0.755;
-        
-            quantile_table[70] = 0.758;
-            quantile_table[71] = 0.761;
-            quantile_table[72] = 0.764;
-            quantile_table[73] = 0.767;
-            quantile_table[74] = 0.77;
-            quantile_table[75] = 0.773;
-            quantile_table[76] = 0.776;
-            quantile_table[77] = 0.779;
-            quantile_table[78] = 0.782;
-            quantile_table[79] = 0.785;
-        
-            quantile_table[80] = 0.788;
-            quantile_table[81] = 0.791;
-            quantile_table[82] = 0.794;
-            quantile_table[83] = 0.797;
-            quantile_table[84] = 0.8;
-            quantile_table[85] = 0.802;
-            quantile_table[86] = 0.805;
-            quantile_table[87] = 0.808;
-            quantile_table[88] = 0.811;
-            quantile_table[89] = 0.813;
-        
-            quantile_table[90] = 0.816;
-            quantile_table[91] = 0.819;
-            quantile_table[92] = 0.821;
-            quantile_table[93] = 0.824;
-            quantile_table[94] = 0.826;
-            quantile_table[95] = 0.829;
-            quantile_table[96] = 0.832;
-            quantile_table[97] = 0.834;
-            quantile_table[98] = 0.837;
-            quantile_table[99] = 0.839;
-        
-            quantile_table[100] = 0.841;
-            quantile_table[101] = 0.844;
-            quantile_table[102] = 0.846;
-            quantile_table[103] = 0.849;
-            quantile_table[104] = 0.851;
-            quantile_table[105] = 0.853;
-            quantile_table[106] = 0.855;
-            quantile_table[107] = 0.858;
-            quantile_table[108] = 0.85;
-            quantile_table[109] = 0.862;
-        
-            quantile_table[110] = 0.864;
-            quantile_table[111] = 0.867;
-            quantile_table[112] = 0.869;
-            quantile_table[113] = 0.871;
-            quantile_table[114] = 0.873;
-            quantile_table[115] = 0.875;
-            quantile_table[116] = 0.877;
-            quantile_table[117] = 0.879;
-            quantile_table[118] = 0.881;
-            quantile_table[119] = 0.883;
-        
-            quantile_table[120] = 0.885;
-            quantile_table[121] = 0.887;
-            quantile_table[122] = 0.889;
-            quantile_table[123] = 0.891;
-            quantile_table[124] = 0.893;
-            quantile_table[125] = 0.894;
-            quantile_table[126] = 0.896;
-            quantile_table[127] = 0.898;
-            quantile_table[128] = 0.9;
-            quantile_table[129] = 0.902;
-        
-            quantile_table[130] = 0.903;
-            quantile_table[131] = 0.905;
-            quantile_table[132] = 0.907;
-            quantile_table[133] = 0.908;
-            quantile_table[134] = 0.910;
-            quantile_table[135] = 0.912;
-            quantile_table[136] = 0.913;
-            quantile_table[137] = 0.915;
-            quantile_table[138] = 0.916;
-            quantile_table[139] = 0.918;
-        
-            quantile_table[140] = 0.919;
-            quantile_table[141] = 0.921;
-            quantile_table[142] = 0.922;
-            quantile_table[143] = 0.924;
-            quantile_table[144] = 0.925;
-            quantile_table[145] = 0.927;
-            quantile_table[146] = 0.928;
-            quantile_table[147] = 0.929;
-            quantile_table[148] = 0.931;
-            quantile_table[149] = 0.932;
-        
-            quantile_table[150] = 0.933;
-            quantile_table[151] = 0.935;
-            quantile_table[152] = 0.936;
-            quantile_table[153] = 0.937;
-            quantile_table[154] = 0.938;
-            quantile_table[155] = 0.939;
-            quantile_table[156] = 0.941;
-            quantile_table[157] = 0.942;
-            quantile_table[158] = 0.943;
-            quantile_table[159] = 0.944;
-        
-            quantile_table[160] = 0.945;
-            quantile_table[161] = 0.946;
-            quantile_table[162] = 0.947;
-            quantile_table[163] = 0.948;
-            quantile_table[164] = 0.95;
-            quantile_table[165] = 0.951;
-            quantile_table[166] = 0.952;
-            quantile_table[167] = 0.953;
-            quantile_table[168] = 0.954;
-            quantile_table[169] = 0.955;
-        }
-        // Precomputed tables for query optimization
-        int norm_dist_resolution;
-        std::vector<unsigned char> distance_to_hamming_thresholds;
-        float temp;
-        float coeff;
-        float max_coeff;
-        std::vector<float> hamming_thresholds;
         const float PI = 3.1415926535;
 
         
@@ -561,7 +358,6 @@ class MQH {
                           std::vector<std::vector<float>>& train, 
                           int n_pts, int size, int dim);
 
-        void init_query_tables();
 
     
     public:
@@ -569,9 +365,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::tuple<std::vector<Neighbor>, int> query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag);
-        std::tuple<std::vector<Neighbor>, int> query_with_candidates(
-            const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, const std::vector<int>& external_candidates);
+        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, std::vector<int>& external_candidates);
 
         // Getters and setters
         int get_dim() const { return dim; }
@@ -592,20 +386,11 @@ MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) :
     }
     
     dim = dim + d_supp;  // Padded dimension
-    int num_hash_functions = m_level * m_num;  // Total number of hash functions
     
-    // Initialize visited list pool
-    visited_list_pool_ = new VisitedListPool(1, 1);  // Will be resized in build_index
-    
-    // Initialize the quantile table
-    init_quantile_table();
-    
-    // Initialize precomputed query tables
-    init_query_tables();
 }
 
 MQH::~MQH() {
-    delete visited_list_pool_;
+
 }
 
 void MQH::K_means(const std::vector<std::vector<float>>& train, 
@@ -716,56 +501,9 @@ void MQH::select_sample(const std::vector<std::vector<float>>& data,
     }
 }
 
-// Johnson-Lindenstrauss lemma based initialization of query tables? It's about embedding points in a lower dimensional space while preserving distances
-void MQH::init_query_tables() {
-    int num_hash_functions = m_level * m_num;
-    // Calculate sensitivity parameter for bit matches, lower values require more exact matches higher values allow more differences
-    temp = std::sqrt(std::log(1.0f / epsilon) / 2.0f / num_hash_functions);
-    
-    // Calculate lower bound coefficient for bit matching threshold
-    coeff = Quantile(quantile_table.data(), 0.5f * temp + 0.75f, quantile_table.size());
-    
-    // Calculate upper bound coefficient for maximum allowable bit differences
-    max_coeff = Quantile(quantile_table.data(), 0.5f * (1.0f - temp) + 0.5f, quantile_table.size());
-    
-    // Create a lookup table for fast mapping between distance ratios and bit thresholds
-    norm_dist_resolution = 1000; // Number of discretized intervals
-    distance_to_hamming_thresholds.resize(norm_dist_resolution);
-    
-    // Calculate step size for interpolation
-    float ratio = (max_coeff - coeff) / norm_dist_resolution;
-    for (int i = 0; i < norm_dist_resolution; i++) {
-        // Interpolate between min and max coefficients
-        float temp2 = coeff + i * ratio;
-        
-        // Map to closest entry in quantile table
-        int temp3 = static_cast<int>(temp2 * 100);
-        if (temp3 >= static_cast<int>(quantile_table.size()))
-        temp3 = quantile_table.size() - 1;
-        
-        // Convert quantile value to Hamming distance threshold
-        temp2 = 2.0f * (quantile_table[temp3] - 0.5f) + temp;
-        
-        // Convert to actual bit count and ensure it doesn't exceed total bits
-        distance_to_hamming_thresholds[i] = static_cast<unsigned char>(temp2 * num_hash_functions + 1);
-        if (distance_to_hamming_thresholds[i] > num_hash_functions)
-            distance_to_hamming_thresholds[i] = num_hash_functions;
-    }
-    
-    // Create another lookup table for direct quantile-to-bits conversion
-    hamming_thresholds.resize(quantile_table.size());
-    for (int i = 0; i < static_cast<int>(quantile_table.size()); i++) {
-        // Convert normalized quantile values to bit differences
-        hamming_thresholds[i] = (quantile_table[i] - 0.5f) * 2.0f * num_hash_functions;
-    }
-}
 
 void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     n_pts = dataset.size();
-    
-    // Resize the visited list pool
-    delete visited_list_pool_;
-    visited_list_pool_ = new VisitedListPool(1, n_pts);
     
     // Allocate and initialize data with padding
     data.resize(n_pts, std::vector<float>(dim, 0));
@@ -823,7 +561,6 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     std::vector<int> count_all(L * L, 0);
     
     // Initialize data structures for assigning points to cells
-    float sum = 0;
 	float min_sum;
 	int min_id;
     // Assign data points to coarse quantization cells
@@ -959,10 +696,6 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // Initialize product quantization centroids
-    int M2_dim = dim / M2;
-    pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
-    
     // Storage for PQ codes
     std::vector<std::vector<unsigned char>> pq_id(n_pts, std::vector<unsigned char>(M2));
     
@@ -974,39 +707,104 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         }
     }
     
-    // Compute binary hash codes for normalized residual vectors
-    std::vector<std::vector<unsigned long>> bin_hash_codes(n_pts, std::vector<unsigned long>(m_level));
+    // // Compute binary hash codes for normalized residual vectors
+    // std::vector<std::vector<unsigned long>> bin_hash_codes(n_pts, std::vector<unsigned long>(m_level));
     
-    for (int i = 0; i < n_pts; i++) {
-        for (int j = 0; j < m_level; j++) {
-            unsigned long code_num = 0;
-            for (int l = 0; l < m_num; l++) {
-                float ssum = 0;
-                for (int ll = 0; ll < dim; ll++) {
-                    ssum += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
-                }
+    // for (int i = 0; i < n_pts; i++) {
+    //     for (int j = 0; j < m_level; j++) {
+    //         unsigned long code_num = 0;
+    //         for (int l = 0; l < m_num; l++) {
+    //             float ip_with_proj_vec = 0;
+    //             for (int ll = 0; ll < dim; ll++) {
+    //                 ip_with_proj_vec += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+    //             }
                 
-                if (ssum >= 0) {
-                    code_num += 1;
-                }
+    //             if (ip_with_proj_vec >= 0) {
+    //                 code_num += 1;
+    //             }
                 
-                if (l < m_num - 1) {
-                    code_num = code_num << 1;
-                }
-            }
-            bin_hash_codes[i][j] = code_num;
+    //             if (l < m_num - 1) {
+    //                 code_num = code_num << 1;
+    //             }
+    //         }
+    //         bin_hash_codes[i][j] = code_num;
+    //     }
+    // }
+    
+// =======================================================================================================================
+// Prepare compact index structure by writing coarse level info
+    
+    size_per_element_ = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char) + 
+    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
+
+    // REMEMBER :
+    //    size_per_element_ = sizeof(int) +                                 // Point ID
+    //    sizeof(float) +                                                   // Coarse level residual norm 
+    //    sizeof(float) +                                                   // Additional float value (VAL) to be used later
+    //    2 * sizeof(unsigned char) +                                       // Coarse centroid IDs (1 byte each)
+    //    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later. M2 = PQ_IDs, residual norm = sizeof(float), hashcode = sizeof(unsigned long)
+
+    // Initialize index structure for each cluster
+    coarse_index.resize(num_nonempty_cells);
+    index_.resize(n_pts * size_per_element_);
+
+    for (int i = 0; i < num_nonempty_cells; i++) {
+        coarse_index[i].resize(count[i]);
+        
+        // Store point IDs and residual norms
+        for (int j = 0; j < count[i]; j++) {
+            int point_id = cell_to_point_ids[i][j].id;
+            float residual_norm = cell_to_point_ids[i][j].val;
+            
+            //starting point of data for this point
+            char* cur_loc = &index_[point_id * size_per_element_];
+            
+            //Store point ID
+            memcpy(cur_loc, &point_id, sizeof(int));
+            cur_loc += sizeof(int);
+            
+            //store residual norm
+            memcpy(cur_loc, &residual_norm, sizeof(float));
+            cur_loc += sizeof(float);
+            
+            //space for VAL to be used later
+            float val_placeholder = 0.0f;
+            memcpy(cur_loc, &val_placeholder, sizeof(float));
+            cur_loc += sizeof(float);
+            
+            
+            coarse_index[i][j] = cell_to_point_ids[i][j].id;
+            
+            // Write coarse centroid IDs
+            
+            unsigned char centroid_id_first = coarse_cell_mapping[i].id1;  // Get from cell mapping
+            unsigned char centroid_id_second = coarse_cell_mapping[i].id2;
+            
+            // wrtie first coarse centroid ID
+            memcpy(cur_loc, &centroid_id_first, sizeof(unsigned char));
+            cur_loc += sizeof(unsigned char);
+            // write second coarse centroid ID
+            memcpy(cur_loc, &centroid_id_second, sizeof(unsigned char));
         }
     }
-    
+
+    // =======================================================================================================================
+    // Begin multilevel product quantization while writing level data to index
+
+    // Initialize product quantization centroids
+    int M2_dim = dim / M2;
+    pq_codebooks.resize(size, std::vector<std::vector<float>>(L, std::vector<float>(M2_dim)));
+
     // Prepare for multilevel PQ
     std::vector<std::vector<float>> pq_training_samples(n_sample, std::vector<float>(M2_dim));
-    
-    // Begin multilevel product quantization
+    std::vector<float> relative_norms(n_pts);
+
+    //outer loop for the PQ and LSH-code calculations at each level
     for (int k = 0; k < level; k++) {
-        // For each subspace, train quantizers on residual subvectors
+        // For each subspace, train quantizers, on residual subvectors
         for (int i = 0; i < M2; i++) {
             int sample_count = 0;
-            // Collect training samples for this subspace
+            // get training samples for this subspace
             for (int j = 0; j < n_pts; j++) {
                 if (zero_flag[j] == true) {
                     continue;
@@ -1020,135 +818,147 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
                 }
             }
             
-            // Run K-means for this subspace
+            // K-means for this subspace
             K_means(pq_training_samples, pq_codebooks[k * M2 + i], sample_count, M2_dim);
         }
-        
-        // Assign each point to closest centroid in each subspace
-        for (int n = 0; n < n_pts; n++) {
-            for (int i = 0; i < M2; i++) {
-                float min_sum;
-                int min_id;
-                
-                // Find closest centroid from the L options
-                for (int j = 0; j < L; j++) {
-                    float sum = 0;
-                    for (int l = 0; l < M2_dim; l++) {
-                        float diff = residual_vec[n][i * M2_dim + l] - pq_codebooks[k * M2 + i][j][l];
-                        sum += diff * diff;
-                    }
-                    
-                    if (j == 0) {
-                        min_sum = sum;
-                        min_id = 0;
-                    } else if (sum < min_sum) {
-                        min_sum = sum;
-                        min_id = j;
-                    }
-                }
-                
-                pq_id[n][i] = min_id;
-            }
-        }
-        
-        // Compute new residuals by subtracting quantized vectors
-        for (int n = 0; n < n_pts; n++) {
-            for (int j = 0; j < M2; j++) {
-                int temp_M = k * M2 + j;
+
+    // Assign each point to closest centroid in each subspace
+    for (int n = 0; n < n_pts; n++) {
+        for (int i = 0; i < M2; i++) {
+            float min_sum;
+            unsigned char min_id;
+            
+            // find closest centroid 
+            for (int j = 0; j < L; j++) {
+                float sum = 0;
                 for (int l = 0; l < M2_dim; l++) {
-                    residual_vec[n][j * M2_dim + l] -= pq_codebooks[temp_M][pq_id[n][j]][l];
+                    float diff = residual_vec[n][i * M2_dim + l] - pq_codebooks[k * M2 + i][j][l];
+                    sum += diff * diff;
+                }
+                
+                if (j == 0) {
+                    min_sum = sum;
+                    min_id = 0;
+                } else if (sum < min_sum) {
+                    min_sum = sum;
+                    min_id = j;
                 }
             }
-            
-            // Calculate norm of new residual vector
-            float sum = 0;
-            for (int j = 0; j < dim; j++) {
-                sum += residual_vec[n][j] * residual_vec[n][j];
-            }
-            norm2[n] = std::sqrt(sum);
-            
-            // Flag vectors with negligible residuals
-            if (norm2[n] < min_float) {
-                zero_flag[n] = true;
-            }
+            pq_id[n][i] = min_id;
         }
     }
-    
-    // Prepare compact index structure
-    size_per_element_ = sizeof(int) + 2 * sizeof(float) + sizeof(unsigned long) * m_level + 
-                       level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
-    
-    // Initialize index structure for each cluster
-    coarse_index.resize(num_nonempty_cells);
-    index_.resize(num_nonempty_cells);
-    
-    for (int i = 0; i < num_nonempty_cells; i++) {
-        coarse_index[i].resize(count[i]);
-        index_[i].resize(count[i] * size_per_element_);
+
+    for (int n = 0; n < n_pts; n++) {
+        //reconstruct vector from PQ codes
+        std::vector<float> reconstructed(dim, 0.0f);
+        for (int i = 0; i < M2; i++) {
+            for (int l = 0; l < M2_dim; l++) {
+                reconstructed[i * M2_dim + l] = pq_codebooks[k * M2 + i][pq_id[n][i]][l];
+            }
+        }
         
-        // Store point IDs and residual norms
-        for (int j = 0; j < count[i]; j++) {
-            coarse_index[i][j] = cell_to_point_ids[i][j].id;
-            
-            // Write point ID
-            memcpy(&index_[i][j * size_per_element_], &cell_to_point_ids[i][j].id, sizeof(int));
-            
-            // Write residual norm
-            memcpy(&index_[i][j * size_per_element_ + sizeof(int)], &cell_to_point_ids[i][j].val, sizeof(float));
+        // norm of reconstructed vector
+        float centroid_norm = calc_norm(reconstructed.data(), dim);
+        
+        // relative norm 
+        relative_norms[n] = norm2[n] / centroid_norm;
+        
+        
+        // reconstructed vector is scaled by original residual norm
+        for (int j = 0; j < dim; j++) {
+            reconstructed[j] *= relative_norms[n];
         }
-    }
-    
-    // Copy hash codes to index
-    for (int i = 0; i < num_nonempty_cells; i++) {
-        for (int j = 0; j < count[i]; j++) {
-            int point_id = coarse_index[i][j];
-            char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float)];
-            
-            // Copy hash codes
-            for (int jj = 0; jj < m_level; jj++) {
-                memcpy(cur_loc, &bin_hash_codes[point_id][jj], sizeof(unsigned long));
-                cur_loc += sizeof(unsigned long);
+        
+        // new residual
+        for (int j = 0; j < dim; j++) {
+            residual_vec[n][j] -= reconstructed[j];
+        }
+        
+        // norm of new residual
+        float sum = 0;
+        for (int j = 0; j < dim; j++) {
+            sum += residual_vec[n][j] * residual_vec[n][j];
+        }
+        norm2[n] = std::sqrt(sum);
+        
+        // activate zero flag if below threshold
+        if(norm2[n] < min_float && zero_flag[n] == false) {
+            zero_flag[n] = true;
+            residual_vec[n][0] = 1;
+            for (int j = 1; j < dim; j++) {
+                residual_vec[n][j] = 0;
+            }
+        }
+        else {
+            // normalize new residual for next level's NERQ quantization
+            for(int j = 0; j < dim; j++) {
+                residual_vec[n][j] /= norm2[n];
             }
         }
     }
-    
-    // Store PQ codes and norms for each level
-    for (int level_idx = 0; level_idx < level; level_idx++) {
-        for (int i = 0; i < num_nonempty_cells; i++) {
-            for (int j = 0; j < count[i]; j++) {
-                int point_id = coarse_index[i][j];
+
+    // generate hash codes for this level
+    std::vector<std::vector<unsigned long>> level_hash_codes(n_pts, std::vector<unsigned long>(m_level));
+
+    for (int i = 0; i < n_pts; i++) {
+        for (int j = 0; j < m_level; j++) {
+            unsigned long code_num = 0;
+            for (int l = 0; l < m_num; l++) {
+                float ip_with_proj_vec = 0;
+                for (int ll = 0; ll < dim; ll++) {
+                    ip_with_proj_vec += residual_vec[i][ll] * proj_array[j * m_num + l][ll];
+                }
                 
-                // Position pointer for this level's data
-                char* cur_loc = &index_[i][j * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
-                               sizeof(unsigned long) * m_level + 
-                               level_idx * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+                if (ip_with_proj_vec >= 0) {
+                    code_num += 1;
+                }
                 
-                // Write residual norm for this level
-                memcpy(cur_loc, &norm2[point_id], sizeof(float));
-                cur_loc += sizeof(float);
-                
-                // Write PQ codes for this level
-                for (int l = 0; l < M2; l++) {
-                    memcpy(cur_loc, &pq_id[point_id][l], 1);
-                    cur_loc += 1;
+                if (l < m_num - 1) {
+                    code_num = code_num << 1;
                 }
             }
+            level_hash_codes[i][j] = code_num;
+        }
+    }
+
+    // store this leveløs hash codes and codewords in index
+    for (int n = 0; n < n_pts; n++) {
+        // position pointer for this level's data
+        char* cur_loc = &index_[n * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
+                    2 * sizeof(unsigned char) + 
+                    k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+        
+        // write PQ codes 
+        for (int l = 0; l < M2; l++) {
+            memcpy(cur_loc, &pq_id[n][l], 1);
+            cur_loc += 1;
+        }
+                    
+        // write relative residual norm 
+        memcpy(cur_loc, &relative_norms[n], sizeof(float));
+        cur_loc += sizeof(float);
+
+        // write hash codes 
+        for (int l = 0; l < m_level; l++) {
+            memcpy(cur_loc, &level_hash_codes[n][l], sizeof(unsigned long));
+            cur_loc += sizeof(unsigned long);
+        }
         }
     }
 }
 
-std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag) {
+
+std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
     
-    // Constants for search
-    int topk = k;
-    int num_candidates = 2000;  // First-pass candidates
-    int thres_pq = n_pts / 10;  // Early termination threshold
+    //____________________________________________________________________________________________________________________________________
+    // Preprocess query arguments and set variables
 
-    // Use passed flag if valid
-    int current_flag = (query_flag != -1) ? query_flag : flag;
+    // use passed flag, 0 for efficiency, 1 for recall guarantees
+    int FLAG = query_flag;
+    int num_linear_scans = 0;
     
     // Pad query if necessary
     std::vector<float> query(dim, 0);
@@ -1163,453 +973,294 @@ std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& quer
     }
     
     // U is the bias. Divides u by the query norm to maintain the same geometric relationship andnegates the value for the distance calculation
-    u = -1 * u / query_norm;
+    float b = -1 * u / query_norm;
     
-    // Adjust threshold
-    float delta_flag = (current_flag == 1) ? 1.0f : delta;  // For guarantees vs. approximation
+    //____________________________________________________________________________________________________________________________________
+    // Precompute inner products of coarse centroids with q
 
-    // TODO: offset0 is old var name for l0, should be replaced
-    int offset0 = l0;
-    
-    // Prepare for hash bit comparison
-    int num_hash_functions = m_level * m_num;
+    std::vector<float> first_half_ips(L);
+    std::vector<float> second_half_ips(L);
 
-    // Counter for number of linear scans
-    int num_lin_scans = 0;
-    
-    // Get a visited list for tracking processed points
-    VisitedList* vl = visited_list_pool_->getFreeVisitedList();
-    vl_type* visited_array = vl->mass;
-    vl_type visited_array_tag = vl->curV;
-    
-    // Prepare result sets
-    std::vector<Neighbor> final_results(topk + 1);
-    std::vector<Neighbor> candidates(num_candidates + 1);
-    
-    // Cosine table is computed at query time, the rest of the tables are precomputed at index time
-    int angular_resolution = 100; // represents the resolution or number of discrete steps used when converting between angular distances and bit counts
-    std::vector<int> angular_table(angular_resolution);
+    //first half
+    int half_dim = dim/2;
+    for (int j = 0; j < L; j++) {
+        first_half_ips[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), half_dim);
+    }
 
-    for (int i = 0; i < angular_resolution; i++) {
-        angular_table[i] = num_hash_functions * acos(1.0f * i / angular_resolution) / PI + offset0;
-        if (angular_table[i] > num_hash_functions) {
-            angular_table[i] = num_hash_functions;
+    //second half
+    for (int j = 0; j < L; j++) {
+        second_half_ips[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), half_dim);
+    }
+
+    // if no external initial candidate selection, the algorithm resorts to bruteforce distance calcs of coarse centroids
+    if(external_candidates.size() == 0) {
+        // Calculate distance from query to each coarse quantization cell
+        std::vector<std::pair<int, float>> cell_distances;
+        cell_distances.reserve(coarse_cell_mapping.size());
+    
+        for (int j = 0; j < static_cast<int>(coarse_cell_mapping.size()); j++) {
+            unsigned char a = coarse_cell_mapping[j].id1;
+            unsigned char b = coarse_cell_mapping[j].id2;
+            
+            float dist = first_half_ips[a] + second_half_ips[b] - u;
+            cell_distances.push_back(std::make_pair(j, dist));
+        }
+    
+        // Sort cells by distance
+        std::sort(cell_distances.begin(), cell_distances.end(),
+                [](const std::pair<int,float>& a, const std::pair<int,float>& b) {
+                    return std::abs(a.second) < std::abs(b.second);
+                });
+        
+        // We take 1/20 of the total points
+        int cap = n_pts / 20;
+        external_candidates.reserve(cap);
+        
+        // Populate external candidates vector until cap is reached
+        for(auto pair : cell_distances) {
+            if(external_candidates.size() >= cap) {
+                break;
+            }
+            int centroid_id = pair.first;
+            auto points = coarse_index[centroid_id];
+            for(int j = 0; j < points.size(); j++){
+                external_candidates.push_back(points[j]);
+                if(external_candidates.size() >= cap) {
+                    break;
+                }
+            }
         }
     }
+    //____________________________________________________________________________________________________________________________________
+    // Precompute inner products of sub space centroids at remaining levels
 
-    // Compute LSH hash codes for the query
-    std::vector<unsigned long> query_bin_hash_codes(m_level);
-    
-    for (int j = 0; j < m_level; j++) {
-        query_bin_hash_codes[j] = 0;
-        for (int jj = 0; jj < m_num; jj++) {
-            float ttmp0 = compare_ip(query.data(), proj_array[j * m_num + jj].data(), dim);
-            
-            if (ttmp0 >= 0) {
-                query_bin_hash_codes[j] += 1;
-            }
-            
-            if (jj < m_num - 1) {
-                query_bin_hash_codes[j] = query_bin_hash_codes[j] << 1;
-            }
-        }
-    }
-    
-    // Precompute distances to coarse quantizer centroids
-    std::vector<float> coarse_centroids_first_half_dists(L);
-    std::vector<float> coarse_centroids_second_half_dists(L);
-    
-    // First half
-    for (int j = 0; j < L; j++) {
-        coarse_centroids_first_half_dists[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
-    }
-    
-    // Second half
-    for (int j = 0; j < L; j++) {
-        coarse_centroids_second_half_dists[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
-    }
-    
-    // Precompute distances to PQ centroids
-    std::vector<std::vector<std::vector<float>>> table2(
+    std::vector<std::vector<std::vector<float>>> level_ip(
         level, std::vector<std::vector<float>>(M2, std::vector<float>(L)));
-    
+
+    int sub_dim = dim/M2;
     for (int j = 0; j < level; j++) {
         for (int l = 0; l < M2; l++) {
             for (int k = 0; k < L; k++) {
-                table2[j][l][k] = compare_short(query.data() + l * (dim / M2), 
-                                               pq_codebooks[j * M2 + l][k].data(), dim / M2);
+                level_ip[j][l][k] = compare_short(query.data() + l * sub_dim, 
+                pq_codebooks[j * M2 + l][k].data(), sub_dim);
             }
         }
     }
-    
-    // Calculate distance from query to each coarse quantization cell
-    std::vector<std::pair<int, float>> cell_distances;
-    cell_distances.reserve(coarse_cell_mapping.size());
-    
-    for (int j = 0; j < static_cast<int>(coarse_cell_mapping.size()); j++) {
-        unsigned char a = coarse_cell_mapping[j].id1;
-        unsigned char b = coarse_cell_mapping[j].id2;
-        
-        float dist = coarse_centroids_first_half_dists[a] + coarse_centroids_second_half_dists[b] - u;
-        cell_distances.push_back(std::make_pair(j, dist));
-    }
-    
-    // Sort cells by distance
-    std::sort(cell_distances.begin(), cell_distances.end(),
-             [](const std::pair<int,float>& a, const std::pair<int,float>& b) {
-                 return std::abs(a.second) < std::abs(b.second);
-             });
-    
-    // First-pass: collect candidates
-    int count_final_results = 0;   // Counter for final results
-    int count_candidates = 0;  // Counter for first-pass candidates
-    int points_examined = 0;
-    
-    // Calculate offset for accessing PQ codes in memory layout
-    int offset00 = sizeof(float) + m_level * sizeof(unsigned long);
-    int offset1 = m_level * sizeof(unsigned long);
-    int offset2 = M2 + m_level * sizeof(unsigned long);
-    int offset3 = sizeof(float) + M2 + m_level * sizeof(unsigned long);
-    int round1_offset = sizeof(float) + sizeof(unsigned long) * m_level + sizeof(float);
-    int remain_size = size_per_element_ - sizeof(int) - (3 * sizeof(float)) - 
-                     (m_level * sizeof(unsigned long));
-    
-    // Process cells in order of distance
-    for (const auto& cell_dist : cell_distances) {
-        int cell_idx = cell_dist.first;
-        float cur_dist = cell_dist.second;
-        int cell_size = count[cell_idx];
-        
-        // Process each point in this cell
-        for (int l = 0; l < cell_size; l++) {
-            points_examined++;
-            
-            // Early termination if examined too many points
-            if (points_examined > thres_pq) {
-                break;
-            }
-            
-            // Get point data
-            char* cur_obj = &index_[cell_idx][l * size_per_element_];
-            int point_id = *reinterpret_cast<int*>(cur_obj);
-            cur_obj += sizeof(int);
-            
-            float residual_norm = *reinterpret_cast<float*>(cur_obj);
-            char* cur_obj_1 = cur_obj + sizeof(float);
-            cur_obj = cur_obj_1 + round1_offset;
-            
-            // Calculate PQ distance
-            // Create an array of pointers to table rows
-            std::vector<float*> table_ptrs(M2);
-            for (int i = 0; i < M2; i++) {
-                table_ptrs[i] = table2[0][i].data();
-            }
+    //____________________________________________________________________________________________________________________________________
+    //calculate LSH bit string for query both in the positive and negative case
 
-            // Call pq_dist with the array of pointers
-            float pq_distance = pq_dist(reinterpret_cast<unsigned char*>(cur_obj), 
-                                        table_ptrs.data(), M2);
-            cur_obj += remain_size;
-            
-            // Combine coarse and fine distances -> The fact that we multiply by residual norm here is important, this would be related to NERQ
-            float distance = cur_dist + pq_distance * residual_norm;
-            
-            // Store for later use
-            *reinterpret_cast<float*>(cur_obj_1) = distance;
-            
-            // Use absolute distance
-            if (distance < 0) {
-                distance = -distance;
-            }
-            
-            // Add to candidate set
-            Neighbor nn;
-            nn.id = point_id;
-            nn.distance = distance;
-            
-            if (count_candidates == 0) {
-                candidates[0] = nn;
-            } else {
-                if (count_candidates >= num_candidates) {
-                    if (distance >= candidates[num_candidates - 1].distance) {
-                        continue;
-                    }
-                    InsertIntoPool(candidates.data(), num_candidates, nn);
-                } else {
-                    InsertIntoPool(candidates.data(), count_candidates, nn);
-                }
-            }
-            count_candidates++;
+    unsigned long query_bit_string_pos = 0;
+    unsigned long query_bit_string_neg = 0;
+    for (int l = 0; l < m_num; l++) {
+        float positive_q_ip = 0;
+        float negative_q_ip = 0;
+        for (int ll = 0; ll < dim; ll++) {
+            positive_q_ip += query.data()[ll] * proj_array[l][ll];
+            negative_q_ip += - query.data()[ll] * proj_array[l][ll];
         }
         
-        // Break if we've examined enough points
-        if (points_examined > thres_pq) {
-            break;
+        if (positive_q_ip >= 0) {
+            query_bit_string_pos += 1;
+        }
+        if (negative_q_ip >= 0) {
+            query_bit_string_neg += 1;
+        }
+        
+        if (l < m_num - 1) {
+            query_bit_string_pos = query_bit_string_pos << 1;
+            query_bit_string_neg = query_bit_string_neg << 1;
         }
     }
-    
-    // Second-pass: Refine top candidates with exact distance calculation
-    for (int j = 0; j < std::min(num_candidates, count_candidates); j++) {
-        int point_id = candidates[j].id;
-        
-        // Skip if already processed
-        if (visited_array[point_id] == visited_array_tag) {
-            continue;
-        }
-        
-        visited_array[point_id] = visited_array_tag;
-        
-        // Calculate exact distance
-        float distance = compare_ip(data[point_id].data(), query.data(), dim) - u;
+    //____________________________________________________________________________________________________________________________________
+    // Initialize and populate candidate_set
+
+    std::vector<Neighbor> candidate_set(k); // result set containing k elements that are updated throughout the pruning process.
+    for (int i = 0; i < k; i++) {
+        candidate_set[i].id = -1;  // Invalid ID
+        candidate_set[i].distance = std::numeric_limits<float>::max();
+    }
+    float cur_val = 0.0; // current kth nearest neighbour's distance to H
+
+    //populate running candidate set and set initial cur_val.
+    for(int i = 0; i < k; i++)
+    {
+        int point_id = external_candidates.back();
+        external_candidates.pop_back();
+        float distance = compare_short(data[point_id].data(), query.data(), dim) - b;
         if (distance < 0) {
-            distance = -distance;
+            distance = - distance;
         }
-        
-        // Add to final result set
+        num_linear_scans++;
+
+        //Create neighbor instance
         Neighbor nn;
         nn.id = point_id;
         nn.distance = distance;
-        
-        if (count_final_results == 0) {
-            final_results[0] = nn;
-        } else {
-            if (count_final_results >= topk) {
-                if (distance >= final_results[topk - 1].distance) {
-                    continue;
-                }
-                InsertIntoPool(final_results.data(), topk, nn);
-            } else {
-                InsertIntoPool(final_results.data(), count_final_results, nn);
-            }
+
+        //add to candidate set at right location in PQ
+        InsertIntoPool(candidate_set.data(), k, nn);
+
+        //update current kth nearest neighbor distance if needed
+        if (distance > cur_val)
+        {
+            cur_val = distance;
         }
-        count_final_results++;
     }
-    
-    // Third-pass: Process remaining clusters with adaptive filtering
-    points_examined = 0;
-    float cur_val = final_results[topk - 1].distance;  // Current distance threshold
-    bool thres_flag = false;
-    
-    // Process remaining cells - 
-    // NOTE: Rather than considering each point and each level for each point as done in the pseudo code, we consider each centroid and then each element within each centroid. 
-    for (const auto& cell_dist : cell_distances) {
-        int cell_idx = cell_dist.first;
-        float cell_dist_val = cell_dist.second;
-        float v = cell_dist_val;  // Cell distance
-        int cell_size = count[cell_idx];
-        
-        // Track processing progress for early termination
-        if (!thres_flag) {
-            if (points_examined + cell_size >= thres_pq) {
-                thres_flag = true;
-            } else {
-                points_examined += cell_size;
-            }
-        }
-        
-        // Examine each point in this cell
-        for (int l = 0; l < cell_size; l++) {
-            if (thres_flag) {
-                points_examined++;
-            }
-            
-            char* cur_obj = &index_[cell_idx][l * size_per_element_];
-            int point_id = *reinterpret_cast<int*>(cur_obj);
-            
-            // Skip if already processed
-            if (visited_array[point_id] == visited_array_tag) {
-                continue;
-            }
-            
-            cur_obj += sizeof(int);
-            float NORM = *reinterpret_cast<float*>(cur_obj);
-            cur_obj += sizeof(float);
-            
-            // Variables for filtering
-            bool no_exact = false;
-            float residual_NORM;
-            float x = 0;
-            bool is_left = true;
-            float VAL = 0;
-            
-            // Create an array of pointers to table rows for this level
-            std::vector<float*> table_ptrs_k(M2);
 
-            // FILTER 1: Quick reject based on coarse distance
-            if (std::abs(cell_dist_val) > cur_val) {
-                x = std::abs(cell_dist_val) - cur_val;
-                
-                if (x >= delta_flag * NORM) {
-                    continue;  // Skip this point
-                } else if (points_examined > thres_pq && x >= delta * NORM) {
-                    residual_NORM = NORM;
-                    if (v >= 0) {
-                        is_left = false;
-                    }
-                    cur_obj += offset00;
-                    goto Label2;  // Skip to LSH filtering
-                }
-            }
-            
-            // FILTER 2: Multi-level refinement with PQ distances
-            for (int k = 0; k < level; k++) {
-                // Special handling for first level
-                if (k == 0) {
-                    if (points_examined <= thres_pq) {
-                        // Use precomputed distance
-                        VAL = *reinterpret_cast<float*>(cur_obj);
-                        cur_obj += offset00;
-                        residual_NORM = (*reinterpret_cast<float*>(cur_obj)) * NORM;
-                        cur_obj += offset3;
-                        goto Label;
-                    } else {
-                        cur_obj += offset00;
-                        VAL = v;
-                    }
-                }
-                
-                // Compute accumulated distance approximation
-                residual_NORM = (*reinterpret_cast<float*>(cur_obj)) * NORM;
-                cur_obj += sizeof(float);
-                
-                // Add product quantization distance
-                for (int i = 0; i < M2; i++) {
-                    table_ptrs_k[i] = table2[k][i].data();
-                }
+    //====================================================================================================================================
+    // Begin MQH pruning process starting by the outer for loop in pseudocode
 
-                // Call pq_dist with the array of pointers
-                VAL += NORM * pq_dist(reinterpret_cast<unsigned char*>(cur_obj), 
-                                    table_ptrs_k.data(), M2);
-                cur_obj += offset2;
-                
-Label:
-                // Compute distance gap from current threshold
-                if (VAL < 0) {
-                    float ttmp = -VAL;
-                    x = ttmp - cur_val;
-                } else {
-                    is_left = false;
-                    x = VAL - cur_val;
+    // Initialise counters for all break conditions
+    int break_condition_1 = 0;
+    int break_condition_2 = 0;
+    int break_condition_3 = 0;
+
+    for(int point_id : external_candidates) {
+        // skip point id for now
+        char *cur_loc = &index_[point_id * size_per_element_] + sizeof(int);
+        // initialize current residual norm. Since the normalized residuals of level l-1 are quantized in level l, we need the residual norm of the previous level as scale factor.
+        float current_residual_norm = *reinterpret_cast<float*>(cur_loc);
+        //Skip 2 floats because of VAL
+        cur_loc += 2 * sizeof(float);
+        // find coarse centroid IDs and initialize IP by looking up the precomputed ip in each sub space.
+        unsigned char first_coarse_id = *reinterpret_cast<unsigned char*>(cur_loc);
+        cur_loc += sizeof(unsigned char);
+        unsigned char second_coarse_id = *reinterpret_cast<unsigned char*>(cur_loc);
+        cur_loc += sizeof(unsigned char);
+        float ip = first_half_ips[first_coarse_id] + second_half_ips[second_coarse_id];
+        
+        // gradual refinement of quantization
+        for(int l = 0; l < level; l++){
+            //find the right memory location for the point at this level by skipping data already read. Therefore, offset = coarse data + previous levels' data
+            int offset = sizeof(int) + 2 * (sizeof(float) + sizeof(unsigned char)) + l * (M2 + sizeof(float) + sizeof(unsigned long));
+            cur_loc = &index_[point_id * size_per_element_] + offset;
+            // first update the inner product based on centroid at this level
+            for(int i = 0; i < M2; i++)
+            {
+                // read one codeword at a time and add corresponding precomputed ip to running ip
+                unsigned char codeword = *reinterpret_cast<unsigned char*>(cur_loc);
+                ip += level_ip[l][i][codeword] * current_residual_norm;
+                cur_loc += sizeof(unsigned char);
+            }
+
+            if (ip > b - cur_val && ip < b + cur_val) {
+                // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
+                float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
+                if (dist_to_H < 0) {
+                    dist_to_H = - dist_to_H;
                 }
-                
-                // If gap is negative, point is promising
-                if (x <= 0) {
+                num_linear_scans++;
+
+                if(dist_to_H < cur_val)
+                {
+                    Neighbor nn;
+                    nn.id = point_id;
+                    nn.distance = dist_to_H;
+                    InsertIntoPool(candidate_set.data(), k, nn);
+                    cur_val = candidate_set[k-1].distance;
                     break;
-                } else {
-                    // If gap exceeds residual norm, point cannot be good
-                    if (x >= delta_flag * residual_NORM) {
-                        no_exact = true;
-                        break;
-                    }
-                    // If gap is close to threshold, use more aggressive filtering
-                    else if (x >= delta * residual_NORM) {
-                        break;
-                    }
                 }
             }
             
-Label2:
-            // LSH-based filtering for borderline cases
-            if (!no_exact && x > 0) {
-                cur_obj -= offset1;
-                int collision_ = 0;
-                
-                // Count bit matches
-                for (int jj = 0; jj < m_level; jj++) {
-                    collision_ += fast_count(*reinterpret_cast<unsigned long*>(cur_obj), 
-                                            query_bin_hash_codes[jj]);
-                    cur_obj += sizeof(unsigned long);
-                }
-                
-                // Calculate angle-based threshold from distance gap
-                int y_idx = static_cast<int>(angular_resolution * x / residual_NORM);
-                if (y_idx >= angular_resolution)
-                    y_idx = angular_resolution - 1;
-
-                // Get bit threshold directly from cosine table
-                int y = angular_table[y_idx];
-
-                // Apply collision testing based on whether point is on left/right side of hyperplane
-                if (is_left) {
-                    // For negative side
-                    if (collision_ >= y) {
-                        // Too many bit differences
-                        no_exact = true;
-                    }
-                } else {
-                    // For positive side
-                    collision_ = num_hash_functions - collision_;
-                    if (collision_ >= y) {
-                        // Too many bit differences
-                        no_exact = true;
-                    }
-                }
-            }
+            // read residual norm
+            float new_residual_norm = *reinterpret_cast<float*>(cur_loc);
+            cur_loc += sizeof(float);
             
-            // Compute exact distance if passed all filters
-            if (!no_exact) {
-                float distance = compare_ip(data[point_id].data(), query.data(), dim) - u;
-                num_lin_scans++;
+            // Boolean to check which side of the hyperplane the centroid is situated on
+            bool positive_side = ip < b - cur_val;
 
-                if (distance < 0) {
-                    distance = -distance;
-                }
-                
-                visited_array[point_id] = visited_array_tag;
-                
-                // Skip if worse than current kth result
-                if (distance >= final_results[topk - 1].distance) {
-                    continue;
-                }
-                
-                // Add to results
-                Neighbor nn;
-                nn.id = point_id;
-                nn.distance = distance;
-                
-
-                InsertIntoPool(final_results.data(), topk, nn);
-                cur_val = final_results[topk - 1].distance;
+            float centroid_dist_to_boundary = 0.0;
+            if(positive_side) {
+                centroid_dist_to_boundary = b - cur_val - ip;
             }
-        }
-        
-        // Ensure point counting is correct for early termination
-        if (thres_flag && points_examined < thres_pq) {
-            points_examined = thres_pq;
+            else {
+                centroid_dist_to_boundary = b + cur_val - ip;
+            }
+
+
+            if (centroid_dist_to_boundary > new_residual_norm) // LINE 10 in pseudocode
+            {
+                // distance from centroid to bouondary is greater than residual norm, so residual cannot by any means reach inside the margin.
+                break_condition_1++;
+                break;
+            }
+
+            if (FLAG == 0 && centroid_dist_to_boundary > new_residual_norm * delta) { // LINE 12 in pseudocode
+                // ratio between centroid's distance to boundary and residual_norm is too large, so we prune for efficiency
+                break_condition_2++;
+                break;
+            }
+
+            if ((FLAG == 1 && centroid_dist_to_boundary > new_residual_norm * delta) || (FLAG == 0 && l==level-1 && centroid_dist_to_boundary <= new_residual_norm * delta)) // LINE 14 in pseudocode
+            {
+                // Collision testing : 
+
+                //First establish bucket with t_zero, t_one, P_zero and P_one
+                float t_zero = centroid_dist_to_boundary/new_residual_norm;
+                float t_one;
+                if(positive_side) {
+                    t_one = (b + cur_val - ip)/new_residual_norm;
+                }
+                else {
+                    t_one = (b - cur_val - ip)/new_residual_norm;
+                }
+
+                float P_zero = 1 - (acos(t_zero)/PI);
+                float P_one = 1 - (acos(t_one)/PI);
+
+                int lower_collision_boundary = P_zero * m_num - l0/2;
+                int upper_collision_boundary = P_one * m_num + l0/2;
+
+                //Then read stored bit string for given point at given level
+                unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
+
+                // get collision number between query and point
+                int collision_number;
+                if(positive_side) {
+                    collision_number = fast_count(point_bit_string, query_bit_string_pos);
+                }
+                else {
+                    collision_number = fast_count(point_bit_string, query_bit_string_neg);
+                }
+
+                if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
+                    float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
+                    if (dist_to_H < 0) {
+                        dist_to_H = - dist_to_H;
+                    }
+                    num_linear_scans++;
+
+                    if(dist_to_H < cur_val)
+                    {
+                        Neighbor nn;
+                        nn.id = point_id;
+                        nn.distance = dist_to_H;
+                        InsertIntoPool(candidate_set.data(), k, nn);
+                        cur_val = candidate_set[k-1].distance;
+                        break;
+                    }
+                }
+                else {
+                    break_condition_3++;
+                    break;
+                }
+            }
+            current_residual_norm = new_residual_norm;
         }
     }
-    
-    // Release visited list
-    visited_list_pool_->releaseVisitedList(vl);
-    
-    // Prepare final results
+    // create vector<int> counters to return num_linear_scans and break conditions
+    std::vector<int> counters = {num_linear_scans, break_condition_2, break_condition_3};
+    // std::vector<Neighbor> results(candidate_set.begin(), candidate_set.begin() + k);
+
     std::vector<Neighbor> results;
-    results.reserve(std::min(topk, count_final_results));
-    
-    for (int i = 0; i < std::min(topk, count_final_results); i++) {
-        results.push_back(final_results[i]);
+    results.reserve(k);
+    for (int i = 0; i < k; i++) {
+        if (candidate_set[i].id >= 0) {
+            results.push_back(candidate_set[i]);
+        }
     }
-    
-    return std::make_tuple(results, num_lin_scans);
-}
-
-std::tuple<std::vector<Neighbor>, int> MQH::query_with_candidates(
-    const std::vector<float>& query_pt, 
-    int k, 
-    float u, 
-    int l0, 
-    float delta, 
-    int query_flag,
-    const std::vector<int>& external_candidates) {
-    
-
-    // Need to have this counter, it's prepped for it.
-    // int num_lin_scans = 0;
-
-    // ...
-
-    // ...
-    // Need to have below return - prepped for it!
-    // return std::make_tuple(results, num_lin_scans);
-}
-
+    // return results
+    return {results, counters};
+}        
+             
 #endif // MQH_H

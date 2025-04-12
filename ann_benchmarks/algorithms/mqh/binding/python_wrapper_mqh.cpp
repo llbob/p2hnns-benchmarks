@@ -49,8 +49,21 @@ public:
         float* query_ptr = static_cast<float*>(buf.ptr);
         std::vector<float> query_vec(query_ptr, query_ptr + buf.shape[0]);
             
+        // Create an empty candidates vector for the search
+        std::vector<int> empty_candidates;
+            
         // Perform the search (match parameter order with MQH::query)
-        auto [neighbors, num_lin_scans] = mqh->query(query_vec, k, b, l0, delta, flag);
+        auto result = mqh->query_with_candidates(
+            query_vec, k, b, l0, delta, flag, empty_candidates);
+        
+        std::vector<Neighbor> neighbors = result.first;
+        std::vector<int> counters = result.second;
+        
+        // Extract counters - assuming order: [num_linear_scans, break_condition_1, break_condition_2]
+        int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
+        int break_count1 = (counters.size() > 1) ? counters[1] : 0;
+        int break_count2 = (counters.size() > 2) ? counters[2] : 0;
+        int break_count3 = 0; // Default value if not provided
             
         // Convert results to numpy arrays
         std::vector<int> indices;
@@ -64,8 +77,15 @@ public:
             distances.push_back(res.distance);
         }
             
-        // Return a tuple with the results and the number of linear scans
-        return py::make_tuple(py::cast(indices), py::cast(distances), py::cast(num_lin_scans));
+        // Return a tuple with the results, linear scans, and break counters
+        return py::make_tuple(
+            py::cast(indices), 
+            py::cast(distances), 
+            py::cast(num_lin_scans),
+            py::cast(break_count1),
+            py::cast(break_count2),
+            py::cast(break_count3)
+        );
     }
     
     py::tuple search_with_candidates(py::array_t<float> query, int k, float b, int l0, float delta, int flag, 
@@ -91,22 +111,42 @@ public:
         std::vector<int> candidate_ids(candidates_ptr, candidates_ptr + c_buf.shape[0]);
         
         // Perform the search with provided candidates
-        auto [neighbors, num_lin_scans] = mqh->query_with_candidates(
+        auto result = mqh->query_with_candidates(
             query_vec, k, b, l0, delta, flag, candidate_ids);
         
-        // Convert results to numpy arrays
+        std::vector<Neighbor> neighbors = result.first;
+        std::vector<int> counters = result.second;
+        
+        // Extract counters - assuming order: [num_linear_scans, break_condition_1, break_condition_2]
+        int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
+        int break_count1 = (counters.size() > 1) ? counters[1] : 0;
+        int break_count2 = (counters.size() > 2) ? counters[2] : 0;
+        int break_count3 = 0; // Default value if not provided
+        
+        /// Convert results to numpy arrays
         std::vector<int> indices;
         std::vector<float> distances;
-        
+
         indices.reserve(neighbors.size());
         distances.reserve(neighbors.size());
-        
+
         for (const auto& res : neighbors) {
-            indices.push_back(res.id);
-            distances.push_back(res.distance);
+            // Only include valid IDs (>= 0)
+            if (res.id >= 0) {
+                indices.push_back(res.id);
+                distances.push_back(res.distance);
+            }
         }
         
-        return py::make_tuple(py::cast(indices), py::cast(distances), py::cast(num_lin_scans));
+        // Return a tuple with the results, linear scans, and break counters
+        return py::make_tuple(
+            py::cast(indices), 
+            py::cast(distances), 
+            py::cast(num_lin_scans),
+            py::cast(break_count1),
+            py::cast(break_count2),
+            py::cast(break_count3)
+        );
     }
 };
 

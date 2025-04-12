@@ -2,7 +2,7 @@ float:
   any:
     - base_args: ['@metric']
       constructor: MQH
-      disabled: true
+      disabled: false
       docker_tag: ann-benchmarks-mqh
       module: ann_benchmarks.algorithms.mqh
       name: mqh
@@ -15,14 +15,14 @@ float:
               [64], # [m_num - number of bits per hash table]
           ]
           query_args: [
-              [3, 5, 7], # [l0 - hash offset]
-              [0.3, 0.5, 0.7], # [delta - filtering parameter]
-              [0, 1] # [flag - 0 for approximate, 1 for precise]
+              [5], # [l0 - hash offset]
+              [0.3], # [delta - filtering parameter]
+              [0] # [flag - 0 for approximate, 1 for precise]
           ]
 
     - base_args: ['@metric']
       constructor: BT_MQH
-      disabled: true
+      disabled: false
       docker_tag: ann-benchmarks-mqh
       module: ann_benchmarks.algorithms.mqh
       name: bt-mqh
