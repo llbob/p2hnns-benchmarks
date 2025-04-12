@@ -12,6 +12,9 @@
 #include <stdexcept>
 #include <unordered_set>
 #include "visited_list_pool.h"
+#include <iostream>
+
+using namespace std;
 
 // Platform-specific intrinsics setup
 #ifdef _MSC_VER
@@ -925,7 +928,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     for (int n = 0; n < n_pts; n++) {
         // position pointer for this level's data
         char* cur_loc = &index_[n * size_per_element_ + 2 * sizeof(unsigned char) + 
-                    k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+                    k * (2 * sizeof(float) + M2 + sizeof(unsigned long) * m_level)];
         
         // write PQ codes 
         for (int l = 0; l < M2; l++) {
@@ -1134,6 +1137,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
             float actual_residual_norm = *reinterpret_cast<float*>(cur_loc);
             cur_loc += sizeof(float);
             // first update the inner product based on centroid at this level
+            if(n % 1000 == 0) {
+                cout << "relative norm: " << relative_residual_norm << " ";
+                cout << "actual residual norm: " << actual_residual_norm;
+            }
             for(int i = 0; i < M2; i++)
             {
                 // read one codeword at a time and add corresponding precomputed ip to running ip
@@ -1141,7 +1148,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 ip += level_ip[l][i][codeword] * relative_residual_norm;
                 cur_loc += sizeof(unsigned char);
             }
-
+            
             if (ip > b - cur_val && ip < b + cur_val) {
                 // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
                 float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
@@ -1149,7 +1156,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                     dist_to_H = - dist_to_H;
                 }
                 num_linear_scans++;
-
+                
                 if(dist_to_H < cur_val)
                 {
                     Neighbor nn;
@@ -1163,8 +1170,11 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
             
             // Boolean to check which side of the hyperplane the centroid is situated on
             bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
-
+            
             float centroid_dist_to_boundary = fabs(ip - b) - cur_val;
+            if(n % 1000 == 0) {
+                cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
+            }
 
             if (centroid_dist_to_boundary > actual_residual_norm) // LINE 10 in pseudocode
             {
@@ -1186,14 +1196,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 if (t_zero > 1.0) {
                     t_zero = 1.0;
                 }
-                float t_one;
-                if(positive_side) {
-                    t_one = (b + cur_val - ip)/actual_residual_norm;
-                }
-                else {
-                    t_one = (b - cur_val - ip)/actual_residual_norm;
-                }
-
+                float t_one = (centroid_dist_to_boundary + 2 * cur_val)/actual_residual_norm;
                 if (t_one > 1.0) {
                     t_one = 1.0;
                 }
@@ -1202,7 +1205,8 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 float P_one = 1 - (acos(t_one)/PI);
 
                 int lower_collision_boundary = P_zero * m_num;
-                int upper_collision_boundary = P_one * m_num;
+                int upper_collision_boundary = m_num;
+                cout << "lower collision boundary:" << lower_collision_boundary << " ";
 
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
@@ -1215,6 +1219,8 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 else {
                     collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
                 }
+
+                cout << "collision number:" << collision_number << endl << endl;
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
