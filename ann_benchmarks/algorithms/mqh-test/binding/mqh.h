@@ -930,19 +930,20 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
         char* cur_loc = &index_[n * size_per_element_ + 2 * sizeof(unsigned char) + 
                     k * (2 * sizeof(float) + M2 + sizeof(unsigned long) * m_level)];
         
+                    
+        // write relative residual norm 
+        memcpy(cur_loc, &relative_norms[n], sizeof(float));
+        cur_loc += sizeof(float);
+        
+        // write actual residual norm at this level
+        memcpy(cur_loc, &norm2[n], sizeof(float));
+        cur_loc += sizeof(float);
+
         // write PQ codes 
         for (int l = 0; l < M2; l++) {
             memcpy(cur_loc, &pq_id[n][l], 1);
             cur_loc += 1;
         }
-                    
-        // write relative residual norm 
-        memcpy(cur_loc, &relative_norms[n], sizeof(float));
-        cur_loc += sizeof(float);
-
-        // write actual residual norm at this level
-        memcpy(cur_loc, &norm2[n], sizeof(float));
-        cur_loc += sizeof(float);
 
         // write hash codes 
         for (int l = 0; l < m_level; l++) {
@@ -1207,11 +1208,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
 
                 int lower_collision_boundary = P_zero * m_num;
                 int upper_collision_boundary = m_num;
-                cout << "lower collision boundary:" << lower_collision_boundary << " ";
-
+                
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
-
+                
                 // get collision number between query and point
                 int collision_number;
                 if(positive_side) {
@@ -1220,8 +1220,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 else {
                     collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
                 }
-
-                cout << "collision number:" << collision_number << endl << endl;
+                if (n % 1000 == 0) { 
+                    cout << "lower collision boundary:" << lower_collision_boundary << " ";
+                    cout << "collision number:" << collision_number << endl << endl;
+                }
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
