@@ -1114,6 +1114,8 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     int break_condition_1 = 0;
     int break_condition_2 = 0;
     int break_condition_3 = 0;
+    int collision_runs = 0;
+    int collision_passed = 0;
 
     for(int point_id : external_candidates) {
         // skip point id for now
@@ -1194,6 +1196,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             if ((FLAG == 1 && centroid_dist_to_boundary > new_residual_norm * delta) || (FLAG == 0 && l==level-1 && centroid_dist_to_boundary <= new_residual_norm * delta)) // LINE 14 in pseudocode
             {
                 // Collision testing : 
+                collision_runs++;
 
                 //First establish bucket with t_zero, t_one, P_zero and P_one
                 float t_zero = centroid_dist_to_boundary/new_residual_norm;
@@ -1217,13 +1220,14 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 // get collision number between query and point
                 int collision_number;
                 if(positive_side) {
-                    collision_number = fast_count(point_bit_string, query_bit_string_pos);
+                    collision_number = m_num - fast_count(point_bit_string, query_bit_string_pos);
                 }
                 else {
-                    collision_number = fast_count(point_bit_string, query_bit_string_neg);
+                    collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
                 }
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
+                    collision_passed++;
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
                     if (dist_to_H < 0) {
                         dist_to_H = - dist_to_H;
@@ -1249,7 +1253,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
         }
     }
     // create vector<int> counters to return num_linear_scans and break conditions
-    std::vector<int> counters = {num_linear_scans, break_condition_2, break_condition_3};
+    std::vector<int> counters = {num_linear_scans, break_condition_2, break_condition_3, collision_runs, collision_passed};
     // std::vector<Neighbor> results(candidate_set.begin(), candidate_set.begin() + k);
 
     std::vector<Neighbor> results;

@@ -63,7 +63,9 @@ public:
         int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
         int break_count1 = (counters.size() > 1) ? counters[1] : 0;
         int break_count2 = (counters.size() > 2) ? counters[2] : 0;
-        int break_count3 = 0; // Default value if not provided
+        int break_count3 = (counters.size() > 3) ? counters[3] : 0;
+        int collision_runs = (counters.size() > 4) ? counters[4] : 0;
+        int collision_passed = (counters.size() > 5) ? counters[5] : 0;
             
         // Convert results to numpy arrays
         std::vector<int> indices;
@@ -84,7 +86,9 @@ public:
             py::cast(num_lin_scans),
             py::cast(break_count1),
             py::cast(break_count2),
-            py::cast(break_count3)
+            py::cast(break_count3),
+            py::cast(collision_runs),
+            py::cast(collision_passed)
         );
     }
     
@@ -121,7 +125,9 @@ public:
         int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
         int break_count1 = (counters.size() > 1) ? counters[1] : 0;
         int break_count2 = (counters.size() > 2) ? counters[2] : 0;
-        int break_count3 = 0; // Default value if not provided
+        int break_count3 = (counters.size() > 3) ? counters[3] : 0;
+        int collision_runs = (counters.size() > 4) ? counters[4] : 0;
+        int collision_passed = (counters.size() > 5) ? counters[5] : 0;
         
         /// Convert results to numpy arrays
         std::vector<int> indices;
@@ -145,7 +151,9 @@ public:
             py::cast(num_lin_scans),
             py::cast(break_count1),
             py::cast(break_count2),
-            py::cast(break_count3)
+            py::cast(break_count3),
+            py::cast(collision_runs),
+            py::cast(collision_passed)
         );
     }
 };

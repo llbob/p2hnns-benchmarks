@@ -264,7 +264,7 @@ def write_output(
             distances_ds[i] = [dist for _, dist in res]
 
 
-def glove(out_fn: str, d: int, distance: str, hyperplane_method:str = "rpd") -> None:
+def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_method:str = "rpd") -> None:
     url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
     fn = os.path.join("data", "glove.twitter.27B.zip")
     download(url, fn)
@@ -275,6 +275,7 @@ def glove(out_fn: str, d: int, distance: str, hyperplane_method:str = "rpd") -> 
         for line in z.open(z_fn):
             v = [float(x) for x in line.strip().split()[1:]]
             X.append(np.array(v))
+        X = X[:size] if size is not None else X
         points = np.array(X)
         if hyperplane_method == "rpd":
             hyperplanes = create_hyperplanes_rpd(points)
@@ -318,7 +319,7 @@ def sift(out_fn: str) -> None:
         write_output(points, hyperplanes, out_fn, "euclidean")
 
 
-def cifar10(out_fn: str, distance: str) -> None:
+def cifar10(out_fn: str, distance: str, size: int = None) -> None:
     import tarfile
     import pickle
     url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
@@ -339,6 +340,7 @@ def cifar10(out_fn: str, distance: str) -> None:
         X = np.vstack(X).astype(np.float32)
         
         # NOTE: cifar10 is in rgb data range [0, 255] so can simply be normalized to [0, 1] by dividing by 255..
+        X = X[:size] if size is not None else X
 
         points = np.array(X)
         hyperplanes = create_hyperplanes_rpd(points)
@@ -468,7 +470,7 @@ def music100(out_fn: str, distance: str) -> None:
     except Exception as e:
         print(f"Error processing the binary file: {e}")
 
-def gist(out_fn: str, distance: str) -> None:
+def gist(out_fn: str, distance: str, size: int = None) -> None:
     import tarfile
 
     url = "ftp://ftp.irisa.fr/local/texmex/corpus/gist.tar.gz"
@@ -476,6 +478,7 @@ def gist(out_fn: str, distance: str) -> None:
     download(url, fn)
     with tarfile.open(fn, "r:gz") as t:
         X = _get_irisa_matrix(t, "gist/gist_base.fvecs")
+        X = X[:size] if size is not None else X
         points = np.array(X)
         hyperplanes = create_hyperplanes_rpd(points)
         write_output(points, hyperplanes, out_fn, distance)
@@ -540,67 +543,20 @@ def trevi(out_fn: str, distance: str) -> None:
     import shutil
     shutil.rmtree(extract_dir)
 
-
-def glove_small(out_fn: str, d: int, distance: str, size: int = 10000, hyperplane_method: str = "rpd") -> None:
-    """
-    Create a smaller version of the Glove dataset with a specified number of points.
-    
-    Args:
-        out_fn (str): The output file name
-        d (int): Dimension of the Glove vectors
-        distance (str): The distance metric to use
-        size (int, optional): Number of points to include in the dataset. Defaults to 10000.
-    """
-    if d != 100 and hyperplane_method == "bcq":
-        raise ValueError("The BCQ hyperplane method only works with d=100")
-    
-    
-
-    url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
-    fn = os.path.join("data", "glove.twitter.27B.zip")
-    download(url, fn)
-    
-    with zipfile.ZipFile(fn) as z:
-        print(f"preparing {out_fn} with {size} points")
-        z_fn = f"glove.twitter.27B.{d}d.txt"
-        
-        X = []
-        for line in z.open(z_fn):
-            if len(X) >= size:
-                break
-            v = [float(x) for x in line.strip().split()[1:]]
-            X.append(np.array(v))
-        
-        # If we didn't get enough points, we'll just use what we have
-        if len(X) < size:
-            print(f"Warning: Could only load {len(X)} points, which is less than the requested {size}")
-        
-        # Convert to numpy array and take only the first 'size' points
-        X = np.array(X[:size])
-        
-        points = X
-        if hyperplane_method == "rpd":
-            hyperplanes = create_hyperplanes_rpd(points)
-        elif hyperplane_method == "bctree": # Wrapper of Qiang et al. query generation method
-            hyperplanes = create_hyperplanes_bctree(points)
-        elif hyperplane_method == "rpsd": # Expanded mean version of rpd
-            hyperplanes = create_hyperplanes_rpsd(points)
-        else:
-            raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
-        write_output(points, hyperplanes, out_fn, distance)
-
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are datasets that are used as testers - both 20k points only
-    "glove-25-euclidean-med": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000),
-    "glove-100-euclidean-med": lambda out_fn: glove_small(out_fn, 100, "euclidean", 20000),
+    "glove-25-euclidean-med": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
+    "glove-100-euclidean-med": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
+    "cifar10-512-euclidean-med": lambda out_fn: cifar10(out_fn, "euclidean", 20000),
+    "gist-960-euclidean-med": lambda out_fn: gist(out_fn, "euclidean", 20000),
 
     # ========================================================================
     # Here are the datasets that are used to demonstrate the hyperplane methods
     # 25 dims - 20k points
-    "glove-25-euclidean-med-bctree": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
-    "glove-25-euclidean-med-rpd": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="rpd"),
-    "glove-25-euclidean-med-rpsd": lambda out_fn: glove_small(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
+    "glove-25-euclidean-med-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
+    "glove-25-euclidean-med-rpd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpd"),
+    "glove-25-euclidean-med-rpsd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
     # 100 dims
     "glove-100-euclidean-rpd": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="rpd"),
     "glove-100-euclidean-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="bctree"),

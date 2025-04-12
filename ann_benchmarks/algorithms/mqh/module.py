@@ -104,7 +104,7 @@ class BT_MQH(BaseANN):
         
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, candidate_indices)
         
         # Ensure no duplicates in the final result
@@ -245,7 +245,7 @@ class MH_MQH(BaseANN):
         
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, candidate_indices)
         
         # Ensure no duplicates in the final result
@@ -340,7 +340,7 @@ class MQH(BaseANN):
                 b = b / qnorm
         
         # Call the search method with the appropriate parameters
-        indices, distances, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3 = self._mqh.search(
+        indices, distances, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search(
             q, n, b, self._l0, self._delta, self._flag)
         
         # Remove duplicates from the results
@@ -350,9 +350,6 @@ class MQH(BaseANN):
             if idx not in seen:
                 seen.add(idx)
                 unique_indices.append(idx)
-        # count number of unique indices vs original indices
-        self._unique_count = len(unique_indices)
-        self._original_count = len(indices)
         # Make sure we return exactly n results (or fewer if not enough unique results)
         return unique_indices[:n]
     
@@ -366,4 +363,4 @@ class MQH(BaseANN):
         return self._data.nbytes if hasattr(self, "_data") else 0
 
     def __str__(self):
-        return f"OGCOUNT={self._original_count},UNIQCOUNT={self._unique_count}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
+        return f"CLRUNS={self._collision_runs},CLPASS={self._collision_passed}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
