@@ -1020,7 +1020,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 });
         
         //we take 1/20 of the total points.
-        int cap = n_pts/20;
+        int cap = n_pts;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
@@ -1139,10 +1139,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
             float actual_residual_norm = *reinterpret_cast<float*>(cur_loc);
             cur_loc += sizeof(float);
             // first update the inner product based on centroid at this level
-            if(n % 1000 == 0) {
-                cout << "relative norm: " << relative_residual_norm << " ";
-                cout << "actual residual norm: " << actual_residual_norm;
-            }
+            // if(n % 1000 == 0) {
+            //     cout << "relative norm: " << relative_residual_norm << " ";
+            //     cout << "actual residual norm: " << actual_residual_norm;
+            // }
             for(int i = 0; i < M2; i++)
             {
                 // read one codeword at a time and add corresponding precomputed ip to running ip
@@ -1174,9 +1174,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
             bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
             
             float centroid_dist_to_boundary = fabs(ip - b) - cur_val;
-            if(n % 1000 == 0) {
-                cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
-            }
+            // if(n % 1000 == 0) {
+            //     cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
+            // }
 
             if (centroid_dist_to_boundary > actual_residual_norm) // LINE 10 in pseudocode
             {
@@ -1221,10 +1221,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 else {
                     collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
                 }
-                if (n % 1000 == 0) { 
-                    cout << "lower collision boundary:" << lower_collision_boundary << " ";
-                    cout << "collision number:" << collision_number << endl << endl;
-                }
+                // if (n % 1000 == 0) { 
+                //     cout << "lower collision boundary:" << lower_collision_boundary << " ";
+                //     cout << "collision number:" << collision_number << endl << endl;
+                // }
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;

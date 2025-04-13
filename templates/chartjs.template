@@ -30,6 +30,15 @@
                                 display:true,
                                 text: '{{ plot_label }}'
                             },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
                             scales: {
                                 xAxes: [{
                                     display: true,
@@ -70,12 +79,22 @@
                     var item = tooltipItem[0];
 
                     var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
-                    var footer = "Parameters: " + data.datasets[item.datasetIndex].data[item.index].label || '';
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
                     var afterFooter = callbacks.afterFooter.apply(me, arguments);
 
                     var lines = [];
                     lines = pushOrConcat(lines, beforeFooter);
-                    lines = pushOrConcat(lines, footer);
+                    lines = pushOrConcat(lines, paramLines);
                     lines = pushOrConcat(lines, afterFooter);
 
                     return lines;

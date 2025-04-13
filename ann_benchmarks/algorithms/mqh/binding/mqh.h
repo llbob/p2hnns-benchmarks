@@ -12,6 +12,9 @@
 #include <stdexcept>
 #include <unordered_set>
 #include "visited_list_pool.h"
+#include <iostream>
+
+using namespace std;
 
 // Platform-specific intrinsics setup
 #ifdef _MSC_VER
@@ -734,15 +737,15 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
 // =======================================================================================================================
 // Prepare compact index structure by writing coarse level info
     
-    size_per_element_ = sizeof(int) + 2 * sizeof(float) + 2 * sizeof(unsigned char) + 
-    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);
+    size_per_element_ = 2 * sizeof(unsigned char) + 
+    level * (2 * sizeof(float) + M2 + sizeof(unsigned long) * m_level);
 
     // REMEMBER :
     //    size_per_element_ = sizeof(int) +                                 // Point ID
     //    sizeof(float) +                                                   // Coarse level residual norm 
     //    sizeof(float) +                                                   // Additional float value (VAL) to be used later
     //    2 * sizeof(unsigned char) +                                       // Coarse centroid IDs (1 byte each)
-    //    level * (M2 + sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later. M2 = PQ_IDs, residual norm = sizeof(float), hashcode = sizeof(unsigned long)
+    //    level * (M2 + 2 * sizeof(float) + sizeof(unsigned long) * m_level);   // Level data to be filled out later. M2 = PQ_IDs, residual norm = sizeof(float), hashcode = sizeof(unsigned long)
 
     // Initialize index structure for each cluster
     coarse_index.resize(num_nonempty_cells);
@@ -759,18 +762,18 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
             //starting point of data for this point
             char* cur_loc = &index_[point_id * size_per_element_];
             
-            //Store point ID
-            memcpy(cur_loc, &point_id, sizeof(int));
-            cur_loc += sizeof(int);
+            // //Store point ID
+            // memcpy(cur_loc, &point_id, sizeof(int));
+            // cur_loc += sizeof(int);
             
             //store residual norm
-            memcpy(cur_loc, &residual_norm, sizeof(float));
-            cur_loc += sizeof(float);
+            // memcpy(cur_loc, &residual_norm, sizeof(float));
+            // cur_loc += sizeof(float);
             
-            //space for VAL to be used later
-            float val_placeholder = 0.0f;
-            memcpy(cur_loc, &val_placeholder, sizeof(float));
-            cur_loc += sizeof(float);
+            // //space for VAL to be used later
+            // float val_placeholder = 0.0f;
+            // memcpy(cur_loc, &val_placeholder, sizeof(float));
+            // cur_loc += sizeof(float);
             
             
             coarse_index[i][j] = cell_to_point_ids[i][j].id;
@@ -924,19 +927,23 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     // store this leveløs hash codes and codewords in index
     for (int n = 0; n < n_pts; n++) {
         // position pointer for this level's data
-        char* cur_loc = &index_[n * size_per_element_ + sizeof(int) + 2 * sizeof(float) + 
-                    2 * sizeof(unsigned char) + 
-                    k * (M2 + sizeof(float) + sizeof(unsigned long) * m_level)];
+        char* cur_loc = &index_[n * size_per_element_ + 2 * sizeof(unsigned char) + 
+                    k * (2 * sizeof(float) + M2 + sizeof(unsigned long) * m_level)];
         
+                    
+        // write relative residual norm 
+        memcpy(cur_loc, &relative_norms[n], sizeof(float));
+        cur_loc += sizeof(float);
+        
+        // write actual residual norm at this level
+        memcpy(cur_loc, &norm2[n], sizeof(float));
+        cur_loc += sizeof(float);
+
         // write PQ codes 
         for (int l = 0; l < M2; l++) {
             memcpy(cur_loc, &pq_id[n][l], 1);
             cur_loc += 1;
         }
-                    
-        // write relative residual norm 
-        memcpy(cur_loc, &relative_norms[n], sizeof(float));
-        cur_loc += sizeof(float);
 
         // write hash codes 
         for (int l = 0; l < m_level; l++) {
@@ -994,10 +1001,10 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
 
     // if no external initial candidate selection, the algorithm resorts to bruteforce distance calcs of coarse centroids
     if(external_candidates.size() == 0) {
-        // Calculate distance from query to each coarse quantization cell
+    //calculate distance from query to each coarse quantization cell
         std::vector<std::pair<int, float>> cell_distances;
         cell_distances.reserve(coarse_cell_mapping.size());
-    
+
         for (int j = 0; j < static_cast<int>(coarse_cell_mapping.size()); j++) {
             unsigned char a = coarse_cell_mapping[j].id1;
             unsigned char b = coarse_cell_mapping[j].id2;
@@ -1005,18 +1012,17 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             float dist = first_half_ips[a] + second_half_ips[b] - u;
             cell_distances.push_back(std::make_pair(j, dist));
         }
-    
-        // Sort cells by distance
+
+        //sort cells by distance
         std::sort(cell_distances.begin(), cell_distances.end(),
                 [](const std::pair<int,float>& a, const std::pair<int,float>& b) {
                     return std::abs(a.second) < std::abs(b.second);
                 });
         
-        // We take 1/20 of the total points
-        int cap = n_pts / 20;
+        //we take 1/20 of the total points.
+        int cap = n_pts;
         external_candidates.reserve(cap);
-        
-        // Populate external candidates vector until cap is reached
+        //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
             if(external_candidates.size() >= cap) {
                 break;
@@ -1025,10 +1031,9 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             auto points = coarse_index[centroid_id];
             for(int j = 0; j < points.size(); j++){
                 external_candidates.push_back(points[j]);
-                if(external_candidates.size() >= cap) {
-                    break;
-                }
             }
+
+
         }
     }
     //____________________________________________________________________________________________________________________________________
@@ -1056,7 +1061,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
         float negative_q_ip = 0;
         for (int ll = 0; ll < dim; ll++) {
             positive_q_ip += query.data()[ll] * proj_array[l][ll];
-            negative_q_ip += - query.data()[ll] * proj_array[l][ll];
+            negative_q_ip += -1 * query.data()[ll] * proj_array[l][ll];
         }
         
         if (positive_q_ip >= 0) {
@@ -1079,6 +1084,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
         candidate_set[i].id = -1;  // Invalid ID
         candidate_set[i].distance = std::numeric_limits<float>::max();
     }
+    
     float cur_val = 0.0; // current kth nearest neighbour's distance to H
 
     //populate running candidate set and set initial cur_val.
@@ -1088,7 +1094,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
         external_candidates.pop_back();
         float distance = compare_short(data[point_id].data(), query.data(), dim) - b;
         if (distance < 0) {
-            distance = - distance;
+            distance = -1 * distance;
         }
         num_linear_scans++;
 
@@ -1108,43 +1114,50 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     }
 
     //====================================================================================================================================
-    // Begin MQH pruning process starting by the outer for loop in pseudocode
-
-    // Initialise counters for all break conditions
+    // Init counters for logging pruning
     int break_condition_1 = 0;
     int break_condition_2 = 0;
     int break_condition_3 = 0;
     int collision_runs = 0;
     int collision_passed = 0;
 
+    // Begin MQH pruning process starting by the outer for loop in pseudocode
+    int n = 0;
     for(int point_id : external_candidates) {
+        n++;
         // skip point id for now
-        char *cur_loc = &index_[point_id * size_per_element_] + sizeof(int);
-        // initialize current residual norm. Since the normalized residuals of level l-1 are quantized in level l, we need the residual norm of the previous level as scale factor.
-        float current_residual_norm = *reinterpret_cast<float*>(cur_loc);
-        //Skip 2 floats because of VAL
-        cur_loc += 2 * sizeof(float);
+        char *cur_loc = &index_[point_id * size_per_element_];
         // find coarse centroid IDs and initialize IP by looking up the precomputed ip in each sub space.
         unsigned char first_coarse_id = *reinterpret_cast<unsigned char*>(cur_loc);
         cur_loc += sizeof(unsigned char);
         unsigned char second_coarse_id = *reinterpret_cast<unsigned char*>(cur_loc);
         cur_loc += sizeof(unsigned char);
         float ip = first_half_ips[first_coarse_id] + second_half_ips[second_coarse_id];
+
         
         // gradual refinement of quantization
         for(int l = 0; l < level; l++){
             //find the right memory location for the point at this level by skipping data already read. Therefore, offset = coarse data + previous levels' data
-            int offset = sizeof(int) + 2 * (sizeof(float) + sizeof(unsigned char)) + l * (M2 + sizeof(float) + sizeof(unsigned long));
+            int offset = 2 * sizeof(unsigned char) + l * (2 * sizeof(float) + M2 + sizeof(unsigned long));
             cur_loc = &index_[point_id * size_per_element_] + offset;
+            // initialize current relative/actual residual norms. 
+            float relative_residual_norm = *reinterpret_cast<float*>(cur_loc);
+            cur_loc += sizeof(float);
+            float actual_residual_norm = *reinterpret_cast<float*>(cur_loc);
+            cur_loc += sizeof(float);
             // first update the inner product based on centroid at this level
+            // if(n % 1000 == 0) {
+            //     cout << "relative norm: " << relative_residual_norm << " ";
+            //     cout << "actual residual norm: " << actual_residual_norm;
+            // }
             for(int i = 0; i < M2; i++)
             {
                 // read one codeword at a time and add corresponding precomputed ip to running ip
                 unsigned char codeword = *reinterpret_cast<unsigned char*>(cur_loc);
-                ip += level_ip[l][i][codeword] * current_residual_norm;
+                ip += level_ip[l][i][codeword] * relative_residual_norm;
                 cur_loc += sizeof(unsigned char);
             }
-
+            
             if (ip > b - cur_val && ip < b + cur_val) {
                 // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
                 float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
@@ -1152,7 +1165,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     dist_to_H = - dist_to_H;
                 }
                 num_linear_scans++;
-
+                
                 if(dist_to_H < cur_val)
                 {
                     Neighbor nn;
@@ -1164,59 +1177,52 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 }
             }
             
-            // read residual norm
-            float new_residual_norm = *reinterpret_cast<float*>(cur_loc);
-            cur_loc += sizeof(float);
-            
             // Boolean to check which side of the hyperplane the centroid is situated on
-            bool positive_side = ip < b - cur_val;
+            bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
+            
+            float centroid_dist_to_boundary = fabs(ip - b) - cur_val;
+            // if(n % 1000 == 0) {
+            //     cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
+            // }
 
-            float centroid_dist_to_boundary = 0.0;
-            if(positive_side) {
-                centroid_dist_to_boundary = b - cur_val - ip;
-            }
-            else {
-                centroid_dist_to_boundary = b + cur_val - ip;
-            }
-
-
-            if (centroid_dist_to_boundary > new_residual_norm) // LINE 10 in pseudocode
+            if (centroid_dist_to_boundary > actual_residual_norm) // LINE 10 in pseudocode
             {
                 // distance from centroid to bouondary is greater than residual norm, so residual cannot by any means reach inside the margin.
                 break_condition_1++;
                 break;
             }
 
-            if (FLAG == 0 && centroid_dist_to_boundary > new_residual_norm * delta) { // LINE 12 in pseudocode
+            if (FLAG == 0 && centroid_dist_to_boundary > actual_residual_norm * delta) { // LINE 12 in pseudocode
                 // ratio between centroid's distance to boundary and residual_norm is too large, so we prune for efficiency
                 break_condition_2++;
                 break;
             }
 
-            if ((FLAG == 1 && centroid_dist_to_boundary > new_residual_norm * delta) || (FLAG == 0 && l==level-1 && centroid_dist_to_boundary <= new_residual_norm * delta)) // LINE 14 in pseudocode
+            if ((FLAG == 1 && centroid_dist_to_boundary > actual_residual_norm * delta) || (FLAG == 0 && l==level-1 && centroid_dist_to_boundary <= actual_residual_norm * delta)) // LINE 14 in pseudocode
             {
-                // Collision testing : 
                 collision_runs++;
+                // Collision testing : 
 
                 //First establish bucket with t_zero, t_one, P_zero and P_one
-                float t_zero = centroid_dist_to_boundary/new_residual_norm;
-                float t_one;
-                if(positive_side) {
-                    t_one = (b + cur_val - ip)/new_residual_norm;
+                float t_zero = centroid_dist_to_boundary/actual_residual_norm;
+                if (t_zero > 1.0) {
+                    t_zero = 1.0;
                 }
-                else {
-                    t_one = (b - cur_val - ip)/new_residual_norm;
+                float t_one = (centroid_dist_to_boundary + 2 * cur_val)/actual_residual_norm;
+                if (t_one > 1.0) {
+                    t_one = 1.0;
                 }
 
                 float P_zero = 1 - (acos(t_zero)/PI);
                 float P_one = 1 - (acos(t_one)/PI);
 
-                int lower_collision_boundary = P_zero * m_num - l0/2;
-                int upper_collision_boundary = P_one * m_num + l0/2;
-
+                int l1 = l0/2;
+                int lower_collision_boundary = P_zero * m_num - l1;
+                int upper_collision_boundary = P_one * m_num + l1;
+                
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
-
+                
                 // get collision number between query and point
                 int collision_number;
                 if(positive_side) {
@@ -1225,8 +1231,12 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 else {
                     collision_number = m_num - fast_count(point_bit_string, query_bit_string_neg);
                 }
+                // if (n % 1000 == 0) { 
+                //     cout << "lower collision boundary:" << lower_collision_boundary << " ";
+                //     cout << "collision number:" << collision_number << endl << endl;
+                // }
 
-                if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
+                if(collision_number >= lower_collision_boundary && collision_number <= upper_collision_boundary) {
                     collision_passed++;
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
                     if (dist_to_H < 0) {
@@ -1249,7 +1259,6 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     break;
                 }
             }
-            current_residual_norm = new_residual_norm;
         }
     }
     // create vector<int> counters to return num_linear_scans and break conditions
