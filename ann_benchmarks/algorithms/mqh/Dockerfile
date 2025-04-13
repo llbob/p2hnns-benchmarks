@@ -34,13 +34,21 @@ RUN git clone https://github.com/HuangQiang/BC-Tree.git && \
     mkdir -p BC-Tree/external && \
     cd BC-Tree/external && \
     git clone https://github.com/pybind/pybind11.git && \
-    rm -rf pybind11/.git
+    rm -rf pybind11/.git && \
+    cd .. && \
+    rm -f methods/ball_node.h methods/ball_tree.h
 
 # Copy the setup files from the algorithm directory
 COPY ann_benchmarks/algorithms/mqh/binding/setup_bt.py \
      ann_benchmarks/algorithms/mqh/binding/python_wrapper_bt.cpp \
      ann_benchmarks/algorithms/mqh/binding/CMakeLists.txt \
+     ann_benchmarks/algorithms/mqh/binding/ball_node.h \
+     ann_benchmarks/algorithms/mqh/binding/ball_tree.h \
      /home/app/BC-Tree/
+
+# Move the ball_*.h files to the correct location
+RUN cd /home/app/BC-Tree && \
+    mv ball_node.h ball_tree.h methods/
 
 # Build the module in /home/app
 WORKDIR /home/app/BC-Tree

@@ -1383,7 +1383,7 @@ std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& quer
         if (distance < 0) {
             distance = -distance;
         }
-        
+        num_lin_scans++;
         // Add to final result set
         Neighbor nn;
         nn.id = point_id;

@@ -1235,17 +1235,23 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 //     cout << "lower collision boundary:" << lower_collision_boundary << " ";
                 //     cout << "collision number:" << collision_number << endl << endl;
                 // }
+                // std::cout << "t_zero: " << t_zero << ", t_one: " << t_one << std::endl;
+                // std::cout << "P_zero: " << P_zero << ", P_one: " << P_one << std::endl;
+                // std::cout << "lower_bound: " << lower_collision_boundary << ", upper_bound: " << upper_collision_boundary << std::endl;
+                // std::cout << "collision_number: " << collision_number << std::endl;
 
-                if(collision_number >= lower_collision_boundary && collision_number <= upper_collision_boundary) {
+                if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
                     collision_passed++;
                     float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
                     if (dist_to_H < 0) {
                         dist_to_H = - dist_to_H;
                     }
                     num_linear_scans++;
-
+                    // std::cout << "dist_to_H: " << dist_to_H << std::endl;
+                    // std::cout << "cur_val: " << cur_val << std::endl;
                     if(dist_to_H < cur_val)
                     {
+                        std::cout << "collision passed" << std::endl;
                         Neighbor nn;
                         nn.id = point_id;
                         nn.distance = dist_to_H;
