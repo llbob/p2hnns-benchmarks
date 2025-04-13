@@ -1251,7 +1251,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     // std::cout << "cur_val: " << cur_val << std::endl;
                     if(dist_to_H < cur_val)
                     {
-                        std::cout << "collision passed" << std::endl;
+                        // std::cout << "collision passed" << std::endl;
                         Neighbor nn;
                         nn.id = point_id;
                         nn.distance = dist_to_H;
