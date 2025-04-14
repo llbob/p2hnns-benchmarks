@@ -43,7 +43,7 @@ public:
     ~Ball_Node();                   // desctructor
 
     // -------------------------------------------------------------------------
-    void nns(                       // point-to-hyperplane nns on ball node
+    int nns(                       // point-to-hyperplane nns on ball node
         float c,                        // approximate ratio
         float abso_ip,                  // absolute ip of query & centroid
         float norm_q,                   // the norm of query for d dim
@@ -61,7 +61,7 @@ public:
     // -------------------------------------------------------------------------
     void add_leaf_points(               // linear scan
         const float *query,             // input query
-        float center_dist,                    // storing distance from center of leaf node to query
+        float abso_ip,                    // storing distance from center of leaf node to query
         int  &cand,                    // candidate counter (return)
         MinK_List *list);               // top-k PNN results (return)
 
@@ -130,7 +130,7 @@ Ball_Node<DType>::~Ball_Node()      // desctructor
 
 // -----------------------------------------------------------------------------
 template<class DType>
-void Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
+int Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
     float c,                            // approximate ratio
     float abso_ip,                      // absolute ip of query & centroid
     float norm_q,                       // the norm of query for d dim
@@ -139,31 +139,35 @@ void Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
     MinK_List *list)                    // top-k results (return)
 {
     // early stop 1
-    if (cand <= 0) return;
+    if (cand <= 0) return 0;
     
-    // early stop 2
+    // early stop 2 <- this stops when the current node can't possibly contain points better than what we already have based on a lower bound
     float lower_bound = est_lower_bound(c, abso_ip, norm_q, radius_);
-    if (lower_bound >= list->max_key()) return;
+    if (lower_bound >= list->max_key()) return 0;
     
+    int num_lin_scans = 0;
+
     // traversal the tree
     if (data_ != nullptr) { // leaf node
-        float center_dist = calc_p2h_dist<DType>(d_, center_, query);
-        add_leaf_points(query, center_dist, cand, list);
+        num_lin_scans++;
+        add_leaf_points(query, abso_ip, cand, list);
     } 
     else { // internal node
         // center preference
+        // <-- tghis rders the traversal based on the absolute inner product (abso_ip) between the query and node centers
         float lc_abso_ip = fabs(calc_inner_product<float>(d_, lc_->center_, query));
         float rc_abso_ip = fabs(calc_inner_product<float>(d_, rc_->center_, query));
         if (lc_abso_ip < rc_abso_ip) {
-            lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
-            rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
+            num_lin_scans += lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
+            num_lin_scans += rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
         }
         else {
-            rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
-            lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
+            num_lin_scans += rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
+            num_lin_scans += lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
         }
         
         // // lower bound preference
+        // <- would order the traversal based on the estimated lower bounds and visit nodes with smaller lower bound values first
         // float lc_abso_ip = fabs(calc_inner_product<float>(d_, lc_->center_, query));
         // float rc_abso_ip = fabs(calc_inner_product<float>(d_, rc_->center_, query));
         
@@ -178,6 +182,7 @@ void Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
         //     lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
         // }
     }
+    return num_lin_scans;
 }
 
 // -----------------------------------------------------------------------------
@@ -198,13 +203,13 @@ float Ball_Node<DType>::est_lower_bound(// estimate lower bound
 template<class DType>
 void Ball_Node<DType>::add_leaf_points( // linear scan
     const float *query,                 // input query
-    float center_dist,                        // center_dist
+    float abso_ip,                        // abso_ip which is the abs distance from node center to query
     int  &cand,                    // candidate counter (return)
     MinK_List *list)                    // top-k results (return)
 {
     for (int i = 0; i < n_; ++i) {
-        // Inser center_dist calculated from leaf node center to query
-        list->insert(center_dist, index_[i]+1); 
+        // Inser abso_ip calculated from leaf node center to query
+        list->insert(abso_ip, index_[i]+1); 
         
         // update candidate counter
         --cand; if (cand <= 0) return;

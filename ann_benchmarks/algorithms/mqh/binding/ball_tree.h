@@ -210,8 +210,10 @@ int Ball_Tree<DType>::nns(          // point-to-hyperplane search on ball-tree
     float ip = calc_inner_product<float>(d_, root_->center_, query);
     
     int total = cand;
-    root_->nns(c, fabs(ip), norm_q, query, cand, list);
-    return total - cand;
+    //Cand is now only being used to limit the amount of candidates in total added through leaf nodes.
+    int num_lin_scans = root_->nns(c, fabs(ip), norm_q, query, cand, list);
+    // return total - cand; 
+    return num_lin_scans;
 }
 
 // -----------------------------------------------------------------------------

@@ -58,30 +58,6 @@ static inline int fast_count(unsigned long a, unsigned long b) {
     return count;
 }
 
-// This function is used to compare float vectors
-static float compare_short(const float *a, const float *b, unsigned size) {
-    float dot0, dot1, dot2, dot3;
-    const float *last = a + size;
-    const float *unroll_group = last - 3;
-    float result = 0;
-    
-    while (a < unroll_group) {
-        dot0 = a[0] * b[0];
-        dot1 = a[1] * b[1];
-        dot2 = a[2] * b[2];
-        dot3 = a[3] * b[3];
-        result += dot0 + dot1 + dot2 + dot3;
-        a += 4;
-        b += 4;
-    }
-    
-    while (a < last) {
-        result += *a++ * *b++;
-    }
-    
-    return result;
-}
-
 // The compare_ip function calculates the inner product (dot product) between two float vectors
 static float compare_ip(const float *a, const float *b, unsigned size) {
     float result = 0;
@@ -347,7 +323,7 @@ class MQH {
 
         // Constants for probabilistic search guarantees
         const float epsilon = 0.99999; // Desired success probability (very close to 1)
-        const float alpha = 0.673; // LSH parameter for controlling collision probability
+        // const float alpha = 0.673; // LSH parameter for controlling collision probability -> unused
         
         const float PI = 3.1415926535;
 
@@ -991,12 +967,12 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     //first half
     int half_dim = dim/2;
     for (int j = 0; j < L; j++) {
-        first_half_ips[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), half_dim);
+        first_half_ips[j] = compare_ip(query.data(), coarse_centroids_first_half[j].data(), half_dim);
     }
 
     //second half
     for (int j = 0; j < L; j++) {
-        second_half_ips[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), half_dim);
+        second_half_ips[j] = compare_ip(query.data() + dim / 2, coarse_centroids_second_half[j].data(), half_dim);
     }
 
     // if no external initial candidate selection, the algorithm resorts to bruteforce distance calcs of coarse centroids
@@ -1020,7 +996,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 });
         
         //we take 1/20 of the total points.
-        int cap = n_pts;
+        int cap = n_pts/10;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
@@ -1046,7 +1022,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     for (int j = 0; j < level; j++) {
         for (int l = 0; l < M2; l++) {
             for (int k = 0; k < L; k++) {
-                level_ip[j][l][k] = compare_short(query.data() + l * sub_dim, 
+                level_ip[j][l][k] = compare_ip(query.data() + l * sub_dim, 
                 pq_codebooks[j * M2 + l][k].data(), sub_dim);
             }
         }
@@ -1092,7 +1068,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     {
         int point_id = external_candidates.back();
         external_candidates.pop_back();
-        float distance = compare_short(data[point_id].data(), query.data(), dim) - b;
+        float distance = compare_ip(data[point_id].data(), query.data(), dim) - b;
         if (distance < 0) {
             distance = -1 * distance;
         }
@@ -1160,7 +1136,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             
             if (ip > b - cur_val && ip < b + cur_val) {
                 // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
-                float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
+                float dist_to_H = compare_ip(data[point_id].data(), query.data(), dim) - b;
                 if (dist_to_H < 0) {
                     dist_to_H = - dist_to_H;
                 }
@@ -1178,9 +1154,13 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             }
             
             // Boolean to check which side of the hyperplane the centroid is situated on
+            // bool positive_side = ip > b;
+
+            // float centroid_dist_to_boundary = b - cur_val - ip;
             bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
             
             float centroid_dist_to_boundary = fabs(ip - b) - cur_val;
+            
             // if(n % 1000 == 0) {
             //     cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
             // }
@@ -1192,13 +1172,13 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 break;
             }
 
-            if (FLAG == 0 && centroid_dist_to_boundary > actual_residual_norm * delta) { // LINE 12 in pseudocode
+            if (FLAG == 0 && centroid_dist_to_boundary > (actual_residual_norm * delta)) { // LINE 12 in pseudocode
                 // ratio between centroid's distance to boundary and residual_norm is too large, so we prune for efficiency
                 break_condition_2++;
                 break;
             }
 
-            if ((FLAG == 1 && centroid_dist_to_boundary > actual_residual_norm * delta) || (FLAG == 0 && l==level-1 && centroid_dist_to_boundary <= actual_residual_norm * delta)) // LINE 14 in pseudocode
+            if ((FLAG == 1 && centroid_dist_to_boundary > actual_residual_norm * delta) || (FLAG == 0 && l==(level-1) && centroid_dist_to_boundary <= (actual_residual_norm * delta))) // LINE 14 in pseudocode
             {
                 collision_runs++;
                 // Collision testing : 
@@ -1206,7 +1186,8 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 //First establish bucket with t_zero, t_one, P_zero and P_one
                 float t_zero = centroid_dist_to_boundary/actual_residual_norm;
                 if (t_zero > 1.0) {
-                    t_zero = 1.0;
+                    // t_zero = 1.0; // should in fact be a break according to the theory? may not do any difference
+                    break;
                 }
                 float t_one = (centroid_dist_to_boundary + 2 * cur_val)/actual_residual_norm;
                 if (t_one > 1.0) {
@@ -1216,9 +1197,9 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 float P_zero = 1 - (acos(t_zero)/PI);
                 float P_one = 1 - (acos(t_one)/PI);
 
-                int l1 = l0/2;
-                int lower_collision_boundary = P_zero * m_num - l1;
-                int upper_collision_boundary = P_one * m_num + l1;
+                // int l1 = l0/2; // We'd rather not divide by 2
+                int lower_collision_boundary = P_zero * m_num - l0;
+                int upper_collision_boundary = P_one * m_num + l0;
                 
                 //Then read stored bit string for given point at given level
                 unsigned long point_bit_string = *reinterpret_cast<unsigned long*>(cur_loc);
@@ -1242,7 +1223,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
                     collision_passed++;
-                    float dist_to_H = compare_short(data[point_id].data(), query.data(), dim) - b;
+                    float dist_to_H = compare_ip(data[point_id].data(), query.data(), dim) - b;
                     if (dist_to_H < 0) {
                         dist_to_H = - dist_to_H;
                     }

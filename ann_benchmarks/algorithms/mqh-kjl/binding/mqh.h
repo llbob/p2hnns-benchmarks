@@ -55,30 +55,6 @@ static inline int fast_count(unsigned long a, unsigned long b) {
     return count;
 }
 
-// This function is used to compare float vectors
-static float compare_short(const float *a, const float *b, unsigned size) {
-    float dot0, dot1, dot2, dot3;
-    const float *last = a + size;
-    const float *unroll_group = last - 3;
-    float result = 0;
-    
-    while (a < unroll_group) {
-        dot0 = a[0] * b[0];
-        dot1 = a[1] * b[1];
-        dot2 = a[2] * b[2];
-        dot3 = a[3] * b[3];
-        result += dot0 + dot1 + dot2 + dot3;
-        a += 4;
-        b += 4;
-    }
-    
-    while (a < last) {
-        result += *a++ * *b++;
-    }
-    
-    return result;
-}
-
 // The compare_ip function calculates the inner product (dot product) between two float vectors
 static float compare_ip(const float *a, const float *b, unsigned size) {
     float result = 0;
@@ -347,7 +323,6 @@ class MQH {
 
         // Constants for probabilistic search guarantees
         const float epsilon = 0.99999; // Desired success probability (very close to 1)
-        const float alpha = 0.673; // LSH parameter for controlling collision probability
         
         // Lookup table for quantiles
         std::vector<float> quantile_table;
@@ -1241,12 +1216,12 @@ std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& quer
     
     // First half
     for (int j = 0; j < L; j++) {
-        coarse_centroids_first_half_dists[j] = compare_short(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
+        coarse_centroids_first_half_dists[j] = compare_ip(query.data(), coarse_centroids_first_half[j].data(), dim / 2);
     }
     
     // Second half
     for (int j = 0; j < L; j++) {
-        coarse_centroids_second_half_dists[j] = compare_short(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
+        coarse_centroids_second_half_dists[j] = compare_ip(query.data() + dim / 2, coarse_centroids_second_half[j].data(), dim / 2);
     }
     
     // Precompute distances to PQ centroids
@@ -1256,7 +1231,7 @@ std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& quer
     for (int j = 0; j < level; j++) {
         for (int l = 0; l < M2; l++) {
             for (int k = 0; k < L; k++) {
-                table2[j][l][k] = compare_short(query.data() + l * (dim / M2), 
+                table2[j][l][k] = compare_ip(query.data() + l * (dim / M2), 
                                                pq_codebooks[j * M2 + l][k].data(), dim / M2);
             }
         }
