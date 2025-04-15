@@ -95,7 +95,7 @@ class BT_MQH(BaseANN):
         q_to_pass = numpy.ascontiguousarray(q_to_pass)
 
         # Get candidates from BTree
-        candidate_indices, self._num_lin_scans_bt = self._tree_candidates.search(
+        candidate_indices, _ = self._tree_candidates.search(
             self._initial_topk, self._candidates, self._c, q_to_pass)
         
         # Convert to numpy array
@@ -122,7 +122,7 @@ class BT_MQH(BaseANN):
 
     def get_additional(self):
         return {
-            "dist_comps": self._num_lin_scans + self._num_lin_scans_bt
+            "dist_comps": self._num_lin_scans
         }
 
     def get_memory_usage(self):

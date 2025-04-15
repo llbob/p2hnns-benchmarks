@@ -43,7 +43,7 @@ public:
     ~Ball_Node();                   // desctructor
 
     // -------------------------------------------------------------------------
-    int nns(                       // point-to-hyperplane nns on ball node
+    void nns(                       // point-to-hyperplane nns on ball node
         float c,                        // approximate ratio
         float abso_ip,                  // absolute ip of query & centroid
         float norm_q,                   // the norm of query for d dim
@@ -130,7 +130,7 @@ Ball_Node<DType>::~Ball_Node()      // desctructor
 
 // -----------------------------------------------------------------------------
 template<class DType>
-int Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
+void Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
     float c,                            // approximate ratio
     float abso_ip,                      // absolute ip of query & centroid
     float norm_q,                       // the norm of query for d dim
@@ -139,17 +139,15 @@ int Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
     MinK_List *list)                    // top-k results (return)
 {
     // early stop 1
-    if (cand <= 0) return 0;
+    if (cand <= 0) return;
     
     // early stop 2 <- this stops when the current node can't possibly contain points better than what we already have based on a lower bound
     float lower_bound = est_lower_bound(c, abso_ip, norm_q, radius_);
-    if (lower_bound >= list->max_key()) return 0;
-    
-    int num_lin_scans = 0;
+    if (lower_bound >= list->max_key())
+        return;
 
     // traversal the tree
     if (data_ != nullptr) { // leaf node
-        num_lin_scans++;
         add_leaf_points(query, abso_ip, cand, list);
     } 
     else { // internal node
@@ -158,12 +156,12 @@ int Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
         float lc_abso_ip = fabs(calc_inner_product<float>(d_, lc_->center_, query));
         float rc_abso_ip = fabs(calc_inner_product<float>(d_, rc_->center_, query));
         if (lc_abso_ip < rc_abso_ip) {
-            num_lin_scans += lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
-            num_lin_scans += rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
+            lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
+            rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
         }
         else {
-            num_lin_scans += rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
-            num_lin_scans += lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
+            rc_->nns(c, rc_abso_ip, norm_q, query, cand, list);
+            lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
         }
         
         // // lower bound preference
@@ -182,7 +180,7 @@ int Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
         //     lc_->nns(c, lc_abso_ip, norm_q, query, cand, list);
         // }
     }
-    return num_lin_scans;
+    return;
 }
 
 // -----------------------------------------------------------------------------
