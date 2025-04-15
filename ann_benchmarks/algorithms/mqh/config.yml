@@ -17,7 +17,8 @@ float:
           query_args: [
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
-              [0,1] # [flag - 0 for approximate, 1 for precise]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1, 10, 20] # max_candidates OBS: Only used when no external candidates passed
           ]
 
     - base_args: ['@metric']
@@ -40,7 +41,8 @@ float:
               [1000], # [initial_topk - parameter for BTree]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
-              [0,1] # [flag - 0 for approximate, 1 for precise]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1] # max_candidates OBS: Only used when no external candidates passed
           ]
 
     - base_args: ['@metric']
@@ -65,5 +67,6 @@ float:
               [10000], # [initial_topk - parameter for MH]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
-              [0,1] # [flag - 0 for approximate, 1 for precise]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1] # max_candidates OBS: Only used when no external candidates passed
           ]

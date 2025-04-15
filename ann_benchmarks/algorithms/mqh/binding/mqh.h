@@ -344,7 +344,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, std::vector<int>& external_candidates);
+        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int max_candidates, std::vector<int>& external_candidates);
 
         // Getters and setters
         int get_dim() const { return dim; }
@@ -931,7 +931,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
 }
 
 
-std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, std::vector<int>& external_candidates) {
+std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int max_candidates, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
@@ -995,8 +995,19 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     return std::abs(a.second) < std::abs(b.second);
                 });
         
-        //we take 1/20 of the total points.
-        int cap = n_pts/10;
+        // we use max_candidates to cap the number of candidates to be used in mqhs own candidate selection here
+        int coarse_candidate_amnt = 0;
+        if (max_candidates <= 0)
+        {
+            coarse_candidate_amnt = 1;
+        }
+        else if (max_candidates > n_pts) {
+            coarse_candidate_amnt = n_pts;
+        } else {
+            coarse_candidate_amnt = max_candidates;
+        }
+
+        int cap = n_pts / coarse_candidate_amnt;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
@@ -1178,7 +1189,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 break;
             }
 
-            if ((FLAG == 1 && centroid_dist_to_boundary > actual_residual_norm * delta) || (FLAG == 0 && l==(level-1) && centroid_dist_to_boundary <= (actual_residual_norm * delta))) // LINE 14 in pseudocode
+            if ((FLAG == 1 && (centroid_dist_to_boundary > (actual_residual_norm * delta))) || (FLAG == 0 && l==(level-1) && centroid_dist_to_boundary <= (actual_residual_norm * delta))) // LINE 14 in pseudocode
             {
                 collision_runs++;
                 // Collision testing : 
