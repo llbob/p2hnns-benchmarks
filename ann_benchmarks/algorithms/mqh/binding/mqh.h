@@ -1143,8 +1143,8 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 cur_loc += sizeof(unsigned char);
             }
             
-            if (ip > b - cur_val && ip < b + cur_val) {
-                // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
+            // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
+            if ((b - cur_val - ip) <= 0) {
                 float dist_to_H = compare_ip(data[point_id].data(), query.data(), dim) - b;
                 if (dist_to_H < 0) {
                     dist_to_H = - dist_to_H;
@@ -1166,10 +1166,13 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             // bool positive_side = ip > b;
 
             // float centroid_dist_to_boundary = b - cur_val - ip;
-            bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
-            
-            float centroid_dist_to_boundary = fabs(ip - b) - cur_val;
-            
+            // bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
+
+            bool q_plus = ip <= b - cur_val;
+
+
+            float centroid_dist_to_boundary = b - cur_val - ip;
+
             // if(n % 1000 == 0) {
             //     cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
             // }
@@ -1186,8 +1189,11 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 break_condition_2++;
                 break;
             }
+            // if ((FLAG == 1 && centroid_dist_to_boundary > (actual_residual_norm * delta)) || 
+            //     (FLAG == 0 && l == (level-1) && centroid_dist_to_boundary <= (actual_residual_norm * delta))) {
 
-            if ((FLAG == 1 && (centroid_dist_to_boundary > (actual_residual_norm * delta))) || (FLAG == 0 && l==(level-1) && centroid_dist_to_boundary <= (actual_residual_norm * delta))) // LINE 14 in pseudocode
+            if ((FLAG == 1 && (centroid_dist_to_boundary > (actual_residual_norm * delta))) || 
+                (FLAG == 0 && l==(level-1))) // LINE 14 in pseudocode
             {
                 collision_runs++;
                 // Collision testing : 
@@ -1215,7 +1221,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 
                 // get collision number between query and point
                 int collision_number;
-                if(positive_side) {
+                if(q_plus) {
                     collision_number = m_num - fast_count(point_bit_string, query_bit_string_pos);
                 }
                 else {

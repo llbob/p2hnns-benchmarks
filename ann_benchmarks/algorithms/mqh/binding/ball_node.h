@@ -152,7 +152,7 @@ void Ball_Node<DType>::nns(         // point-to-hyperplane nns on ball node
     } 
     else { // internal node
         // center preference
-        // <-- tghis rders the traversal based on the absolute inner product (abso_ip) between the query and node centers
+        // <-- this orders the traversal based on the absolute inner product (abso_ip) between the query and node centers
         float lc_abso_ip = fabs(calc_inner_product<float>(d_, lc_->center_, query));
         float rc_abso_ip = fabs(calc_inner_product<float>(d_, rc_->center_, query));
         if (lc_abso_ip < rc_abso_ip) {

@@ -237,7 +237,7 @@ class MH_MQH(BaseANN):
         q_to_pass = numpy.ascontiguousarray(q_to_pass)
 
         # Get candidates from MH
-        candidate_indices, self._num_lin_scans_mh = self._mh_index_candidates.search(
+        candidate_indices, _ = self._mh_index_candidates.search(
             self._initial_topk, self._candidates, q_to_pass)
         
         # Convert to numpy array
@@ -264,7 +264,7 @@ class MH_MQH(BaseANN):
 
     def get_additional(self):
         return {
-            "dist_comps": self._num_lin_scans + self._num_lin_scans_mh,
+            "dist_comps": self._num_lin_scans,
         }
 
     def get_memory_usage(self):

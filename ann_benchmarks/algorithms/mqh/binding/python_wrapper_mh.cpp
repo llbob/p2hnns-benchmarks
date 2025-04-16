@@ -32,14 +32,14 @@ namespace p2h
 			py::buffer_info buf = query.request();
 			float* ptr = static_cast<float*>(buf.ptr);
 			
-			MinK_List list(top_k);
-			int num_lin_scans = mh->nns(top_k, cand, ptr, &list);
-
+			std::vector<int> result_list;
+			int num_lin_scans = mh->nns(top_k, cand, ptr, &result_list);
+		
 			std::vector<int> return_list;
-			for (int i = 0; i < list.size(); ++i)
+			for (int i = 0; i < result_list.size(); ++i)
 			{
 				// we need to subtract 1 because the ids are 1-indexed in the C++ code
-				return_list.push_back(list.ith_id(i)-1);
+				return_list.push_back(result_list[i]-1);
 			}
 			return std::make_tuple(return_list, num_lin_scans);
 		}

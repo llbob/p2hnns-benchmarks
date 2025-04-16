@@ -68,12 +68,18 @@ RUN git clone https://github.com/HuangQiang/P2HNNS.git && \
     mkdir -p P2HNNS/external && \
     cd P2HNNS/external && \
     git clone https://github.com/pybind/pybind11.git && \
-    rm -rf pybind11/.git
+    rm -rf pybind11/.git && \
+    cd .. && \
+    rm -f methods/baseline.h methods/mh.h methods/bh.h methods/kl_bucketing.h
 
 # Copy the setup files from the algorithm directory
 COPY ann_benchmarks/algorithms/mqh/binding/setup_mh.py \
      ann_benchmarks/algorithms/mqh/binding/python_wrapper_mh.cpp \
      ann_benchmarks/algorithms/mqh/binding/CMakeLists.txt \
+     ann_benchmarks/algorithms/mqh/binding/baseline.h \
+     ann_benchmarks/algorithms/mqh/binding/mh.h \
+     ann_benchmarks/algorithms/mqh/binding/bh.h \
+     ann_benchmarks/algorithms/mqh/binding/kl_bucketing.h \
      /home/app/P2HNNS/
 
 # Build the module in /home/app
