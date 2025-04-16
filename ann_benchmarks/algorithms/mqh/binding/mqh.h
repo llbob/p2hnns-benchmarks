@@ -344,7 +344,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int max_candidates, std::vector<int>& external_candidates);
+        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int coarse_candidates_coeff, std::vector<int>& external_candidates);
 
         // Getters and setters
         int get_dim() const { return dim; }
@@ -931,7 +931,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
 }
 
 
-std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int max_candidates, std::vector<int>& external_candidates) {
+std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int coarse_candidates_coeff, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
@@ -995,19 +995,17 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     return std::abs(a.second) < std::abs(b.second);
                 });
         
-        // we use max_candidates to cap the number of candidates to be used in mqhs own candidate selection here
+        // we use coarse_candidates_coeff to cap the number of candidates to be used in mqhs own candidate selection here
         int coarse_candidate_amnt = 0;
-        if (max_candidates <= 0)
+        int cap = 0;
+        if (coarse_candidates_coeff <= 0)
         {
-            coarse_candidate_amnt = 1;
+            cap = n_pts;
         }
-        else if (max_candidates > n_pts) {
-            coarse_candidate_amnt = n_pts;
-        } else {
-            coarse_candidate_amnt = max_candidates;
+        else {
+            cap = n_pts / coarse_candidates_coeff;
         }
-
-        int cap = n_pts / coarse_candidate_amnt;
+        
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {

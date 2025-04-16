@@ -18,7 +18,7 @@ class BT_MQH(BaseANN):
         self._l0 = 3  # Default parameter
         self._delta = 0.5  # Default parameter
         self._flag = 0  # Default parameter
-        self._max_candidates = 1  # Default parameter
+        self._coarse_candidates_coeff = 1  # Default parameter
         
         # BTree parameters
         self._max_leaf_size = max_leaf_size
@@ -54,13 +54,13 @@ class BT_MQH(BaseANN):
         data_array = numpy.ascontiguousarray(self._candidate_data.ravel())
         self._tree_candidates.preprocess(n, d, self._max_leaf_size, data_array)
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, max_candidates=1):
+    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, coarse_candidates_coeff=1):
         self._candidates = candidates
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._max_candidates = max_candidates
+        self._coarse_candidates_coeff = coarse_candidates_coeff
 
     def query(self, q, b, n):
         """
@@ -107,7 +107,7 @@ class BT_MQH(BaseANN):
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
         indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
-            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._max_candidates, candidate_indices)
+            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._coarse_candidates_coeff, candidate_indices)
         
         # Ensure no duplicates in the final result
         unique_indices = []
@@ -196,13 +196,13 @@ class MH_MQH(BaseANN):
             data_array
         )
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, max_candidates=1):
+    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, coarse_candidates_coeff=1):
         self._candidates = candidates
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._max_candidates = max_candidates
+        self._coarse_candidates_coeff = coarse_candidates_coeff
 
     def query(self, q, b, n):
         """
@@ -249,7 +249,7 @@ class MH_MQH(BaseANN):
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
         indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
-            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._max_candidates, candidate_indices)
+            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._coarse_candidates_coeff, candidate_indices)
         
         # Ensure no duplicates in the final result
         unique_indices = []
@@ -308,11 +308,11 @@ class MQH(BaseANN):
         self._mqh = mqh.MQH(d, self._M2, self._level, self._m_level, self._m_num)
         self._mqh.build_index(self._data)
 
-    def set_query_arguments(self, l0=3, delta=0.5, flag=0, max_candidates=1):
+    def set_query_arguments(self, l0=3, delta=0.5, flag=0, coarse_candidates_coeff=1):
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._max_candidates = max_candidates
+        self._coarse_candidates_coeff = coarse_candidates_coeff
 
     def query(self, q, b, n):
         """
@@ -367,4 +367,4 @@ class MQH(BaseANN):
         return self._data.nbytes if hasattr(self, "_data") else 0
 
     def __str__(self):
-        return f"CLRUNS={self._collision_runs},CLPASS={self._collision_passed}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, max_candidates={self._max_candidates})"
+        return f"CLRUNS={self._collision_runs},CLPASS={self._collision_passed}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, coarse_candidates_coeff={self._coarse_candidates_coeff})"
