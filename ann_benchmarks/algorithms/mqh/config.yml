@@ -30,15 +30,15 @@ float:
       run_groups:
         BT_MQH:
           args: [
-              [10], # [max_leaf_size - BTree parameter]
+              [25, 50, 100, 200, 500, 1000], # [max_leaf_size - BTree parameter]
               [16], # [M2 - number of subcodebooks]
               [4], # [level - number of levels]
               [1], # [m_level - number of hash tables per level]
               [64], # [m_num - number of bits per hash table]
           ]
           query_args: [
-              [2000000], # [candidates - number of examined candidates]
-              [1000], # [initial_topk - parameter for BTree]
+              [20000], # [candidates - number of examined candidates]
+              [10000], # [initial_topk - parameter for BTree]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
@@ -54,9 +54,9 @@ float:
       run_groups:
         MH_MQH:
           args: [
-              [8], # [M_proj_vectors - MH parameter]
-              [128], # [m_single_hashers - MH parameter]
-              [8], # [l_hash_tables - MH parameter]
+              [4, 6, 8], # [M_proj_vectors - MH parameter]
+              [8, 16, 32, 64, 128, 256], # [m_single_hashers - MH parameter]
+              [2, 4, 6, 8, 10], # [l_hash_tables - MH parameter]
               [16], # [M2 - number of subcodebooks]
               [4], # [level - number of levels]
               [1], # [m_level - number of hash tables per level]
@@ -64,7 +64,7 @@ float:
           ]
           query_args: [
               [20000], # [candidates - number of examined candidates]
-              [20000], # [initial_topk - parameter for MH]
+              [10000], # [initial_topk - parameter for MH]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
