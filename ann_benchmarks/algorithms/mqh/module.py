@@ -345,7 +345,7 @@ class MQH(BaseANN):
         
         # Call the search method with the appropriate parameters
         indices, distances, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search(
-            q, n, b, self._l0, self._delta, self._flag)
+            q, n, b, self._l0, self._delta, self._flag, self._coarse_candidates_coeff)
         
         # Remove duplicates from the results
         unique_indices = []

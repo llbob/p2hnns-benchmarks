@@ -173,8 +173,8 @@ PYBIND11_MODULE(pymqh, m) {
             py::arg("b") = 0.0,  // renamed from u to b for clarity
             py::arg("l0") = 3,
             py::arg("delta") = 0.5,
-            py::arg("coarse_candidates_coeff") = 1,
-            py::arg("flag") = 0)
+            py::arg("flag") = 0,
+            py::arg("coarse_candidates_coeff") = 1)
         .def("search_with_candidates", &MQHWrapper::search_with_candidates,
             py::arg("query"),
             py::arg("k"),
@@ -182,6 +182,6 @@ PYBIND11_MODULE(pymqh, m) {
             py::arg("l0") = 3,
             py::arg("delta") = 0.5,
             py::arg("flag") = 0,
-            py::arg("coarse_candidates_coeff") = 1,
-            py::arg("candidates"));
+            py::arg("candidates"),
+            py::arg("coarse_candidates_coeff") = 1);
 }

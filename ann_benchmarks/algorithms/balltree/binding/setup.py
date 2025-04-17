@@ -10,13 +10,11 @@ except ImportError:
 extra_args = ['-std=c++17', '-march=native', '-O3']
 extra_link_args = ['-ltbb']
 
-if sys.platform != 'darwin':
-    extra_args += ['-fopenmp']
-    extra_link_args += ['-fopenmp']
-else:
-    extra_args += ['-mmacosx-version-min=10.9', '-stdlib=libc++', '-Xclang', '-fopenmp']
-    extra_link_args += ['-lomp']
+if sys.platform == 'darwin':
+    extra_args += ['-mmacosx-version-min=10.9', '-stdlib=libc++', '-Xclang']
     os.environ['LDFLAGS'] = '-mmacosx-version-min=10.9'
+
+
 
 module = Extension(
     'b_tree',

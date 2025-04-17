@@ -10,41 +10,25 @@ except ImportError:
 
 # Detect architecture
 is_arm = platform.machine().startswith(('arm', 'aarch64'))
-
-# Define specific flags for SIMD support - only on x86
-simd_flags = []
-# Define preprocessor macros for SIMD support
-define_macros = []
-
-if not is_arm:
-    # x86 architecture - can use AVX/SSE2
-    simd_flags = ['-mavx', '-msse2']
-    define_macros = [('HAVE_X86INTRIN', '1')]
-else:
-    # ARM architecture - define ARM flag
-    define_macros = [('MQH_ARM', '1')]
+print(f"Detected platform: {platform.machine()}")
 
 # Basic compiler flags
-extra_args = ['-std=c++17', '-O3'] + simd_flags
-
-# Add native architecture optimization only for non-ARM
-if not is_arm:
-    extra_args.append('-march=native')
-else:
-    # For ARM, you might want to add specific ARM optimizations
-    # but be careful with cross-compilation scenarios
-    pass
-
+extra_args = ['-std=c++17', '-O3']
 extra_link_args = ['-ltbb']
+define_macros = []
 
-# Define platform-specific flags
-if sys.platform != 'darwin':
-    extra_args += ['-fopenmp']
-    extra_link_args += ['-fopenmp']
+# Architecture-specific optimizations
+if is_arm:
+    # ARM-specific optimizations (for M1/M2 Macs and other ARM platforms)
+    define_macros.append(('MQH_ARM', '1'))
+    define_macros.append(('MQH_NEON', '1'))  # Enable ARM NEON
+    extra_args.append('-march=armv8-a+simd')  # Enable NEON instructions
+    print("Enabling ARM NEON SIMD support")
 else:
-    extra_args += ['-mmacosx-version-min=10.9', '-stdlib=libc++', '-Xclang', '-fopenmp']
-    extra_link_args += ['-lomp']
-    os.environ['LDFLAGS'] = '-mmacosx-version-min=10.9'
+    # x86 architecture - enable all common SIMD extensions
+    define_macros.append(('FORCE_X86_SIMD', '1'))
+    extra_args.extend(['-msse2', '-mavx'])
+    print("Enabling x86 SIMD (SSE2/AVX) support")
 
 module = Extension(
     'pymqhkjl',
@@ -64,6 +48,6 @@ module = Extension(
 setup(
     name='pymqhkjl',
     version='0.1',
-    description='MQH KJL Implementation',
+    description='MQH-KJL Implementation with ARM NEON/x86 SIMD support',
     ext_modules=[module]
 )
