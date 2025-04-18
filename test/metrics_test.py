@@ -1,6 +1,6 @@
 import pytest
 
-from ann_benchmarks.plotting.metrics import knn, queries_per_second, index_size, build_time, candidates, epsilon, rel
+from p2hnns_benchmarks.plotting.metrics import knn, queries_per_second, index_size, build_time, candidates, epsilon, rel
 
 
 class DummyMetric:

@@ -1,0 +1,72 @@
+float:
+  any:
+    - base_args: ['@metric']
+      constructor: MQH
+      disabled: false
+      docker_tag: p2hnns-benchmarks-mqh
+      module: p2hnns_benchmarks.algorithms.mqh
+      name: mqh
+      run_groups:
+        mqh-test:
+          args: [
+              [16], # [M2 - number of subcodebooks]
+              [4], # [level - number of levels]
+              [1], # [m_level - number of hash tables per level]
+              [64], # [m_num - number of bits per hash table]
+          ]
+          query_args: [
+              [5], # [l0 - hash offset]
+              [0.3], # [delta - filtering parameter]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1,2,5, 10, 20, 40] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+          ]
+
+    - base_args: ['@metric']
+      constructor: BT_MQH
+      disabled: false
+      docker_tag: p2hnns-benchmarks-mqh
+      module: p2hnns_benchmarks.algorithms.mqh
+      name: bt-mqh
+      run_groups:
+        BT_MQH:
+          args: [
+              [25], # [max_leaf_size - BTree parameter]
+              [16], # [M2 - number of subcodebooks]
+              [4], # [level - number of levels]
+              [1], # [m_level - number of hash tables per level]
+              [64], # [m_num - number of bits per hash table]
+          ]
+          query_args: [
+              [20000], # [candidates - number of examined candidates]
+              [100,500,1000,2000,10000], # [initial_topk - parameter for BTree]
+              [5], # [l0 - hash offset]
+              [0.3], # [delta - filtering parameter]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+          ]
+
+    - base_args: ['@metric']
+      constructor: MH_MQH
+      disabled: false
+      docker_tag: p2hnns-benchmarks-mqh
+      module: p2hnns_benchmarks.algorithms.mqh
+      name: mh-mqh
+      run_groups:
+        MH_MQH:
+          args: [
+              [8], # [M_proj_vectors - MH parameter]
+              [64, 128, 256], # [m_single_hashers - MH parameter]
+              [10], # [l_hash_tables - MH parameter]
+              [16], # [M2 - number of subcodebooks]
+              [4], # [level - number of levels]
+              [1], # [m_level - number of hash tables per level]
+              [64], # [m_num - number of bits per hash table]
+          ]
+          query_args: [
+              [20000], # [candidates - number of examined candidates]
+              [100,500,1000,2000,10000], # [initial_topk - parameter for MH]
+              [5], # [l0 - hash offset]
+              [0.3], # [delta - filtering parameter]
+              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [1] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+          ]

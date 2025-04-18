@@ -1,6 +1,6 @@
 import argparse
 
-from ann_benchmarks.datasets import DATASETS, get_dataset_fn
+from p2hnns_benchmarks.datasets import DATASETS, get_dataset_fn
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

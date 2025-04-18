@@ -1,8 +1,8 @@
 import pytest
 import numpy
 
-from ann_benchmarks.datasets import get_dataset
-from ann_benchmarks.distance import metrics
+from p2hnns_benchmarks.datasets import get_dataset
+from p2hnns_benchmarks.distance import metrics
 
 
 def test_euclidean():

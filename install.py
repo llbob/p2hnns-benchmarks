@@ -6,13 +6,13 @@ from multiprocessing import Pool
 import platform
 import stat
 
-from ann_benchmarks.main import positive_int
+from p2hnns_benchmarks.main import positive_int
 
 
 def build_generate_queries():
     """Build the C++ component for generate_queries"""
     # get paths for source and output files
-    script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ann_benchmarks", "generate_queries")
+    script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "p2hnns_benchmarks", "generate_queries")
     source_file = os.path.join(script_dir, "generate.cc")
     output_file = os.path.join(script_dir, "generate")
     
@@ -46,7 +46,7 @@ def build(library, args):
 
     try:
         subprocess.check_call(
-            "docker build %s --rm -t ann-benchmarks-%s -f" " ann_benchmarks/algorithms/%s/Dockerfile  ." % (q, library, library),
+            "docker build %s --rm -t p2hnns-benchmarks-%s -f" " p2hnns_benchmarks/algorithms/%s/Dockerfile  ." % (q, library, library),
             shell=True,
         )
         return {library: "success"}
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     print("Building base image...")
     subprocess.check_call(
          "docker build \
-         --rm -t ann-benchmarks -f ann_benchmarks/algorithms/base/Dockerfile .",
+         --rm -t p2hnns-benchmarks -f p2hnns_benchmarks/algorithms/base/Dockerfile .",
          shell=True,
      )
     
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     elif os.getenv("LIBRARY"):
         tags = [os.getenv("LIBRARY")]
     else:
-        tags = [fn.split(".")[-1] for fn in os.listdir("ann_benchmarks/algorithms")]
+        tags = [fn.split(".")[-1] for fn in os.listdir("p2hnns_benchmarks/algorithms")]
 
     print("Building algorithm images... with (%d) processes" % args.proc)
 
