@@ -18,7 +18,7 @@ float:
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
-              [20] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+              [1,2,5, 10, 20, 40] # coarse_candidates_coeff OBS: Only used when no external candidates passed
           ]
 
     - base_args: ['@metric']
@@ -38,7 +38,7 @@ float:
           ]
           query_args: [
               [20000], # [candidates - number of examined candidates]
-              [100,500,1000,2000], # [initial_topk - parameter for BTree]
+              [100,500,1000,2000,10000], # [initial_topk - parameter for BTree]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
@@ -64,7 +64,7 @@ float:
           ]
           query_args: [
               [20000], # [candidates - number of examined candidates]
-              [100,500,1000,2000], # [initial_topk - parameter for MH]
+              [100,500,1000,2000,10000], # [initial_topk - parameter for MH]
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]

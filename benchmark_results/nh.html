@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>nh</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <style>
+            body { padding-top: 50px; }
+        </style>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+         <body>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="index.html">P2HNNS Benchmarks</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#datasets">Datasets</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#algorithms">Algorithms</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html#contact">Contact</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+
+                    <div class="container">
+                                                        <h2>Plots for nh</h2>
+                                                                <h3>Recall/Queries per second (1/s)</h3>
+            <div id="RecallQueries per second (1/s)">
+            <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 38748.42601702627, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10032 , y: 36456.92848736443, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 33490.02398587038, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 28141.758698890244, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35397 , y: 14356.242442040957, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.37398 , y: 13910.611727381058, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.426 , y: 13798.273597236072, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 13254.620373030162, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 12258.505365703106, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 8863.466441933288, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.60271 , y: 8578.592950928441, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6331800000000001 , y: 8243.321114029453, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 8240.55651356597, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 7949.5706993314625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71449 , y: 7667.299163860645, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 7346.448204200344, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9596 , y: 3648.799689326442, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9704599999999999 , y: 3504.90320809101, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9747999999999999 , y: 3460.3036893535805, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9783 , y: 3454.523920555991, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.98469 , y: 3374.121526984218, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9877900000000001 , y: 3248.867858585809, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99161 , y: 3240.9077067356466, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 3203.541268114755, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 3171.662845672204, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 3086.083420044962, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Build time (s)</h3>
+            <div id="RecallBuild time (s)">
+            <canvas id="chartRecallBuild time (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallBuild time (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.99161 , y: 0.08909749984741211, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 0.12459444999694824, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 0.19366216659545898, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 0.31951141357421875, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Build time (s) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Build time (s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)</h3>
+            <div id="RecallIndex size (kB)">
+            <canvas id="chartRecallIndex size (kB)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.994 , y: 2080000, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Distance computations</h3>
+            <div id="RecallDistance computations">
+            <canvas id="chartRecallDistance computations" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallDistance computations");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.06981000000000001 , y: 559, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.07278 , y: 576, label: "NH(m_hashers=64, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.08138 , y: 660, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.0886 , y: 742, label: "NH(m_hashers=32, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 833, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 967, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35013 , y: 3008, label: "NH(m_hashers=64, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.35397 , y: 3286, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.37398 , y: 3531, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 3535, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 4941, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.5743 , y: 5126, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.58764 , y: 5435, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.59711 , y: 5641, label: "NH(m_hashers=64, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.65627 , y: 5740, label: "NH(m_hashers=32, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71449 , y: 6480, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 6810, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9704599999999999 , y: 12730, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.97729 , y: 13076, label: "NH(m_hashers=64, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9884700000000001 , y: 14441, label: "NH(m_hashers=32, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 16355, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 16948, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Distance computations '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Relative Error/Queries per second (1/s)</h3>
+            <div id="Relative ErrorQueries per second (1/s)">
+            <canvas id="chartRelative ErrorQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.1341075336065515 , y: 38748.42601702627, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.1293177343204522 , y: 36456.92848736443, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.12676509881625944 , y: 33490.02398587038, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.04852583466570041 , y: 14356.242442040957, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.04590728248613709 , y: 13910.611727381058, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.042988693274321234 , y: 13798.273597236072, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.04266243143655063 , y: 13254.620373030162, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.04257336651084367 , y: 12258.505365703106, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.03646741504750151 , y: 8863.466441933288, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.034119534399705435 , y: 8578.592950928441, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.03249627355633155 , y: 8243.321114029453, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.03218544419219929 , y: 8240.55651356597, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.031709805307991175 , y: 7963.108835125662, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.03084291343426772 , y: 7949.5706993314625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.03035705703007307 , y: 7667.299163860645, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.023136512956713245 , y: 3648.799689326442, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.022529882899622645 , y: 3504.90320809101, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.022300797044846027 , y: 3460.3036893535805, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.022219838326177188 , y: 3454.523920555991, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.021943222410109462 , y: 3374.121526984218, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.021761582921072706 , y: 3248.867858585809, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.021574535048993943 , y: 3240.9077067356466, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.021508619435394172 , y: 3203.541268114755, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.021370521890342855 , y: 3171.662845672204, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Relative Error   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Candidates generated</h3>
+            <div id="RecallCandidates generated">
+            <canvas id="chartRecallCandidates generated" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallCandidates generated");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.994 , y: 10.0, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Candidates generated tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Candidates generated '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
+            <div id="RecallIndex size (kB)/Queries per second (s)">
+            <canvas id="chartRecallIndex size (kB)/Queries per second (s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 53.67959976196289, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10032 , y: 57.053627014160156, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 62.108047485351555, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 73.91151428222656, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35397 , y: 144.88470840454102, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.37398 , y: 149.5261344909668, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.426 , y: 150.7434959411621, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 156.92641067504883, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 169.67810821533203, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 234.6711654663086, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.60271 , y: 242.46400451660156, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6331800000000001 , y: 252.3254852294922, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 252.41013717651367, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 261.6493492126465, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71449 , y: 271.28196716308594, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 283.1300163269043, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9596 , y: 570.0504760742188, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9704599999999999 , y: 593.4543342590332, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9747999999999999 , y: 601.1033096313477, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9783 , y: 602.1090164184571, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.98469 , y: 616.4567527770997, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9877900000000001 , y: 640.2230224609375, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99161 , y: 641.7955055236816, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 649.2814750671387, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 655.8074111938475, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 673.9934463500977, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.01 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.055869999999999996 , y: 38748.42601702627, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.058809999999999994 , y: 36456.92848736443, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.06026 , y: 33490.02398587038, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.19997 , y: 14356.242442040957, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.21225999999999998 , y: 13910.611727381058, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.23927 , y: 13798.273597236072, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.24567 , y: 13254.620373030162, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.24881000000000003 , y: 12258.505365703106, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.30545 , y: 8863.466441933288, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.34131 , y: 8578.592950928441, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.35997 , y: 8243.321114029453, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.3935 , y: 8240.55651356597, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.40838 , y: 7949.5706993314625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.41618000000000005 , y: 7667.299163860645, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.42028999999999994 , y: 7346.448204200344, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70748 , y: 3648.799689326442, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7375499999999999 , y: 3504.90320809101, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7488699999999999 , y: 3460.3036893535805, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.77778 , y: 3454.523920555991, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.8000299999999999 , y: 3374.121526984218, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.81206 , y: 3248.867858585809, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.8629899999999999 , y: 3240.9077067356466, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.87267 , y: 3203.541268114755, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.87758 , y: 3171.662845672204, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.8803699999999999 , y: 3086.083420044962, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.01 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.1 RecallQueries per second (1/s)">
+            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.06118 , y: 38748.42601702627, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.06421 , y: 36456.92848736443, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.0653 , y: 33490.02398587038, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.06531 , y: 28141.758698890244, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.21796000000000001 , y: 14356.242442040957, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.23132999999999998 , y: 13910.611727381058, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.261 , y: 13798.273597236072, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.26802000000000004 , y: 13254.620373030162, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.27102 , y: 12258.505365703106, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.33286 , y: 8863.466441933288, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.37139 , y: 8578.592950928441, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.39215 , y: 8243.321114029453, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.42838000000000004 , y: 8240.55651356597, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.44499000000000005 , y: 7949.5706993314625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.4532 , y: 7667.299163860645, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.45736 , y: 7346.448204200344, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.7625 , y: 3648.799689326442, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.79169 , y: 3504.90320809101, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.8024699999999999 , y: 3460.3036893535805, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.8307499999999999 , y: 3454.523920555991, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.85167 , y: 3374.121526984218, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.86252 , y: 3248.867858585809, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.90833 , y: 3240.9077067356466, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.91487 , y: 3203.541268114755, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9186799999999999 , y: 3171.662845672204, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.92142 , y: 3086.083420044962, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.1 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 50 (millis)</h3>
+            <div id="RecallPercentile 50 (millis)">
+            <canvas id="chartRecallPercentile 50 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 50 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 0.0247955322265625, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10032 , y: 0.026464462280273438, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 0.029325485229492188, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 0.03528594970703125, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35397 , y: 0.06818771362304688, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.41172000000000003 , y: 0.07033348083496094, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.426 , y: 0.07104873657226562, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 0.07462501525878906, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 0.08058547973632812, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 0.11157989501953125, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.60271 , y: 0.11420249938964844, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6331800000000001 , y: 0.11944770812988281, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 0.12040138244628906, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 0.12421607971191406, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71449 , y: 0.12826919555664062, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 0.13446807861328125, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9596 , y: 0.2722740173339844, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9704599999999999 , y: 0.2834796905517578, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9747999999999999 , y: 0.28705596923828125, label: "NH(m_hashers=64, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9783 , y: 0.28824806213378906, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.98469 , y: 0.2942085266113281, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9877900000000001 , y: 0.3020763397216797, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99161 , y: 0.3058910369873047, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 0.31065940856933594, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 0.3135204315185547, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 0.32138824462890625, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 50 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 50 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 95 (millis)</h3>
+            <div id="RecallPercentile 95 (millis)">
+            <canvas id="chartRecallPercentile 95 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 95 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 0.03314018249511719, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10032 , y: 0.03505945205688459, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 0.036716461181640625, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 0.04291534423828125, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35397 , y: 0.08225440979003906, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.37398 , y: 0.08463859558105469, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.426 , y: 0.08487701416015625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 0.08654594421386719, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 0.09417533874511719, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 0.12683868408203125, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.60271 , y: 0.1308917999267578, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 0.1373291015625, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 0.14472007751464844, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71449 , y: 0.14853477478027344, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 0.1552104949951172, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9596 , y: 0.2999305725097656, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9704599999999999 , y: 0.31065940856933594, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9783 , y: 0.31495094299316406, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.98469 , y: 0.3235340118408203, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9877900000000001 , y: 0.33020973205566406, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99161 , y: 0.3371238708496094, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 0.33855438232421875, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 0.3418922424316406, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 0.3495216369628906, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 95 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 95 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99 (millis)</h3>
+            <div id="RecallPercentile 99 (millis)">
+            <canvas id="chartRecallPercentile 99 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 0.04100799560546875, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10032 , y: 0.04410743713378906, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 0.04553794860839844, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 0.050070285797119196, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.35397 , y: 0.09608507156372076, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 0.09822845458984375, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 0.10514497756958013, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 0.1404285430908203, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 0.14781951904296875, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 0.1628398895263672, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 0.16736984252929688, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9596 , y: 0.3261661529541018, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9783 , y: 0.3299713134765625, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 0.3533363342285156, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 0.3602552413940431, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 0.3685975074768067, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99.9 (millis)</h3>
+            <div id="RecallPercentile 99.9 (millis)">
+            <canvas id="chartRecallPercentile 99.9 (millis)" width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99.9 (millis)");
+                var chart = new Chart(ctx, {
+                                        type: "line",
+                                        data: { datasets: [
+                                                {
+                            label: "glove-25-euclidean-med (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
+                            data: [
+                                                                    { x: 0.09606 , y: 0.07177400588989462, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10212000000000002 , y: 0.07820296287536654, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10285 , y: 0.08845520019531289, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.33228 , y: 0.14568090438842918, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.37398 , y: 0.1497275829315187, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.38442 , y: 0.15807509422302318, label: "NH(m_hashers=32, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.426 , y: 0.15879154205322363, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43498000000000003 , y: 0.15998029708862332, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.43750999999999995 , y: 0.1640491485595738, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.54115 , y: 0.19168996810913114, label: "NH(m_hashers=64, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.6851200000000001 , y: 0.19622015953063998, label: "NH(m_hashers=16, scale_factor=1.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.70247 , y: 0.23508715629577767, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.71898 , y: 0.2448587417602545, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=10000)" },
+                                                                    { x: 0.9783 , y: 0.37861466407776, label: "NH(m_hashers=32, scale_factor=1.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.99285 , y: 0.45156741142273005, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9937900000000001 , y: 0.502353906631471, label: "NH(m_hashers=16, scale_factor=4.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.994 , y: 0.5199997425079363, label: "NH(m_hashers=16, scale_factor=8.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99.9 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                        <hr />
+                                            <hr />
+        
+            <div id="contact">
+            <h2>Contact</h2>
+            <p>P2HNNS-benchmarks is a fork of the original <a href="https://github.com/erikbern/ann-benchmarks/">ANN-BENCHMARKS</a> repository, which was developed by Martin Aumueller (maau@itu.dk), Erik Bernhardsson (mail@erikbern.com), and Alec Faitfull (alef@itu.dk). This fork, reconfigured by Søren Majlund Jensen and Christian Porsmose Stender, includes minor modifications to address the P2HNNS problem. We acknowledge and give full credit to the original developers for their work. 
+              Please use <a href="https://github.com/llbob/p2hnns-benchmarks/">GitHub</a> to submit your implementations or improvements.</p>
+            </div>
+        </div>
+    </body>
+</html>
