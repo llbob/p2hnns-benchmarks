@@ -1320,7 +1320,1308 @@
             </div>
             
                         <hr />
-                                            <hr />
+                                                        <h2>Scatterplots for trevi-4096-euclidean-med (k = 10)</h2>
+                                                                <h3>Recall/Queries per second (1/s)</h3>
+            <div id="RecallQueries per second (1/s)Scatterplot ">
+            <canvas id="chartRecallQueries per second (1/s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallQueries per second (1/s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 26.266185755180267, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 13.131539760342473, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 13.069080677252867, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 0.7672928532871508, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Build time (s)</h3>
+            <div id="RecallBuild time (s)Scatterplot ">
+            <canvas id="chartRecallBuild time (s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallBuild time (s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 2.395718574523926, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 2.395718574523926, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 1.0 , y: 2.395718574523926, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.96089 , y: 2.395718574523926, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Build time (s) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Build time (s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)</h3>
+            <div id="RecallIndex size (kB)Scatterplot ">
+            <canvas id="chartRecallIndex size (kB)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 327760000, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 327760000, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 1.0 , y: 327760000, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.96089 , y: 327760000, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Distance computations</h3>
+            <div id="RecallDistance computationsScatterplot ">
+            <canvas id="chartRecallDistance computationsScatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallDistance computationsScatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 10009, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 20000, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 20000, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 1.0 , y: 20000, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Distance computations '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Relative Error/Queries per second (1/s)</h3>
+            <div id="Relative ErrorQueries per second (1/s)Scatterplot ">
+            <canvas id="chartRelative ErrorQueries per second (1/s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.08788328301319379 , y: 26.266185755180267, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.08783774765712286 , y: 13.131539760342473, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.08783774765712286 , y: 13.069080677252867, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.08783774765712286 , y: 0.7672928532871508, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Relative Error   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Candidates generated</h3>
+            <div id="RecallCandidates generatedScatterplot ">
+            <canvas id="chartRecallCandidates generatedScatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallCandidates generatedScatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 10.0, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.96089 , y: 10.0, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Candidates generated tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Candidates generated '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
+            <div id="RecallIndex size (kB)/Queries per second (s)Scatterplot ">
+            <canvas id="chartRecallIndex size (kB)/Queries per second (s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 12478401.053543093, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 24959753.84317398, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 25079040.22434235, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 427164150.68359756, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.01 RecallQueries per second (1/s)Scatterplot ">
+            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9641299999999999 , y: 26.266185755180267, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 13.131539760342473, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 13.069080677252867, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 0.7672928532871508, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.01 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
+            <div id="Epsilon 0.1 RecallQueries per second (1/s)Scatterplot ">
+            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.97506 , y: 26.266185755180267, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 13.131539760342473, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 13.069080677252867, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 0.7672928532871508, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Epsilon 0.1 Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Queries per second (1/s) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 50 (millis)</h3>
+            <div id="RecallPercentile 50 (millis)Scatterplot ">
+            <canvas id="chartRecallPercentile 50 (millis)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 50 (millis)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 37.7352237701416, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 75.56164264678955, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 75.76549053192139, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 75.78682899475098, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 50 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 50 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 95 (millis)</h3>
+            <div id="RecallPercentile 95 (millis)Scatterplot ">
+            <canvas id="chartRecallPercentile 95 (millis)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 95 (millis)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 39.262187480926514, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 78.1471848487854, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 79.01855707168579, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 100.05083084106445, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 95 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 95 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99 (millis)</h3>
+            <div id="RecallPercentile 99 (millis)Scatterplot ">
+            <canvas id="chartRecallPercentile 99 (millis)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99 (millis)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 40.45321702957153, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 85.05346059799194, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 87.97036409378052, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 103.57419252395631, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                                    <h3>Recall/Percentile 99.9 (millis)</h3>
+            <div id="RecallPercentile 99.9 (millis)Scatterplot ">
+            <canvas id="chartRecallPercentile 99.9 (millis)Scatterplot " width="800" height="600"></canvas>
+            <script>
+                var ctx = document.getElementById("chartRecallPercentile 99.9 (millis)Scatterplot ");
+                var chart = new Chart(ctx, {
+                                        type: "bubble",
+                                        data: { datasets: [
+                                                {
+                            label: "balltree",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.96089 , y: 55.662957429885886, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 1.0 , y: 123.6659348011019, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 1.0 , y: 125.31931161880519, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 378.53946924209686, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                            ]
+                        },
+                                                ]},
+                        options: {
+                            responsive: false,
+                            title:{
+                                display:true,
+                                text: 'Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better'
+                            },
+                            tooltips: {
+                                callbacks: {
+                                },
+                                // Custom tooltip style
+                                titleMarginBottom: 10,
+                                footerMarginTop: 6,
+                                footerFontStyle: 'normal', // Default is 'bold'
+                                footerSpacing: 2
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    type: 'linear',
+                                    max: '1',
+                                    position: 'bottom',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Recall   '
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    type: 'logarithmic',
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: ' Percentile 99.9 (millis) '
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                function pushOrConcat(base, toPush) {
+                        if (toPush) {
+                                if (Chart.helpers.isArray(toPush)) {
+                                        // base = base.concat(toPush);
+                                        Array.prototype.push.apply(base, toPush);
+                                } else {
+                                        base.push(toPush);
+                                }
+                        }
+
+                        return base;
+                }
+                Chart.Tooltip.prototype.getFooter = function(tooltipItem, data) {
+                    var me = this;
+                    var callbacks = me._options.callbacks;
+                    var item = tooltipItem[0];
+
+                    var beforeFooter = callbacks.beforeFooter.apply(me, arguments);
+                    
+                    // Format the parameters with line breaks
+                    var rawParams = data.datasets[item.datasetIndex].data[item.index].label || '';
+                    var paramLines = ["Parameters:"];
+                    
+                    // Split on commas or semicolons to create separate lines
+                    var params = rawParams.split(/[,;]/);
+                    for (var i = 0; i < params.length; i++) {
+                        paramLines.push(params[i].trim());
+                    }
+                    
+                    var afterFooter = callbacks.afterFooter.apply(me, arguments);
+
+                    var lines = [];
+                    lines = pushOrConcat(lines, beforeFooter);
+                    lines = pushOrConcat(lines, paramLines);
+                    lines = pushOrConcat(lines, afterFooter);
+
+                    return lines;
+                }
+
+                </script>
+            </div>
+            
+                        <hr />
         
             <div id="contact">
             <h2>Contact</h2>

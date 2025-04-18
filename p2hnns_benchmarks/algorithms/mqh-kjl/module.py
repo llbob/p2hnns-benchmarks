@@ -1,5 +1,6 @@
 import numpy
 import pymqhkjl as mqh
+import psutil
 from ..base.module import BaseANN
 
 
@@ -24,10 +25,11 @@ class MQH_kjl(BaseANN):
         self._mqh = mqh.MQH(d, self._M2, self._level, self._m_level, self._m_num)
         self._mqh.build_index(self._data)
 
-    def set_query_arguments(self, l0, delta, flag):
+    def set_query_arguments(self, l0, delta, flag, initial_candidates):
         self._l0 = l0
         self._delta = delta
         self._flag = flag
+        self._initial_candidates = initial_candidates
 
     def query(self, q, b, n):
         """
@@ -59,7 +61,7 @@ class MQH_kjl(BaseANN):
                 b = b / qnorm
         
         # Call the search method with the appropriate parameters
-        indices, distances, self._num_lin_scans = self._mqh.search(q, n, b, self._l0, self._delta, self._flag)
+        indices, distances, self._num_lin_scans = self._mqh.search(q, n, b, self._l0, self._delta, self._flag, self._initial_candidates)
 
         
         return indices
@@ -68,8 +70,7 @@ class MQH_kjl(BaseANN):
         return {"dist_comps": self._num_lin_scans}
 
     def get_memory_usage(self):
-        # Return an estimate of memory usage in bytes
-        return self._data.nbytes if hasattr(self, "_data") else 0
+        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
-        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
+        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates={self._initial_candidates})"

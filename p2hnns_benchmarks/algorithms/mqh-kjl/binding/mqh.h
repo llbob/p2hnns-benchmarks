@@ -558,12 +558,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::tuple<std::vector<Neighbor>, int>query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag);
-
-        // Getters and setters
-        int get_dim() const { return dim; }
-        int get_size() const { return n_pts; }
-        int get_flag() const { return flag; }
+        std::tuple<std::vector<Neighbor>, int>query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates);
     };
 
 MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) : 
@@ -1146,14 +1141,14 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     }
 }
 
-std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag) {
+std::tuple<std::vector<Neighbor>, int> MQH::query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
     
     // Constants for search
     int topk = k;
-    int num_candidates = 2000;  // First-pass candidates
+    int num_candidates = initial_candidates;  // First-pass candidates
     int thres_pq = n_pts / 10;  // Early termination threshold
 
     // Use passed flag if valid

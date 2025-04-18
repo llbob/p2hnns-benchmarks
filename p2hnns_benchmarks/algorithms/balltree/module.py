@@ -1,5 +1,6 @@
 import numpy
 import b_tree
+import psutil
 from ..base.module import BaseANN
 
 
@@ -51,9 +52,7 @@ class B_tree(BaseANN):
         return {"dist_comps": self._num_lin_scans}
 
     def get_memory_usage(self):
-        # Return an estimate of memory usage in bytes
-        # This is a rough estimate based on the data size
-        return self._data.nbytes if hasattr(self, "_data") else 0
+        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return "B_tree(max_leaf_size=%d, candidates=%d)" % (self._max_leaf_size, self._candidates)

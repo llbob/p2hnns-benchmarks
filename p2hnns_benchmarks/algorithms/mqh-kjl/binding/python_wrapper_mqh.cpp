@@ -38,7 +38,7 @@ public:
         mqh->build_index(data_vec);
     }
         
-    py::tuple search(py::array_t<float> query, int k, float b, int l0, float delta, int flag) {
+    py::tuple search(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int initial_candidates) {
         // Get query vector
         py::buffer_info buf = query.request();
             
@@ -50,7 +50,7 @@ public:
         std::vector<float> query_vec(query_ptr, query_ptr + buf.shape[0]);
             
         // Perform the search (match parameter order with MQH::query)
-        auto [neighbors, num_lin_scans] = mqh->query(query_vec, k, b, l0, delta, flag);
+        auto [neighbors, num_lin_scans] = mqh->query(query_vec, k, b, l0, delta, flag, initial_candidates);
             
         // Convert results to numpy arrays
         std::vector<int> indices;
@@ -84,5 +84,7 @@ PYBIND11_MODULE(pymqhkjl, m) {
             py::arg("b") = 0.0,  // renamed from u to b for clarity
             py::arg("l0") = 3,
             py::arg("delta") = 0.5,
-            py::arg("flag") = 0);
+            py::arg("flag") = 0,
+            py::arg("initial_candidates") = 0
+        );
 }

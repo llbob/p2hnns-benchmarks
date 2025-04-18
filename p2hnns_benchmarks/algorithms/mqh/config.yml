@@ -18,7 +18,7 @@ float:
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
-              [1,2,5, 10, 20, 40] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+              [100, 500, 1000, 2000, 10000, 20000] # inital_candidates
           ]
 
     - base_args: ['@metric']
@@ -42,7 +42,7 @@ float:
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
-              [1] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+              [0] # initial candidates - unused in this case as we're taking in external candidates
           ]
 
     - base_args: ['@metric']
@@ -68,5 +68,5 @@ float:
               [5], # [l0 - hash offset]
               [0.3], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
-              [1] # coarse_candidates_coeff OBS: Only used when no external candidates passed
+              [0] # initial candidates - unused in this case as we're taking in external candidates
           ]

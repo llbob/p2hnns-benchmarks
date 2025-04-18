@@ -38,7 +38,7 @@ public:
         mqh->build_index(data_vec);
     }
         
-    py::tuple search(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int coarse_candidates_coeff) {
+    py::tuple search(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int initial_candidates) {
         // Get query vector
         py::buffer_info buf = query.request();
             
@@ -54,7 +54,7 @@ public:
             
         // Perform the search (match parameter order with MQH::query)
         auto result = mqh->query_with_candidates(
-            query_vec, k, b, l0, delta, flag, coarse_candidates_coeff, empty_candidates);
+            query_vec, k, b, l0, delta, flag, initial_candidates, empty_candidates);
         
         std::vector<Neighbor> neighbors = result.first;
         std::vector<int> counters = result.second;
@@ -92,7 +92,7 @@ public:
         );
     }
     
-    py::tuple search_with_candidates(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int coarse_candidates_coeff, 
+    py::tuple search_with_candidates(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int initial_candidates, 
                                     py::array_t<int> candidates) {
         // Get query vector
         py::buffer_info q_buf = query.request();
@@ -116,7 +116,7 @@ public:
         
         // Perform the search with provided candidates
         auto result = mqh->query_with_candidates(
-            query_vec, k, b, l0, delta, flag, coarse_candidates_coeff, candidate_ids);
+            query_vec, k, b, l0, delta, flag, initial_candidates, candidate_ids);
         
         std::vector<Neighbor> neighbors = result.first;
         std::vector<int> counters = result.second;
@@ -174,7 +174,7 @@ PYBIND11_MODULE(pymqh, m) {
             py::arg("l0") = 3,
             py::arg("delta") = 0.5,
             py::arg("flag") = 0,
-            py::arg("coarse_candidates_coeff") = 1)
+            py::arg("initial_candidates") = 1)
         .def("search_with_candidates", &MQHWrapper::search_with_candidates,
             py::arg("query"),
             py::arg("k"),
@@ -183,5 +183,5 @@ PYBIND11_MODULE(pymqh, m) {
             py::arg("delta") = 0.5,
             py::arg("flag") = 0,
             py::arg("candidates"),
-            py::arg("coarse_candidates_coeff") = 1);
+            py::arg("initial_candidates") = 0);
 }

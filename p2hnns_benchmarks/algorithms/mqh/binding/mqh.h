@@ -331,15 +331,9 @@ class MQH {
         
         // Original data
         std::vector<std::vector<float>> data;
-
-        // Constants for probabilistic search guarantees
-        const float epsilon = 0.99999; // Desired success probability (very close to 1)
-        // const float alpha = 0.673; // LSH parameter for controlling collision probability -> unused
         
         const float PI = 3.1415926535;
 
-        
-        
         void K_means(const std::vector<std::vector<float>>& train, 
                     std::vector<std::vector<float>>& centroids, 
                     int n_sample, int d);
@@ -355,12 +349,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int coarse_candidates_coeff, std::vector<int>& external_candidates);
-
-        // Getters and setters
-        int get_dim() const { return dim; }
-        int get_size() const { return n_pts; }
-        int get_flag() const { return flag; }
+        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates);
     };
 
 MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) : 
@@ -942,7 +931,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
 }
 
 
-std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int coarse_candidates_coeff, std::vector<int>& external_candidates) {
+std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
@@ -1006,15 +995,8 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     return std::abs(a.second) < std::abs(b.second);
                 });
         
-        // we use coarse_candidates_coeff to cap the number of candidates to be used in mqhs own candidate selection here
-        int cap = 0;
-        if (coarse_candidates_coeff <= 0)
-        {
-            cap = n_pts;
-        }
-        else {
-            cap = n_pts / coarse_candidates_coeff;
-        }
+        // we use initial_candidates to cap the number of candidates to be used in mqhs own candidate selection here
+        int cap = initial_candidates;
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {
