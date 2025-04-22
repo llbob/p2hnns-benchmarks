@@ -98,7 +98,7 @@ parser.add_argument(
     choices=plot_variants.keys(),
     default=plot_variants.keys(),
 )
-parser.add_argument("--outputdir", help="Select output directory", default="./benchmark_results", type=directory_path, action="store")
+parser.add_argument("--outputdir", help="Select output directory", default=".", type=directory_path, action="store")
 parser.add_argument("--latex", help="generates latex code for each plot", action="store_true")
 parser.add_argument("--scatter", help="create scatterplot for data", action="store_true")
 parser.add_argument("--recompute", help="Clears the cache and recomputes the metrics", action="store_true")

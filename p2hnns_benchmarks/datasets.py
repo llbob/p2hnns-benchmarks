@@ -78,53 +78,6 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     dimension = int(hdf5_file.attrs["dimension"]) if "dimension" in hdf5_file.attrs else len(hdf5_file["points"][0])
     return hdf5_file, dimension
 
-def create_hyperplanes_rpd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    random point distance (rpd) ?
-    Create random hyperplanes and biases using np.
-    This method generates hyperplanes by randomly selecting three points from the dataset and using them to:
-
-    Create normal vectors by taking the difference between two random points
-    Calculate biases using the dot product of the normal vector with a third random point that's been normalized to avoid that it 
-
-    Args:
-        X (np.ndarray): Input data array
-        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
-
-    Returns:
-        Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
-    """
-    # Generate all random indices at once
-    idx = np.random.randint(X.shape[0], size=(n_hyperplanes, 3))
-
-    # Get all random points at once using fancy indexing
-    rand_points = X[idx]  # Shape: (n_hyperplanes, 3, dimension)
-
-    # Calculate hyperplane normals (rand_1 - rand_2)
-    normalvectors = rand_points[:, 0] - rand_points[:, 1]  # Shape: (n_hyperplanes, dimension)
-    
-    # Check for zero norm vectors to avoid division by zero in distance calculations later on
-    norms = np.linalg.norm(normalvectors, axis=1)
-    # `np.finfo(np.float32).eps` gives the machine epsilon for float32, which is approx 1.19e-07... Should be the smallest representable positive number so that 1.0 + eps != 1.0 in float32 precision
-    zero_indices = np.where(norms < np.finfo(np.float32).eps)[0]
-    
-    # Replace zero norm vectors if any
-    if len(zero_indices) > 0:
-        for i in zero_indices:
-            # Get new random points until we get a non-zero normal vector
-            while norms[i] < np.finfo(np.float32).eps:
-                new_idx = np.random.randint(X.shape[0], size=2)
-                normalvectors[i] = X[new_idx[0]] - X[new_idx[1]]
-                norms[i] = np.linalg.norm(normalvectors[i])
-                
-            # Update the third point for bias calculation
-            rand_points[i, 2] = X[np.random.randint(X.shape[0])]
-
-    # Calculate biases using dot product
-    biases = np.sum(normalvectors * rand_points[:, 2], axis=1)  # Shape: (n_hyperplanes,)
-
-    return normalvectors, biases
-
 def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
     """
     random point sample distance (rpsd) ?
@@ -265,7 +218,7 @@ def write_output(
             distances_ds[i] = [dist for _, dist in res]
 
 
-def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_method:str = "rpd") -> None:
+def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_method:str = "rpsd") -> None:
     url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
     fn = os.path.join("data", "glove.twitter.27B.zip")
     download(url, fn)
@@ -278,12 +231,10 @@ def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_metho
             X.append(np.array(v))
         X = X[:size] if size is not None else X
         points = np.array(X)
-        if hyperplane_method == "rpd":
-            hyperplanes = create_hyperplanes_rpd(points)
+        if hyperplane_method == "rpsd":
+            hyperplanes = create_hyperplanes_rpsd(points)
         elif hyperplane_method == "bctree":
             hyperplanes = create_hyperplanes_bctree(points)
-        elif hyperplane_method == "rpsd": # Expanded mean version of rpd
-            hyperplanes = create_hyperplanes_rpsd(points)
         else:
             raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
         write_output(points, hyperplanes, out_fn, distance)
@@ -316,11 +267,11 @@ def sift(out_fn: str) -> None:
     with tarfile.open(fn, "r:gz") as t:
         points = _get_irisa_matrix(t, "sift/sift_base.fvecs")
         # test = _get_irisa_matrix(t, "sift/sift_query.fvecs")
-        hyperplanes = create_hyperplanes_rpd(points)
+        hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, "euclidean")
 
 
-def cifar10(out_fn: str, distance: str, size: int = None) -> None:
+def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str = "rpsd") -> None:
     import tarfile
     import pickle
     url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
@@ -331,16 +282,22 @@ def cifar10(out_fn: str, distance: str, size: int = None) -> None:
     print("preparing %s" % out_fn)
     with tarfile.open(fn, "r:gz") as t:
         X = []
+
+        # extract 
         # cifar10 consistof 5 batches of data
         for i in range(1, 6):
             batch_file = t.extractfile(f"cifar-10-batches-py/data_batch_{i}")
             batch_data = pickle.load(batch_file, encoding="bytes")
+            # get the labels
+            # get the labels
+            labels.extend(batch_data[b"labels"])  # Added to collect labels
             X.append(batch_data[b"data"])
 
         # concat the batches
         X = np.vstack(X).astype(np.float32)
-        
-        # NOTE: cifar10 is in rgb data range [0, 255] so can simply be normalized to [0, 1] by dividing by 255..
+
+        labels = np.array(labels, dtype=np.int32)  # convert labels to numpy array
+
         X = X[:size] if size is not None else X
 
         # apply PCA to reduce the dimensionality to 512 from the original 3072(32x32x3), this seems to be a standard for the benchmarks we're comparing to here in the field of p2hnns
@@ -348,7 +305,19 @@ def cifar10(out_fn: str, distance: str, size: int = None) -> None:
         X = pca.fit_transform(X)
 
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpd(points)
+        labels = np.array(labels)
+        
+        if hyperplane_method == "rpsd":
+            hyperplanes = create_hyperplanes_rpsd(points)
+        elif hyperplane_method == "bctree":
+            hyperplanes = create_hyperplanes_bctree(points)
+        # elif hyperplane_method == "svm-basic":
+        #     hyperplanes = create_hyperplanes_svm(points, labels)
+        # elif hyperplane_method == "svm-advanced":
+        #     hyperplanes = create_hyperplanes_svm(points, labels, advanced=True)
+        else:
+            raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
+
         write_output(points, hyperplanes, out_fn, distance)
 
 def deep_download(src, dst=None, max_size=None): # credit to big-ann benchmarks for this function allowing us to download just a part of the file easily
@@ -428,7 +397,7 @@ def deepm(out_fn: str, distance: str, count:int) -> None:
         print(f"Loaded {count} vectors of dimension {dim}")
     
     points = np.array(X)
-    hyperplanes = create_hyperplanes_rpd(points)
+    hyperplanes = create_hyperplanes_rpsd(points)
     write_output(points, hyperplanes, out_fn, distance)
 
 
@@ -469,7 +438,7 @@ def music100(out_fn: str, distance: str) -> None:
         X = np.fromfile(bin_fn, dtype=np.float32).reshape(databaseSize, dimension)
 
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpd(points)
+        hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
     except Exception as e:
@@ -485,7 +454,7 @@ def gist(out_fn: str, distance: str, size: int = None) -> None:
         X = _get_irisa_matrix(t, "gist/gist_base.fvecs")
         X = X[:size] if size is not None else X
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpd(points)
+        hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
 def trevi(out_fn: str, distance: str, size: int = None) -> None:
@@ -523,7 +492,7 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
     # init list to store all patch vectors in
     patch_vectors = []
     
-    # process each BMP file.. open, convert to numpy array, extract patches and flatten. NOTE: again it's rgb, so normalizing to [0, 1] by dividing by 255.
+    # process each BMP file.. open, convert to numpy array, extract patches and flatten. 
     for bmp_file in bmp_files:
         img = Image.open(bmp_file)
         img_array = np.array(img)
@@ -542,7 +511,7 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
     # make ds by convert to numpy array
     patch_vectors = patch_vectors[:size] if size is not None else patch_vectors
     points = np.array(patch_vectors)
-    hyperplanes = create_hyperplanes_rpd(points)
+    hyperplanes = create_hyperplanes_rpsd(points)
     write_output(points, hyperplanes, out_fn, distance)
     
     # clean up temp directory
@@ -551,7 +520,7 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
 
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
-    # Here are datasets that are used as testers - both 20k points only
+    # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
     "glove-25-euclidean-med": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
     "glove-100-euclidean-med": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
     "cifar10-512-euclidean-med": lambda out_fn: cifar10(out_fn, "euclidean", 20000),
@@ -561,16 +530,14 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are the datasets that are used to demonstrate the hyperplane methods
     # 25 dims - 20k points
-    "glove-25-euclidean-med-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
-    "glove-25-euclidean-med-rpd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpd"),
-    "glove-25-euclidean-med-rpsd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
-    # 100 dims
-    "glove-100-euclidean-rpd": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="rpd"),
-    "glove-100-euclidean-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="bctree"),
-    "glove-100-euclidean-rpsd": lambda out_fn: glove(out_fn, 100, "euclidean", hyperplane_method="rpsd"),
+    "glove-25-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
+    "glove-25-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
+    # 100 dims - 20k points
+    "glove-100-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="bctree"),
+    "glove-100-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="rpsd"),
 
     # ========================================================================
-    # Here are the datasets that are not currently used as testers
+    # Here are the datasets that are not currently used
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
     "deep10m-96-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
