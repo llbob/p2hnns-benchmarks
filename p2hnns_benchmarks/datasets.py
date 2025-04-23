@@ -78,7 +78,7 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     dimension = int(hdf5_file.attrs["dimension"]) if "dimension" in hdf5_file.attrs else len(hdf5_file["points"][0])
     return hdf5_file, dimension
 
-def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
+def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
     """
     random point sample distance (rpsd) ?
     This method generates hyperplanes by randomly selecting five points from the dataset and using them to:
@@ -88,7 +88,7 @@ def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[
 
     Args:
         X (np.ndarray): Input data array
-        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
+        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 1000.
 
     Returns:
         Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
@@ -140,7 +140,7 @@ def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[
     
     return unit_normals, biases
 
-def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
+def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
     """
     (bctree) method to create hyperplanes and biases.
     
@@ -148,7 +148,7 @@ def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 10000) -> Tupl
     
     Args:
         X (np.ndarray): Input data array
-        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 10000.
+        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 1000.
         
     Returns:
         Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases

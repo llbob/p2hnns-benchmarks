@@ -79,7 +79,7 @@ def run_individual_query(algo: BaseANN, X_points: numpy.ndarray,
             ]
             
             n_items_processed[0] += 1
-            if n_items_processed[0] % 1000 == 0:
+            if n_items_processed[0] % 250 == 0:
                 print("Processed %d/%d queries..." % (n_items_processed[0], len(normals)))
             if len(candidates) > count:
                 print(

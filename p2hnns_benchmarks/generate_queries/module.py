@@ -4,7 +4,7 @@ from typing import Tuple
 import numpy as np
 import tempfile
 
-def generate_hyperplanes(points: np.ndarray, n_hyperplanes: int = 10000) -> Tuple[np.ndarray, np.ndarray]:
+def generate_hyperplanes(points: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
     with tempfile.TemporaryDirectory() as temp_dir:
         # prepare file paths
         input_file = os.path.join(temp_dir, 'dataset.bin')
