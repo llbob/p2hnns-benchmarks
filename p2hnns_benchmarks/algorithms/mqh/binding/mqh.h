@@ -348,7 +348,7 @@ class MQH {
         MQH(int dim, int M2_ = 16, int level_ = 4, int m_level_ = 1, int m_num_ = 64);
         ~MQH();
         
-        void build_index(const std::vector<std::vector<float>>& dataset);
+        void build_index(const float* data_ptr, int n_pts);
         std::pair<std::vector<Neighbor>, int> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates);
     };
 
@@ -481,14 +481,14 @@ void MQH::select_sample(const std::vector<std::vector<float>>& data,
 }
 
 
-void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
-    n_pts = dataset.size();
+void MQH::build_index(const float* data_ptr, int n_pts) {
+    this->n_pts = n_pts;
     
     // Allocate and initialize data with padding
     data.resize(n_pts, std::vector<float>(dim, 0));
     for (int i = 0; i < n_pts; i++) {
         for (int j = 0; j < d_org; j++) {
-            data[i][j] = dataset[i][j];
+            data[i][j] = data_ptr[i * d_org + j];
         }
     }
     

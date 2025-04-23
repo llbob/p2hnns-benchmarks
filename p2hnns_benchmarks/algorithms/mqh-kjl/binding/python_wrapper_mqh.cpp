@@ -26,16 +26,8 @@ public:
         int dim = buf.shape[1];
         float* data_ptr = static_cast<float*>(buf.ptr);
             
-        // Convert to 2D vector
-        std::vector<std::vector<float>> data_vec(n_pts, std::vector<float>(dim));
-        for (int i = 0; i < n_pts; i++) {
-            for (int j = 0; j < dim; j++) {
-                data_vec[i][j] = data_ptr[i * dim + j];
-            }
-        }
-            
         // Build the index
-        mqh->build_index(data_vec);
+        mqh->build_index(data_ptr, n_pts);
     }
         
     py::tuple search(py::array_t<float> query, int k, float b, int l0, float delta, int flag, int initial_candidates) {

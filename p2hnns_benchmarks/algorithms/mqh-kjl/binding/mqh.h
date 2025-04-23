@@ -557,7 +557,7 @@ class MQH {
         MQH(int dim, int M2_ = 16, int level_ = 4, int m_level_ = 1, int m_num_ = 64);
         ~MQH();
         
-        void build_index(const std::vector<std::vector<float>>& dataset);
+        void build_index(const float* data_ptr, int n_pts);
         std::tuple<std::vector<Neighbor>, int>query(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates);
     };
 
@@ -742,8 +742,8 @@ void MQH::init_query_tables() {
     }
 }
 
-void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
-    n_pts = dataset.size();
+void MQH::build_index(const float* data_ptr, int n_pts) {
+    this->n_pts = n_pts;
     
     // Resize the visited list pool
     delete visited_list_pool_;
@@ -753,7 +753,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
     data.resize(n_pts, std::vector<float>(dim, 0));
     for (int i = 0; i < n_pts; i++) {
         for (int j = 0; j < d_org; j++) {
-            data[i][j] = dataset[i][j];
+            data[i][j] = data_ptr[i * d_org + j];
         }
     }
     
