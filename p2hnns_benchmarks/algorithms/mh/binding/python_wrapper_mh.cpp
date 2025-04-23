@@ -1,4 +1,4 @@
-#include <baseline.h>
+#include <mh.h>
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -13,18 +13,17 @@ namespace p2h
 	// int   M,                            // #proj vecotr used for a single hasher
     // int   m,                            // #single hasher of the compond hasher
     // int   l,                            // #hash tables
-    // float b,                            // interval ratio
     // const float *data)                  // input data
 	class WrapperMH
 	{
 	public:
-		std::unique_ptr<Angular_Hash<float>> mh;
+		std::unique_ptr<Orig_MH<float>> mh;
 
-		void preprocess(int n, int d, int M, int m, int l, float b, py::array_t<float> data)
+		void preprocess(int n, int d, int M, int m, int l, py::array_t<float> data)
 		{
 			py::buffer_info buf = data.request();
 			float* ptr = static_cast<float*>(buf.ptr);
-			mh.reset(new Angular_Hash<float>(n, d, M, m, l, b, ptr));
+			mh.reset(new Orig_MH<float>(n, d, M, m, l, ptr));
 		}
 
 		std::tuple<std::vector<int>, int> search(int top_k, int cand, py::array_t<float> query)
