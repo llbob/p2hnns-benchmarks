@@ -522,6 +522,7 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
     "glove-25-euclidean-20k": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
+    "glove-25-angular-20k": lambda out_fn: glove(out_fn, 25, "angular", 20000),
     "glove-100-euclidean-20k": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
     "cifar10-512-euclidean-20k": lambda out_fn: cifar10(out_fn, "euclidean", 20000),
     "gist-960-euclidean-20k": lambda out_fn: gist(out_fn, "euclidean", 20000),
@@ -539,6 +540,7 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are the datasets that are not currently used
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
+    "glove-25-angular": lambda out_fn: glove(out_fn, 25, "angular"),
     "deep10m-96-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
     "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),

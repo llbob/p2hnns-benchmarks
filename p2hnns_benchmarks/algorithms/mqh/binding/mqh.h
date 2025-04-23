@@ -349,7 +349,7 @@ class MQH {
         ~MQH();
         
         void build_index(const float* data_ptr, int n_pts);
-        std::pair<std::vector<Neighbor>, int> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates);
+        std::pair<std::vector<Neighbor>, int> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, float initial_candidates_fraction, std::vector<int>& external_candidates);
     };
 
 MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) : 
@@ -931,7 +931,7 @@ void MQH::build_index(const float* data_ptr, int n_pts) {
 }
 
 
-std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates) {
+std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, float initial_candidates_fraction, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
@@ -995,8 +995,17 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                     return std::abs(a.second) < std::abs(b.second);
                 });
         
-        // we use initial_candidates to cap the number of candidates to be used in mqhs own candidate selection here
-        int cap = initial_candidates;
+        // we use initial_candidates_fraction to cap the number of candidates to be used in mqhs own candidate selection here
+        int cap;
+        if (initial_candidates_fraction > 1)
+        {
+            cap = n_pts;
+        }
+        else if (initial_candidates_fraction < 0) {
+            cap = n_pts;
+        }
+        else cap = static_cast<int>(std::round(initial_candidates_fraction * n_pts));
+
         external_candidates.reserve(cap);
         //populate external candidates vector until cap is reached
         for(auto pair : cell_distances) {

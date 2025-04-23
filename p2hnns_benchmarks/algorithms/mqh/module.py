@@ -18,7 +18,7 @@ class BT_MQH(BaseANN):
         self._l0 = 3  # Default parameter
         self._delta = 0.5  # Default parameter
         self._flag = 0  # Default parameter
-        self._initial_candidates = 1  # Default parameter
+        self._initial_candidates_fraction = 1  # Default parameter
         
         # BTree parameters
         self._max_leaf_size = max_leaf_size
@@ -49,13 +49,13 @@ class BT_MQH(BaseANN):
         data_array = numpy.ascontiguousarray(self._candidate_data.ravel())
         self._tree_candidates.preprocess(n, d, self._max_leaf_size, data_array)
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates=1):
+    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
         self._candidates = candidates
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._initial_candidates = initial_candidates
+        self._initial_candidates_fraction = initial_candidates_fraction
 
     def query(self, q, b, n):
         """
@@ -102,7 +102,7 @@ class BT_MQH(BaseANN):
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
         indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
-            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates, candidate_indices)
+            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates_fraction, candidate_indices)
         
         # Ensure no duplicates in the final result
         unique_indices = []
@@ -181,13 +181,13 @@ class MH_MQH(BaseANN):
             data_array
         )
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates=1):
+    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
         self._candidates = candidates
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._initial_candidates = initial_candidates
+        self._initial_candidates_fraction = initial_candidates_fraction
 
     def query(self, q, b, n):
         """
@@ -234,7 +234,7 @@ class MH_MQH(BaseANN):
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
         indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
-            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates, candidate_indices)
+            q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates_fraction, candidate_indices)
         
         # Ensure no duplicates in the final result
         unique_indices = []
@@ -283,11 +283,11 @@ class MQH(BaseANN):
         self._mqh = mqh.MQH(d, self._M2, self._level, self._m_level, self._m_num)
         self._mqh.build_index(self._data)
 
-    def set_query_arguments(self, l0=3, delta=0.5, flag=0, initial_candidates=1):
+    def set_query_arguments(self, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
         self._l0 = l0
         self._delta = delta
         self._flag = flag
-        self._initial_candidates = initial_candidates
+        self._initial_candidates_fraction = initial_candidates_fraction
 
     def query(self, q, b, n):
         """
@@ -320,7 +320,7 @@ class MQH(BaseANN):
         
         # Call the search method with the appropriate parameters
         indices, distances, self._num_lin_scans = self._mqh.search(
-            q, n, b, self._l0, self._delta, self._flag, self._initial_candidates)
+            q, n, b, self._l0, self._delta, self._flag, self._initial_candidates_fraction)
         
         # Remove duplicates from the results
         unique_indices = []
@@ -338,4 +338,4 @@ class MQH(BaseANN):
         }
 
     def __str__(self):
-        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates={self._initial_candidates})"
+        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates_fraction={self._initial_candidates_fraction})"
