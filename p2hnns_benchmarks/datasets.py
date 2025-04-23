@@ -521,11 +521,11 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
-    "glove-25-euclidean-med": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
-    "glove-100-euclidean-med": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
-    "cifar10-512-euclidean-med": lambda out_fn: cifar10(out_fn, "euclidean", 20000),
-    "gist-960-euclidean-med": lambda out_fn: gist(out_fn, "euclidean", 20000),
-    "trevi-4096-euclidean-med": lambda out_fn: trevi(out_fn, "euclidean", 20000),
+    "glove-25-euclidean-20k": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
+    "glove-100-euclidean-20k": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
+    "cifar10-512-euclidean-20k": lambda out_fn: cifar10(out_fn, "euclidean", 20000),
+    "gist-960-euclidean-20k": lambda out_fn: gist(out_fn, "euclidean", 20000),
+    "trevi-4096-euclidean-20k": lambda out_fn: trevi(out_fn, "euclidean", 20000),
 
     # ========================================================================
     # Here are the datasets that are used to demonstrate the hyperplane methods
