@@ -1,6 +1,5 @@
 import numpy
 import bc_tree
-import psutil
 from ..base.module import BaseANN
 
 
@@ -51,9 +50,6 @@ class BC_tree(BaseANN):
     
     def get_additional(self):
         return {"dist_comps": self._num_lin_scans}
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return "BC_tree(leaf_size=%d, candidates=%d, c=%f)" % (self._max_leaf_size, self._candidates, self._c)

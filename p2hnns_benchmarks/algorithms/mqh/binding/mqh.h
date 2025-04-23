@@ -349,7 +349,7 @@ class MQH {
         ~MQH();
         
         void build_index(const std::vector<std::vector<float>>& dataset);
-        std::pair<std::vector<Neighbor>, std::vector<int>> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates);
+        std::pair<std::vector<Neighbor>, int> query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates);
     };
 
 MQH::MQH(int dim_, int M2_, int level_, int m_level_, int m_num_) : 
@@ -931,7 +931,7 @@ void MQH::build_index(const std::vector<std::vector<float>>& dataset) {
 }
 
 
-std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates) {
+std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vector<float>& query_pt, int k, float u, int l0, float delta, int query_flag, int initial_candidates, std::vector<int>& external_candidates) {
     if (static_cast<int>(query_pt.size()) != d_org) {
         throw std::runtime_error("Query dimension doesn't match index dimension");
     }
@@ -1090,12 +1090,6 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
     }
 
     //====================================================================================================================================
-    // Init counters for logging pruning
-    int break_condition_1 = 0;
-    int break_condition_2 = 0;
-    int break_condition_3 = 0;
-    int collision_runs = 0;
-    int collision_passed = 0;
 
     // Begin MQH pruning process starting by the outer for loop in pseudocode
     int n = 0;
@@ -1171,13 +1165,11 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             if (centroid_dist_to_boundary > actual_residual_norm) // LINE 10 in pseudocode
             {
                 // distance from centroid to bouondary is greater than residual norm, so residual cannot by any means reach inside the margin.
-                break_condition_1++;
                 break;
             }
 
             if (FLAG == 0 && centroid_dist_to_boundary > (actual_residual_norm * delta)) { // LINE 12 in pseudocode
                 // ratio between centroid's distance to boundary and residual_norm is too large, so we prune for efficiency
-                break_condition_2++;
                 break;
             }
             // if ((FLAG == 1 && centroid_dist_to_boundary > (actual_residual_norm * delta)) || 
@@ -1186,7 +1178,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
             if ((FLAG == 1 && (centroid_dist_to_boundary > (actual_residual_norm * delta))) || 
                 (FLAG == 0 && l==(level-1) && (centroid_dist_to_boundary <= (actual_residual_norm * delta)))) // LINE 14 in pseudocode
             {
-                collision_runs++;
+
                 // Collision testing : 
 
                 //First establish bucket with t_zero, t_one, P_zero and P_one
@@ -1228,7 +1220,6 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                 // std::cout << "collision_number: " << collision_number << std::endl;
 
                 if(collision_number > lower_collision_boundary && collision_number < upper_collision_boundary) {
-                    collision_passed++;
                     float dist_to_H = compare_ip(data[point_id].data(), query.data(), dim) - b;
                     if (dist_to_H < 0) {
                         dist_to_H = - dist_to_H;
@@ -1248,14 +1239,11 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
                     }
                 }
                 else {
-                    break_condition_3++;
                     break;
                 }
             }
         }
     }
-    // create vector<int> counters to return num_linear_scans and break conditions
-    std::vector<int> counters = {num_linear_scans, break_condition_1, break_condition_2, break_condition_3, collision_runs, collision_passed};
     // std::vector<Neighbor> results(candidate_set.begin(), candidate_set.begin() + k);
     std::vector<Neighbor> results;
     results.reserve(k);
@@ -1265,7 +1253,7 @@ std::pair<std::vector<Neighbor>, std::vector<int>> MQH::query_with_candidates(co
         }
     }
     // return results
-    return {results, counters};
+    return {results, num_linear_scans};
 }        
              
 #endif // MQH_H

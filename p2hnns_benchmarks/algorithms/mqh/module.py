@@ -2,7 +2,6 @@ import numpy
 import b_tree
 import mh
 import pymqh as mqh
-import psutil
 from ..base.module import BaseANN
 
 class BT_MQH(BaseANN):
@@ -29,11 +28,6 @@ class BT_MQH(BaseANN):
         # Query parameters
         self._candidates = 100  # Default
         self._initial_topk = 100  # Default
-        
-        # Break counters
-        self._break_count1 = 0
-        self._break_count2 = 0
-        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -107,7 +101,7 @@ class BT_MQH(BaseANN):
         
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates, candidate_indices)
         
         # Ensure no duplicates in the final result
@@ -125,9 +119,6 @@ class BT_MQH(BaseANN):
         return {
             "dist_comps": self._num_lin_scans
         }
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return f"BT_MQH(max_leaf_size={self._max_leaf_size}, M2={self._M2}, level={self._level}, " \
@@ -160,11 +151,6 @@ class MH_MQH(BaseANN):
         # Query parameters
         self._candidates = 100  # Default
         self._initial_topk = 100  # Default
-        
-        # Break counters
-        self._break_count1 = 0
-        self._break_count2 = 0
-        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -247,7 +233,7 @@ class MH_MQH(BaseANN):
         
         # Use MQH to refine candidates
         # The query normalization is handled inside MQH search
-        indices, _, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search_with_candidates(
+        indices, _, self._num_lin_scans = self._mqh.search_with_candidates(
             q.astype(numpy.float32), n, b, self._l0, self._delta, self._flag, self._initial_candidates, candidate_indices)
         
         # Ensure no duplicates in the final result
@@ -265,9 +251,6 @@ class MH_MQH(BaseANN):
         return {
             "dist_comps": self._num_lin_scans,
         }
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return f"MH_MQH(M_proj_vectors={self._M_proj_vectors}, m_single_hashers={self._m_single_hashers}, " \
@@ -288,11 +271,6 @@ class MQH(BaseANN):
         self._l0 = 3  # Default parameter
         self._delta = 0.5  # Default parameter
         self._flag = 0  # Default parameter
-        
-        # Break counters
-        self._break_count1 = 0
-        self._break_count2 = 0
-        self._break_count3 = 0
 
     def index(self, X):
         self._data = X.astype(numpy.float32)
@@ -341,7 +319,7 @@ class MQH(BaseANN):
                 b = b / qnorm
         
         # Call the search method with the appropriate parameters
-        indices, distances, self._num_lin_scans, self._break_count1, self._break_count2, self._break_count3, self._collision_runs, self._collision_passed = self._mqh.search(
+        indices, distances, self._num_lin_scans = self._mqh.search(
             q, n, b, self._l0, self._delta, self._flag, self._initial_candidates)
         
         # Remove duplicates from the results
@@ -359,8 +337,5 @@ class MQH(BaseANN):
             "dist_comps": self._num_lin_scans,
         }
 
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
-
     def __str__(self):
-        return f"CLRUNS={self._collision_runs},CLPASS={self._collision_passed}, BP1={self._break_count1}, BP2={self._break_count2},BP3={self._break_count3}, MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates={self._initial_candidates})"
+        return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates={self._initial_candidates})"

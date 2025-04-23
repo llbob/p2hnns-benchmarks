@@ -1,6 +1,5 @@
 import numpy
 import mh
-import psutil
 from ..base.module import BaseANN
 
 
@@ -54,9 +53,6 @@ class MH(BaseANN):
     
     def get_additional(self):
         return {"dist_comps": self._num_lin_scans}
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return "MH(M_proj_vectors=%d, m_single_hashers=%d, l_hash_tables=%d, interval_ratio=%f, candidates=%d)" % (

@@ -1,6 +1,5 @@
 import numpy
 import nh
-import psutil
 from ..base.module import BaseANN
 
 class NH(BaseANN):
@@ -50,9 +49,6 @@ class NH(BaseANN):
     
     def get_additional(self):
         return {"dist_comps": self._num_lin_scans}
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return "NH(m_hashers=%d, scale_factor=%f, bucket_width=%d, candidates=%d)" % (self._m_hashers, self._scale_factor, self._bucket_width, self._candidates)

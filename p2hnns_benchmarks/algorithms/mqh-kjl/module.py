@@ -1,6 +1,5 @@
 import numpy
 import pymqhkjl as mqh
-import psutil
 from ..base.module import BaseANN
 
 
@@ -68,9 +67,6 @@ class MQH_kjl(BaseANN):
     
     def get_additional(self):
         return {"dist_comps": self._num_lin_scans}
-
-    def get_memory_usage(self):
-        return psutil.Process().memory_info().rss / 1024
 
     def __str__(self):
         return f"MQH(M2={self._M2}, level={self._level}, m_level={self._m_level}, m_num={self._m_num}, l0={self._l0}, delta={self._delta}, flag={self._flag}, initial_candidates={self._initial_candidates})"

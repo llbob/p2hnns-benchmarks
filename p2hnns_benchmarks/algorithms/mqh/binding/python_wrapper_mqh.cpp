@@ -57,16 +57,8 @@ public:
             query_vec, k, b, l0, delta, flag, initial_candidates, empty_candidates);
         
         std::vector<Neighbor> neighbors = result.first;
-        std::vector<int> counters = result.second;
+        int counter = result.second; 
         
-        // Extract counters - assuming order: [num_linear_scans, break_condition_1, break_condition_2]
-        int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
-        int break_count1 = (counters.size() > 1) ? counters[1] : 0;
-        int break_count2 = (counters.size() > 2) ? counters[2] : 0;
-        int break_count3 = (counters.size() > 3) ? counters[3] : 0;
-        int collision_runs = (counters.size() > 4) ? counters[4] : 0;
-        int collision_passed = (counters.size() > 5) ? counters[5] : 0;
-            
         // Convert results to numpy arrays
         std::vector<int> indices;
         std::vector<float> distances;
@@ -79,16 +71,10 @@ public:
             distances.push_back(res.distance);
         }
             
-        // Return a tuple with the results, linear scans, and break counters
         return py::make_tuple(
             py::cast(indices), 
             py::cast(distances), 
-            py::cast(num_lin_scans),
-            py::cast(break_count1),
-            py::cast(break_count2),
-            py::cast(break_count3),
-            py::cast(collision_runs),
-            py::cast(collision_passed)
+            py::cast(counter)
         );
     }
     
@@ -119,15 +105,7 @@ public:
             query_vec, k, b, l0, delta, flag, initial_candidates, candidate_ids);
         
         std::vector<Neighbor> neighbors = result.first;
-        std::vector<int> counters = result.second;
-        
-        // Extract counters - assuming order: [num_linear_scans, break_condition_1, break_condition_2]
-        int num_lin_scans = (counters.size() > 0) ? counters[0] : 0;
-        int break_count1 = (counters.size() > 1) ? counters[1] : 0;
-        int break_count2 = (counters.size() > 2) ? counters[2] : 0;
-        int break_count3 = (counters.size() > 3) ? counters[3] : 0;
-        int collision_runs = (counters.size() > 4) ? counters[4] : 0;
-        int collision_passed = (counters.size() > 5) ? counters[5] : 0;
+        int counter = result.second; 
         
         /// Convert results to numpy arrays
         std::vector<int> indices;
@@ -148,12 +126,7 @@ public:
         return py::make_tuple(
             py::cast(indices), 
             py::cast(distances), 
-            py::cast(num_lin_scans),
-            py::cast(break_count1),
-            py::cast(break_count2),
-            py::cast(break_count3),
-            py::cast(collision_runs),
-            py::cast(collision_passed)
+            py::cast(counter)
         );
     }
 };
