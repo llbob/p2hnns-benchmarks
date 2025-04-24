@@ -392,7 +392,7 @@ def deepm(out_fn: str, distance: str, count:int) -> None:
         
         # read into a numpy array
         X = np.fromfile(f, dtype=np.float32, count=count*dim)
-        X = points.reshape(count, dim)
+        X = X.reshape(count, dim)  # Fixed: reshape X instead of points
         
         print(f"Loaded {count} vectors of dimension {dim}")
     
@@ -541,10 +541,10 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are the datasets that are not currently used
     "glove-25-euclidean": lambda out_fn: glove(out_fn, 25, "euclidean"),
-    "glove-25-angular": lambda out_fn: glove(out_fn, 25, "angular"),
+    # "glove-25-angular": lambda out_fn: glove(out_fn, 25, "angular"),
     "deep10m-96-euclidean": lambda out_fn: deepm(out_fn, "euclidean", 10_000_000),
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
-    "glove-100-angular": lambda out_fn: glove(out_fn, 100, "angular"),
+    # "glove-100-angular": lambda out_fn: glove(out_fn, 100, "angular"),
     "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
     "sift-128-euclidean": sift,
     "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
