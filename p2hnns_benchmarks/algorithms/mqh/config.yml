@@ -16,8 +16,8 @@ float:
           ]
           query_args: [
               [5], # [1,3,5,7], # [l0 - hash offset]
-              [0.3], # [0.1,0.2,0.3,0.4,0.5,0.6], # [delta - filtering parameter]
-              [0,1], # [flag - 0 for approximate, 1 for precise]
+              [0.1, 0.2, 0.3], # [0.1,0.2,0.3,0.4,0.5,0.6], # [delta - filtering parameter]
+              [0], # [flag - 0 for approximate, 1 for precise]
               [0.2,0.4,0.6,0.8] # initial_candidates_fraction
           ]
 
@@ -39,15 +39,15 @@ float:
           query_args: [
               [20000], # [candidates - number of examined candidates]
               [100,500,1000,2000,10000], # [initial_topk - parameter for BTree]
-              [1,3,5,7], # [l0 - hash offset]
-              [0.1,0.2,0.3,0.4,0.5,0.6], # [delta - filtering parameter]
+              [3,5], # [l0 - hash offset]
+              [0.1,0.2,0.3,0.4,0.5], # [delta - filtering parameter]
               [0,1], # [flag - 0 for approximate, 1 for precise]
               [1] # initial candidates fraction - unused in this case as we're taking in external candidates
           ]
 
     - base_args: ['@metric']
       constructor: MH_MQH
-      disabled: false
+      disabled: true
       docker_tag: p2hnns-benchmarks-mqh
       module: p2hnns_benchmarks.algorithms.mqh
       name: mh-mqh

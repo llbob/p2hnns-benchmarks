@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>mqh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for mqh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 636.5481134940392, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -156,14 +165,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.2684962749481201, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.5266847610473633, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.282192945480347, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6731 , y: 12.401920080184937, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 12.572741270065308, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -255,15 +263,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 8064.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 11648.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 14604.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6774 , y: 23296.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -355,13 +360,27 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0006000000000000001 , y: 1, label: "MH(M_proj_vectors=16, m_single_hashers=128, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.15560000000000002 , y: 2330, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 2515, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1587 , y: 2654, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 2949, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 8190, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 8516, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2835 , y: 8748, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 9032, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 17403, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 18104, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 18484, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 18856, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 28523, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 29416, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6748999999999999 , y: 29860, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 30306, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -453,11 +472,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 5.264274509780822 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 5.263846063776852 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 5.26328245297905 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 2.3804876024495485 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 2.380384832636602 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 2.37976619555722 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.8892341481683833 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.8889193825483356 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.8885588344430999 , y: 636.5481134940392, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.1944373003984503 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.19428735335979808 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.19373454261376205 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -549,16 +580,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 2.361, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 2.479, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4.877, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 4.879, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.88, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6774 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -650,14 +677,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.14488183593749998, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.40925839233398437, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 3.3348745193481446, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 17.852818115234378, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 18.289572570800782, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 19.28511834716797, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 25.322127441406245, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 25.9797001953125, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 28.039919311523438, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 31.83076580810547, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 33.86721850585938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 36.597390686035155, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 41.496405456542966, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 41.84599230957031, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 42.733570007324225, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -749,14 +785,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0723 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.07339999999999999 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0745 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1592 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1618 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1634 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1635 , y: 754.0010031045908, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2767 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.2848 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.46719999999999995 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.47569999999999996 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.4803 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.4817 , y: 538.8858795922752, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -848,14 +894,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0018 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0019 , y: 29102.051011628875, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0039 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0799 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0813 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0824 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.17250000000000001 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.17529999999999998 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.17709999999999998 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2981 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.3061 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.5032 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.5118 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.517 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.5174000000000001 , y: 538.8858795922752, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -947,14 +1002,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.0209808349609375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.033855438232421875, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.22745132446289062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 0.8026361465454102, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 0.8366107940673828, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.171708106994629, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 1.197218894958496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 1.4759302139282227, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 1.5653371810913086, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 1.5702247619628906, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 1.8472671508789062, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 1.8911361694335938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 1.9332170486450195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,14 +1108,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.02765655517578125, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.039577484130859375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.24271011352539062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 0.941789150238037, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 0.9732484817504883, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.1244893074035645, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.4308333396911614, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 1.5986680984497064, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 1.8171191215515134, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 2.055203914642333, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 2.069270610809326, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 2.4952292442321764, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6774 , y: 2.665162086486816, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -1145,14 +1214,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.03314733505249023, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.04626512527465819, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.2525830268859862, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 1.0454750061035156, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1.2703490257263184, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.4830422401428223, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.810715198516845, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 2.119510173797607, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 2.124216556549072, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 2.6029634475708003, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6774 , y: 3.489501476287842, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},
@@ -1244,16 +1318,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0002 , y: 0.0524826049804715, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.06857872009278718, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 0.08109545707702935, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.10805869102478523, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.4479753971101774, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.15560000000000002 , y: 1.4284095764160625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1.6909623146057218, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.8014321327209635, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 2.2663652896881277, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 2.747061252594037, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 3.0049314498901496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6748999999999999 , y: 4.434957027435315, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 6.835794210433969, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
                                                             ]
                         },
                                                 ]},

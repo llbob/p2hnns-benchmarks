@@ -57,14 +57,49 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 48901.19037903254, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 30284.22071076839, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 28731.455032435282, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3131.126773075456, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 636.5481134940392, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 1009.1959139430497, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 960.8232884485294, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7216 , y: 894.8530053382199, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7219 , y: 869.364541410279, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7221 , y: 818.5870190173999, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 805.7022836565706, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 795.8376570901737, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 705.8217321804289, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 634.7181716599052, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -156,15 +191,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.2626926898956299, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0002 , y: 0.5147113800048828, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.5165855884552002, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.557701587677002, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 0.00014448165893554688, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.6731 , y: 12.401920080184937, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 12.572741270065308, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9996 , y: 12.433344602584839, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -256,14 +307,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 6784.0, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 11648.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.6774 , y: 23296.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9996 , y: 23936.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -355,14 +421,62 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 1, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 2, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 20000, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 2330, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 2515, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1587 , y: 2654, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 2949, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 8190, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 8516, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2835 , y: 8748, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 9032, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 17403, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 18104, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 18484, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 18856, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 28523, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 29416, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6748999999999999 , y: 29860, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 30306, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 2006, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 2020, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7216 , y: 2025, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7221 , y: 2028, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7227 , y: 2031, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.6, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7229 , y: 2039, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.6, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7285999999999999 , y: 2047, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.5, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7303 , y: 2089, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7514000000000001 , y: 2115, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7604 , y: 2245, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.4, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.8116 , y: 2344, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.3, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.8394 , y: 2660, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 2968, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9480000000000001 , y: 3656, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 4193, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9939 , y: 5474, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 6946, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 8583, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -454,11 +568,50 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.011235803598524647 , y: 3131.126773075456, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 5.264274509780822 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 5.263846063776852 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 5.26328245297905 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 2.3804876024495485 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 2.380384832636602 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 2.37976619555722 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.8892341481683833 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.8889193825483356 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.8885588344430999 , y: 636.5481134940392, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.1944373003984503 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.19428735335979808 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.19373454261376205 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.022248685877334345 , y: 1009.1959139430497, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.022144503115936694 , y: 960.8232884485294, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.022122000023476147 , y: 894.8530053382199, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.02211081486167975 , y: 869.364541410279, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.022105547311309228 , y: 818.5870190173999, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.016675097630147188 , y: 805.7022836565706, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.014663699539716685 , y: 795.8376570901737, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.014619182265789484 , y: 759.3944259347171, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.01243624818577418 , y: 705.8217321804289, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.011979267269009178 , y: 634.7181716599052, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -550,15 +703,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 2.384, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0002 , y: 2.43, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 2.454, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4.822, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.6774 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9996 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -650,14 +818,48 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.13349368286132812, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.22401104736328123, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.40540933227539067, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 17.852818115234378, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 18.289572570800782, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 19.28511834716797, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 25.322127441406245, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 25.9797001953125, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 28.039919311523438, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 31.83076580810547, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 33.86721850585938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 36.597390686035155, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 41.496405456542966, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 41.84599230957031, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 42.733570007324225, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 23.717892303466797, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 24.911969024658205, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7216 , y: 26.748527252197267, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7219 , y: 27.53275393676758, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7221 , y: 29.24062982177734, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 29.70824395751953, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 30.076485809326176, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 33.91224569702148, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 37.711225341796876, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -749,14 +951,50 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 30218.328530259365, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 28731.455032435282, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 8884.61848053109, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3131.126773075456, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0723 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.07339999999999999 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0745 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1592 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1618 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1634 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.1635 , y: 754.0010031045908, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2767 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.2848 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.46719999999999995 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.47569999999999996 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.4803 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.4817 , y: 538.8858795922752, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.43760000000000004 , y: 1009.1959139430497, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4384 , y: 960.8232884485294, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4385 , y: 894.8530053382199, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4387 , y: 869.364541410279, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4389 , y: 818.5870190173999, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.5855 , y: 805.7022836565706, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.6881999999999999 , y: 795.8376570901737, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.8587999999999999 , y: 705.8217321804289, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9047000000000001 , y: 634.7181716599052, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -848,14 +1086,49 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 30218.328530259365, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 28731.455032435282, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 8884.61848053109, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3131.126773075456, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0799 , y: 1304.892025988927, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0813 , y: 1273.7312427515094, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.0824 , y: 1207.9780678878246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.17250000000000001 , y: 919.9858919399812, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.17529999999999998 , y: 896.7001091183986, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.17709999999999998 , y: 830.815514880107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2981 , y: 731.8705475212867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.3061 , y: 687.8628073920377, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.5032 , y: 561.3980233636548, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.5118 , y: 556.7080313846956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.517 , y: 545.1451866999934, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.5174000000000001 , y: 538.8858795922752, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.4715 , y: 1009.1959139430497, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4723 , y: 960.8232884485294, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.47240000000000004 , y: 894.8530053382199, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4726 , y: 869.364541410279, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.4728 , y: 818.5870190173999, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.6284 , y: 805.7022836565706, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.7367 , y: 795.8376570901737, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.8991 , y: 705.8217321804289, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9345000000000001 , y: 634.7181716599052, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -947,14 +1220,47 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.019788742065429688, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.03218650817871094, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.032901763916015625, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 1.0 , y: 0.31685829162597656, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 0.8026361465454102, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 0.8366107940673828, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.171708106994629, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.2848 , y: 1.197218894958496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 1.4759302139282227, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 1.5653371810913086, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 1.5702247619628906, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6715 , y: 1.8472671508789062, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6731 , y: 1.8911361694335938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 1.9332170486450195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 0.979304313659668, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 1.0319948196411133, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7216 , y: 1.1082887649536133, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7219 , y: 1.150965690612793, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7221 , y: 1.2211799621582031, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.5, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 1.2462139129638672, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 1.2475252151489258, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 1.3339519500732422, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 1.501321792602539, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,14 +1352,46 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.022423267364501943, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.03577470779418944, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.04076957702636719, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 1.0 , y: 0.3893852233886718, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 0.941789150238037, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 0.9732484817504883, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.1244893074035645, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.4308333396911614, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 1.5986680984497064, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 1.8171191215515134, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.442 , y: 2.055203914642333, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 2.069270610809326, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.44480000000000003 , y: 2.4952292442321764, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6774 , y: 2.665162086486816, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 1.0736823081970213, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 1.181685924530029, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7216 , y: 1.3155937194824219, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7219 , y: 1.3543009757995603, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 1.438891887664795, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 1.538538932800293, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 2.0247697830200195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 2.1872758865356445, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -1145,14 +1483,45 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.029804706573486325, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.040063858032226556, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.053443908691406215, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 0.7608342170715332, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 1.0454750061035156, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1.2703490257263184, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.4830422401428223, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 1.810715198516845, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.28250000000000003 , y: 2.119510173797607, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 2.124216556549072, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 2.6029634475708003, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6774 , y: 3.489501476287842, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 1.1628484725952148, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 1.3013148307800293, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7219 , y: 1.5050005912780757, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.4, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7303 , y: 1.5688037872314453, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 1.6024374961853027, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 1.9372487068176267, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9794 , y: 2.5977468490600586, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9984 , y: 2.7729797363281246, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 3.8525247573852535, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
@@ -1244,15 +1613,43 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "bruteforce",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0001 , y: 0.04371166229248777, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0002 , y: 0.055374145507817996, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.05944252014160843, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 0.17071509361267156, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 0.8637998104095467, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.15560000000000002 , y: 1.4284095764160625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1574 , y: 1.6909623146057218, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.2, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.15960000000000002 , y: 1.8014321327209635, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.281 , y: 2.2663652896881277, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.4)" },
+                                                                    { x: 0.44029999999999997 , y: 2.747061252594037, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.4429 , y: 3.0049314498901496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.6)" },
+                                                                    { x: 0.6748999999999999 , y: 4.434957027435315, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.6774 , y: 6.835794210433969, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=1, initial_candidates_fraction=0.8)" },
+                                                            ]
+                        },
+                                                {
+                            label: "mqh-kjl",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.7197 , y: 1.2134552001953254, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7211000000000001 , y: 1.4444580078125107, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=0, initial_candidates=2000)" },
+                                                                    { x: 0.7303 , y: 1.687342643737798, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9098 , y: 1.8099892139434952, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9773 , y: 2.5581829547882466, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=1, delta=0.1, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9794 , y: 3.0197613239288716, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.2, flag=1, initial_candidates=2000)" },
+                                                                    { x: 0.9996 , y: 7.443178653717513, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
                         },
                                                 ]},
