@@ -49,8 +49,7 @@ class BT_MQH(BaseANN):
         data_array = numpy.ascontiguousarray(self._candidate_data.ravel())
         self._tree_candidates.preprocess(n, d, self._max_leaf_size, data_array)
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
-        self._candidates = candidates
+    def set_query_arguments(self, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
@@ -91,7 +90,7 @@ class BT_MQH(BaseANN):
 
         # Get candidates from BTree
         candidate_indices, _ = self._tree_candidates.search(
-            self._initial_topk, self._candidates, self._c, q_to_pass)
+            self._initial_topk, self._initial_topk, self._c, q_to_pass) # Use initial_topk for candidates here too - it's the max candididates to consider - in this case topk
         
         # Convert to numpy array
         candidate_indices = numpy.array(candidate_indices, dtype=numpy.int32)
@@ -122,7 +121,7 @@ class BT_MQH(BaseANN):
 
     def __str__(self):
         return f"BT_MQH(max_leaf_size={self._max_leaf_size}, M2={self._M2}, level={self._level}, " \
-               f"m_level={self._m_level}, m_num={self._m_num}, candidates={self._candidates}, " \
+               f"m_level={self._m_level}, m_num={self._m_num} " \
                f"initial_topk={self._initial_topk}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
 
 class MH_MQH(BaseANN):
@@ -181,8 +180,7 @@ class MH_MQH(BaseANN):
             data_array
         )
 
-    def set_query_arguments(self, candidates=100, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
-        self._candidates = candidates
+    def set_query_arguments(self, initial_topk=100, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1):
         self._initial_topk = initial_topk
         self._l0 = l0
         self._delta = delta
@@ -223,7 +221,7 @@ class MH_MQH(BaseANN):
 
         # Get candidates from MH
         candidate_indices, _ = self._mh_index_candidates.search(
-            self._initial_topk, self._candidates, q_to_pass)
+            self._initial_topk, self._initial_topk, q_to_pass) # Use initial_topk for candidates here too - it's the max candididates to consider - in this case topk
         
         # Convert to numpy array
         candidate_indices = numpy.array(candidate_indices, dtype=numpy.int32)
@@ -255,7 +253,7 @@ class MH_MQH(BaseANN):
     def __str__(self):
         return f"MH_MQH(M_proj_vectors={self._M_proj_vectors}, m_single_hashers={self._m_single_hashers}, " \
                f"l_hash_tables={self._l_hash_tables}, M2={self._M2}, level={self._level}, " \
-               f"m_level={self._m_level}, m_num={self._m_num}, candidates={self._candidates}, " \
+               f"m_level={self._m_level}, m_num={self._m_num}, " \
                f"initial_topk={self._initial_topk}, l0={self._l0}, delta={self._delta}, flag={self._flag})"
 
 
