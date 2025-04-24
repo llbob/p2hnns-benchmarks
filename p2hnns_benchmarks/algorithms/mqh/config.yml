@@ -46,16 +46,16 @@ float:
 
     - base_args: ['@metric']
       constructor: MH_MQH
-      disabled: true
+      disabled: false
       docker_tag: p2hnns-benchmarks-mqh
       module: p2hnns_benchmarks.algorithms.mqh
       name: mh-mqh
       run_groups:
         MH_MQH:
           args: [
-              [8], # [M_proj_vectors - MH parameter]
-              [64, 128, 256], # [m_single_hashers - MH parameter]
-              [10], # [l_hash_tables - MH parameter]
+              [4, 8], #m projection vectors
+              [16], # bit string length
+              [4,8], #l hash tables
               [16], # [M2 - number of subcodebooks]
               [4], # [level - number of levels]
               [1], # [m_level - number of hash tables per level]
