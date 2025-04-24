@@ -10,7 +10,7 @@ import numpy as np
 import zipfile
 from typing import Any, Callable, Dict, Tuple
 from sklearn.decomposition import PCA
-from p2hnns_benchmarks import generate_queries
+# from p2hnns_benchmarks import generate_queries
 
 # Needed for Cloudflare's firewall
 opener = build_opener()
@@ -140,25 +140,25 @@ def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[n
     
     return unit_normals, biases
 
-def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    (bctree) method to create hyperplanes and biases.
+# def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
+#     """
+#     (bctree) method to create hyperplanes and biases.
     
-    The implementation follows a similar approach to Qiang et als implementation in https://github.com/HuangQiang/BC-Tree
+#     The implementation follows a similar approach to Qiang et als implementation in https://github.com/HuangQiang/BC-Tree
     
-    Args:
-        X (np.ndarray): Input data array
-        n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 1000.
+#     Args:
+#         X (np.ndarray): Input data array
+#         n_hyperplanes (int, optional): The number of hyperplanes to create. Defaults to 1000.
         
-    Returns:
-        Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
-    """
-    from p2hnns_benchmarks.generate_queries.module import generate_hyperplanes
+#     Returns:
+#         Tuple[np.ndarray, np.ndarray]: Hyperplane normals and their biases
+#     """
+#     from p2hnns_benchmarks.generate_queries.module import generate_hyperplanes
     
-    # generate the hyperplanes using the C++ implementation
-    normals, biases = generate_hyperplanes(X, n_hyperplanes)
+#     # generate the hyperplanes using the C++ implementation
+#     normals, biases = generate_hyperplanes(X, n_hyperplanes)
     
-    return normals, biases
+#     return normals, biases
 
 def write_output(
     points: np.ndarray,
@@ -233,8 +233,8 @@ def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_metho
         points = np.array(X)
         if hyperplane_method == "rpsd":
             hyperplanes = create_hyperplanes_rpsd(points)
-        elif hyperplane_method == "bctree":
-            hyperplanes = create_hyperplanes_bctree(points)
+        # elif hyperplane_method == "bctree":
+        #     hyperplanes = create_hyperplanes_bctree(points)
         else:
             raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
         write_output(points, hyperplanes, out_fn, distance)
@@ -309,8 +309,8 @@ def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str
         
         if hyperplane_method == "rpsd":
             hyperplanes = create_hyperplanes_rpsd(points)
-        elif hyperplane_method == "bctree":
-            hyperplanes = create_hyperplanes_bctree(points)
+        # elif hyperplane_method == "bctree":
+        #     hyperplanes = create_hyperplanes_bctree(points)
         # elif hyperplane_method == "svm-basic":
         #     hyperplanes = create_hyperplanes_svm(points, labels)
         # elif hyperplane_method == "svm-advanced":
@@ -532,10 +532,10 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are the datasets that are used to demonstrate the hyperplane methods
     # 25 dims - 20k points
-    "glove-25-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
+    # "glove-25-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
     "glove-25-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
     # 100 dims - 20k points
-    "glove-100-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="bctree"),
+    # "glove-100-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="bctree"),
     "glove-100-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="rpsd"),
 
     # ========================================================================
