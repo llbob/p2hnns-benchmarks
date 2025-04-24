@@ -144,7 +144,7 @@ class MH_MQH(BaseANN):
         self._M_proj_vectors = M_proj_vectors
         self._m_single_hashers = m_single_hashers
         self._l_hash_tables = l_hash_tables
-        self._interval_ratio = 0.9
+        self._interval_ratio = 0.99
         self._mh_index_candidates = mh.MH()
         
         # Query parameters

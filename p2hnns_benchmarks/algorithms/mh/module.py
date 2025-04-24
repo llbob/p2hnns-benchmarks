@@ -4,14 +4,14 @@ from ..base.module import BaseANN
 
 
 class MH(BaseANN):
-    def __init__(self, metric, M_proj_vectors, m_single_hashers, l_hash_tables, interval_ratio):
+    def __init__(self, metric, M_proj_vectors, m_single_hashers, l_hash_tables):
         if metric not in ("angular", "euclidean"):
             raise NotImplementedError("MH doesn't support metric %s" % metric)
         self._metric = metric
         self._M_proj_vectors = M_proj_vectors
         self._m_single_hashers = m_single_hashers
         self._l_hash_tables = l_hash_tables
-        self._interval_ratio = interval_ratio
+        self._interval_ratio = 0.99
         self._mh_index = mh.MH()
 
     def index(self, X):
