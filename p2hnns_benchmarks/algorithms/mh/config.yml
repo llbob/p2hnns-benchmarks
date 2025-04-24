@@ -9,11 +9,12 @@ float:
     run_groups:
       MH:
         args: [
-          [8, 16], #m projection vectors
-          [64, 128, 256], # k hash functions
-          [4, 8] #l hash tables
+          [4, 8, 16], #m projection vectors
+          [8, 16], # k hash functions
+          [2,4,6,8,10] #l hash tables
         ]
         query_args: [
           # [10000,50000,100000,300000,500000,800000,1000000,1100000,1150000] # candidates
-          [5000, 10000]
+          [10000,50000,100000,300000,500000,800000,1000000,1100000,1150000] # candidates
+          # [5000, 10000, 20000]
         ]

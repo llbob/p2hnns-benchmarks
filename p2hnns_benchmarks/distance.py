@@ -12,7 +12,6 @@ def euc_p2hdist(x, H):
     return np.abs(np.dot(x, q) + bias) / qnorm
 
 def ang_p2hdist(x, H):
-    x = x / np.linalg.norm(x)
     q, b = H
     qnorm = np.linalg.norm(q)
     q_normalized = q / qnorm
