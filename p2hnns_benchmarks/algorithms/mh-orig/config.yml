@@ -1,0 +1,20 @@
+float:
+  any:
+  - base_args: ["@metric"]
+    constructor: MH_Orig
+    disabled: true
+    docker_tag: p2hnns-benchmarks-mh-orig
+    module: p2hnns_benchmarks.algorithms.mh-orig
+    name: mh-orig
+    run_groups:
+      MH:
+        args: [
+          [4, 8, 16], #m projection vectors
+          [8, 16], # k hash functions
+          [2,4,6,8,10] #l hash tables
+        ]
+        query_args: [
+          # [10000,50000,100000,300000,500000,800000,1000000,1100000,1150000] # candidates
+          [10000,50000,100000,300000,500000,800000,1000000,1100000,1150000] # candidates
+          # [5000, 10000, 20000]
+        ]

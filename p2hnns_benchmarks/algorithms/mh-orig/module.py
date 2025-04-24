@@ -3,15 +3,14 @@ import mh
 from ..base.module import BaseANN
 
 
-class MH(BaseANN):
-    def __init__(self, metric, M_proj_vectors, m_single_hashers, l_hash_tables, interval_ratio):
+class MH_Orig(BaseANN):
+    def __init__(self, metric, M_proj_vectors, m_single_hashers, l_hash_tables):
         if metric not in ("angular", "euclidean"):
             raise NotImplementedError("MH doesn't support metric %s" % metric)
         self._metric = metric
         self._M_proj_vectors = M_proj_vectors
         self._m_single_hashers = m_single_hashers
         self._l_hash_tables = l_hash_tables
-        self._interval_ratio = interval_ratio
         self._mh_index = mh.MH()
 
     def index(self, X):
@@ -28,7 +27,7 @@ class MH(BaseANN):
         n, d = self._data.shape
         data_array = numpy.ascontiguousarray(self._data.ravel())
         self._mh_index.preprocess(
-            n, d, self._M_proj_vectors, self._m_single_hashers, self._l_hash_tables, self._interval_ratio, data_array
+            n, d, self._M_proj_vectors, self._m_single_hashers, self._l_hash_tables, data_array
         )
 
     def set_query_arguments(self, candidates):
@@ -55,10 +54,9 @@ class MH(BaseANN):
         return {"dist_comps": self._num_lin_scans}
 
     def __str__(self):
-        return "MH(M_proj_vectors=%d, m_single_hashers=%d, l_hash_tables=%d, interval_ratio=%f, candidates=%d)" % (
+        return "MH(M_proj_vectors=%d, m_single_hashers=%d, l_hash_tables=%d, candidates=%d)" % (
             self._M_proj_vectors,
             self._m_single_hashers,
             self._l_hash_tables,
-            self._interval_ratio,
             self._candidates,
         )
