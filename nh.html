@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>nh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for nh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0988 , y: 18249.037361260373, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 5748.890122466882, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 2734.421155088595, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 2579.9130741797344, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 1534.3551383270521, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 1449.8814322158694, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -156,14 +159,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.2684962749481201, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.5266847610473633, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.282192945480347, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.9971 , y: 0.1850876808166504, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -255,15 +256,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 8064.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 11648.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 14604.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.9971 , y: 4992.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -355,13 +353,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0006000000000000001 , y: 1, label: "MH(M_proj_vectors=16, m_single_hashers=128, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.0639 , y: 725, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.0988 , y: 994, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.3205 , y: 3705, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.4286 , y: 4149, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 8254, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 9980, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 14165, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 17454, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -453,11 +457,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.18620869168280588 , y: 18249.037361260373, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.044699683483909056 , y: 5748.890122466882, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.02425053867564677 , y: 2734.421155088595, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.019094971144420776 , y: 2579.9130741797344, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.014718754586054823 , y: 1534.3551383270521, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.012262800357819438 , y: 1449.8814322158694, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -549,16 +559,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 2.361, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 2.479, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4.877, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 4.879, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.88, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.9971 , y: 10.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -650,14 +656,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.14488183593749998, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.40925839233398437, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 3.3348745193481446, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0988 , y: 0.2735486755371094, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 0.868341522216797, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8826 , y: 1.9349489135742188, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9971 , y: 3.4430401611328127, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -749,14 +756,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0571 , y: 18249.037361260373, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2314 , y: 5748.890122466882, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.4048 , y: 2734.421155088595, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.5475 , y: 2579.9130741797344, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7135 , y: 1534.3551383270521, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9029 , y: 1449.8814322158694, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -848,14 +858,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0018 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0019 , y: 29102.051011628875, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0039 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0618 , y: 18249.037361260373, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2521 , y: 5748.890122466882, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.4415 , y: 2734.421155088595, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.5953 , y: 2579.9130741797344, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.77 , y: 1534.3551383270521, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9389 , y: 1449.8814322158694, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -947,14 +960,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.0209808349609375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.033855438232421875, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.22745132446289062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0988 , y: 0.028371810913085938, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 0.07653236389160156, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 0.16891956329345703, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 0.18978118896484375, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 0.2994537353515625, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 0.31447410583496094, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,14 +1062,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.02765655517578125, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.039577484130859375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.24271011352539062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0988 , y: 0.0455498695373535, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 0.13940334320068345, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 0.3699183464050292, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 0.7861852645873864, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 4.420781135559082, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 4.4536590576171875, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1145,14 +1164,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.03314733505249023, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.04626512527465819, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.2525830268859862, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0988 , y: 0.09655952453613281, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 4.15973424911499, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 4.311866760253906, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 4.336128234863281, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 4.4794440269470215, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 4.4972944259643555, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1244,16 +1266,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0002 , y: 0.0524826049804715, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.06857872009278718, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 0.08109545707702935, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.10805869102478523, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.4479753971101774, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0639 , y: 4.092004299163821, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.0988 , y: 4.142765760421753, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4286 , y: 4.244167804718025, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7217 , y: 4.3852460384368905, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8826 , y: 4.421771049499517, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9694 , y: 4.540476322174076, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9971 , y: 4.56027460098267, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},

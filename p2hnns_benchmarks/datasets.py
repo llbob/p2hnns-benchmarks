@@ -290,13 +290,13 @@ def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str
             batch_data = pickle.load(batch_file, encoding="bytes")
             # get the labels
             # get the labels
-            labels.extend(batch_data[b"labels"])  # Added to collect labels
+            # labels.extend(batch_data[b"labels"])  # Added to collect labels
             X.append(batch_data[b"data"])
 
         # concat the batches
         X = np.vstack(X).astype(np.float32)
 
-        labels = np.array(labels, dtype=np.int32)  # convert labels to numpy array
+        # labels = np.array(labels, dtype=np.int32)  # convert labels to numpy array
 
         X = X[:size] if size is not None else X
 
@@ -305,7 +305,7 @@ def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str
         X = pca.fit_transform(X)
 
         points = np.array(X)
-        labels = np.array(labels)
+        # labels = np.array(labels)
         
         if hyperplane_method == "rpsd":
             hyperplanes = create_hyperplanes_rpsd(points)

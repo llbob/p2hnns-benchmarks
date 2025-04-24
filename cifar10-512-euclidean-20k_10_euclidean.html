@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>cifar10-512-euclidean-20k (k = 10)</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for cifar10-512-euclidean-20k (k = 10)</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0354 , y: 2090.400007974243, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 1869.821862669443, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23420000000000002 , y: 452.1964654469963, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2351 , y: 405.5461229351908, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7586 , y: 131.28450037441854, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.7591 , y: 130.79554726141959, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 100.96301480575237, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -156,14 +160,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.2684962749481201, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.5266847610473633, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.282192945480347, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 2.932013988494873, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -255,15 +257,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 8064.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 11648.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 14604.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 207944.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -355,13 +354,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.0006000000000000001 , y: 1, label: "MH(M_proj_vectors=16, m_single_hashers=128, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.036199999999999996 , y: 1009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.2351 , y: 5009, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7591 , y: 15009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 20000, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -453,11 +454,20 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
+                                                                    { x: 0.7112186427500788 , y: 2090.400007974243, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.6960661394369433 , y: 2036.897516126698, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.682277393670807 , y: 1869.821862669443, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.047404824389073445 , y: 452.1964654469963, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.04737046835305397 , y: 406.79399540319247, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.047262897094672476 , y: 405.5461229351908, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.013230998276891451 , y: 131.28450037441854, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.01321735886811472 , y: 131.05773108952764, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.010688787665056142 , y: 100.96301480575237, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -549,16 +559,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 2.361, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 2.479, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4.877, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 4.879, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.88, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -650,14 +656,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.14488183593749998, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.40925839233398437, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 3.3348745193481446, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0342 , y: 102.08859226036071, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0354 , y: 179.49483283996582, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 200.66724402523042, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23399999999999999 , y: 511.17765343093873, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2351 , y: 512.7505559539795, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7586 , y: 1583.9188891830445, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 1.0 , y: 2077.4305161361694, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -749,14 +759,20 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.035699999999999996 , y: 2090.400007974243, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0365 , y: 1869.821862669443, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23650000000000002 , y: 452.1964654469963, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2372 , y: 405.5461229351908, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7633 , y: 131.28450037441854, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.7635 , y: 131.05773108952764, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.7636000000000001 , y: 131.01369071927425, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.7638 , y: 130.79554726141959, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 100.96301480575237, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -848,14 +864,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.0018 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0019 , y: 29102.051011628875, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0039 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0388 , y: 2090.400007974243, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0395 , y: 1869.821862669443, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.2559 , y: 452.1964654469963, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.25670000000000004 , y: 405.5461229351908, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.8117000000000001 , y: 131.28450037441854, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.8122999999999999 , y: 131.05773108952764, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.8127000000000001 , y: 131.01369071927425, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 1.0 , y: 100.96301480575237, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -947,14 +968,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.0209808349609375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.033855438232421875, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.22745132446289062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0354 , y: 0.4731416702270508, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 0.5158185958862305, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23420000000000002 , y: 2.174973487854004, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2351 , y: 2.2771358489990234, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7591 , y: 7.24029541015625, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 9.581804275512695, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,14 +1070,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.02765655517578125, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.039577484130859375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.24271011352539062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0354 , y: 0.49830675125122076, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 0.632774829864502, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23420000000000002 , y: 2.3466587066650386, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2351 , y: 3.056049346923828, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7586 , y: 8.490681648254395, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.7591 , y: 8.982622623443604, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 11.153888702392576, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1145,14 +1173,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.03314733505249023, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.04626512527465819, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.2525830268859862, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0354 , y: 0.5350232124328613, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 1.0994625091552732, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.23420000000000002 , y: 2.717339992523193, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.2351 , y: 3.334813117980957, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.7586 , y: 10.018401145935055, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.7591 , y: 11.48320436477661, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 1.0 , y: 12.248353958129883, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1244,16 +1276,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "fh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
-                                                                    { x: 0.0002 , y: 0.0524826049804715, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.06857872009278718, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 0.08109545707702935, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.10805869102478523, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.4479753971101774, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0354 , y: 0.6530151367189635, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.036199999999999996 , y: 1.6018168926239338, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.2351 , y: 3.5632879734041345, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 1.0 , y: 14.525919675828037, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},

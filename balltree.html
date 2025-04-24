@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>balltree</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for balltree</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 5776.959947110352, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9348000000000001 , y: 5655.414187939227, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.9397 , y: 5174.971437313849, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 4970.767746630102, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3050.8266966538627, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -156,14 +158,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.2684962749481201, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.5266847610473633, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.282192945480347, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 0.01643824577331543, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -255,15 +255,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 8064.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 11648.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 14604.0, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 3968.0, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -355,13 +352,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0006000000000000001 , y: 1, label: "MH(M_proj_vectors=16, m_single_hashers=128, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.9679 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 19971, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -453,11 +450,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.017256688075049934 , y: 5776.959947110352, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.016780905393515545 , y: 5655.414187939227, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.016735811214840527 , y: 5174.971437313849, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.015515309634826648 , y: 4970.767746630102, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.011235803540555898 , y: 3050.8266966538627, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -549,16 +551,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 2.361, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0004 , y: 2.479, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0006000000000000001 , y: 4.877, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 4.879, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 4.88, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -650,14 +648,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.14488183593749998, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.40925839233398437, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 3.3348745193481446, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 0.686866455078125, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9348000000000001 , y: 0.7016285400390625, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.9397 , y: 0.7667675170898438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 0.7982670288085937, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 1.3006310729980468, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -749,14 +749,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0006000000000000001 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 4379.175262898524, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.6153 , y: 5776.959947110352, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.6311 , y: 5655.414187939227, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.6381 , y: 5174.971437313849, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.7099 , y: 4970.767746630102, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3050.8266966538627, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -848,14 +850,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0018 , y: 45057.40804400138, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0019 , y: 29102.051011628875, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0039 , y: 28461.236759427018, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.6672 , y: 5776.959947110352, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.6844 , y: 5655.414187939227, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.6918 , y: 5174.971437313849, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.7612 , y: 4970.767746630102, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 3050.8266966538627, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -947,14 +951,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.0209808349609375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.033855438232421875, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.22745132446289062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 0.08726119995117188, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9397 , y: 0.08845329284667969, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 0.09584426879882812, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 0.16260147094726562, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1046,14 +1051,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.02765655517578125, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.039577484130859375, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.24271011352539062, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 0.10443925857543944, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9348000000000001 , y: 0.10612010955810544, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.9397 , y: 0.11614561080932614, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 0.12283325195312496, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 0.18609762191772428, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -1145,14 +1152,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.00030000000000000003 , y: 0.03314733505249023, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0007 , y: 0.04626512527465819, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0008 , y: 0.2525830268859862, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 4.092698097229004, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9348000000000001 , y: 4.09557580947876, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.9397 , y: 4.097225666046143, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 4.106309413909912, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 4.171395301818848, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -1244,16 +1253,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-25-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0002 , y: 0.0524826049804715, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.00030000000000000003 , y: 0.06857872009278718, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.0004 , y: 0.08109545707702935, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0007 , y: 0.10805869102478523, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0008 , y: 0.4479753971101774, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.9282 , y: 4.105829238891603, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9348000000000001 , y: 4.121561765670778, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.9410000000000001 , y: 4.131560802459717, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.9679 , y: 4.140379190444946, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 1.0 , y: 4.186878919601441, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
