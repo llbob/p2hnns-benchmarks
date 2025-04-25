@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>mh-mqh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for mh-mqh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,27 +57,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0708 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2611 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0371 , y: 907.3970431038605, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0375 , y: 901.9568292042518, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.038900000000000004 , y: 897.8833409971136, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0391 , y: 892.1649811274199, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0398 , y: 891.5973571177432, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.040400000000000005 , y: 890.2304816680785, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0466 , y: 889.7058901515593, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0492 , y: 883.0686284500132, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0504 , y: 877.9324828010756, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0641 , y: 476.68812820049175, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0678 , y: 476.01437109655933, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.06949999999999999 , y: 472.7266948486331, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0698 , y: 471.71988932368555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0713 , y: 471.4435400168556, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.081 , y: 469.97893763997365, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0813 , y: 468.5094860151007, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0858 , y: 466.17725677791947, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0906 , y: 463.15721126245137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -185,19 +187,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 59323.69664224492)
-                                    (0.0708, 46053.80240244197)
-                                    (0.1281, 44458.97329898984)
-                                    (0.2611, 29267.963183933796)
-                                    (0.2672, 27511.20964462344)
+                                                (0.0371, 907.3970431038605)
+                                    (0.0375, 901.9568292042518)
+                                    (0.038900000000000004, 897.8833409971136)
+                                    (0.0391, 892.1649811274199)
+                                    (0.0398, 891.5973571177432)
+                                    (0.040400000000000005, 890.2304816680785)
+                                    (0.0466, 889.7058901515593)
+                                    (0.0492, 883.0686284500132)
+                                    (0.0504, 877.9324828010756)
+                                    (0.0641, 476.68812820049175)
+                                    (0.0678, 476.01437109655933)
+                                    (0.06949999999999999, 472.7266948486331)
+                                    (0.0698, 471.71988932368555)
+                                    (0.0713, 471.4435400168556)
+                                    (0.081, 469.97893763997365)
+                                    (0.0813, 468.5094860151007)
+                                    (0.0858, 466.17725677791947)
+                                    (0.0906, 463.15721126245137)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.048799999999999996, 66405.4969760299)
-                                    (0.35209999999999997, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -215,21 +224,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.2672 , y: 0.07393670082092285, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.0504 , y: 31.42920708656311, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0906 , y: 31.44859743118286, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -337,13 +338,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.2672, 0.07393670082092285)
+                                                (0.0504, 31.42920708656311)
+                                    (0.0906, 31.44859743118286)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.35209999999999997, 0.03841423988342285)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -361,22 +359,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0458 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 8576.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.0504 , y: 53944.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0906 , y: 56344.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -484,14 +473,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0458, 6528.0)
-                                    (0.2672, 8576.0)
+                                                (0.0504, 53944.0)
+                                    (0.0906, 56344.0)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.35209999999999997, 5888.0)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -509,28 +494,48 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0791 , y: 1, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 2, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.1328 , y: 5, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.1684 , y: 6, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1699 , y: 7, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1741 , y: 8, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 401, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.0334 , y: 355, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0351 , y: 356, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.035199999999999995 , y: 357, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.035699999999999996 , y: 362, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0375 , y: 394, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.039400000000000004 , y: 395, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0395 , y: 396, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0402 , y: 400, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0412 , y: 419, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0414 , y: 420, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0418 , y: 424, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.047299999999999995 , y: 468, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.05 , y: 469, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0502 , y: 470, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0504 , y: 474, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.064 , y: 705, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0641 , y: 706, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0645 , y: 711, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0653 , y: 712, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0666 , y: 714, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0674 , y: 716, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0679 , y: 726, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0698 , y: 736, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0713 , y: 744, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0715 , y: 771, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0718 , y: 782, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.074 , y: 791, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0756 , y: 800, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.07830000000000001 , y: 847, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0805 , y: 853, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0832 , y: 854, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0844 , y: 857, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0849 , y: 867, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0856 , y: 874, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0873 , y: 875, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.088 , y: 895, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0906 , y: 904, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -638,20 +643,45 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0791, 1)
-                                    (0.1281, 2)
-                                    (0.1328, 5)
-                                    (0.1684, 6)
-                                    (0.1699, 7)
-                                    (0.1741, 8)
-                                    (0.2672, 401)
+                                                (0.0334, 355)
+                                    (0.0351, 356)
+                                    (0.035199999999999995, 357)
+                                    (0.035699999999999996, 362)
+                                    (0.0375, 394)
+                                    (0.039400000000000004, 395)
+                                    (0.0395, 396)
+                                    (0.0402, 400)
+                                    (0.0412, 419)
+                                    (0.0414, 420)
+                                    (0.0418, 424)
+                                    (0.047299999999999995, 468)
+                                    (0.05, 469)
+                                    (0.0502, 470)
+                                    (0.0504, 474)
+                                    (0.064, 705)
+                                    (0.0641, 706)
+                                    (0.0645, 711)
+                                    (0.0653, 712)
+                                    (0.0666, 714)
+                                    (0.0674, 716)
+                                    (0.0679, 726)
+                                    (0.0698, 736)
+                                    (0.0713, 744)
+                                    (0.0715, 771)
+                                    (0.0718, 782)
+                                    (0.074, 791)
+                                    (0.0756, 800)
+                                    (0.07830000000000001, 847)
+                                    (0.0805, 853)
+                                    (0.0832, 854)
+                                    (0.0844, 857)
+                                    (0.0849, 867)
+                                    (0.0856, 874)
+                                    (0.0873, 875)
+                                    (0.088, 895)
+                                    (0.0906, 904)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.0639, 1)
-                                    (0.35209999999999997, 147)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -669,22 +699,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.18851453102491042 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.18681953797855416 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.25402419646537583 , y: 907.3970431038605, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.2533721387138715 , y: 901.9568292042518, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2444941200543989 , y: 897.8833409971136, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.24424898478528118 , y: 892.1649811274199, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.24221791451582037 , y: 891.5973571177432, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.2403536794258014 , y: 890.2304816680785, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.21518690655988867 , y: 889.7058901515593, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.21030082405366884 , y: 883.0686284500132, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.2070175648790263 , y: 877.9324828010756, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.18575978747913813 , y: 476.68812820049175, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.1763151641535457 , y: 476.01437109655933, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.1736867902844712 , y: 472.7266948486331, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.14899222963857564 , y: 469.97893763997365, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.14888154204546014 , y: 468.5094860151007, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.14428489777220896 , y: 466.17725677791947, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.14168717169324738 , y: 463.15721126245137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.14165557831638778 , y: 258.923861036734, label: "MH_MQH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -792,14 +828,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.18851453102491042, 29267.963183933796)
-                                    (0.18681953797855416, 27511.20964462344)
+                                                (0.25402419646537583, 907.3970431038605)
+                                    (0.2533721387138715, 901.9568292042518)
+                                    (0.2444941200543989, 897.8833409971136)
+                                    (0.24424898478528118, 892.1649811274199)
+                                    (0.24221791451582037, 891.5973571177432)
+                                    (0.2403536794258014, 890.2304816680785)
+                                    (0.21518690655988867, 889.7058901515593)
+                                    (0.21030082405366884, 883.0686284500132)
+                                    (0.2070175648790263, 877.9324828010756)
+                                    (0.18575978747913813, 476.68812820049175)
+                                    (0.1763151641535457, 476.01437109655933)
+                                    (0.1736867902844712, 472.7266948486331)
+                                    (0.14899222963857564, 469.97893763997365)
+                                    (0.14888154204546014, 468.5094860151007)
+                                    (0.14428489777220896, 466.17725677791947)
+                                    (0.14168717169324738, 463.15721126245137)
+                                    (0.14165557831638778, 258.923861036734)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.1477833891513366, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -817,50 +864,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0396 , y: 2.394, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=4, candidates=20000)" },
-                                                                    { x: 0.0414 , y: 2.425, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=20000)" },
-                                                                    { x: 0.0418 , y: 2.456, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0451 , y: 2.461, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0458 , y: 2.516, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.059399999999999994 , y: 3.317, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.06470000000000001 , y: 3.565, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0661 , y: 3.713, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0751 , y: 4.112, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, candidates=5000)" },
-                                                                    { x: 0.0784 , y: 4.311, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.0791 , y: 4.409, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0817 , y: 4.478, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 4.763, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0884 , y: 4.926, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.08990000000000001 , y: 4.93, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.10640000000000001 , y: 5.912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.10969999999999999 , y: 6.039, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.11100000000000002 , y: 6.059, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=10, candidates=5000)" },
-                                                                    { x: 0.1202 , y: 6.293, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 6.603, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.1293 , y: 6.627, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1328 , y: 6.801, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.1684 , y: 8.564, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1699 , y: 8.609, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1741 , y: 8.636, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 10.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 2.739, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 3.581, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.0906 , y: 10.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -968,42 +977,9 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0396, 2.394)
-                                    (0.0414, 2.425)
-                                    (0.0418, 2.456)
-                                    (0.0451, 2.461)
-                                    (0.0458, 2.516)
-                                    (0.059399999999999994, 3.317)
-                                    (0.06470000000000001, 3.565)
-                                    (0.0661, 3.713)
-                                    (0.0751, 4.112)
-                                    (0.0784, 4.311)
-                                    (0.0791, 4.409)
-                                    (0.0817, 4.478)
-                                    (0.0867, 4.763)
-                                    (0.0884, 4.926)
-                                    (0.08990000000000001, 4.93)
-                                    (0.10640000000000001, 5.912)
-                                    (0.10969999999999999, 6.039)
-                                    (0.11100000000000002, 6.059)
-                                    (0.1202, 6.293)
-                                    (0.1281, 6.603)
-                                    (0.1293, 6.627)
-                                    (0.1328, 6.801)
-                                    (0.1684, 8.564)
-                                    (0.1699, 8.609)
-                                    (0.1741, 8.636)
-                                    (0.2672, 10.0)
+                                                (0.0906, 10.0)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.823)
-                                    (0.020999999999999998, 1.14)
-                                    (0.048799999999999996, 2.739)
-                                    (0.0639, 3.581)
-                                    (0.35209999999999997, 10.0)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -1021,26 +997,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.18158005332946775, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0867 , y: 0.27679412841796874, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.2611 , y: 0.29739001464843745, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.31172747802734374, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.12462731933593751, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0371 , y: 59.44916881752014, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0375 , y: 59.80774051856994, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.038900000000000004 , y: 60.0790743484497, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0391 , y: 60.46415308952332, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0398 , y: 60.50264681625366, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.040400000000000005 , y: 60.595543638229366, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0466 , y: 60.631272195816045, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0492 , y: 61.0869849319458, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0504 , y: 61.44436053657532, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0641 , y: 118.19887399482728, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0678 , y: 118.36617426109314, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.06949999999999999 , y: 119.18937647056579, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0698 , y: 119.44376583480833, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0713 , y: 119.51378100967409, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.081 , y: 119.88622358894347, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0813 , y: 120.26223946762084, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0858 , y: 120.86389711380004, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0906 , y: 121.65199770164492, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1148,18 +1127,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.18158005332946775)
-                                    (0.0867, 0.27679412841796874)
-                                    (0.2611, 0.29739001464843745)
-                                    (0.2672, 0.31172747802734374)
+                                                (0.0371, 59.44916881752014)
+                                    (0.0375, 59.80774051856994)
+                                    (0.038900000000000004, 60.0790743484497)
+                                    (0.0391, 60.46415308952332)
+                                    (0.0398, 60.50264681625366)
+                                    (0.040400000000000005, 60.595543638229366)
+                                    (0.0466, 60.631272195816045)
+                                    (0.0492, 61.0869849319458)
+                                    (0.0504, 61.44436053657532)
+                                    (0.0641, 118.19887399482728)
+                                    (0.0678, 118.36617426109314)
+                                    (0.06949999999999999, 119.18937647056579)
+                                    (0.0698, 119.44376583480833)
+                                    (0.0713, 119.51378100967409)
+                                    (0.081, 119.88622358894347)
+                                    (0.0813, 120.26223946762084)
+                                    (0.0858, 120.86389711380004)
+                                    (0.0906, 121.65199770164492)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.07663531494140625)
-                                    (0.020999999999999998, 0.09405798339843749)
-                                    (0.35209999999999997, 0.12462731933593751)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1177,27 +1164,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0668 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0712 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1292 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2629 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2687 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3539 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.024 , y: 907.3970431038605, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0243 , y: 901.9568292042518, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0254 , y: 897.8833409971136, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.025500000000000002 , y: 892.1649811274199, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0257 , y: 891.5973571177432, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0262 , y: 890.2304816680785, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0317 , y: 889.7058901515593, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0333 , y: 883.0686284500132, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.033600000000000005 , y: 877.9324828010756, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0339 , y: 861.8620007023441, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.034 , y: 836.0081729123884, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0379 , y: 476.68812820049175, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.040400000000000005 , y: 476.01437109655933, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0412 , y: 472.7266948486331, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0416 , y: 471.4435400168556, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.051500000000000004 , y: 469.97893763997365, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0516 , y: 468.5094860151007, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0543 , y: 466.17725677791947, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.054400000000000004 , y: 463.5997246899141, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.05620000000000001 , y: 463.15721126245137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1305,19 +1296,28 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0668, 59323.69664224492)
-                                    (0.0712, 46053.80240244197)
-                                    (0.1292, 44458.97329898984)
-                                    (0.2629, 29267.963183933796)
-                                    (0.2687, 27511.20964462344)
+                                                (0.024, 907.3970431038605)
+                                    (0.0243, 901.9568292042518)
+                                    (0.0254, 897.8833409971136)
+                                    (0.025500000000000002, 892.1649811274199)
+                                    (0.0257, 891.5973571177432)
+                                    (0.0262, 890.2304816680785)
+                                    (0.0317, 889.7058901515593)
+                                    (0.0333, 883.0686284500132)
+                                    (0.033600000000000005, 877.9324828010756)
+                                    (0.0339, 861.8620007023441)
+                                    (0.034, 836.0081729123884)
+                                    (0.0379, 476.68812820049175)
+                                    (0.040400000000000005, 476.01437109655933)
+                                    (0.0412, 472.7266948486331)
+                                    (0.0416, 471.4435400168556)
+                                    (0.051500000000000004, 469.97893763997365)
+                                    (0.0516, 468.5094860151007)
+                                    (0.0543, 466.17725677791947)
+                                    (0.054400000000000004, 463.5997246899141)
+                                    (0.05620000000000001, 463.15721126245137)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.0495, 66405.4969760299)
-                                    (0.3539, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1335,27 +1335,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0732 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0779 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1413 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2792 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2842 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3671 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0268 , y: 907.3970431038605, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.027100000000000003 , y: 901.9568292042518, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.028199999999999996 , y: 897.8833409971136, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0283 , y: 892.1649811274199, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.028499999999999998 , y: 891.5973571177432, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0289 , y: 890.2304816680785, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0353 , y: 889.7058901515593, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0369 , y: 883.0686284500132, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0372 , y: 877.9324828010756, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0376 , y: 861.8620007023441, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0377 , y: 836.0081729123884, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0426 , y: 476.68812820049175, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0454 , y: 476.01437109655933, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.046200000000000005 , y: 472.7266948486331, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0465 , y: 471.4435400168556, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.05789999999999999 , y: 469.97893763997365, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.057999999999999996 , y: 468.5094860151007, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.060899999999999996 , y: 466.17725677791947, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0629 , y: 463.15721126245137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1463,19 +1466,27 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0732, 59323.69664224492)
-                                    (0.0779, 46053.80240244197)
-                                    (0.1413, 44458.97329898984)
-                                    (0.2792, 29267.963183933796)
-                                    (0.2842, 27511.20964462344)
+                                                (0.0268, 907.3970431038605)
+                                    (0.027100000000000003, 901.9568292042518)
+                                    (0.028199999999999996, 897.8833409971136)
+                                    (0.0283, 892.1649811274199)
+                                    (0.028499999999999998, 891.5973571177432)
+                                    (0.0289, 890.2304816680785)
+                                    (0.0353, 889.7058901515593)
+                                    (0.0369, 883.0686284500132)
+                                    (0.0372, 877.9324828010756)
+                                    (0.0376, 861.8620007023441)
+                                    (0.0377, 836.0081729123884)
+                                    (0.0426, 476.68812820049175)
+                                    (0.0454, 476.01437109655933)
+                                    (0.046200000000000005, 472.7266948486331)
+                                    (0.0465, 471.4435400168556)
+                                    (0.05789999999999999, 469.97893763997365)
+                                    (0.057999999999999996, 468.5094860151007)
+                                    (0.060899999999999996, 466.17725677791947)
+                                    (0.0629, 463.15721126245137)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.015, 76831.41909838618)
-                                    (0.0538, 66405.4969760299)
-                                    (0.3671, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1493,29 +1504,39 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.011444091796875, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0791 , y: 0.012636184692382812, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 0.0152587890625, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 0.015497207641601562, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.018596649169921875, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.010251998901367188, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 0.012874603271484375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=300000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.013113021850585938, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=50000)" },
+                                                                    { x: 0.0334 , y: 1.096963882446289, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0371 , y: 1.0998249053955078, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0375 , y: 1.1034011840820312, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0388 , y: 1.1076927185058594, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.038900000000000004 , y: 1.1088848114013672, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0391 , y: 1.1115074157714844, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.039400000000000004 , y: 1.1123418807983398, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0398 , y: 1.1141300201416016, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.040400000000000005 , y: 1.1153221130371094, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0411 , y: 1.1157989501953125, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0418 , y: 1.1186599731445312, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0466 , y: 1.1212825775146484, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.047299999999999995 , y: 1.1248588562011719, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0492 , y: 1.1272430419921875, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0504 , y: 1.131296157836914, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0637 , y: 2.0945072174072266, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.064 , y: 2.095460891723633, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0641 , y: 2.0966529846191406, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0645 , y: 2.1021366119384766, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0675 , y: 2.1033287048339844, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0678 , y: 2.103567123413086, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0713 , y: 2.107381820678711, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0756 , y: 2.1202564239501953, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.081 , y: 2.129793167114258, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0813 , y: 2.132892608642578, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0852 , y: 2.138853073120117, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0858 , y: 2.1402835845947266, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0906 , y: 2.144932746887207, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1623,21 +1644,36 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.011444091796875)
-                                    (0.0791, 0.012636184692382812)
-                                    (0.0867, 0.0152587890625)
-                                    (0.1281, 0.015497207641601562)
-                                    (0.2672, 0.018596649169921875)
+                                                (0.0334, 1.096963882446289)
+                                    (0.0371, 1.0998249053955078)
+                                    (0.0375, 1.1034011840820312)
+                                    (0.0388, 1.1076927185058594)
+                                    (0.038900000000000004, 1.1088848114013672)
+                                    (0.0391, 1.1115074157714844)
+                                    (0.039400000000000004, 1.1123418807983398)
+                                    (0.0398, 1.1141300201416016)
+                                    (0.040400000000000005, 1.1153221130371094)
+                                    (0.0411, 1.1157989501953125)
+                                    (0.0418, 1.1186599731445312)
+                                    (0.0466, 1.1212825775146484)
+                                    (0.047299999999999995, 1.1248588562011719)
+                                    (0.0492, 1.1272430419921875)
+                                    (0.0504, 1.131296157836914)
+                                    (0.0637, 2.0945072174072266)
+                                    (0.064, 2.095460891723633)
+                                    (0.0641, 2.0966529846191406)
+                                    (0.0645, 2.1021366119384766)
+                                    (0.0675, 2.1033287048339844)
+                                    (0.0678, 2.103567123413086)
+                                    (0.0713, 2.107381820678711)
+                                    (0.0756, 2.1202564239501953)
+                                    (0.081, 2.129793167114258)
+                                    (0.0813, 2.132892608642578)
+                                    (0.0852, 2.138853073120117)
+                                    (0.0858, 2.1402835845947266)
+                                    (0.0906, 2.144932746887207)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.008344650268554688)
-                                    (0.020999999999999998, 0.009298324584960938)
-                                    (0.048799999999999996, 0.010251998901367188)
-                                    (0.0639, 0.012874603271484375)
-                                    (0.35209999999999997, 0.013113021850585938)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1655,29 +1691,26 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.015020370483398438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0791 , y: 0.016224384307861318, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 0.018835067749023438, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 0.02002716064453125, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.030517578125, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.011205673217773438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.015735626220703125, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.018596649169921875, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0371 , y: 1.1551618576049805, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0382 , y: 1.174938678741455, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.040400000000000005 , y: 1.180434226989746, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0466 , y: 1.185929775238037, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0492 , y: 1.1892318725585938, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0504 , y: 1.1902809143066406, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0678 , y: 2.187037467956543, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.06949999999999999 , y: 2.196812629699707, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0713 , y: 2.21712589263916, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0756 , y: 2.2185444831848145, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.081 , y: 2.222871780395508, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0856 , y: 2.238285541534424, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0873 , y: 2.2394895553588867, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.088 , y: 2.260828018188476, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0906 , y: 2.265083789825439, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1785,21 +1818,23 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.015020370483398438)
-                                    (0.0791, 0.016224384307861318)
-                                    (0.0867, 0.018835067749023438)
-                                    (0.1281, 0.02002716064453125)
-                                    (0.2672, 0.030517578125)
+                                                (0.0371, 1.1551618576049805)
+                                    (0.0382, 1.174938678741455)
+                                    (0.040400000000000005, 1.180434226989746)
+                                    (0.0466, 1.185929775238037)
+                                    (0.0492, 1.1892318725585938)
+                                    (0.0504, 1.1902809143066406)
+                                    (0.0678, 2.187037467956543)
+                                    (0.06949999999999999, 2.196812629699707)
+                                    (0.0713, 2.21712589263916)
+                                    (0.0756, 2.2185444831848145)
+                                    (0.081, 2.222871780395508)
+                                    (0.0856, 2.238285541534424)
+                                    (0.0873, 2.2394895553588867)
+                                    (0.088, 2.260828018188476)
+                                    (0.0906, 2.265083789825439)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.0095367431640625)
-                                    (0.020999999999999998, 0.010251998901367188)
-                                    (0.048799999999999996, 0.011205673217773438)
-                                    (0.0639, 0.015735626220703125)
-                                    (0.35209999999999997, 0.018596649169921875)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1817,28 +1852,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.03221988677978513, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0867 , y: 0.033383369445800774, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.1281 , y: 0.03362655639648437, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1684 , y: 0.04297256469726557, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.2672 , y: 0.048646926879882806, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.03053903579711912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.03697156906127928, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0382 , y: 1.2195229530334473, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.040400000000000005 , y: 1.2358307838439941, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0492 , y: 1.261003017425537, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0504 , y: 1.2841296195983887, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0678 , y: 2.260739803314209, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0713 , y: 2.3026633262634277, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0715 , y: 2.3088574409484863, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0756 , y: 2.316100597381592, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0836 , y: 2.3322796821594234, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0856 , y: 2.3382091522216797, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0873 , y: 2.3401904106140137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0906 , y: 2.3623013496398926, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1946,20 +1976,20 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.03221988677978513)
-                                    (0.0867, 0.033383369445800774)
-                                    (0.1281, 0.03362655639648437)
-                                    (0.1684, 0.04297256469726557)
-                                    (0.2672, 0.048646926879882806)
+                                                (0.0382, 1.2195229530334473)
+                                    (0.040400000000000005, 1.2358307838439941)
+                                    (0.0492, 1.261003017425537)
+                                    (0.0504, 1.2841296195983887)
+                                    (0.0678, 2.260739803314209)
+                                    (0.0713, 2.3026633262634277)
+                                    (0.0715, 2.3088574409484863)
+                                    (0.0756, 2.316100597381592)
+                                    (0.0836, 2.3322796821594234)
+                                    (0.0856, 2.3382091522216797)
+                                    (0.0873, 2.3401904106140137)
+                                    (0.0906, 2.3623013496398926)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.020999999999999998, 0.017647743225097653)
-                                    (0.048799999999999996, 0.02027034759521484)
-                                    (0.0639, 0.03053903579711912)
-                                    (0.35209999999999997, 0.03697156906127928)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1977,28 +2007,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.07310390472447788, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0708 , y: 0.08931946754491273, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 3.029118299484254, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2609 , y: 3.0465183258056645, label: "MH(M_proj_vectors=16, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.2611 , y: 3.078243017196743, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 4.04821252822894, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 3.0356068611145934, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0382 , y: 1.2861256599426356, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.040400000000000005 , y: 1.2977569103241007, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0492 , y: 1.2995016574859728, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0495 , y: 1.3282587528228786, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0504 , y: 1.3485405445098917, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0698 , y: 2.3723089694976847, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0756 , y: 2.3813374042511, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0796 , y: 2.4212079048156796, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.0836 , y: 2.424976587295534, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0858 , y: 2.4249880313873318, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0873 , y: 2.4640853404998806, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0906 , y: 2.4678733348846436, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -2106,20 +2131,20 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.07310390472447788)
-                                    (0.0708, 0.08931946754491273)
-                                    (0.1281, 3.029118299484254)
-                                    (0.2609, 3.0465183258056645)
-                                    (0.2611, 3.078243017196743)
-                                    (0.2672, 4.04821252822894)
+                                                (0.0382, 1.2861256599426356)
+                                    (0.040400000000000005, 1.2977569103241007)
+                                    (0.0492, 1.2995016574859728)
+                                    (0.0495, 1.3282587528228786)
+                                    (0.0504, 1.3485405445098917)
+                                    (0.0698, 2.3723089694976847)
+                                    (0.0756, 2.3813374042511)
+                                    (0.0796, 2.4212079048156796)
+                                    (0.0836, 2.424976587295534)
+                                    (0.0858, 2.4249880313873318)
+                                    (0.0873, 2.4640853404998806)
+                                    (0.0906, 2.4678733348846436)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.020999999999999998, 0.07869911193901513)
-                                    (0.048799999999999996, 0.4324717521669824)
-                                    (0.35209999999999997, 3.0356068611145934)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }

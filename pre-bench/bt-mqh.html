@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-angular-20k (k = 10)</title>
+        <title>bt-mqh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-angular-20k (k = 10)</h2>
+                                                        <h2>Plots for bt-mqh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,27 +57,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0708 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2611 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0762 , y: 4345.280780726336, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0814 , y: 4280.666445538744, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.08199999999999999 , y: 4203.973138217901, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0865 , y: 4193.834290559457, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2192 , y: 1241.084310682967, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.2197 , y: 1218.736615644608, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2325 , y: 1207.1082413270206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.2426 , y: 1202.5212698094138, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 1198.276024617445, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3559 , y: 443.9029470309977, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 438.7837010678911, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 436.1162513897989, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 25.118627505560195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 25.07391291437758, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8961 , y: 24.987279245212, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9471999999999999 , y: 24.932828907944206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.9720000000000001 , y: 24.93205126411942, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 24.86669241137309, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -185,19 +187,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 59323.69664224492)
-                                    (0.0708, 46053.80240244197)
-                                    (0.1281, 44458.97329898984)
-                                    (0.2611, 29267.963183933796)
-                                    (0.2672, 27511.20964462344)
+                                                (0.0762, 4345.280780726336)
+                                    (0.0814, 4280.666445538744)
+                                    (0.08199999999999999, 4203.973138217901)
+                                    (0.0865, 4193.834290559457)
+                                    (0.2192, 1241.084310682967)
+                                    (0.2197, 1218.736615644608)
+                                    (0.2325, 1207.1082413270206)
+                                    (0.2426, 1202.5212698094138)
+                                    (0.2665, 1198.276024617445)
+                                    (0.3559, 443.9029470309977)
+                                    (0.40309999999999996, 438.7837010678911)
+                                    (0.44749999999999995, 436.1162513897989)
+                                    (0.8836999999999999, 25.118627505560195)
+                                    (0.8844, 25.07391291437758)
+                                    (0.8961, 24.987279245212)
+                                    (0.9471999999999999, 24.932828907944206)
+                                    (0.9720000000000001, 24.93205126411942)
+                                    (0.9842000000000001, 24.86669241137309)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.048799999999999996, 66405.4969760299)
-                                    (0.35209999999999997, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -215,21 +224,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.2672 , y: 0.07393670082092285, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.9842000000000001 , y: 31.13097381591797, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -337,13 +337,9 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.2672, 0.07393670082092285)
+                                                (0.9842000000000001, 31.13097381591797)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.35209999999999997, 0.03841423988342285)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -361,22 +357,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0458 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 8576.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.9842000000000001 , y: 53912.0, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -484,14 +470,9 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0458, 6528.0)
-                                    (0.2672, 8576.0)
+                                                (0.9842000000000001, 53912.0)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.35209999999999997, 5888.0)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -509,28 +490,47 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0791 , y: 1, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 2, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.1328 , y: 5, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.1684 , y: 6, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1699 , y: 7, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1741 , y: 8, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 401, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.07680000000000001 , y: 247, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.08199999999999999 , y: 248, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0865 , y: 250, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2186 , y: 929, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.2197 , y: 930, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2284 , y: 934, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.23349999999999999 , y: 937, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.2383 , y: 941, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.2426 , y: 957, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2562 , y: 981, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 990, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3537 , y: 1662, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.3547 , y: 1664, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.3559 , y: 1666, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.36869999999999997 , y: 1689, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3761 , y: 1692, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.38130000000000003 , y: 1703, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.3831 , y: 1705, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.3914 , y: 1725, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 1816, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.42990000000000006 , y: 1900, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 1950, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 8508, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 8518, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8852 , y: 8522, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.8859999999999999 , y: 8589, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.8961 , y: 8622, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9010999999999999 , y: 8646, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.9031 , y: 8657, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.9073 , y: 8696, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.9115 , y: 8710, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.9193 , y: 8777, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.9297000000000001 , y: 9039, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=1)" },
+                                                                    { x: 0.9471999999999999 , y: 9108, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.9720000000000001 , y: 9495, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 9745, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -638,20 +638,44 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0791, 1)
-                                    (0.1281, 2)
-                                    (0.1328, 5)
-                                    (0.1684, 6)
-                                    (0.1699, 7)
-                                    (0.1741, 8)
-                                    (0.2672, 401)
+                                                (0.07680000000000001, 247)
+                                    (0.08199999999999999, 248)
+                                    (0.0865, 250)
+                                    (0.2186, 929)
+                                    (0.2197, 930)
+                                    (0.2284, 934)
+                                    (0.23349999999999999, 937)
+                                    (0.2383, 941)
+                                    (0.2426, 957)
+                                    (0.2562, 981)
+                                    (0.2665, 990)
+                                    (0.3537, 1662)
+                                    (0.3547, 1664)
+                                    (0.3559, 1666)
+                                    (0.36869999999999997, 1689)
+                                    (0.3761, 1692)
+                                    (0.38130000000000003, 1703)
+                                    (0.3831, 1705)
+                                    (0.3914, 1725)
+                                    (0.40309999999999996, 1816)
+                                    (0.42990000000000006, 1900)
+                                    (0.44749999999999995, 1950)
+                                    (0.8836999999999999, 8508)
+                                    (0.8844, 8518)
+                                    (0.8852, 8522)
+                                    (0.8859999999999999, 8589)
+                                    (0.8961, 8622)
+                                    (0.9010999999999999, 8646)
+                                    (0.9031, 8657)
+                                    (0.9073, 8696)
+                                    (0.9115, 8710)
+                                    (0.9193, 8777)
+                                    (0.9297000000000001, 9039)
+                                    (0.9471999999999999, 9108)
+                                    (0.9720000000000001, 9495)
+                                    (0.9842000000000001, 9745)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.0639, 1)
-                                    (0.35209999999999997, 147)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -669,22 +693,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.18851453102491042 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.18681953797855416 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.14550153999453638 , y: 4345.280780726336, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.14123118949929764 , y: 4280.666445538744, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.13815073614577503 , y: 4193.834290559457, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.07197124695833046 , y: 1241.084310682967, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.07192797745284395 , y: 1218.736615644608, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.06993387945115345 , y: 1207.1082413270206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.06817266793750089 , y: 1202.5212698094138, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.06549961423536134 , y: 1198.276024617445, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.05377209083742715 , y: 443.9029470309977, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0500839063730932 , y: 438.7837010678911, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.047915491103120295 , y: 436.1162513897989, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.024800187644578742 , y: 25.118627505560195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.024772600741160923 , y: 25.07391291437758, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.02415813267027124 , y: 24.987279245212, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.022661604297764454 , y: 24.932828907944206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.021771712138384 , y: 24.93205126411942, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.02133399916008713 , y: 24.86669241137309, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -792,14 +822,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.18851453102491042, 29267.963183933796)
-                                    (0.18681953797855416, 27511.20964462344)
+                                                (0.14550153999453638, 4345.280780726336)
+                                    (0.14123118949929764, 4280.666445538744)
+                                    (0.13815073614577503, 4193.834290559457)
+                                    (0.07197124695833046, 1241.084310682967)
+                                    (0.07192797745284395, 1218.736615644608)
+                                    (0.06993387945115345, 1207.1082413270206)
+                                    (0.06817266793750089, 1202.5212698094138)
+                                    (0.06549961423536134, 1198.276024617445)
+                                    (0.05377209083742715, 443.9029470309977)
+                                    (0.0500839063730932, 438.7837010678911)
+                                    (0.047915491103120295, 436.1162513897989)
+                                    (0.024800187644578742, 25.118627505560195)
+                                    (0.024772600741160923, 25.07391291437758)
+                                    (0.02415813267027124, 24.987279245212)
+                                    (0.022661604297764454, 24.932828907944206)
+                                    (0.021771712138384, 24.93205126411942)
+                                    (0.02133399916008713, 24.86669241137309)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.1477833891513366, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -817,50 +858,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0396 , y: 2.394, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=4, candidates=20000)" },
-                                                                    { x: 0.0414 , y: 2.425, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=20000)" },
-                                                                    { x: 0.0418 , y: 2.456, label: "MH(M_proj_vectors=16, m_single_hashers=256, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0451 , y: 2.461, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, candidates=10000)" },
-                                                                    { x: 0.0458 , y: 2.516, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
-                                                                    { x: 0.059399999999999994 , y: 3.317, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.06470000000000001 , y: 3.565, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0661 , y: 3.713, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0751 , y: 4.112, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, candidates=5000)" },
-                                                                    { x: 0.0784 , y: 4.311, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.0791 , y: 4.409, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0817 , y: 4.478, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 4.763, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0884 , y: 4.926, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.08990000000000001 , y: 4.93, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.10640000000000001 , y: 5.912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.10969999999999999 , y: 6.039, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=10, candidates=10000)" },
-                                                                    { x: 0.11100000000000002 , y: 6.059, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=10, candidates=5000)" },
-                                                                    { x: 0.1202 , y: 6.293, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 6.603, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.1293 , y: 6.627, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1328 , y: 6.801, label: "MH(M_proj_vectors=4, m_single_hashers=256, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.1684 , y: 8.564, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1699 , y: 8.609, label: "MH(M_proj_vectors=8, m_single_hashers=32, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1741 , y: 8.636, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 10.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 2.739, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 3.581, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.9842000000000001 , y: 10.0, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -968,42 +971,9 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0396, 2.394)
-                                    (0.0414, 2.425)
-                                    (0.0418, 2.456)
-                                    (0.0451, 2.461)
-                                    (0.0458, 2.516)
-                                    (0.059399999999999994, 3.317)
-                                    (0.06470000000000001, 3.565)
-                                    (0.0661, 3.713)
-                                    (0.0751, 4.112)
-                                    (0.0784, 4.311)
-                                    (0.0791, 4.409)
-                                    (0.0817, 4.478)
-                                    (0.0867, 4.763)
-                                    (0.0884, 4.926)
-                                    (0.08990000000000001, 4.93)
-                                    (0.10640000000000001, 5.912)
-                                    (0.10969999999999999, 6.039)
-                                    (0.11100000000000002, 6.059)
-                                    (0.1202, 6.293)
-                                    (0.1281, 6.603)
-                                    (0.1293, 6.627)
-                                    (0.1328, 6.801)
-                                    (0.1684, 8.564)
-                                    (0.1699, 8.609)
-                                    (0.1741, 8.636)
-                                    (0.2672, 10.0)
+                                                (0.9842000000000001, 10.0)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.823)
-                                    (0.020999999999999998, 1.14)
-                                    (0.048799999999999996, 2.739)
-                                    (0.0639, 3.581)
-                                    (0.35209999999999997, 10.0)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -1021,26 +991,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.18158005332946775, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0867 , y: 0.27679412841796874, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.2611 , y: 0.29739001464843745, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.31172747802734374, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.12462731933593751, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0762 , y: 12.407023324966431, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0814 , y: 12.594300603866579, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.08199999999999999 , y: 12.824059104919435, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0865 , y: 12.855062042236328, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2192 , y: 43.43943399810791, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.2197 , y: 44.23597298049926, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2325 , y: 44.662109125137334, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.2426 , y: 44.832471036911016, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 44.991303249359134, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3559 , y: 121.44997090148925, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 122.8669156780243, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 123.61841556739806, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 2146.2956122131345, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 2150.1231253414153, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8961 , y: 2157.577840745926, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9471999999999999 , y: 2162.2897345123292, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.9720000000000001 , y: 2162.3571774692537, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 2168.0406508483884, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1148,18 +1121,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.18158005332946775)
-                                    (0.0867, 0.27679412841796874)
-                                    (0.2611, 0.29739001464843745)
-                                    (0.2672, 0.31172747802734374)
+                                                (0.0762, 12.407023324966431)
+                                    (0.0814, 12.594300603866579)
+                                    (0.08199999999999999, 12.824059104919435)
+                                    (0.0865, 12.855062042236328)
+                                    (0.2192, 43.43943399810791)
+                                    (0.2197, 44.23597298049926)
+                                    (0.2325, 44.662109125137334)
+                                    (0.2426, 44.832471036911016)
+                                    (0.2665, 44.991303249359134)
+                                    (0.3559, 121.44997090148925)
+                                    (0.40309999999999996, 122.8669156780243)
+                                    (0.44749999999999995, 123.61841556739806)
+                                    (0.8836999999999999, 2146.2956122131345)
+                                    (0.8844, 2150.1231253414153)
+                                    (0.8961, 2157.577840745926)
+                                    (0.9471999999999999, 2162.2897345123292)
+                                    (0.9720000000000001, 2162.3571774692537)
+                                    (0.9842000000000001, 2168.0406508483884)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.07663531494140625)
-                                    (0.020999999999999998, 0.09405798339843749)
-                                    (0.35209999999999997, 0.12462731933593751)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1177,27 +1158,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0668 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0712 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1292 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2629 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2687 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3539 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.05689999999999999 , y: 4345.280780726336, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0602 , y: 4280.666445538744, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0606 , y: 4203.973138217901, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0636 , y: 4193.834290559457, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.1514 , y: 1241.084310682967, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.1516 , y: 1218.736615644608, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.15940000000000001 , y: 1207.1082413270206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.1668 , y: 1202.5212698094138, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.182 , y: 1198.276024617445, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2346 , y: 443.9029470309977, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2646 , y: 438.7837010678911, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2935 , y: 436.1162513897989, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.6677 , y: 25.118627505560195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.6698999999999999 , y: 25.07391291437758, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.6929000000000001 , y: 24.987279245212, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.7623 , y: 24.932828907944206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.8240999999999999 , y: 24.93205126411942, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.8663000000000001 , y: 24.86669241137309, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1305,19 +1288,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0668, 59323.69664224492)
-                                    (0.0712, 46053.80240244197)
-                                    (0.1292, 44458.97329898984)
-                                    (0.2629, 29267.963183933796)
-                                    (0.2687, 27511.20964462344)
+                                                (0.05689999999999999, 4345.280780726336)
+                                    (0.0602, 4280.666445538744)
+                                    (0.0606, 4203.973138217901)
+                                    (0.0636, 4193.834290559457)
+                                    (0.1514, 1241.084310682967)
+                                    (0.1516, 1218.736615644608)
+                                    (0.15940000000000001, 1207.1082413270206)
+                                    (0.1668, 1202.5212698094138)
+                                    (0.182, 1198.276024617445)
+                                    (0.2346, 443.9029470309977)
+                                    (0.2646, 438.7837010678911)
+                                    (0.2935, 436.1162513897989)
+                                    (0.6677, 25.118627505560195)
+                                    (0.6698999999999999, 25.07391291437758)
+                                    (0.6929000000000001, 24.987279245212)
+                                    (0.7623, 24.932828907944206)
+                                    (0.8240999999999999, 24.93205126411942)
+                                    (0.8663000000000001, 24.86669241137309)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.0495, 66405.4969760299)
-                                    (0.3539, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1335,27 +1325,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0732 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0779 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1413 , y: 44458.97329898984, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2792 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2842 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3671 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.063 , y: 4345.280780726336, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0668 , y: 4280.666445538744, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.06720000000000001 , y: 4203.973138217901, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0707 , y: 4193.834290559457, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.1685 , y: 1241.084310682967, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.16870000000000002 , y: 1218.736615644608, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.1774 , y: 1207.1082413270206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.18480000000000002 , y: 1202.5212698094138, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.20129999999999998 , y: 1198.276024617445, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2604 , y: 443.9029470309977, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2929 , y: 438.7837010678911, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.3236 , y: 436.1162513897989, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.7159 , y: 25.118627505560195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.7179 , y: 25.07391291437758, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.741 , y: 24.987279245212, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.8128 , y: 24.932828907944206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.8715999999999999 , y: 24.93205126411942, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9087 , y: 24.86669241137309, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1463,19 +1455,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0732, 59323.69664224492)
-                                    (0.0779, 46053.80240244197)
-                                    (0.1413, 44458.97329898984)
-                                    (0.2792, 29267.963183933796)
-                                    (0.2842, 27511.20964462344)
+                                                (0.063, 4345.280780726336)
+                                    (0.0668, 4280.666445538744)
+                                    (0.06720000000000001, 4203.973138217901)
+                                    (0.0707, 4193.834290559457)
+                                    (0.1685, 1241.084310682967)
+                                    (0.16870000000000002, 1218.736615644608)
+                                    (0.1774, 1207.1082413270206)
+                                    (0.18480000000000002, 1202.5212698094138)
+                                    (0.20129999999999998, 1198.276024617445)
+                                    (0.2604, 443.9029470309977)
+                                    (0.2929, 438.7837010678911)
+                                    (0.3236, 436.1162513897989)
+                                    (0.7159, 25.118627505560195)
+                                    (0.7179, 25.07391291437758)
+                                    (0.741, 24.987279245212)
+                                    (0.8128, 24.932828907944206)
+                                    (0.8715999999999999, 24.93205126411942)
+                                    (0.9087, 24.86669241137309)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.015, 76831.41909838618)
-                                    (0.0538, 66405.4969760299)
-                                    (0.3671, 47244.857960305475)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1493,29 +1492,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.011444091796875, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0791 , y: 0.012636184692382812, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 0.0152587890625, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 0.015497207641601562, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.018596649169921875, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.010251998901367188, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 0.012874603271484375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=300000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.013113021850585938, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=50000)" },
+                                                                    { x: 0.0762 , y: 0.22459030151367188, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.07680000000000001 , y: 0.22864341735839844, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0814 , y: 0.2295970916748047, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.0865 , y: 0.2338886260986328, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2192 , y: 0.7992982864379883, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.2197 , y: 0.8137226104736328, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2299 , y: 0.820159912109375, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.2325 , y: 0.8242130279541016, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.2426 , y: 0.8245706558227539, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 0.825047492980957, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3559 , y: 2.2542476654052734, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 2.273440361022949, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 2.291560173034668, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 39.21234607696533, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 39.29543495178223, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.9471999999999999 , y: 39.45732116699219, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.9720000000000001 , y: 39.5054817199707, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 39.681315422058105, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1623,21 +1622,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.011444091796875)
-                                    (0.0791, 0.012636184692382812)
-                                    (0.0867, 0.0152587890625)
-                                    (0.1281, 0.015497207641601562)
-                                    (0.2672, 0.018596649169921875)
+                                                (0.0762, 0.22459030151367188)
+                                    (0.07680000000000001, 0.22864341735839844)
+                                    (0.0814, 0.2295970916748047)
+                                    (0.0865, 0.2338886260986328)
+                                    (0.2192, 0.7992982864379883)
+                                    (0.2197, 0.8137226104736328)
+                                    (0.2299, 0.820159912109375)
+                                    (0.2325, 0.8242130279541016)
+                                    (0.2426, 0.8245706558227539)
+                                    (0.2665, 0.825047492980957)
+                                    (0.3559, 2.2542476654052734)
+                                    (0.40309999999999996, 2.273440361022949)
+                                    (0.44749999999999995, 2.291560173034668)
+                                    (0.8836999999999999, 39.21234607696533)
+                                    (0.8844, 39.29543495178223)
+                                    (0.9471999999999999, 39.45732116699219)
+                                    (0.9720000000000001, 39.5054817199707)
+                                    (0.9842000000000001, 39.681315422058105)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.008344650268554688)
-                                    (0.020999999999999998, 0.009298324584960938)
-                                    (0.048799999999999996, 0.010251998901367188)
-                                    (0.0639, 0.012874603271484375)
-                                    (0.35209999999999997, 0.013113021850585938)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1655,29 +1659,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.015020370483398438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.0791 , y: 0.016224384307861318, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.0867 , y: 0.018835067749023438, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 0.02002716064453125, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 0.030517578125, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.011205673217773438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.015735626220703125, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.018596649169921875, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0762 , y: 0.2632260322570801, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0785 , y: 0.26799440383911133, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=1)" },
+                                                                    { x: 0.0814 , y: 0.2713322639465332, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.08199999999999999 , y: 0.272524356842041, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0865 , y: 0.28065443038940424, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2192 , y: 0.973963737487793, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.2197 , y: 0.9895324707031249, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.2325 , y: 0.9920954704284667, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.2426 , y: 0.9966254234313964, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 1.0070204734802244, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3547 , y: 2.704501152038574, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.3559 , y: 2.715909481048584, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 2.7169585227966304, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 2.733731269836426, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 49.243497848510735, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 49.2831826210022, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8961 , y: 49.39460754394531, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9720000000000001 , y: 49.43817853927612, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 49.59303140640259, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1785,21 +1790,27 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.015020370483398438)
-                                    (0.0791, 0.016224384307861318)
-                                    (0.0867, 0.018835067749023438)
-                                    (0.1281, 0.02002716064453125)
-                                    (0.2672, 0.030517578125)
+                                                (0.0762, 0.2632260322570801)
+                                    (0.0785, 0.26799440383911133)
+                                    (0.0814, 0.2713322639465332)
+                                    (0.08199999999999999, 0.272524356842041)
+                                    (0.0865, 0.28065443038940424)
+                                    (0.2192, 0.973963737487793)
+                                    (0.2197, 0.9895324707031249)
+                                    (0.2325, 0.9920954704284667)
+                                    (0.2426, 0.9966254234313964)
+                                    (0.2665, 1.0070204734802244)
+                                    (0.3547, 2.704501152038574)
+                                    (0.3559, 2.715909481048584)
+                                    (0.40309999999999996, 2.7169585227966304)
+                                    (0.44749999999999995, 2.733731269836426)
+                                    (0.8836999999999999, 49.243497848510735)
+                                    (0.8844, 49.2831826210022)
+                                    (0.8961, 49.39460754394531)
+                                    (0.9720000000000001, 49.43817853927612)
+                                    (0.9842000000000001, 49.59303140640259)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.013900000000000001, 0.0095367431640625)
-                                    (0.020999999999999998, 0.010251998901367188)
-                                    (0.048799999999999996, 0.011205673217773438)
-                                    (0.0639, 0.015735626220703125)
-                                    (0.35209999999999997, 0.018596649169921875)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1817,28 +1828,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.03221988677978513, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.0867 , y: 0.033383369445800774, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.1281 , y: 0.03362655639648437, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.1684 , y: 0.04297256469726557, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=16, candidates=10000)" },
-                                                                    { x: 0.2672 , y: 0.048646926879882806, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.03053903579711912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.03697156906127928, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0785 , y: 0.29709339141845703, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=1)" },
+                                                                    { x: 0.0814 , y: 0.3097963333129882, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.08199999999999999 , y: 0.3148388862609862, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0844 , y: 0.3304982185363769, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.0865 , y: 0.33767461776733393, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2192 , y: 1.0493206977844238, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.2325 , y: 1.067206859588623, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.2426 , y: 1.0712385177612305, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 1.0802960395812988, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3559 , y: 2.9024934768676753, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.40309999999999996 , y: 2.9226231575012203, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.44749999999999995 , y: 2.963225841522217, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 53.33151578903198, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 53.44400405883788, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8961 , y: 53.58252048492431, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9297000000000001 , y: 53.798153400421135, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=1)" },
+                                                                    { x: 0.9720000000000001 , y: 54.11118745803833, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 54.45072650909424, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -1946,20 +1958,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.03221988677978513)
-                                    (0.0867, 0.033383369445800774)
-                                    (0.1281, 0.03362655639648437)
-                                    (0.1684, 0.04297256469726557)
-                                    (0.2672, 0.048646926879882806)
+                                                (0.0785, 0.29709339141845703)
+                                    (0.0814, 0.3097963333129882)
+                                    (0.08199999999999999, 0.3148388862609862)
+                                    (0.0844, 0.3304982185363769)
+                                    (0.0865, 0.33767461776733393)
+                                    (0.2192, 1.0493206977844238)
+                                    (0.2325, 1.067206859588623)
+                                    (0.2426, 1.0712385177612305)
+                                    (0.2665, 1.0802960395812988)
+                                    (0.3559, 2.9024934768676753)
+                                    (0.40309999999999996, 2.9226231575012203)
+                                    (0.44749999999999995, 2.963225841522217)
+                                    (0.8836999999999999, 53.33151578903198)
+                                    (0.8844, 53.44400405883788)
+                                    (0.8961, 53.58252048492431)
+                                    (0.9297000000000001, 53.798153400421135)
+                                    (0.9720000000000001, 54.11118745803833)
+                                    (0.9842000000000001, 54.45072650909424)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.020999999999999998, 0.017647743225097653)
-                                    (0.048799999999999996, 0.02027034759521484)
-                                    (0.0639, 0.03053903579711912)
-                                    (0.35209999999999997, 0.03697156906127928)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1977,28 +1995,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "mh",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
                             pointStyle: "circle",
                             borderColor: "rgba(76, 76, 153, 1)",
                             data: [
-                                                                    { x: 0.0661 , y: 0.07310390472447788, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.0708 , y: 0.08931946754491273, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
-                                                                    { x: 0.1281 , y: 3.029118299484254, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=20000)" },
-                                                                    { x: 0.2609 , y: 3.0465183258056645, label: "MH(M_proj_vectors=16, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
-                                                                    { x: 0.2611 , y: 3.078243017196743, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
-                                                                    { x: 0.2672 , y: 4.04821252822894, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "mh-orig",
-                            fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
-                            data: [
-                                                                    { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 3.0356068611145934, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0759 , y: 0.35647964477539457, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0801 , y: 0.3676793575286899, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0814 , y: 0.37744045257568576, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=1)" },
+                                                                    { x: 0.08199999999999999 , y: 0.3786437511444123, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0865 , y: 0.4005525112152108, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.2186 , y: 1.1377506256103531, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.23349999999999999 , y: 1.1497602462768648, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.2562 , y: 1.1909976005554286, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.2665 , y: 1.226682901382448, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.3537 , y: 3.0458564758300835, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.44749999999999995 , y: 3.0500996112823495, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.8836999999999999 , y: 59.101174354553244, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.8844 , y: 59.18929982185365, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.8852 , y: 59.264460086822574, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.8961 , y: 59.41170096397401, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.9720000000000001 , y: 59.46527695655832, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=1)" },
+                                                                    { x: 0.9842000000000001 , y: 59.799702644348855, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
                         },
                                                 ]},
@@ -2106,20 +2124,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0661, 0.07310390472447788)
-                                    (0.0708, 0.08931946754491273)
-                                    (0.1281, 3.029118299484254)
-                                    (0.2609, 3.0465183258056645)
-                                    (0.2611, 3.078243017196743)
-                                    (0.2672, 4.04821252822894)
+                                                (0.0759, 0.35647964477539457)
+                                    (0.0801, 0.3676793575286899)
+                                    (0.0814, 0.37744045257568576)
+                                    (0.08199999999999999, 0.3786437511444123)
+                                    (0.0865, 0.4005525112152108)
+                                    (0.2186, 1.1377506256103531)
+                                    (0.23349999999999999, 1.1497602462768648)
+                                    (0.2562, 1.1909976005554286)
+                                    (0.2665, 1.226682901382448)
+                                    (0.3537, 3.0458564758300835)
+                                    (0.44749999999999995, 3.0500996112823495)
+                                    (0.8836999999999999, 59.101174354553244)
+                                    (0.8844, 59.18929982185365)
+                                    (0.8852, 59.264460086822574)
+                                    (0.8961, 59.41170096397401)
+                                    (0.9720000000000001, 59.46527695655832)
+                                    (0.9842000000000001, 59.799702644348855)
                             };
-            \addlegendentry{ mh };
-                                \addplot coordinates {
-                                                (0.020999999999999998, 0.07869911193901513)
-                                    (0.048799999999999996, 0.4324717521669824)
-                                    (0.35209999999999997, 3.0356068611145934)
-                            };
-            \addlegendentry{ mh-orig };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
