@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>glove-25-euclidean-med-bctree (k = 10)</title>
+        <title>bruteforce</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for glove-25-euclidean-med-bctree (k = 10)</h2>
+                                                        <h2>Plots for bruteforce</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,16 +57,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9797100000000001 , y: 8657.444150219093, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.9805999999999999 , y: 8653.403889705774, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 8383.023229924225, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 8017.849796834688, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 4673.448878971684, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -148,6 +144,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").click(function() {
+                        $("#plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").toggle();
+                    });
+                </script>
+                <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 7.536784718631636)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Build time (s)</h3>
             <div id="RecallBuild time (s)">
@@ -158,12 +190,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 0.015096902847290039, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 0.0002491474151611328, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -245,6 +277,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f").click(function() {
+                        $("#plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f").toggle();
+                    });
+                </script>
+                <div id="plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Build time (s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 0.0002491474151611328)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Index size (kB)</h3>
             <div id="RecallIndex size (kB)">
@@ -255,12 +323,11 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 2080000, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -342,6 +409,41 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58").click(function() {
+                        $("#plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58").toggle();
+                    });
+                </script>
+                <div id="plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Index size (kB) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                        };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Distance computations</h3>
             <div id="RecallDistance computations">
@@ -352,13 +454,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9871800000000001 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 19987, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 1.0 , y: 1193514, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -440,6 +541,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").click(function() {
+                        $("#plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").toggle();
+                    });
+                </script>
+                <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Distance computations },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 1193514)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Distance computations tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Relative Error/Queries per second (1/s)</h3>
             <div id="Relative ErrorQueries per second (1/s)">
@@ -450,16 +587,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.01992530869132878 , y: 8657.444150219093, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.019803447571526765 , y: 8653.403889705774, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.019715292072549673 , y: 8383.023229924225, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.018822333925422624 , y: 8017.849796834688, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 0.010879711539445556 , y: 4673.448878971684, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.012982980561629736 , y: 7.536784718631636, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -541,6 +674,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").click(function() {
+                        $("#plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").toggle();
+                    });
+                </script>
+                <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Relative Error },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.012982980561629736, 7.536784718631636)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Candidates generated</h3>
             <div id="RecallCandidates generated">
@@ -551,12 +720,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 1.0 , y: 10.0, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -638,6 +807,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0").click(function() {
+                        $("#plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0").toggle();
+                    });
+                </script>
+                <div id="plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Candidates generated },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Index size (kB)/Queries per second (s)</h3>
             <div id="RecallIndex size (kB)/Queries per second (s)">
@@ -648,16 +853,11 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9797100000000001 , y: 240.25566482543945, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.9805999999999999 , y: 240.36783981323242, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 248.12051010131833, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 259.4211730957031, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 445.06745529174805, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
                                                             ]
                         },
                                                 ]},
@@ -739,6 +939,41 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").click(function() {
+                        $("#plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").toggle();
+                    });
+                </script>
+                <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Index size (kB)/Queries per second (s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                        };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
             <div id="Epsilon 0.01 RecallQueries per second (1/s)">
@@ -749,16 +984,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.55241 , y: 8657.444150219093, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.5553600000000001 , y: 8653.403889705774, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.55835 , y: 8383.023229924225, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.58431 , y: 8017.849796834688, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 4673.448878971684, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -840,6 +1071,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").click(function() {
+                        $("#plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").toggle();
+                    });
+                </script>
+                <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Epsilon 0.01 Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 7.536784718631636)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
             <div id="Epsilon 0.1 RecallQueries per second (1/s)">
@@ -850,16 +1117,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.60102 , y: 8657.444150219093, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.60385 , y: 8653.403889705774, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.60697 , y: 8383.023229924225, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.63415 , y: 8017.849796834688, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 4673.448878971684, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -941,6 +1204,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").click(function() {
+                        $("#plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").toggle();
+                    });
+                </script>
+                <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Epsilon 0.1 Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 7.536784718631636)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 50 (millis)</h3>
             <div id="RecallPercentile 50 (millis)">
@@ -951,15 +1250,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9805999999999999 , y: 0.11277198791503906, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 0.11682510375976562, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 0.12230873107910156, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 0.21123886108398438, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 132.4903964996338, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1041,6 +1337,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3").click(function() {
+                        $("#plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3").toggle();
+                    });
+                </script>
+                <div id="plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 50 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 132.4903964996338)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 95 (millis)</h3>
             <div id="RecallPercentile 95 (millis)">
@@ -1051,15 +1383,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9805999999999999 , y: 0.12350082397460938, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 0.13017654418945312, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 0.1366138458251953, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 0.225067138671875, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 141.21417999267578, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1141,6 +1470,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723").click(function() {
+                        $("#plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723").toggle();
+                    });
+                </script>
+                <div id="plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 95 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 141.21417999267578)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 99 (millis)</h3>
             <div id="RecallPercentile 99 (millis)">
@@ -1151,16 +1516,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9797100000000001 , y: 0.135185718536377, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.9805999999999999 , y: 0.1373291015625, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 0.1423358917236328, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 0.14901399612426763, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 0.23365020751953125, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 143.76221418380737, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1242,6 +1603,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33").click(function() {
+                        $("#plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33").toggle();
+                    });
+                </script>
+                <div id="plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 99 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 143.76221418380737)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 99.9 (millis)</h3>
             <div id="RecallPercentile 99.9 (millis)">
@@ -1252,15 +1649,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.9797100000000001 , y: 0.16403603553772056, label: "B_tree(max_leaf_size=500, candidates=10000)" },
-                                                                    { x: 0.98116 , y: 0.17905235290527344, label: "B_tree(max_leaf_size=200, candidates=10000)" },
-                                                                    { x: 0.9871800000000001 , y: 0.18549060821533223, label: "B_tree(max_leaf_size=100, candidates=10000)" },
-                                                                    { x: 1.0 , y: 0.2563009262084963, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 1.0 , y: 146.3457896709442, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1342,6 +1736,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33").click(function() {
+                        $("#plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33").toggle();
+                    });
+                </script>
+                <div id="plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 99.9 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.0, 146.3457896709442)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                         <hr />
                                             <hr />

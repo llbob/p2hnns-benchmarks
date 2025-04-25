@@ -57,36 +57,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00575 , y: 5056.468851383502, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 5036.085125042309, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.01928 , y: 1863.6599192463682, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02187 , y: 1861.5342581804375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.02708 , y: 431.4585851792847, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 36238.48621542625, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.06344 , y: 12271.143954017849, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 45.144076931728044, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 1.8930946816535716, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 217.62225434607203, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 153.995054084364, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 106.25603030200315, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 90.15627395005485, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 71.60380610323062, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 52.02124153399845, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -168,6 +149,47 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").click(function() {
+                        $("#plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").toggle();
+                    });
+                </script>
+                <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 217.62225434607203)
+                                    (0.3658, 153.995054084364)
+                                    (0.3704, 106.25603030200315)
+                                    (0.4687, 90.15627395005485)
+                                    (0.4808, 71.60380610323062)
+                                    (0.4814, 52.02124153399845)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Build time (s)</h3>
             <div id="RecallBuild time (s)">
@@ -178,34 +200,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.0059900000000000005 , y: 3.2267417907714844, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.02187 , y: 8.577288150787354, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.02708 , y: 40.68469285964966, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 0.0235903263092041, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.06344 , y: 0.08353042602539062, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=800000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 20.126641511917114, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 480.68894052505493, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 13.513997316360474, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4718 , y: 24.895671129226685, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 25.219728469848633, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 47.94419264793396, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -287,6 +290,45 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f").click(function() {
+                        $("#plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f").toggle();
+                    });
+                </script>
+                <div id="plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Build time (s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.4687, 13.513997316360474)
+                                    (0.4718, 24.895671129226685)
+                                    (0.4808, 25.219728469848633)
+                                    (0.4814, 47.94419264793396)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Index size (kB)</h3>
             <div id="RecallIndex size (kB)">
@@ -297,31 +339,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.02708 , y: 124125456, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.06344 , y: 2080000, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=800000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 416384.0, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 2589492.0, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 678328.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4718 , y: 691052.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 877732.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 903208.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -403,6 +429,45 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58").click(function() {
+                        $("#plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58").toggle();
+                    });
+                </script>
+                <div id="plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Index size (kB) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.4687, 678328.0)
+                                    (0.4718, 691052.0)
+                                    (0.4808, 877732.0)
+                                    (0.4814, 903208.0)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Distance computations</h3>
             <div id="RecallDistance computations">
@@ -413,63 +478,27 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00475 , y: 84, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.00507 , y: 88, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.00532 , y: 89, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.00534 , y: 90, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.0056 , y: 97, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.00575 , y: 99, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 100, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.018410000000000003 , y: 328, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.01928 , y: 340, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02019 , y: 349, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.02044 , y: 368, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=8, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.02117 , y: 369, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.02126 , y: 370, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.02162 , y: 373, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=500000)" },
-                                                                    { x: 0.02187 , y: 374, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.02264 , y: 411, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.02351 , y: 427, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02454 , y: 442, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.025890000000000003 , y: 467, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.026479999999999997 , y: 477, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=500000)" },
-                                                                    { x: 0.02708 , y: 481, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.00312 , y: 29, label: "MH(M_proj_vectors=6, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00517 , y: 51, label: "MH(M_proj_vectors=6, m_single_hashers=64, l_hash_tables=4, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.00532 , y: 52, label: "MH(M_proj_vectors=6, m_single_hashers=16, l_hash_tables=4, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0055 , y: 55, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.00553 , y: 56, label: "MH(M_proj_vectors=8, m_single_hashers=128, l_hash_tables=4, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.00989 , y: 76, label: "MH(M_proj_vectors=6, m_single_hashers=64, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.01018 , y: 77, label: "MH(M_proj_vectors=6, m_single_hashers=64, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.010199999999999999 , y: 81, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.011600000000000001 , y: 114, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=10, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.01202 , y: 117, label: "MH(M_proj_vectors=4, m_single_hashers=64, l_hash_tables=10, interval_ratio=0.900000, candidates=500000)" },
-                                                                    { x: 0.016 , y: 153, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.06307 , y: 654, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
-                                                                    { x: 0.06344 , y: 656, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=800000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 31, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 102, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.0199 , y: 432, label: "MH(M_proj_vectors=4, m_single_hashers=20, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.020999999999999998 , y: 454, label: "MH(M_proj_vectors=4, m_single_hashers=20, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0216 , y: 467, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0224 , y: 481, label: "MH(M_proj_vectors=4, m_single_hashers=20, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.0227 , y: 486, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0234 , y: 514, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.033 , y: 676, label: "MH(M_proj_vectors=8, m_single_hashers=20, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0354 , y: 709, label: "MH(M_proj_vectors=8, m_single_hashers=20, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.038 , y: 754, label: "MH(M_proj_vectors=8, m_single_hashers=20, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.0385 , y: 783, label: "MH(M_proj_vectors=4, m_single_hashers=20, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.039 , y: 820, label: "MH(M_proj_vectors=16, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.040600000000000004 , y: 828, label: "MH(M_proj_vectors=4, m_single_hashers=20, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.2271 , y: 5009, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3704 , y: 10009, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4718 , y: 18488, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 20009, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -551,6 +580,57 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").click(function() {
+                        $("#plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").toggle();
+                    });
+                </script>
+                <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Distance computations },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.0199, 432)
+                                    (0.020999999999999998, 454)
+                                    (0.0216, 467)
+                                    (0.0224, 481)
+                                    (0.0227, 486)
+                                    (0.0234, 514)
+                                    (0.033, 676)
+                                    (0.0354, 709)
+                                    (0.038, 754)
+                                    (0.0385, 783)
+                                    (0.039, 820)
+                                    (0.040600000000000004, 828)
+                                    (0.2271, 5009)
+                                    (0.3704, 10009)
+                                    (0.4718, 18488)
+                                    (0.4814, 20009)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Distance computations tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Relative Error/Queries per second (1/s)</h3>
             <div id="Relative ErrorQueries per second (1/s)">
@@ -561,38 +641,14 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 23.801003095423738 , y: 5056.468851383502, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 23.549956018646245 , y: 5036.085125042309, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 8.339449009587161 , y: 1863.6599192463682, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 7.886264890397717 , y: 1861.5342581804375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 7.871928846697233 , y: 1328.8979535789454, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=8, interval_ratio=0.900000, candidates=500000)" },
-                                                                    { x: 7.847479037633193 , y: 1234.7386952101235, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 6.494223644870499 , y: 431.4585851792847, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.6646010585798333 , y: 36238.48621542625, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.21670812096306435 , y: 12271.143954017849, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.09418697665708388 , y: 45.144076931728044, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.09274547561491903 , y: 1.8930946816535716, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 1.4574381555062517 , y: 217.62225434607203, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.8871528135458095 , y: 153.995054084364, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4667430942758237 , y: 90.15627395005485, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -674,6 +730,44 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").click(function() {
+                        $("#plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").toggle();
+                    });
+                </script>
+                <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Relative Error },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (1.4574381555062517, 217.62225434607203)
+                                    (0.8871528135458095, 153.995054084364)
+                                    (0.4667430942758237, 90.15627395005485)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Candidates generated</h3>
             <div id="RecallCandidates generated">
@@ -684,30 +778,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.02708 , y: 10.0, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.06344 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=800000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.45189 , y: 10.0, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.4814 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -789,6 +865,42 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0").click(function() {
+                        $("#plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0").toggle();
+                    });
+                </script>
+                <div id="plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Candidates generated },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.4814, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Index size (kB)/Queries per second (s)</h3>
             <div id="RecallIndex size (kB)/Queries per second (s)">
@@ -799,36 +911,18 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00575 , y: 24547.853383105088, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 24647.211657081985, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.01928 , y: 66603.06138374977, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02187 , y: 66679.1145285324, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.02708 , y: 287687.99663221894, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 57.39754104614257, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.06344 , y: 169.50334930419925, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 9223.446979095459, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 1367861.8534484194, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 3116.9973955020905, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 4404.8687409687045, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 6503.649703794479, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 7523.913425878524, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4718 , y: 10223.104910433769, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 12258.175197203636, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 17362.292274583815, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -910,6 +1004,48 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").click(function() {
+                        $("#plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").toggle();
+                    });
+                </script>
+                <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Index size (kB)/Queries per second (s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 3116.9973955020905)
+                                    (0.3658, 4404.8687409687045)
+                                    (0.3704, 6503.649703794479)
+                                    (0.4687, 7523.913425878524)
+                                    (0.4718, 10223.104910433769)
+                                    (0.4808, 12258.175197203636)
+                                    (0.4814, 17362.292274583815)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
             <div id="Epsilon 0.01 RecallQueries per second (1/s)">
@@ -920,36 +1056,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 8.999999999999999e-05 , y: 5056.468851383502, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.00011 , y: 5036.085125042309, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00020999999999999998 , y: 1863.6599192463682, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.00023999999999999998 , y: 1861.5342581804375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00043 , y: 431.4585851792847, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.00884 , y: 36238.48621542625, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.03456 , y: 12271.143954017849, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.42027000000000003 , y: 45.144076931728044, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.48334 , y: 1.8930946816535716, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.0034000000000000002 , y: 217.62225434607203, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.006500000000000001 , y: 153.995054084364, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.007000000000000001 , y: 104.5390694553695, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0155 , y: 90.15627395005485, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.0164 , y: 52.02124153399845, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1031,6 +1147,46 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").click(function() {
+                        $("#plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").toggle();
+                    });
+                </script>
+                <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Epsilon 0.01 Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.0034000000000000002, 217.62225434607203)
+                                    (0.006500000000000001, 153.995054084364)
+                                    (0.007000000000000001, 104.5390694553695)
+                                    (0.0155, 90.15627395005485)
+                                    (0.0164, 52.02124153399845)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
             <div id="Epsilon 0.1 RecallQueries per second (1/s)">
@@ -1041,36 +1197,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 8.999999999999999e-05 , y: 5056.468851383502, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.00011 , y: 5036.085125042309, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00023 , y: 1863.6599192463682, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.00027 , y: 1861.5342581804375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00044 , y: 431.4585851792847, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.00961 , y: 36238.48621542625, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.037669999999999995 , y: 12271.143954017849, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.6883600000000001 , y: 45.144076931728044, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.7230800000000001 , y: 1.8930946816535716, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.0036999999999999997 , y: 217.62225434607203, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0070999999999999995 , y: 153.995054084364, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.007299999999999999 , y: 106.25603030200315, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0077 , y: 104.5390694553695, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0174 , y: 90.15627395005485, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1152,6 +1288,46 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").click(function() {
+                        $("#plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").toggle();
+                    });
+                </script>
+                <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Epsilon 0.1 Recall },
+            ylabel={ Queries per second (1/s) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.0036999999999999997, 217.62225434607203)
+                                    (0.0070999999999999995, 153.995054084364)
+                                    (0.007299999999999999, 106.25603030200315)
+                                    (0.0077, 104.5390694553695)
+                                    (0.0174, 90.15627395005485)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 50 (millis)</h3>
             <div id="RecallPercentile 50 (millis)">
@@ -1162,37 +1338,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00534 , y: 0.14901161193847656, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00575 , y: 0.19598007202148438, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 0.19669532775878906, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.01928 , y: 0.5321502685546875, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02187 , y: 0.5331039428710938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.02708 , y: 2.307891845703125, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1150000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 0.026702880859375, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.06344 , y: 0.07939338684082031, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 22.107601165771484, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.45189 , y: 526.7422199249268, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 4.581570625305176, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 6.433248519897461, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 9.40859317779541, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 11.115550994873047, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 13.950705528259277, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 19.194364547729492, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1274,6 +1430,47 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3").click(function() {
+                        $("#plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3").toggle();
+                    });
+                </script>
+                <div id="plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 50 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 4.581570625305176)
+                                    (0.3658, 6.433248519897461)
+                                    (0.3704, 9.40859317779541)
+                                    (0.4687, 11.115550994873047)
+                                    (0.4808, 13.950705528259277)
+                                    (0.4814, 19.194364547729492)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 95 (millis)</h3>
             <div id="RecallPercentile 95 (millis)">
@@ -1284,37 +1481,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00534 , y: 0.18668174743652344, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.00575 , y: 0.209808349609375, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 0.2124309539794922, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.01928 , y: 0.5753040313720703, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02187 , y: 0.5757808685302734, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.02708 , y: 2.388489246368408, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 0.03218650817871094, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.06344 , y: 0.09226799011230469, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 22.28165864944458, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 532.7113151550293, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 5.085253715515137, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 6.997919082641602, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 9.943032264709473, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 11.702001094818115, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 14.567887783050537, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 19.858157634735107, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1396,6 +1573,47 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723").click(function() {
+                        $("#plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723").toggle();
+                    });
+                </script>
+                <div id="plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 95 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 5.085253715515137)
+                                    (0.3658, 6.997919082641602)
+                                    (0.3704, 9.943032264709473)
+                                    (0.4687, 11.702001094818115)
+                                    (0.4808, 14.567887783050537)
+                                    (0.4814, 19.858157634735107)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 99 (millis)</h3>
             <div id="RecallPercentile 99 (millis)">
@@ -1406,36 +1624,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.00575 , y: 0.2262592315673828, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=100000)" },
-                                                                    { x: 0.0059900000000000005 , y: 0.2281665802001953, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.01928 , y: 0.6248950958251953, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=50000)" },
-                                                                    { x: 0.02187 , y: 0.6251358985900879, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1150000)" },
-                                                                    { x: 0.02708 , y: 2.473382949829102, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 0.03910064697265625, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=500000)" },
-                                                                    { x: 0.06344 , y: 0.1068115234375, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 22.971401214599613, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=1000000)" },
-                                                                    { x: 0.45189 , y: 552.3288393020631, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 5.201845169067383, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 7.4468183517456055, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 10.253043174743652, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 12.030954360961912, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 14.81942892074585, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 20.224578380584717, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1517,6 +1716,47 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33").click(function() {
+                        $("#plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33").toggle();
+                    });
+                </script>
+                <div id="plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 99 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 5.201845169067383)
+                                    (0.3658, 7.4468183517456055)
+                                    (0.3704, 10.253043174743652)
+                                    (0.4687, 12.030954360961912)
+                                    (0.4808, 14.81942892074585)
+                                    (0.4814, 20.224578380584717)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                                     <h3>Recall/Percentile 99.9 (millis)</h3>
             <div id="RecallPercentile 99.9 (millis)">
@@ -1527,34 +1767,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-euclidean (k = 10)",
-                            fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
-                            data: [
-                                                                    { x: 0.0059900000000000005 , y: 0.2660753726959229, label: "MH(M_proj_vectors=6, m_single_hashers=32, l_hash_tables=2, interval_ratio=0.900000, candidates=800000)" },
-                                                                    { x: 0.02187 , y: 0.6737713813781739, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.02708 , y: 2.6025772094726562, label: "MH(M_proj_vectors=4, m_single_hashers=128, l_hash_tables=10, interval_ratio=0.900000, candidates=1000000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "glove-25-euclidean-med (k = 10)",
-                            fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
-                            data: [
-                                                                    { x: 0.016 , y: 0.059368133544922264, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, interval_ratio=0.900000, candidates=1100000)" },
-                                                                    { x: 0.06344 , y: 0.1392364501953125, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.900000, candidates=1100000)" },
-                                                            ]
-                        },
-                                                {
-                            label: "trevi-4096-euclidean-med (k = 10)",
+                            label: "glove-100-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.39421 , y: 24.038810491561893, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, interval_ratio=0.900000, candidates=300000)" },
-                                                                    { x: 0.45189 , y: 637.5905671119702, label: "MH(M_proj_vectors=6, m_single_hashers=128, l_hash_tables=8, interval_ratio=0.900000, candidates=10000)" },
+                                                                    { x: 0.2218 , y: 5.3715121746063605, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.3658 , y: 7.659448385238692, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.3704 , y: 10.434910297393802, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4687 , y: 12.319402217865019, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4808 , y: 15.691581726074224, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4814 , y: 21.677974939346313, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1636,6 +1859,47 @@
 
                 </script>
             </div>
+                            <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" id="button_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" class="btn btn-default" >Toggle latex code</button>
+                    </div>
+                </div>
+                <script>
+                    $("#button_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33").click(function() {
+                        $("#plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33").toggle();
+                    });
+                </script>
+                <div id="plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" style="display:none">
+                    <pre>
+                    
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={ Recall },
+            ylabel={ Percentile 99.9 (millis) },
+            ymode = log,
+            yticklabel style={/pgf/number format/fixed,
+                              /pgf/number format/precision=3},
+            legend style = { anchor=west},
+            cycle list name = black white
+            ]
+                                \addplot coordinates {
+                                                (0.2218, 5.3715121746063605)
+                                    (0.3658, 7.659448385238692)
+                                    (0.3704, 10.434910297393802)
+                                    (0.4687, 12.319402217865019)
+                                    (0.4808, 15.691581726074224)
+                                    (0.4814, 21.677974939346313)
+                            };
+            \addlegendentry{ glove-100-euclidean (k = 10) };
+            \end{axis}
+    \end{tikzpicture}
+    \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
+    \label{}
+\end{figure}
+                    </pre>
+                </div>
             
                         <hr />
                                             <hr />
