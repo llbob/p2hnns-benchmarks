@@ -1152,8 +1152,8 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                     nn.distance = dist_to_H;
                     InsertIntoPool(candidate_set.data(), k, nn);
                     cur_val = candidate_set[k-1].distance;
-                    break;
                 }
+                break;
             }
             
             // Boolean to check which side of the hyperplane the centroid is situated on
@@ -1244,12 +1244,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                         nn.distance = dist_to_H;
                         InsertIntoPool(candidate_set.data(), k, nn);
                         cur_val = candidate_set[k-1].distance;
-                        break;
                     }
                 }
-                else {
-                    break;
-                }
+                break;
             }
         }
     }
