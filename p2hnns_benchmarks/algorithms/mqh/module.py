@@ -251,7 +251,7 @@ class MH_MQH(BaseANN):
         }
 
     def __str__(self):
-        return f"MH_MQH(M_proj_vectors={self._M_proj_vectors}, m_single_hashers={self._m_single_hashers}, " \
+        return f"MH_MQH(M_proj_vectors={self._M_proj_vectors}, bit_string_length={self._m_single_hashers}, " \
                f"l_hash_tables={self._l_hash_tables}, M2={self._M2}, level={self._level}, " \
                f"m_level={self._m_level}, m_num={self._m_num}, " \
                f"initial_topk={self._initial_topk}, l0={self._l0}, delta={self._delta}, flag={self._flag})"

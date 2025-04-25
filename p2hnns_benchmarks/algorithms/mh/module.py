@@ -55,7 +55,7 @@ class MH(BaseANN):
         return {"dist_comps": self._num_lin_scans}
 
     def __str__(self):
-        return "MH(M_proj_vectors=%d, m_single_hashers=%d, l_hash_tables=%d, interval_ratio=%f, candidates=%d)" % (
+        return "MH(M_proj_vectors=%d, bit_string_length=%d, l_hash_tables=%d, interval_ratio=%f, candidates=%d)" % (
             self._M_proj_vectors,
             self._m_single_hashers,
             self._l_hash_tables,
