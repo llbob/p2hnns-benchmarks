@@ -945,8 +945,7 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
     //populate running candidate set and set initial cur_val.
     for(int i = 0; i < k; i++)
     {
-        int point_id = external_candidates.back();
-        external_candidates.pop_back();
+        int point_id = external_candidates[i];
         float distance = compare_ip(data[point_id].data(), query.data(), dim) - b;
         if (distance < 0) {
             distance = -1 * distance;
@@ -971,9 +970,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
     //====================================================================================================================================
 
     // Begin MQH pruning process starting by the outer for loop in pseudocode
-    int n = 0;
-    for(int point_id : external_candidates) {
-        n++;
+    int n_points = external_candidates.size();
+    for(int j = k; j < n_points; j++) {
+        int point_id = external_candidates[j];
         // skip point id for now
         char *cur_loc = &index_[point_id * size_per_element_];
         // find coarse centroid IDs and initialize IP by looking up the precomputed ip in each sub space.
