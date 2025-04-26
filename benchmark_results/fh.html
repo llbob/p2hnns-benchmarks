@@ -76,8 +76,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0484 , y: 5453.132333534853, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0492 , y: 5446.51851928803, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -102,6 +102,39 @@
                                                                     { x: 0.5393 , y: 1199.0505488674883, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9611000000000001 , y: 522.910457762831, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.9612 , y: 510.11912254681073, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 4710.758597297519, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8211999999999999 , y: 1111.0762618834688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 395.41174613954706, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9608000000000001 , y: 363.34000476795046, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.962 , y: 358.44695865185855, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.9948 , y: 92.33250827866925, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 89.99265585275369, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 88.63147287224021, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 3731.6436280619905, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 3469.498092493391, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0072 , y: 937.5673254868615, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0079 , y: 873.9932302732313, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 861.2065257229328, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0217 , y: 298.1779053247842, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0233 , y: 291.33018639890867, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.060899999999999996 , y: 78.31471480236509, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 75.38359452676409, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -241,6 +274,29 @@
                                     (0.9612, 510.11912254681073)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 4710.758597297519)
+                                    (0.8211999999999999, 1111.0762618834688)
+                                    (0.9602999999999999, 395.41174613954706)
+                                    (0.9608000000000001, 363.34000476795046)
+                                    (0.962, 358.44695865185855)
+                                    (0.9948, 92.33250827866925)
+                                    (0.9949999999999999, 89.99265585275369)
+                                    (0.9951000000000001, 88.63147287224021)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 3731.6436280619905)
+                                    (0.002, 3469.498092493391)
+                                    (0.0072, 937.5673254868615)
+                                    (0.0079, 873.9932302732313)
+                                    (0.0083, 861.2065257229328)
+                                    (0.0217, 298.1779053247842)
+                                    (0.0233, 291.33018639890867)
+                                    (0.060899999999999996, 78.31471480236509)
+                                    (0.061399999999999996, 75.38359452676409)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -263,7 +319,7 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.7926 , y: 262.9245181083679, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7933 , y: 259.0427348613739, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.795 , y: 319.04064893722534, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.7952 , y: 451.9243676662445, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.7956000000000001 , y: 456.65114879608154, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
@@ -272,8 +328,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8797 , y: 35.84559345245361, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.8811 , y: 36.20997595787048, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
@@ -288,6 +344,27 @@
                             data: [
                                                                     { x: 0.9608000000000001 , y: 9.504552841186523, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.9612 , y: 9.572721719741821, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9945999999999999 , y: 25.462316513061523, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 25.68654179573059, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 31.3517849445343, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.060899999999999996 , y: 36.304073333740234, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 44.6589732170105, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -395,7 +472,7 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.7926, 262.9245181083679)
+                                                (0.7933, 259.0427348613739)
                                     (0.795, 319.04064893722534)
                                     (0.7952, 451.9243676662445)
                                     (0.7956000000000001, 456.65114879608154)
@@ -412,6 +489,17 @@
                                     (0.9612, 9.572721719741821)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.9945999999999999, 25.462316513061523)
+                                    (0.9949999999999999, 25.68654179573059)
+                                    (0.9951000000000001, 31.3517849445343)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.060899999999999996, 36.304073333740234)
+                                    (0.061399999999999996, 44.6589732170105)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -434,7 +522,7 @@
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.7926 , y: 5197596.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7933 , y: 5197596.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.795 , y: 6566632.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.7952 , y: 9305108.0, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.7956000000000001 , y: 9305240.0, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
@@ -443,8 +531,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8797 , y: 644112.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.8811 , y: 644116.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
@@ -458,6 +546,27 @@
                             borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.9612 , y: 275800.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9945999999999999 , y: 537828.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 537836.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 678080.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.060899999999999996 , y: 654840.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 802820.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -565,7 +674,7 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.7926, 5197596.0)
+                                                (0.7933, 5197596.0)
                                     (0.795, 6566632.0)
                                     (0.7952, 9305108.0)
                                     (0.7956000000000001, 9305240.0)
@@ -581,6 +690,17 @@
                                                 (0.9612, 275800.0)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.9945999999999999, 537828.0)
+                                    (0.9949999999999999, 537836.0)
+                                    (0.9951000000000001, 678080.0)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.060899999999999996, 654840.0)
+                                    (0.061399999999999996, 802820.0)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -612,8 +732,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0492 , y: 1009, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.2447 , y: 5009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
@@ -631,6 +751,30 @@
                                                                     { x: 0.1759 , y: 5009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
                                                                     { x: 0.5393 , y: 15009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9612 , y: 40009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 1009, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8211999999999999 , y: 5009, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.962 , y: 15009, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9951000000000001 , y: 40009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.002 , y: 1009, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0083 , y: 5009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0233 , y: 15009, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.061399999999999996 , y: 40009, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -758,6 +902,20 @@
                                     (0.9612, 40009)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 1009)
+                                    (0.8211999999999999, 5009)
+                                    (0.962, 15009)
+                                    (0.9951000000000001, 40009)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.002, 1009)
+                                    (0.0083, 5009)
+                                    (0.0233, 15009)
+                                    (0.061399999999999996, 40009)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -796,8 +954,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.41865021395114294 , y: 5453.132333534853, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.41848553348277656 , y: 5446.51851928803, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -828,6 +986,40 @@
                                                                     { x: 0.16056316904696213 , y: 510.11912254681073, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.16050382705500413 , y: 507.15540296585806, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.16047848097559508 , y: 457.28021504785505, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 1.1752212470973626 , y: 4710.758597297519, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 1.1751560032339432 , y: 4612.688703470923, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.255678997497609 , y: 1111.0762618834688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.09794608215056606 , y: 395.41174613954706, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.09782738190264503 , y: 365.4929911298126, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.09706394514234411 , y: 363.34000476795046, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.09674136513625925 , y: 346.14194009471584, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.042899235158848074 , y: 92.33250827866925, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.0428397013744729 , y: 88.63147287224021, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 12.037880220025645 , y: 3731.6436280619905, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 9.166656081336471 , y: 3721.0134191629836, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 8.909517292942823 , y: 3469.498092493391, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 3.1407938915264575 , y: 937.5673254868615, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 2.71615311643433 , y: 914.3004626103501, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 1.143608479702992 , y: 298.1779053247842, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9879993677905783 , y: 291.33018639890867, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.4267823143878918 , y: 78.31471480236509, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.37302795401512745 , y: 77.52766126571795, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -975,6 +1167,30 @@
                                     (0.16047848097559508, 457.28021504785505)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.1752212470973626, 4710.758597297519)
+                                    (1.1751560032339432, 4612.688703470923)
+                                    (0.255678997497609, 1111.0762618834688)
+                                    (0.09794608215056606, 395.41174613954706)
+                                    (0.09782738190264503, 365.4929911298126)
+                                    (0.09706394514234411, 363.34000476795046)
+                                    (0.09674136513625925, 346.14194009471584)
+                                    (0.042899235158848074, 92.33250827866925)
+                                    (0.0428397013744729, 88.63147287224021)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (12.037880220025645, 3731.6436280619905)
+                                    (9.166656081336471, 3721.0134191629836)
+                                    (8.909517292942823, 3469.498092493391)
+                                    (3.1407938915264575, 937.5673254868615)
+                                    (2.71615311643433, 914.3004626103501)
+                                    (1.143608479702992, 298.1779053247842)
+                                    (0.9879993677905783, 291.33018639890867)
+                                    (0.4267823143878918, 78.31471480236509)
+                                    (0.37302795401512745, 77.52766126571795)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -1003,8 +1219,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8813000000000001 , y: 10.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
@@ -1016,6 +1232,24 @@
                             borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.9612 , y: 10.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.9951000000000001 , y: 10.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.061399999999999996 , y: 10.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1134,6 +1368,14 @@
                                                 (0.9612, 10.0)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.9951000000000001, 10.0)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.061399999999999996, 10.0)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -1164,7 +1406,7 @@
                                                                     { x: 0.6864 , y: 18994.17470442867, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.6929000000000001 , y: 20457.36488183975, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.6948000000000001 , y: 33034.93711863517, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
-                                                                    { x: 0.7926 , y: 69476.03453629017, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.7933 , y: 68760.35612683868, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.795 , y: 71590.34544652558, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.7956000000000001 , y: 112578.32811902046, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
@@ -1172,8 +1414,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0484 , y: 118.1178010368347, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0492 , y: 118.26196821308137, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -1197,6 +1439,37 @@
                                                                     { x: 0.5353 , y: 219.07263054847718, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.5393 , y: 355.6847544107437, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9612 , y: 540.6580302715302, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 114.17014667415617, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8211999999999999 , y: 484.06038221740727, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 1360.1720364933012, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9608000000000001 , y: 1480.2553887329104, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.962 , y: 2674.471011291504, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.9949999999999999 , y: 5976.443243102073, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 7650.55547454834, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 175.48299496650694, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 316.43654809188837, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.007000000000000001 , y: 716.2196966743469, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0072 , y: 856.27557421875, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 932.2038048028948, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0233 , y: 2247.758833694458, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.060899999999999996 , y: 8361.646998939514, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 10649.797280693056, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1312,7 +1585,7 @@
                                     (0.6864, 18994.17470442867)
                                     (0.6929000000000001, 20457.36488183975)
                                     (0.6948000000000001, 33034.93711863517)
-                                    (0.7926, 69476.03453629017)
+                                    (0.7933, 68760.35612683868)
                                     (0.795, 71590.34544652558)
                                     (0.7956000000000001, 112578.32811902046)
                             };
@@ -1337,6 +1610,27 @@
                                     (0.9612, 540.6580302715302)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 114.17014667415617)
+                                    (0.8211999999999999, 484.06038221740727)
+                                    (0.9602999999999999, 1360.1720364933012)
+                                    (0.9608000000000001, 1480.2553887329104)
+                                    (0.962, 2674.471011291504)
+                                    (0.9949999999999999, 5976.443243102073)
+                                    (0.9951000000000001, 7650.55547454834)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 175.48299496650694)
+                                    (0.002, 316.43654809188837)
+                                    (0.007000000000000001, 716.2196966743469)
+                                    (0.0072, 856.27557421875)
+                                    (0.0083, 932.2038048028948)
+                                    (0.0233, 2247.758833694458)
+                                    (0.060899999999999996, 8361.646998939514)
+                                    (0.061399999999999996, 10649.797280693056)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1374,8 +1668,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.010100000000000001 , y: 5453.132333534853, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0104 , y: 4546.799150978781, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -1408,6 +1702,42 @@
                                                                     { x: 0.0451 , y: 522.910457762831, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.045200000000000004 , y: 507.15540296585806, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.0454 , y: 493.7266301715264, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.0055 , y: 4710.758597297519, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0057 , y: 4612.688703470923, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.0058000000000000005 , y: 4365.792322424848, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.023200000000000002 , y: 1111.0762618834688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0241 , y: 1100.9475232051052, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0553 , y: 395.41174613954706, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.05620000000000001 , y: 358.44695865185855, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.0573 , y: 346.14194009471584, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.12350000000000001 , y: 92.33250827866925, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.1244 , y: 92.22696294457721, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.1248 , y: 86.46982963874434, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0013 , y: 3731.6436280619905, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0015 , y: 3469.498092493391, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0056 , y: 937.5673254868615, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0062 , y: 873.9932302732313, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.016 , y: 298.1779053247842, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0174 , y: 291.33018639890867, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0446 , y: 78.31471480236509, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.0449 , y: 77.52766126571795, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.045 , y: 75.38359452676409, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1556,6 +1886,32 @@
                                     (0.0454, 493.7266301715264)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0055, 4710.758597297519)
+                                    (0.0057, 4612.688703470923)
+                                    (0.0058000000000000005, 4365.792322424848)
+                                    (0.023200000000000002, 1111.0762618834688)
+                                    (0.0241, 1100.9475232051052)
+                                    (0.0553, 395.41174613954706)
+                                    (0.05620000000000001, 358.44695865185855)
+                                    (0.0573, 346.14194009471584)
+                                    (0.12350000000000001, 92.33250827866925)
+                                    (0.1244, 92.22696294457721)
+                                    (0.1248, 86.46982963874434)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0013, 3731.6436280619905)
+                                    (0.0015, 3469.498092493391)
+                                    (0.0056, 937.5673254868615)
+                                    (0.0062, 873.9932302732313)
+                                    (0.016, 298.1779053247842)
+                                    (0.0174, 291.33018639890867)
+                                    (0.0446, 78.31471480236509)
+                                    (0.0449, 77.52766126571795)
+                                    (0.045, 75.38359452676409)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1593,8 +1949,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.011 , y: 5453.132333534853, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0112 , y: 4546.799150978781, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -1626,6 +1982,39 @@
                                                                     { x: 0.0501 , y: 507.15540296585806, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.0502 , y: 504.5519460772426, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.0503 , y: 493.7266301715264, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.0060999999999999995 , y: 4710.758597297519, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0062 , y: 4612.688703470923, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
+                                                                    { x: 0.006500000000000001 , y: 4365.792322424848, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0252 , y: 1111.0762618834688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0261 , y: 1100.9475232051052, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.059399999999999994 , y: 395.41174613954706, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0601 , y: 358.44695865185855, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.061399999999999996 , y: 346.14194009471584, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.13169999999999998 , y: 92.33250827866925, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.1329 , y: 92.22696294457721, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0013 , y: 3731.6436280619905, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0015 , y: 3469.498092493391, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0057 , y: 937.5673254868615, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0062 , y: 873.9932302732313, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0164 , y: 298.1779053247842, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0178 , y: 291.33018639890867, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.046200000000000005 , y: 78.31471480236509, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1773,6 +2162,29 @@
                                     (0.0503, 493.7266301715264)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0060999999999999995, 4710.758597297519)
+                                    (0.0062, 4612.688703470923)
+                                    (0.006500000000000001, 4365.792322424848)
+                                    (0.0252, 1111.0762618834688)
+                                    (0.0261, 1100.9475232051052)
+                                    (0.059399999999999994, 395.41174613954706)
+                                    (0.0601, 358.44695865185855)
+                                    (0.061399999999999996, 346.14194009471584)
+                                    (0.13169999999999998, 92.33250827866925)
+                                    (0.1329, 92.22696294457721)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0013, 3731.6436280619905)
+                                    (0.0015, 3469.498092493391)
+                                    (0.0057, 937.5673254868615)
+                                    (0.0062, 873.9932302732313)
+                                    (0.0164, 298.1779053247842)
+                                    (0.0178, 291.33018639890867)
+                                    (0.046200000000000005, 78.31471480236509)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1809,8 +2221,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0492 , y: 0.17762184143066406, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.2427 , y: 0.8090734481811523, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
@@ -1833,6 +2245,39 @@
                                                                     { x: 0.5393 , y: 0.8084774017333984, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9611000000000001 , y: 1.871347427368164, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.9612 , y: 1.9283294677734375, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 0.20754337310791016, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8211999999999999 , y: 0.8802413940429688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 2.482295036315918, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9608000000000001 , y: 2.662777900695801, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.962 , y: 2.7104616165161133, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.9948 , y: 10.789275169372559, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 11.357784271240234, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 11.418700218200684, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 0.2620220184326172, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 0.2810955047607422, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0072 , y: 1.0504722595214844, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0079 , y: 1.123666763305664, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 1.1453628540039062, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0217 , y: 3.28826904296875, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0233 , y: 3.2987594604492188, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.060899999999999996 , y: 12.74418830871582, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 13.277530670166016, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1970,6 +2415,29 @@
                                     (0.9612, 1.9283294677734375)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 0.20754337310791016)
+                                    (0.8211999999999999, 0.8802413940429688)
+                                    (0.9602999999999999, 2.482295036315918)
+                                    (0.9608000000000001, 2.662777900695801)
+                                    (0.962, 2.7104616165161133)
+                                    (0.9948, 10.789275169372559)
+                                    (0.9949999999999999, 11.357784271240234)
+                                    (0.9951000000000001, 11.418700218200684)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 0.2620220184326172)
+                                    (0.002, 0.2810955047607422)
+                                    (0.0072, 1.0504722595214844)
+                                    (0.0079, 1.123666763305664)
+                                    (0.0083, 1.1453628540039062)
+                                    (0.0217, 3.28826904296875)
+                                    (0.0233, 3.2987594604492188)
+                                    (0.060899999999999996, 12.74418830871582)
+                                    (0.061399999999999996, 13.277530670166016)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -2005,8 +2473,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0492 , y: 0.21555423736572263, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.2412 , y: 0.8928894996643066, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
@@ -2032,6 +2500,39 @@
                                                                     { x: 0.5393 , y: 0.8823871612548828, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9611000000000001 , y: 2.0533084869384766, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.9612 , y: 2.149832248687744, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 0.24390220642089844, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8182 , y: 0.9813666343688964, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.8211999999999999 , y: 0.994265079498291, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 2.8760910034179688, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.962 , y: 3.3241033554077144, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=15000)" },
+                                                                    { x: 0.9948 , y: 12.19475269317627, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 12.544512748718262, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 12.673342227935791, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 0.31337738037109364, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 0.3361821174621582, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0072 , y: 1.1741399765014646, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 1.2670516967773438, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0217 , y: 3.8144826889038086, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0233 , y: 4.396212100982665, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0607 , y: 14.130878448486328, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.060899999999999996 , y: 14.193320274353027, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 14.554738998413086, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -2171,6 +2672,29 @@
                                     (0.9612, 2.149832248687744)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 0.24390220642089844)
+                                    (0.8182, 0.9813666343688964)
+                                    (0.8211999999999999, 0.994265079498291)
+                                    (0.9602999999999999, 2.8760910034179688)
+                                    (0.962, 3.3241033554077144)
+                                    (0.9948, 12.19475269317627)
+                                    (0.9949999999999999, 12.544512748718262)
+                                    (0.9951000000000001, 12.673342227935791)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 0.31337738037109364)
+                                    (0.002, 0.3361821174621582)
+                                    (0.0072, 1.1741399765014646)
+                                    (0.0083, 1.2670516967773438)
+                                    (0.0217, 3.8144826889038086)
+                                    (0.0233, 4.396212100982665)
+                                    (0.0607, 14.130878448486328)
+                                    (0.060899999999999996, 14.193320274353027)
+                                    (0.061399999999999996, 14.554738998413086)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -2206,8 +2730,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0484 , y: 0.23961782455444336, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0492 , y: 0.25300741195678705, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -2236,6 +2760,42 @@
                                                                     { x: 0.5376000000000001 , y: 1.0264372825622559, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
                                                                     { x: 0.5393 , y: 1.7814922332763672, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9612 , y: 2.296426296234131, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 0.2811527252197265, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8182 , y: 1.0242629051208496, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.8194000000000001 , y: 1.0495448112487793, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.8211999999999999 , y: 1.0861825942993162, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 3.137660026550293, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.962 , y: 3.932423591613769, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9945999999999999 , y: 12.782416343688965, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9948 , y: 12.853360176086426, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 13.214600086212158, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 13.766453266143797, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 0.35813570022583, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 0.3893446922302246, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.0072 , y: 1.232900619506836, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0079 , y: 1.3185334205627441, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 1.3466024398803709, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0217 , y: 4.1658711433410645, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0233 , y: 4.971477985382079, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0607 , y: 14.583840370178223, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.060899999999999996 , y: 14.617276191711426, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 15.163934230804443, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -2378,6 +2938,32 @@
                                     (0.9612, 2.296426296234131)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 0.2811527252197265)
+                                    (0.8182, 1.0242629051208496)
+                                    (0.8194000000000001, 1.0495448112487793)
+                                    (0.8211999999999999, 1.0861825942993162)
+                                    (0.9602999999999999, 3.137660026550293)
+                                    (0.962, 3.932423591613769)
+                                    (0.9945999999999999, 12.782416343688965)
+                                    (0.9948, 12.853360176086426)
+                                    (0.9949999999999999, 13.214600086212158)
+                                    (0.9951000000000001, 13.766453266143797)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 0.35813570022583)
+                                    (0.002, 0.3893446922302246)
+                                    (0.0072, 1.232900619506836)
+                                    (0.0079, 1.3185334205627441)
+                                    (0.0083, 1.3466024398803709)
+                                    (0.0217, 4.1658711433410645)
+                                    (0.0233, 4.971477985382079)
+                                    (0.0607, 14.583840370178223)
+                                    (0.060899999999999996, 14.617276191711426)
+                                    (0.061399999999999996, 15.163934230804443)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -2416,8 +3002,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.048 , y: 0.4389483928680652, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0492 , y: 0.48088455200197405, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -2442,6 +3028,41 @@
                                                                     { x: 0.5376000000000001 , y: 1.6141805648804004, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=15000)" },
                                                                     { x: 0.5393 , y: 1.9971640110016449, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
                                                                     { x: 0.9612 , y: 3.7530620098114977, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "music-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
+                            data: [
+                                                                    { x: 0.27149999999999996 , y: 0.509194374084488, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.8211999999999999 , y: 1.753987312316932, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.9602999999999999 , y: 4.718987226486289, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.962 , y: 5.076484441757273, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.9945999999999999 , y: 13.255546569824258, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9948 , y: 13.630244255065927, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.9949999999999999 , y: 14.023406505584726, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                                    { x: 0.9951000000000001 , y: 15.466948270797754, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "sift-128-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 0.0019 , y: 0.5406072139740091, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.002 , y: 0.5817971229553488, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
+                                                                    { x: 0.007000000000000001 , y: 1.864329338073764, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0072 , y: 1.9408202171325981, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0079 , y: 1.994345664978068, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=5000)" },
+                                                                    { x: 0.0083 , y: 2.120363473892243, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=5000)" },
+                                                                    { x: 0.0217 , y: 5.184708118438791, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0233 , y: 5.681719541549723, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=15000)" },
+                                                                    { x: 0.0607 , y: 14.974417686462601, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.060899999999999996 , y: 15.179090738296523, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
+                                                                    { x: 0.061399999999999996 , y: 15.986142158508382, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -2583,6 +3204,31 @@
                                     (0.9612, 3.7530620098114977)
                             };
             \addlegendentry{ glove-25-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.27149999999999996, 0.509194374084488)
+                                    (0.8211999999999999, 1.753987312316932)
+                                    (0.9602999999999999, 4.718987226486289)
+                                    (0.962, 5.076484441757273)
+                                    (0.9945999999999999, 13.255546569824258)
+                                    (0.9948, 13.630244255065927)
+                                    (0.9949999999999999, 14.023406505584726)
+                                    (0.9951000000000001, 15.466948270797754)
+                            };
+            \addlegendentry{ music-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0019, 0.5406072139740091)
+                                    (0.002, 0.5817971229553488)
+                                    (0.007000000000000001, 1.864329338073764)
+                                    (0.0072, 1.9408202171325981)
+                                    (0.0079, 1.994345664978068)
+                                    (0.0083, 2.120363473892243)
+                                    (0.0217, 5.184708118438791)
+                                    (0.0233, 5.681719541549723)
+                                    (0.0607, 14.974417686462601)
+                                    (0.060899999999999996, 15.179090738296523)
+                                    (0.061399999999999996, 15.986142158508382)
+                            };
+            \addlegendentry{ sift-128-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
