@@ -1006,8 +1006,9 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
                 cur_loc += sizeof(unsigned char);
             }
             
+            float centroid_dist_to_H = fabs(ip - b);
             // Centroid lies within boundaries, so x is a promising candidate who's exact distance to H we calculate
-            if ((b - cur_val - ip) <= 0) {
+            if (centroid_dist_to_H < cur_val - ip) {
                 float dist_to_H = compare_ip(data[point_id].data(), query.data(), dim) - b;
                 if (dist_to_H < 0) {
                     dist_to_H = - dist_to_H;
@@ -1031,10 +1032,10 @@ std::pair<std::vector<Neighbor>, int> MQH::query_with_candidates(const std::vect
             // float centroid_dist_to_boundary = b - cur_val - ip;
             // bool positive_side = u > 0 ? ip < b - cur_val : (ip < 0 || ip < b - cur_val);
 
-            bool q_plus = ip <= b - cur_val;
+            bool q_plus = ip <= b;
 
 
-            float centroid_dist_to_boundary = b - cur_val - ip;
+            float centroid_dist_to_boundary = centroid_dist_to_H - cur_val;
 
             // if(n % 1000 == 0) {
             //     cout << "centroid distance to boundary: " << centroid_dist_to_boundary << endl << endl;
