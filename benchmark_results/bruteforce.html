@@ -57,12 +57,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 1.6558000289350019, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 15.833659059384, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -170,9 +188,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 1.6558000289350019)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 7.536784718631636)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 15.833659059384)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -190,12 +216,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 0.0002789497375488281, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 0.0002491474151611328, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 0.00022840499877929688, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -303,9 +347,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 0.0002789497375488281)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 0.0002491474151611328)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 0.00022840499877929688)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -323,10 +375,26 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                             ]
                         },
@@ -436,7 +504,13 @@
             ]
                                 \addplot coordinates {
                                         };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
+                                        };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                        };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -454,10 +528,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 10000000, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 1193514, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 1.0 , y: 1193514, label: "BruteForce()" },
                                                             ]
@@ -567,9 +659,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 10000000)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 1193514)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 1193514)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -587,12 +687,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.011837288454747654 , y: 1.6558000289350019, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 0.012982980561629736 , y: 7.536784718631636, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.010318278801576439 , y: 15.833659059384, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -700,9 +818,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.011837288454747654, 1.6558000289350019)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.012982980561629736, 7.536784718631636)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.010318278801576439, 15.833659059384)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -720,10 +846,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 1.0 , y: 10.0, label: "BruteForce()" },
                                                             ]
@@ -835,7 +979,15 @@
                                 \addplot coordinates {
                                                 (1.0, 10.0)
                             };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 10.0)
+                            };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 10.0)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -853,10 +1005,26 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                             ]
                         },
@@ -966,7 +1134,13 @@
             ]
                                 \addplot coordinates {
                                         };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
+                                        };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                        };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -984,12 +1158,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.9663999999999999 , y: 1.6558000289350019, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 15.833659059384, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1097,9 +1289,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9663999999999999, 1.6558000289350019)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 7.536784718631636)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 15.833659059384)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1117,12 +1317,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.9970000000000001 , y: 1.6558000289350019, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 7.536784718631636, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 15.833659059384, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1230,9 +1448,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9970000000000001, 1.6558000289350019)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 7.536784718631636)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 15.833659059384)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1250,12 +1476,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 607.0741415023804, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 132.4903964996338, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 63.399672508239746, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1363,9 +1607,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 607.0741415023804)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 132.4903964996338)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 63.399672508239746)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1383,12 +1635,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 648.0269074440002, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 141.21417999267578, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 68.55671405792236, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1496,9 +1766,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 648.0269074440002)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 141.21417999267578)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 68.55671405792236)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1516,12 +1794,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 663.3189511299133, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 143.76221418380737, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 70.7463026046753, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1629,9 +1925,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 663.3189511299133)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 143.76221418380737)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 70.7463026046753)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1649,12 +1953,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 1.0 , y: 676.6702349185947, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 1.0 , y: 146.3457896709442, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 1.0 , y: 73.35645699501045, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1762,9 +2084,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.0, 676.6702349185947)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (1.0, 146.3457896709442)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (1.0, 73.35645699501045)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }

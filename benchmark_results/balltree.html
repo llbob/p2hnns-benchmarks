@@ -57,10 +57,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 974.4915016978017, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9597 , y: 504.97862725116977, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 412.01714039964537, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 290.5585163497633, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 206.61497331761515, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 168.90404682321923, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 1010.498886218941, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 974.3998141479847, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -74,6 +88,24 @@
                                                                     { x: 0.757 , y: 204.41950822005137, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 196.3514147208227, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 168.51787857555743, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.6649 , y: 3876.8841132293473, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 3026.2348473752527, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 2025.895188533704, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 1494.308926868962, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 1162.005130847698, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 1119.6147138849656, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 1097.7772799082059, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 814.9127947190328, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 780.483593075599, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 761.7735796694934, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -181,6 +213,15 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 974.4915016978017)
+                                    (0.9597, 504.97862725116977)
+                                    (0.9615, 412.01714039964537)
+                                    (0.9696, 290.5585163497633)
+                                    (0.9731, 206.61497331761515)
+                                    (0.975, 168.90404682321923)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 1010.498886218941)
                                     (0.5246999999999999, 974.3998141479847)
                                     (0.5296000000000001, 893.1253074287564)
@@ -195,6 +236,19 @@
                                     (0.8010999999999999, 168.51787857555743)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.6649, 3876.8841132293473)
+                                    (0.6885, 3026.2348473752527)
+                                    (0.9122999999999999, 2025.895188533704)
+                                    (0.9125, 1494.308926868962)
+                                    (0.9648, 1162.005130847698)
+                                    (0.9654, 1119.6147138849656)
+                                    (0.9661, 1097.7772799082059)
+                                    (0.978, 814.9127947190328)
+                                    (0.9784, 780.483593075599)
+                                    (0.9827, 761.7735796694934)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -212,14 +266,35 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.9731 , y: 177.74964809417725, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 224.34585118293762, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 0.757 , y: 21.665255784988403, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 25.783196687698364, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 29.98444700241089, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.978 , y: 5.69340443611145, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 6.429529428482056, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 7.010652542114258, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -327,11 +402,22 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9731, 177.74964809417725)
+                                    (0.975, 224.34585118293762)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.757, 21.665255784988403)
                                     (0.7692, 25.783196687698364)
                                     (0.8010999999999999, 29.98444700241089)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.978, 5.69340443611145)
+                                    (0.9784, 6.429529428482056)
+                                    (0.9827, 7.010652542114258)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -349,14 +435,35 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.9731 , y: 7622576.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 7939380.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 0.757 , y: 945980.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 949992.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 989400.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.978 , y: 246588.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 247320.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 248156.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -464,11 +571,22 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9731, 7622576.0)
+                                    (0.975, 7939380.0)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.757, 945980.0)
                                     (0.7692, 949992.0)
                                     (0.8010999999999999, 989400.0)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.978, 246588.0)
+                                    (0.9784, 247320.0)
+                                    (0.9827, 248156.0)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -486,15 +604,39 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 10009, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9615 , y: 20009, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9702999999999999 , y: 35009, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 0.975 , y: 50009, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5296000000000001 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                                     { x: 0.6567000000000001 , y: 20009, label: "B_tree(max_leaf_size=25, candidates=20000)" },
                                                                     { x: 0.7535000000000001 , y: 35009, label: "B_tree(max_leaf_size=50, candidates=35000)" },
                                                                     { x: 0.8010999999999999 , y: 50009, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.6885 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9125 , y: 20009, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9661 , y: 35009, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.9827 , y: 50009, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -602,12 +744,26 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 10009)
+                                    (0.9615, 20009)
+                                    (0.9702999999999999, 35009)
+                                    (0.975, 50009)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5296000000000001, 10009)
                                     (0.6567000000000001, 20009)
                                     (0.7535000000000001, 35009)
                                     (0.8010999999999999, 50009)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.6885, 10009)
+                                    (0.9125, 20009)
+                                    (0.9661, 35009)
+                                    (0.9827, 50009)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -625,10 +781,25 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7723272960311585 , y: 974.4915016978017, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.5621261672824024 , y: 504.97862725116977, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.5200965497525453 , y: 412.01714039964537, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.37244864832446517 , y: 290.5585163497633, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.36935563715417674 , y: 236.6087276794264, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.31934273289158516 , y: 206.61497331761515, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.30318131896766043 , y: 168.90404682321923, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.1682593841011865 , y: 1010.498886218941, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.15970380867284387 , y: 893.1253074287564, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -640,6 +811,24 @@
                                                                     { x: 0.08970394863547339 , y: 283.0777786551608, label: "B_tree(max_leaf_size=500, candidates=35000)" },
                                                                     { x: 0.07257763185083586 , y: 247.74568651621036, label: "B_tree(max_leaf_size=50, candidates=35000)" },
                                                                     { x: 0.060038248954785406 , y: 168.51787857555743, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.4017726135697831 , y: 3876.8841132293473, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.38686774179070893 , y: 3026.2348473752527, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.20869915551964638 , y: 2025.895188533704, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.20227216028149084 , y: 1494.308926868962, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.13255941566007678 , y: 1162.005130847698, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.12933905941523063 , y: 1119.6147138849656, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.12584453583339175 , y: 864.31718842377, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.10168425433763022 , y: 814.9127947190328, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.09796550442043504 , y: 780.483593075599, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.09659493444552039 , y: 761.7735796694934, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -747,6 +936,16 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.7723272960311585, 974.4915016978017)
+                                    (0.5621261672824024, 504.97862725116977)
+                                    (0.5200965497525453, 412.01714039964537)
+                                    (0.37244864832446517, 290.5585163497633)
+                                    (0.36935563715417674, 236.6087276794264)
+                                    (0.31934273289158516, 206.61497331761515)
+                                    (0.30318131896766043, 168.90404682321923)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1682593841011865, 1010.498886218941)
                                     (0.15970380867284387, 893.1253074287564)
                                     (0.14580249210215104, 874.3969933263786)
@@ -759,6 +958,19 @@
                                     (0.060038248954785406, 168.51787857555743)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.4017726135697831, 3876.8841132293473)
+                                    (0.38686774179070893, 3026.2348473752527)
+                                    (0.20869915551964638, 2025.895188533704)
+                                    (0.20227216028149084, 1494.308926868962)
+                                    (0.13255941566007678, 1162.005130847698)
+                                    (0.12933905941523063, 1119.6147138849656)
+                                    (0.12584453583339175, 864.31718842377)
+                                    (0.10168425433763022, 814.9127947190328)
+                                    (0.09796550442043504, 780.483593075599)
+                                    (0.09659493444552039, 761.7735796694934)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -776,12 +988,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
                             data: [
+                                                                    { x: 0.975 , y: 10.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
+                            data: [
                                                                     { x: 0.8010999999999999 , y: 10.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.9827 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -889,9 +1119,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.975, 10.0)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.8010999999999999, 10.0)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.9827, 10.0)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -909,10 +1147,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 7822.10618227005, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9597 , y: 15094.848749328614, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 19269.538136930463, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 26234.219859603883, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 36892.660186260226, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 47005.26807572365, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 936.1514524173735, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 972.574077129364, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -926,6 +1178,24 @@
                                                                     { x: 0.757 , y: 4627.6405233383175, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 4838.223352506638, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 5871.187130784988, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.6649 , y: 63.793498277664185, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 84.1758861579895, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 121.7180441493988, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 170.4707744293213, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 212.2090457725525, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 220.8974184894562, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 226.0531389579773, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 302.59434088897706, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 316.8804600048065, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 325.7608384208679, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1033,6 +1303,15 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 7822.10618227005)
+                                    (0.9597, 15094.848749328614)
+                                    (0.9615, 19269.538136930463)
+                                    (0.9696, 26234.219859603883)
+                                    (0.9731, 36892.660186260226)
+                                    (0.975, 47005.26807572365)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 936.1514524173735)
                                     (0.5246999999999999, 972.574077129364)
                                     (0.5296000000000001, 1084.0584092140198)
@@ -1047,6 +1326,19 @@
                                     (0.8010999999999999, 5871.187130784988)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.6649, 63.793498277664185)
+                                    (0.6885, 84.1758861579895)
+                                    (0.9122999999999999, 121.7180441493988)
+                                    (0.9125, 170.4707744293213)
+                                    (0.9648, 212.2090457725525)
+                                    (0.9654, 220.8974184894562)
+                                    (0.9661, 226.0531389579773)
+                                    (0.978, 302.59434088897706)
+                                    (0.9784, 316.8804600048065)
+                                    (0.9827, 325.7608384208679)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1064,10 +1356,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.008799999999999999 , y: 974.4915016978017, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.0094 , y: 922.8746981456932, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.01 , y: 780.1935238214286, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.014199999999999999 , y: 504.97862725116977, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.014299999999999998 , y: 491.3241420753953, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.0161 , y: 412.01714039964537, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.0215 , y: 290.5585163497633, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.0227 , y: 287.0138388261068, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.027700000000000002 , y: 206.61497331761515, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.0295 , y: 199.37415124176044, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.028199999999999996 , y: 1010.498886218941, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.028699999999999996 , y: 968.7518188764034, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -1085,6 +1395,21 @@
                                                                     { x: 0.09340000000000001 , y: 196.3514147208227, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.09519999999999999 , y: 174.50451631885898, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                                     { x: 0.10600000000000001 , y: 168.51787857555743, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.0213 , y: 3876.8841132293473, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.0386 , y: 2025.895188533704, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.05789999999999999 , y: 1162.005130847698, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.059 , y: 1119.6147138849656, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.0612 , y: 864.31718842377, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.07830000000000001 , y: 814.9127947190328, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.08209999999999999 , y: 761.7735796694934, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1192,6 +1517,19 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.008799999999999999, 974.4915016978017)
+                                    (0.0094, 922.8746981456932)
+                                    (0.01, 780.1935238214286)
+                                    (0.014199999999999999, 504.97862725116977)
+                                    (0.014299999999999998, 491.3241420753953)
+                                    (0.0161, 412.01714039964537)
+                                    (0.0215, 290.5585163497633)
+                                    (0.0227, 287.0138388261068)
+                                    (0.027700000000000002, 206.61497331761515)
+                                    (0.0295, 199.37415124176044)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.028199999999999996, 1010.498886218941)
                                     (0.028699999999999996, 968.7518188764034)
                                     (0.029699999999999997, 893.1253074287564)
@@ -1210,6 +1548,16 @@
                                     (0.10600000000000001, 168.51787857555743)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0213, 3876.8841132293473)
+                                    (0.0386, 2025.895188533704)
+                                    (0.05789999999999999, 1162.005130847698)
+                                    (0.059, 1119.6147138849656)
+                                    (0.0612, 864.31718842377)
+                                    (0.07830000000000001, 814.9127947190328)
+                                    (0.08209999999999999, 761.7735796694934)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1227,10 +1575,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0095 , y: 974.4915016978017, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.010100000000000001 , y: 922.8746981456932, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.0106 , y: 780.1935238214286, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.0157 , y: 504.97862725116977, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.0158 , y: 491.3241420753953, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.0172 , y: 412.01714039964537, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.0236 , y: 290.5585163497633, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.0252 , y: 287.0138388261068, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.0303 , y: 206.61497331761515, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.0323 , y: 199.37415124176044, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0304 , y: 1010.498886218941, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.0316 , y: 968.7518188764034, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -1249,6 +1615,22 @@
                                                                     { x: 0.1026 , y: 196.3514147208227, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.1046 , y: 174.50451631885898, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                                     { x: 0.1156 , y: 168.51787857555743, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.0235 , y: 3876.8841132293473, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.0424 , y: 2025.895188533704, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.0634 , y: 1162.005130847698, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.0646 , y: 1119.6147138849656, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.0651 , y: 1097.7772799082059, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.067 , y: 864.31718842377, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.08549999999999999 , y: 814.9127947190328, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.0916 , y: 761.7735796694934, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1356,6 +1738,19 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0095, 974.4915016978017)
+                                    (0.010100000000000001, 922.8746981456932)
+                                    (0.0106, 780.1935238214286)
+                                    (0.0157, 504.97862725116977)
+                                    (0.0158, 491.3241420753953)
+                                    (0.0172, 412.01714039964537)
+                                    (0.0236, 290.5585163497633)
+                                    (0.0252, 287.0138388261068)
+                                    (0.0303, 206.61497331761515)
+                                    (0.0323, 199.37415124176044)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.0304, 1010.498886218941)
                                     (0.0316, 968.7518188764034)
                                     (0.0328, 893.1253074287564)
@@ -1375,6 +1770,17 @@
                                     (0.1156, 168.51787857555743)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0235, 3876.8841132293473)
+                                    (0.0424, 2025.895188533704)
+                                    (0.0634, 1162.005130847698)
+                                    (0.0646, 1119.6147138849656)
+                                    (0.0651, 1097.7772799082059)
+                                    (0.067, 864.31718842377)
+                                    (0.08549999999999999, 814.9127947190328)
+                                    (0.0916, 761.7735796694934)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1392,10 +1798,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 1.0221004486083984, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9597 , y: 1.9837617874145508, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 2.424001693725586, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 3.4422874450683594, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 4.859805107116699, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 5.906224250793457, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 0.9832382202148438, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 1.0213851928710938, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -1409,6 +1829,24 @@
                                                                     { x: 0.757 , y: 4.854679107666016, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 5.0841569900512695, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 5.946993827819824, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.6649 , y: 0.2523660659790039, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 0.34046173095703125, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 0.49185752868652344, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 0.6841421127319336, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 0.8678436279296875, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 0.9006261825561523, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 0.9248256683349609, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 1.2407302856445312, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 1.2927055358886719, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 1.3297796249389648, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1516,6 +1954,15 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 1.0221004486083984)
+                                    (0.9597, 1.9837617874145508)
+                                    (0.9615, 2.424001693725586)
+                                    (0.9696, 3.4422874450683594)
+                                    (0.9731, 4.859805107116699)
+                                    (0.975, 5.906224250793457)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 0.9832382202148438)
                                     (0.5246999999999999, 1.0213851928710938)
                                     (0.5296000000000001, 1.1135339736938477)
@@ -1530,6 +1977,19 @@
                                     (0.8010999999999999, 5.946993827819824)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.6649, 0.2523660659790039)
+                                    (0.6885, 0.34046173095703125)
+                                    (0.9122999999999999, 0.49185752868652344)
+                                    (0.9125, 0.6841421127319336)
+                                    (0.9648, 0.8678436279296875)
+                                    (0.9654, 0.9006261825561523)
+                                    (0.9661, 0.9248256683349609)
+                                    (0.978, 1.2407302856445312)
+                                    (0.9784, 1.2927055358886719)
+                                    (0.9827, 1.3297796249389648)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1547,10 +2007,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 1.0805249214172363, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9597 , y: 2.0623207092285156, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 2.5475025177001953, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 3.5438895225524902, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 4.98422384262085, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 6.169414520263672, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 1.11008882522583, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 1.1432290077209473, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -1565,6 +2039,25 @@
                                                                     { x: 0.757 , y: 5.167508125305176, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 5.405128002166748, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 6.305086612701416, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.663 , y: 0.3046989440917969, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.6649 , y: 0.3106951713562011, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 0.39696693420410156, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 0.5593299865722656, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 0.7648825645446776, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 0.9582042694091797, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 0.9997129440307618, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 1.0111689567565918, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 1.357102394104004, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 1.4008045196533203, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 1.4612913131713867, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1672,6 +2165,15 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 1.0805249214172363)
+                                    (0.9597, 2.0623207092285156)
+                                    (0.9615, 2.5475025177001953)
+                                    (0.9696, 3.5438895225524902)
+                                    (0.9731, 4.98422384262085)
+                                    (0.975, 6.169414520263672)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 1.11008882522583)
                                     (0.5246999999999999, 1.1432290077209473)
                                     (0.5296000000000001, 1.2209534645080566)
@@ -1687,6 +2189,20 @@
                                     (0.8010999999999999, 6.305086612701416)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.663, 0.3046989440917969)
+                                    (0.6649, 0.3106951713562011)
+                                    (0.6885, 0.39696693420410156)
+                                    (0.9122999999999999, 0.5593299865722656)
+                                    (0.9125, 0.7648825645446776)
+                                    (0.9648, 0.9582042694091797)
+                                    (0.9654, 0.9997129440307618)
+                                    (0.9661, 1.0111689567565918)
+                                    (0.978, 1.357102394104004)
+                                    (0.9784, 1.4008045196533203)
+                                    (0.9827, 1.4612913131713867)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1704,10 +2220,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 1.115577220916748, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.9597 , y: 2.1167373657226562, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 2.657182216644287, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 3.607516288757324, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 5.089373588562012, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 6.286640167236328, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 1.138458251953125, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 1.242122650146484, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -1723,6 +2253,25 @@
                                                                     { x: 0.757 , y: 5.457644462585449, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.7692 , y: 5.5403947830200195, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 6.565110683441162, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.663 , y: 0.3252291679382324, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.6649 , y: 0.3462839126586913, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 0.4303574562072754, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 0.585801601409912, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 0.8152055740356445, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 0.9906482696533203, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 1.053962707519531, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 1.0671782493591309, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 1.3911771774291992, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 1.5092849731445308, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 1.5576171875, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1830,6 +2379,15 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 1.115577220916748)
+                                    (0.9597, 2.1167373657226562)
+                                    (0.9615, 2.657182216644287)
+                                    (0.9696, 3.607516288757324)
+                                    (0.9731, 5.089373588562012)
+                                    (0.975, 6.286640167236328)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 1.138458251953125)
                                     (0.5246999999999999, 1.242122650146484)
                                     (0.5296000000000001, 1.2686491012573242)
@@ -1846,6 +2404,20 @@
                                     (0.8010999999999999, 6.565110683441162)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.663, 0.3252291679382324)
+                                    (0.6649, 0.3462839126586913)
+                                    (0.6885, 0.4303574562072754)
+                                    (0.9122999999999999, 0.585801601409912)
+                                    (0.9125, 0.8152055740356445)
+                                    (0.9648, 0.9906482696533203)
+                                    (0.9654, 1.053962707519531)
+                                    (0.9661, 1.0671782493591309)
+                                    (0.978, 1.3911771774291992)
+                                    (0.9784, 1.5092849731445308)
+                                    (0.9827, 1.5576171875)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1863,10 +2435,26 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-100-euclidean (k = 10)",
+                            label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
                             borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9473 , y: 1.1744921207428016, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.958 , y: 2.237338542938234, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.9597 , y: 2.6042034626007258, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9615 , y: 2.933047056198122, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9696 , y: 3.692627429962158, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9702999999999999 , y: 5.407098770141623, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 0.9731 , y: 5.996866464614904, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.975 , y: 6.445531368255648, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.5095 , y: 1.2474102973937993, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.5246999999999999 , y: 1.6036520004272503, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -1882,6 +2470,25 @@
                                                                     { x: 0.769 , y: 6.319330930709843, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                                     { x: 0.7692 , y: 7.1324772834778, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                                     { x: 0.8010999999999999 , y: 8.135032415390052, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
+                            data: [
+                                                                    { x: 0.663 , y: 0.3695967197418256, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.6639999999999999 , y: 0.4791486263275295, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.6885 , y: 0.5005085468292297, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.9122999999999999 , y: 0.6940398216247561, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
+                                                                    { x: 0.9125 , y: 0.9048302173614531, label: "B_tree(max_leaf_size=100, candidates=20000)" },
+                                                                    { x: 0.9648 , y: 1.0583455562591557, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.9654 , y: 1.175596714019793, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.9661 , y: 1.256256818771365, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.978 , y: 1.405720710754395, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.9784 , y: 1.9354832172393799, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.9827 , y: 1.9525065422058192, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1989,6 +2596,17 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9473, 1.1744921207428016)
+                                    (0.958, 2.237338542938234)
+                                    (0.9597, 2.6042034626007258)
+                                    (0.9615, 2.933047056198122)
+                                    (0.9696, 3.692627429962158)
+                                    (0.9702999999999999, 5.407098770141623)
+                                    (0.9731, 5.996866464614904)
+                                    (0.975, 6.445531368255648)
+                            };
+            \addlegendentry{ deep10m-96-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.5095, 1.2474102973937993)
                                     (0.5246999999999999, 1.6036520004272503)
                                     (0.5296000000000001, 2.0186495780945)
@@ -2005,6 +2623,20 @@
                                     (0.8010999999999999, 8.135032415390052)
                             };
             \addlegendentry{ glove-100-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.663, 0.3695967197418256)
+                                    (0.6639999999999999, 0.4791486263275295)
+                                    (0.6885, 0.5005085468292297)
+                                    (0.9122999999999999, 0.6940398216247561)
+                                    (0.9125, 0.9048302173614531)
+                                    (0.9648, 1.0583455562591557)
+                                    (0.9654, 1.175596714019793)
+                                    (0.9661, 1.256256818771365)
+                                    (0.978, 1.405720710754395)
+                                    (0.9784, 1.9354832172393799)
+                                    (0.9827, 1.9525065422058192)
+                            };
+            \addlegendentry{ glove-25-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
