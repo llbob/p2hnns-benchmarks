@@ -57,6 +57,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0066 , y: 79.55682661905186, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0075 , y: 78.89955995709033, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0085 , y: 78.456226553338, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0086 , y: 78.1966643019825, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 60.78955796309913, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.017 , y: 60.19241894836541, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 59.7029219145513, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 59.264850071150114, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 58.71821272363364, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0252 , y: 30.67173387827072, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0259 , y: 30.548842576668555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0273 , y: 30.517836469867564, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.0329 , y: 30.48823507647638, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.034499999999999996 , y: 30.475185602153502, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0348 , y: 30.249543094801023, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0371 , y: 30.158463328711886, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -90,8 +114,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0186 , y: 445.2012293201822, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
                                                                     { x: 0.0188 , y: 434.6734413049953, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
@@ -158,8 +182,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.12 , y: 805.3800248355514, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.1207 , y: 800.078285247866, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -334,6 +358,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0066, 79.55682661905186)
+                                    (0.0075, 78.89955995709033)
+                                    (0.0085, 78.456226553338)
+                                    (0.0086, 78.1966643019825)
+                                    (0.014000000000000002, 60.78955796309913)
+                                    (0.017, 60.19241894836541)
+                                    (0.0185, 59.7029219145513)
+                                    (0.0186, 59.264850071150114)
+                                    (0.0187, 58.71821272363364)
+                                    (0.0252, 30.67173387827072)
+                                    (0.0259, 30.548842576668555)
+                                    (0.0273, 30.517836469867564)
+                                    (0.0329, 30.48823507647638)
+                                    (0.034499999999999996, 30.475185602153502)
+                                    (0.0348, 30.249543094801023)
+                                    (0.0371, 30.158463328711886)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1093, 299.4301672946582)
                                     (0.1125, 295.1449293005319)
                                     (0.1127, 294.225895094956)
@@ -498,6 +541,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0187 , y: 515.2433414459229, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0371 , y: 523.9802167415619, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -510,8 +563,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.46909999999999996 , y: 445.7330799102783, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
@@ -529,8 +582,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.7553 , y: 399.31659841537476, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
                                                                     { x: 0.7921 , y: 411.0691068172455, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
@@ -651,6 +704,11 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0187, 515.2433414459229)
+                                    (0.0371, 523.9802167415619)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.8096, 1736.1810767650604)
                                     (0.8158, 1825.0810778141022)
                             };
@@ -691,6 +749,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0371 , y: 535172.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -703,8 +770,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.46299999999999997 , y: 1887512.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                                     { x: 0.46909999999999996 , y: 2086868.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
@@ -723,8 +790,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.7553 , y: 1593236.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
                                                                     { x: 0.7921 , y: 1721764.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
@@ -845,6 +912,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0371, 535172.0)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.8096, 14665848.0)
                                     (0.8158, 16145412.0)
                             };
@@ -885,6 +956,44 @@
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
+                                                {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0085 , y: 314, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0093 , y: 339, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.009600000000000001 , y: 343, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.01 , y: 346, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0131 , y: 533, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.013500000000000002 , y: 535, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0137 , y: 551, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 552, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 553, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0154 , y: 578, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0161 , y: 587, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0166 , y: 594, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.017 , y: 611, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.017499999999999998 , y: 618, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0179 , y: 646, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 652, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 690, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 700, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0243 , y: 927, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0252 , y: 928, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0259 , y: 977, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.0267 , y: 979, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.029599999999999998 , y: 986, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0316 , y: 1002, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0329 , y: 1019, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.033 , y: 1061, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.034499999999999996 , y: 1078, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.035199999999999995 , y: 1155, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0364 , y: 1171, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0371 , y: 1255, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
                                                 {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
@@ -940,8 +1049,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0167 , y: 496, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.1, flag=0)" },
                                                                     { x: 0.0178 , y: 497, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
@@ -1008,8 +1117,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.1255 , y: 75, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
                                                                     { x: 0.1264 , y: 128, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=1)" },
@@ -1179,6 +1288,39 @@
             legend style = { anchor=west},
             cycle list name = black white
             ]
+                                \addplot coordinates {
+                                                (0.0085, 314)
+                                    (0.0093, 339)
+                                    (0.009600000000000001, 343)
+                                    (0.01, 346)
+                                    (0.0131, 533)
+                                    (0.013500000000000002, 535)
+                                    (0.0137, 551)
+                                    (0.014000000000000002, 552)
+                                    (0.014199999999999999, 553)
+                                    (0.0154, 578)
+                                    (0.0161, 587)
+                                    (0.0166, 594)
+                                    (0.017, 611)
+                                    (0.017499999999999998, 618)
+                                    (0.0179, 646)
+                                    (0.0185, 652)
+                                    (0.0186, 690)
+                                    (0.0187, 700)
+                                    (0.0243, 927)
+                                    (0.0252, 928)
+                                    (0.0259, 977)
+                                    (0.0267, 979)
+                                    (0.029599999999999998, 986)
+                                    (0.0316, 1002)
+                                    (0.0329, 1019)
+                                    (0.033, 1061)
+                                    (0.034499999999999996, 1078)
+                                    (0.035199999999999995, 1155)
+                                    (0.0364, 1171)
+                                    (0.0371, 1255)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
                                 \addplot coordinates {
                                                 (0.1096, 350)
                                     (0.10980000000000001, 351)
@@ -1361,6 +1503,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 1.4530049332028527 , y: 79.55682661905186, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 1.403871258255821 , y: 78.89955995709033, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 1.3242834863816573 , y: 78.456226553338, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 1.2880031992585148 , y: 78.1966643019825, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.7777991415649427 , y: 60.78955796309913, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.6698461924018511 , y: 60.19241894836541, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.6381828896333648 , y: 59.7029219145513, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.6315967651628772 , y: 59.264850071150114, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.4312397861426704 , y: 30.67173387827072, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.41448919532751644 , y: 30.548842576668555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.3967414445695823 , y: 30.517836469867564, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.35158787956600224 , y: 30.48823507647638, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.33503300552719834 , y: 30.475185602153502, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.33187308680328337 , y: 30.249543094801023, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.3167723816648859 , y: 30.158463328711886, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -1394,8 +1559,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 6.077187237854931 , y: 445.2012293201822, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
                                                                     { x: 6.050422108279576 , y: 434.6734413049953, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
@@ -1463,8 +1628,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 9.403165184605065 , y: 805.3800248355514, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 9.400945424523913 , y: 800.078285247866, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -1636,6 +1801,24 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (1.4530049332028527, 79.55682661905186)
+                                    (1.403871258255821, 78.89955995709033)
+                                    (1.3242834863816573, 78.456226553338)
+                                    (1.2880031992585148, 78.1966643019825)
+                                    (0.7777991415649427, 60.78955796309913)
+                                    (0.6698461924018511, 60.19241894836541)
+                                    (0.6381828896333648, 59.7029219145513)
+                                    (0.6315967651628772, 59.264850071150114)
+                                    (0.4312397861426704, 30.67173387827072)
+                                    (0.41448919532751644, 30.548842576668555)
+                                    (0.3967414445695823, 30.517836469867564)
+                                    (0.35158787956600224, 30.48823507647638)
+                                    (0.33503300552719834, 30.475185602153502)
+                                    (0.33187308680328337, 30.249543094801023)
+                                    (0.3167723816648859, 30.158463328711886)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (33.74028140566849, 299.4301672946582)
                                     (33.58948318072661, 295.1449293005319)
                                     (33.57229063479639, 294.225895094956)
@@ -1798,6 +1981,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0371 , y: 10.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -1809,8 +2001,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.46909999999999996 , y: 10.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
                                                             ]
@@ -1827,8 +2019,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.7921 , y: 10.0, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
                                                             ]
@@ -1947,6 +2139,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0371, 10.0)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.8158, 10.0)
                             };
             \addlegendentry{ deep10m-96-euclidean (k = 10) };
@@ -1983,6 +2179,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0066 , y: 6726.91487007904, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0075 , y: 6782.952912425041, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0085 , y: 6821.281413989067, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0086 , y: 6843.923647858621, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 8803.683032616615, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.017 , y: 8891.019988066673, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 8963.916385297776, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 9030.17554853344, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 9114.241990281105, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0252 , y: 17448.37778405285, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0259 , y: 17518.568785605432, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0273 , y: 17536.367642850877, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.0329 , y: 17553.393912687305, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.034499999999999996 , y: 17560.910275873186, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0348 , y: 17691.903587528228, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0371 , y: 17745.333844330788, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -2015,8 +2235,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0186 , y: 4239.682812381744, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
                                                                     { x: 0.0188 , y: 4342.367903438568, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
@@ -2082,8 +2302,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.12 , y: 1978.2412660722732, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.1207 , y: 1991.3501333265306, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -2254,6 +2474,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0066, 6726.91487007904)
+                                    (0.0075, 6782.952912425041)
+                                    (0.0085, 6821.281413989067)
+                                    (0.0086, 6843.923647858621)
+                                    (0.014000000000000002, 8803.683032616615)
+                                    (0.017, 8891.019988066673)
+                                    (0.0185, 8963.916385297776)
+                                    (0.0186, 9030.17554853344)
+                                    (0.0187, 9114.241990281105)
+                                    (0.0252, 17448.37778405285)
+                                    (0.0259, 17518.568785605432)
+                                    (0.0273, 17536.367642850877)
+                                    (0.0329, 17553.393912687305)
+                                    (0.034499999999999996, 17560.910275873186)
+                                    (0.0348, 17691.903587528228)
+                                    (0.0371, 17745.333844330788)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1093, 48979.19315380097)
                                     (0.1125, 49690.32683284378)
                                     (0.1127, 49845.53788260842)
@@ -2412,6 +2651,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0066 , y: 79.55682661905186, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0075 , y: 78.89955995709033, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0086 , y: 78.456226553338, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0087 , y: 78.1966643019825, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 60.78955796309913, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.017 , y: 60.19241894836541, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 59.7029219145513, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0187 , y: 59.264850071150114, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0188 , y: 58.71821272363364, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.025500000000000002 , y: 30.67173387827072, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0263 , y: 30.548842576668555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.027700000000000002 , y: 30.517836469867564, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.0333 , y: 30.48823507647638, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0348 , y: 30.475185602153502, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0351 , y: 30.249543094801023, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0375 , y: 30.158463328711886, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -2429,8 +2692,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0015 , y: 289.8393049446844, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.0029000000000000002 , y: 222.4143593114521, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
@@ -2476,8 +2739,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.00030000000000000003 , y: 805.3800248355514, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.0005 , y: 535.1766369584775, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -2632,6 +2895,25 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0066, 79.55682661905186)
+                                    (0.0075, 78.89955995709033)
+                                    (0.0086, 78.456226553338)
+                                    (0.0087, 78.1966643019825)
+                                    (0.014000000000000002, 60.78955796309913)
+                                    (0.017, 60.19241894836541)
+                                    (0.0186, 59.7029219145513)
+                                    (0.0187, 59.264850071150114)
+                                    (0.0188, 58.71821272363364)
+                                    (0.025500000000000002, 30.67173387827072)
+                                    (0.0263, 30.548842576668555)
+                                    (0.027700000000000002, 30.517836469867564)
+                                    (0.0333, 30.48823507647638)
+                                    (0.0348, 30.475185602153502)
+                                    (0.0351, 30.249543094801023)
+                                    (0.0375, 30.158463328711886)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.0001, 299.4301672946582)
                                     (0.0004, 152.05822022844058)
                                     (0.0005, 123.83010217959136)
@@ -2739,6 +3021,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.007000000000000001 , y: 79.55682661905186, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0079 , y: 78.89955995709033, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.009 , y: 78.456226553338, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0091 , y: 78.1966643019825, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0149 , y: 60.78955796309913, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.018099999999999998 , y: 60.19241894836541, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0198 , y: 59.7029219145513, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0199 , y: 59.264850071150114, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.028000000000000004 , y: 30.67173387827072, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0289 , y: 30.548842576668555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0304 , y: 30.517836469867564, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.036199999999999996 , y: 30.48823507647638, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.038 , y: 30.475185602153502, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0386 , y: 30.249543094801023, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0411 , y: 30.158463328711886, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -2758,8 +3063,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0001 , y: 445.2012293201822, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
                                                                     { x: 0.0016 , y: 289.8393049446844, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=3, delta=0.1, flag=0)" },
@@ -2807,8 +3112,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.00030000000000000003 , y: 805.3800248355514, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.0005 , y: 535.1766369584775, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -2963,6 +3268,24 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.007000000000000001, 79.55682661905186)
+                                    (0.0079, 78.89955995709033)
+                                    (0.009, 78.456226553338)
+                                    (0.0091, 78.1966643019825)
+                                    (0.0149, 60.78955796309913)
+                                    (0.018099999999999998, 60.19241894836541)
+                                    (0.0198, 59.7029219145513)
+                                    (0.0199, 59.264850071150114)
+                                    (0.028000000000000004, 30.67173387827072)
+                                    (0.0289, 30.548842576668555)
+                                    (0.0304, 30.517836469867564)
+                                    (0.036199999999999996, 30.48823507647638)
+                                    (0.038, 30.475185602153502)
+                                    (0.0386, 30.249543094801023)
+                                    (0.0411, 30.158463328711886)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.0001, 299.4301672946582)
                                     (0.0004, 152.05822022844058)
                                     (0.0005, 123.83010217959136)
@@ -3074,6 +3397,29 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0066 , y: 12.517094612121582, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0075 , y: 12.609362602233887, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0085 , y: 12.656807899475098, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0086 , y: 12.729763984680176, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 16.41368865966797, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.017 , y: 16.556978225708008, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 16.701102256774902, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 16.80612564086914, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 16.95263385772705, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0252 , y: 32.53507614135742, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0259 , y: 32.58848190307617, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0273 , y: 32.64427185058594, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.034499999999999996 , y: 32.69648551940918, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0348 , y: 32.98819065093994, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0371 , y: 33.08892250061035, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -3109,8 +3455,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0186 , y: 2.251744270324707, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
                                                                     { x: 0.0188 , y: 2.2956132888793945, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
@@ -3175,8 +3521,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.12 , y: 1.2557506561279297, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
                                                                     { x: 0.1207 , y: 1.2668371200561523, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.1, flag=0)" },
@@ -3363,6 +3709,24 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0066, 12.517094612121582)
+                                    (0.0075, 12.609362602233887)
+                                    (0.0085, 12.656807899475098)
+                                    (0.0086, 12.729763984680176)
+                                    (0.014000000000000002, 16.41368865966797)
+                                    (0.017, 16.556978225708008)
+                                    (0.0185, 16.701102256774902)
+                                    (0.0186, 16.80612564086914)
+                                    (0.0187, 16.95263385772705)
+                                    (0.0252, 32.53507614135742)
+                                    (0.0259, 32.58848190307617)
+                                    (0.0273, 32.64427185058594)
+                                    (0.034499999999999996, 32.69648551940918)
+                                    (0.0348, 32.98819065093994)
+                                    (0.0371, 33.08892250061035)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1093, 3.319382667541504)
                                     (0.11499999999999999, 3.3524036407470703)
                                     (0.11539999999999999, 3.3979415893554688)
@@ -3539,6 +3903,26 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0066 , y: 13.331496715545654, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0086 , y: 13.438737392425537, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.014000000000000002 , y: 17.223656177520752, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0155 , y: 17.39213466644287, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=1)" },
+                                                                    { x: 0.0185 , y: 17.566275596618652, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 17.840003967285156, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 18.18324327468872, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0252 , y: 33.96918773651123, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.033600000000000005 , y: 34.03829336166382, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.034499999999999996 , y: 34.37241315841675, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0348 , y: 34.63777303695679, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0371 , y: 34.65898036956787, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -3572,8 +3956,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0172 , y: 2.472198009490967, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=1)" },
                                                                     { x: 0.0178 , y: 2.4827122688293457, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=0)" },
@@ -3620,8 +4004,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.1263 , y: 1.4165401458740234, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=0)" },
                                                                     { x: 0.1272 , y: 1.4787673950195312, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=0)" },
@@ -3796,6 +4180,21 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0066, 13.331496715545654)
+                                    (0.0086, 13.438737392425537)
+                                    (0.014000000000000002, 17.223656177520752)
+                                    (0.0155, 17.39213466644287)
+                                    (0.0185, 17.566275596618652)
+                                    (0.0186, 17.840003967285156)
+                                    (0.0187, 18.18324327468872)
+                                    (0.0252, 33.96918773651123)
+                                    (0.033600000000000005, 34.03829336166382)
+                                    (0.034499999999999996, 34.37241315841675)
+                                    (0.0348, 34.63777303695679)
+                                    (0.0371, 34.65898036956787)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1093, 3.6977648735046387)
                                     (0.11040000000000001, 3.741705417633056)
                                     (0.1125, 3.7442207336425777)
@@ -3940,6 +4339,27 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0073999999999999995 , y: 13.895559310913086, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0075 , y: 13.93838882446289, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0086 , y: 13.968305587768555, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0155 , y: 17.868096828460693, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=1)" },
+                                                                    { x: 0.0162 , y: 18.084750175476074, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.017 , y: 18.091816902160645, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 18.144423961639404, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0186 , y: 18.426203727722164, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0187 , y: 18.696115016937256, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0252 , y: 34.709250926971436, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0329 , y: 34.84423637390137, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.033600000000000005 , y: 35.30814170837402, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0371 , y: 35.41233777999878, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -3973,8 +4393,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0172 , y: 2.5932884216308594, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=1)" },
                                                                     { x: 0.0178 , y: 2.6047897338867183, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=0)" },
@@ -4024,8 +4444,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.1263 , y: 1.4768218994140625, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=0)" },
                                                                     { x: 0.1273 , y: 1.557619571685791, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
@@ -4190,6 +4610,22 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.0073999999999999995, 13.895559310913086)
+                                    (0.0075, 13.93838882446289)
+                                    (0.0086, 13.968305587768555)
+                                    (0.0155, 17.868096828460693)
+                                    (0.0162, 18.084750175476074)
+                                    (0.017, 18.091816902160645)
+                                    (0.0185, 18.144423961639404)
+                                    (0.0186, 18.426203727722164)
+                                    (0.0187, 18.696115016937256)
+                                    (0.0252, 34.709250926971436)
+                                    (0.0329, 34.84423637390137)
+                                    (0.033600000000000005, 35.30814170837402)
+                                    (0.0371, 35.41233777999878)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.1125, 3.9222550392150883)
                                     (0.1127, 3.958687782287597)
                                     (0.11399999999999999, 4.151589870452881)
@@ -4327,6 +4763,28 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
+                            label: "cifar10-512-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
+                            data: [
+                                                                    { x: 0.0073999999999999995 , y: 14.29547977447511, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=1)" },
+                                                                    { x: 0.0075 , y: 14.342285394668599, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.3, flag=1)" },
+                                                                    { x: 0.0086 , y: 14.598208665847785, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0155 , y: 18.32293176651003, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=1)" },
+                                                                    { x: 0.0162 , y: 18.465573787689323, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.017 , y: 18.581141233444235, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0179 , y: 18.688528537750255, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0185 , y: 18.796751499176075, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0187 , y: 19.383595228195315, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.1, flag=1)" },
+                                                                    { x: 0.0316 , y: 35.46509766578675, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0329 , y: 35.77437090873724, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.034499999999999996 , y: 35.97898936271673, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.035199999999999995 , y: 36.43753695487977, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0371 , y: 36.54463005065936, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, M2=16, level=4, m_level=1, m_num=64, initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "deep10m-96-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
@@ -4359,8 +4817,8 @@
                                                 {
                             label: "glove-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.0177 , y: 2.991181373596211, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=7, delta=0.3, flag=1)" },
                                                                     { x: 0.0185 , y: 3.11049699783326, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.5, flag=0)" },
@@ -4410,8 +4868,8 @@
                                                 {
                             label: "music-100-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.1248 , y: 1.6156764030456894, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=5, delta=0.1, flag=1)" },
                                                                     { x: 0.12490000000000001 , y: 1.6242158412933663, label: "MH_MQH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, M2=16, level=4, m_level=1, m_num=64, initial_topk=250, l0=3, delta=0.5, flag=0)" },
@@ -4570,6 +5028,23 @@
             legend style = { anchor=west},
             cycle list name = black white
             ]
+                                \addplot coordinates {
+                                                (0.0073999999999999995, 14.29547977447511)
+                                    (0.0075, 14.342285394668599)
+                                    (0.0086, 14.598208665847785)
+                                    (0.0155, 18.32293176651003)
+                                    (0.0162, 18.465573787689323)
+                                    (0.017, 18.581141233444235)
+                                    (0.0179, 18.688528537750255)
+                                    (0.0185, 18.796751499176075)
+                                    (0.0187, 19.383595228195315)
+                                    (0.0316, 35.46509766578675)
+                                    (0.0329, 35.77437090873724)
+                                    (0.034499999999999996, 35.97898936271673)
+                                    (0.035199999999999995, 36.43753695487977)
+                                    (0.0371, 36.54463005065936)
+                            };
+            \addlegendentry{ cifar10-512-euclidean (k = 10) };
                                 \addplot coordinates {
                                                 (0.11040000000000001, 4.229566812515304)
                                     (0.1127, 4.304486036300709)
