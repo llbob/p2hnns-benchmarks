@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>mh-orig</title>
+        <title>openai-dbpedia-1536-euclidean (k = 10)</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for mh-orig</h2>
+                                                        <h2>Plots for openai-dbpedia-1536-euclidean (k = 10)</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.6272 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 15.658303215123729, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 10.70301176640676, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -172,11 +173,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.048799999999999996, 66405.4969760299)
-                                    (0.35209999999999997, 47244.857960305475)
+                                                (0.6272, 52.651009637348714)
+                                    (0.7232000000000001, 27.2102940408663)
+                                    (0.8093, 15.658303215123729)
+                                    (0.8859999999999999, 10.70301176640676)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -194,12 +196,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.8093 , y: 8.935362577438354, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 11.675371885299683, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -307,9 +310,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.35209999999999997, 0.03841423988342285)
+                                                (0.8093, 8.935362577438354)
+                                    (0.8859999999999999, 11.675371885299683)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -327,12 +331,13 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.8093 , y: 1204956.0, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 1220728.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -440,9 +445,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.35209999999999997, 5888.0)
+                                                (0.8093, 1204956.0)
+                                    (0.8859999999999999, 1220728.0)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -460,13 +466,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.6272 , y: 10009, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 35009, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 50009, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -574,10 +582,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.0639, 1)
-                                    (0.35209999999999997, 147)
+                                                (0.6272, 10009)
+                                    (0.7232000000000001, 20009)
+                                    (0.8093, 35009)
+                                    (0.8859999999999999, 50009)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -595,12 +605,16 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.08259977686474138 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.07423305420308578 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.06771528160518797 , y: 15.658303215123729, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.06207810757319144 , y: 10.70301176640676, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.062017659964936585 , y: 9.563133744396223, label: "B_tree(max_leaf_size=25, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -708,9 +722,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.1477833891513366, 47244.857960305475)
+                                                (0.08259977686474138, 52.651009637348714)
+                                    (0.07423305420308578, 27.2102940408663)
+                                    (0.06771528160518797, 15.658303215123729)
+                                    (0.06207810757319144, 10.70301176640676)
+                                    (0.062017659964936585, 9.563133744396223)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -728,16 +746,12 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 2.739, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 3.581, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.8859999999999999 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -845,13 +859,9 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 0.823)
-                                    (0.020999999999999998, 1.14)
-                                    (0.048799999999999996, 2.739)
-                                    (0.0639, 3.581)
-                                    (0.35209999999999997, 10.0)
+                                                (0.8859999999999999, 10.0)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -869,14 +879,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.12462731933593751, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.6272 , y: 22885.714980577464, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 44283.09367735291, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 76953.16557902527, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 114054.6256177597, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -984,11 +995,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 0.07663531494140625)
-                                    (0.020999999999999998, 0.09405798339843749)
-                                    (0.35209999999999997, 0.12462731933593751)
+                                                (0.6272, 22885.714980577464)
+                                    (0.7232000000000001, 44283.09367735291)
+                                    (0.8093, 76953.16557902527)
+                                    (0.8859999999999999, 114054.6256177597)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1006,14 +1018,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3539 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2509 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.398 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.5535 , y: 15.658303215123729, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7022999999999999 , y: 10.70301176640676, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1121,11 +1134,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.0495, 66405.4969760299)
-                                    (0.3539, 47244.857960305475)
+                                                (0.2509, 52.651009637348714)
+                                    (0.398, 27.2102940408663)
+                                    (0.5535, 15.658303215123729)
+                                    (0.7022999999999999, 10.70301176640676)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1143,14 +1157,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3671 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.3283 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.4957 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.6553 , y: 15.658303215123729, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7974 , y: 10.70301176640676, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1258,11 +1273,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.015, 76831.41909838618)
-                                    (0.0538, 66405.4969760299)
-                                    (0.3671, 47244.857960305475)
+                                                (0.3283, 52.651009637348714)
+                                    (0.4957, 27.2102940408663)
+                                    (0.6553, 15.658303215123729)
+                                    (0.7974, 10.70301176640676)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1280,16 +1296,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.010251998901367188, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 0.012874603271484375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=300000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.013113021850585938, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=50000)" },
+                                                                    { x: 0.6272 , y: 18.23580265045166, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 36.214470863342285, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 63.166260719299316, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 92.8720235824585, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1397,13 +1412,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 0.008344650268554688)
-                                    (0.020999999999999998, 0.009298324584960938)
-                                    (0.048799999999999996, 0.010251998901367188)
-                                    (0.0639, 0.012874603271484375)
-                                    (0.35209999999999997, 0.013113021850585938)
+                                                (0.6272, 18.23580265045166)
+                                    (0.7232000000000001, 36.214470863342285)
+                                    (0.8093, 63.166260719299316)
+                                    (0.8859999999999999, 92.8720235824585)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1421,16 +1435,15 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.011205673217773438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.015735626220703125, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.018596649169921875, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.6272 , y: 19.117403030395508, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 37.36088275909424, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 65.00701904296875, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 94.77016925811768, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1538,13 +1551,12 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.013900000000000001, 0.0095367431640625)
-                                    (0.020999999999999998, 0.010251998901367188)
-                                    (0.048799999999999996, 0.011205673217773438)
-                                    (0.0639, 0.015735626220703125)
-                                    (0.35209999999999997, 0.018596649169921875)
+                                                (0.6272, 19.117403030395508)
+                                    (0.7232000000000001, 37.36088275909424)
+                                    (0.8093, 65.00701904296875)
+                                    (0.8859999999999999, 94.77016925811768)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1562,15 +1574,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.03053903579711912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.03697156906127928, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.6128 , y: 26.28072261810302, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.6187 , y: 30.349979400634744, label: "B_tree(max_leaf_size=25, candidates=10000)" },
+                                                                    { x: 0.6272 , y: 30.50331830978393, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 54.18186187744138, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8093 , y: 81.93882703781122, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 110.56154489517212, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1678,12 +1692,14 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.020999999999999998, 0.017647743225097653)
-                                    (0.048799999999999996, 0.02027034759521484)
-                                    (0.0639, 0.03053903579711912)
-                                    (0.35209999999999997, 0.03697156906127928)
+                                                (0.6128, 26.28072261810302)
+                                    (0.6187, 30.349979400634744)
+                                    (0.6272, 30.50331830978393)
+                                    (0.7232000000000001, 54.18186187744138)
+                                    (0.8093, 81.93882703781122)
+                                    (0.8859999999999999, 110.56154489517212)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1701,14 +1717,17 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "balltree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 3.0356068611145934, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.6128 , y: 67.89416790009093, label: "B_tree(max_leaf_size=100, candidates=10000)" },
+                                                                    { x: 0.6272 , y: 70.1497728824839, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.7232000000000001 , y: 77.49948358535782, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8038000000000001 , y: 121.03765010833808, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 0.8093 , y: 129.95939588546966, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8859999999999999 , y: 158.06151199340925, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1816,11 +1835,14 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
-                                                (0.020999999999999998, 0.07869911193901513)
-                                    (0.048799999999999996, 0.4324717521669824)
-                                    (0.35209999999999997, 3.0356068611145934)
+                                                (0.6128, 67.89416790009093)
+                                    (0.6272, 70.1497728824839)
+                                    (0.7232000000000001, 77.49948358535782)
+                                    (0.8038000000000001, 121.03765010833808)
+                                    (0.8093, 129.95939588546966)
+                                    (0.8859999999999999, 158.06151199340925)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ balltree };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
