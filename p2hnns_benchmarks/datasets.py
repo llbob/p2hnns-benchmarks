@@ -8,6 +8,7 @@ import time, gdown
 import h5py
 import numpy as np
 import zipfile
+from datasets import load_dataset
 from typing import Any, Callable, Dict, Tuple
 from sklearn.decomposition import PCA
 # from p2hnns_benchmarks import generate_queries
@@ -262,11 +263,11 @@ def sift(out_fn: str) -> None:
     import tarfile
 
     url = "ftp://ftp.irisa.fr/local/texmex/corpus/sift.tar.gz"
-    fn = os.path.join("data", "sift.tar.tz")
+    fn = os.path.join("data", "sift.tar.gz")
     download(url, fn)
     with tarfile.open(fn, "r:gz") as t:
-        points = _get_irisa_matrix(t, "sift/sift_base.fvecs")
-        # test = _get_irisa_matrix(t, "sift/sift_query.fvecs")
+        X = _get_irisa_matrix(t, "sift/sift_base.fvecs")
+        points = np.array(X)
         hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, "euclidean")
 
@@ -518,6 +519,88 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
     import shutil
     shutil.rmtree(extract_dir)
 
+def _load_mnist_vectors(fn: str) -> np.ndarray:
+    import gzip
+    import struct
+
+    print("parsing vectors in %s..." % fn)
+    f = gzip.open(fn)
+    type_code_info = {
+        0x08: (1, "!B"),
+        0x09: (1, "!b"),
+        0x0B: (2, "!H"),
+        0x0C: (4, "!I"),
+        0x0D: (4, "!f"),
+        0x0E: (8, "!d"),
+    }
+    magic, type_code, dim_count = struct.unpack("!hBB", f.read(4))
+    assert magic == 0
+    assert type_code in type_code_info
+
+    dimensions = [struct.unpack("!I", f.read(4))[0] for i in range(dim_count)]
+
+    entry_count = dimensions[0]
+    entry_size = np.product(dimensions[1:])
+
+    b, format_string = type_code_info[type_code]
+    vectors = []
+    for i in range(entry_count):
+        vectors.append([struct.unpack(format_string, f.read(b))[0] for j in range(entry_size)])
+    return np.array(vectors)
+
+def fashion_mnist(out_fn: str) -> None:
+    download(
+        "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz",  # noqa
+        "fashion-mnist-train.gz",
+    )
+    X = _load_mnist_vectors("fashion-mnist-train.gz")
+    X = X.astype(np.float32)
+    hyperplanes = create_hyperplanes_rpsd(X)
+    write_output(X, hyperplanes, out_fn, "euclidean")
+
+
+
+
+def openai_dbpedia(out_fn: str, distance: str, size: int = None) -> None:
+    import tempfile
+    import pandas as pd
+    # https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K
+    # urls for all the parquet files/shards
+    data_urls = [
+        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00000-of-00004.parquet",
+        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00001-of-00004.parquet",
+        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00002-of-00004.parquet",
+        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00003-of-00004.parquet"
+    ]
+    
+    # as a workaround due to some compatibility ussies with datasets, create a temporary directory to store downloaded parquet files
+    with tempfile.TemporaryDirectory() as temp_dir:
+        embeddings_data = []
+        
+        # Download each file and load it directly with pandas
+        for i, url in enumerate(data_urls):
+            local_path = os.path.join(temp_dir, f"shard_{i}.parquet")
+            download(url, local_path)
+            
+            # load the parquet file
+            df = pd.read_parquet(local_path)
+            embeddings_data.append(df["text-embedding-3-small-1536-embedding"].tolist())
+            
+        # now combine all
+        combined_embeddings = []
+        for shard in embeddings_data:
+            combined_embeddings.extend(shard)
+        
+        # use size limit if its set
+        if size is not None and size < len(combined_embeddings):
+            print(f"Limiting to {size} embeddings")
+            combined_embeddings = combined_embeddings[:size]
+        
+        points = np.array(combined_embeddings, dtype=np.float32)
+        hyperplanes = create_hyperplanes_rpsd(points)
+        write_output(points, hyperplanes, out_fn, distance)
+
+
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
@@ -546,8 +629,11 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "glove-100-euclidean": lambda out_fn: glove(out_fn, 100, "euclidean"),
     # "glove-100-angular": lambda out_fn: glove(out_fn, 100, "angular"),
     "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
-    "sift-128-euclidean": sift,
+    "sift-128-euclidean": sift, 
+    "glove-200-euclidean": lambda out_fn: glove(out_fn, 200, "euclidean"),
     "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
+    "fashion-mnist-784-euclidean": fashion_mnist, # 60.000 points
     "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
+    "openai-dbpedia-1536-euclidean": lambda out_fn: openai_dbpedia(out_fn, "euclidean", 100000), #100.000
     "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
 }
