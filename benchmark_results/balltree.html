@@ -177,6 +177,25 @@
                                                                     { x: 0.2493 , y: 150.17985186479493, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.29100000000000004 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.304 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 19.85096508051361, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 10.130651537970946, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 9.992203263447662, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7505 , y: 5.78250566982943, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.7628 , y: 5.76800322417087, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 5.702733200365041, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 5.5237272998999725, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 4.042033492444728, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 3.9973124872845665, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
                                                 ]},
                         options: {
                             responsive: false,
@@ -367,6 +386,20 @@
                                     (0.2493, 150.17985186479493)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.29100000000000004, 20.0133123256182)
+                                    (0.304, 19.942649117209235)
+                                    (0.3226, 19.85096508051361)
+                                    (0.5222, 10.130651537970946)
+                                    (0.5577, 9.992203263447662)
+                                    (0.7505, 5.78250566982943)
+                                    (0.7628, 5.76800322417087)
+                                    (0.769, 5.702733200365041)
+                                    (0.7722, 5.5237272998999725)
+                                    (0.8489000000000001, 4.042033492444728)
+                                    (0.8501, 3.9973124872845665)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -454,6 +487,17 @@
                             data: [
                                                                     { x: 0.24609999999999999 , y: 14.642911672592163, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 17.278897762298584, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8461000000000001 , y: 21.301631927490234, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.8489000000000001 , y: 25.600125312805176, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 29.836978673934937, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -598,6 +642,12 @@
                                     (0.2493, 17.278897762298584)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8461000000000001, 21.301631927490234)
+                                    (0.8489000000000001, 25.600125312805176)
+                                    (0.8501, 29.836978673934937)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -685,6 +735,17 @@
                             data: [
                                                                     { x: 0.24609999999999999 , y: 1011096.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 1014368.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8461000000000001 , y: 3238208.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
+                                                                    { x: 0.8489000000000001 , y: 3243328.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 3250112.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -829,6 +890,12 @@
                                     (0.2493, 1014368.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8461000000000001, 3238208.0)
+                                    (0.8489000000000001, 3243328.0)
+                                    (0.8501, 3250112.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -929,6 +996,18 @@
                                                                     { x: 0.1255 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
                                                                     { x: 0.1956 , y: 35009, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.2493 , y: 50009, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.3226 , y: 10009, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5577 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7722 , y: 35009, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8501 , y: 50009, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1086,6 +1165,13 @@
                                     (0.2493, 50009)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.3226, 10009)
+                                    (0.5577, 20009)
+                                    (0.7722, 35009)
+                                    (0.8501, 50009)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -1217,6 +1303,26 @@
                                                                     { x: 0.0780635435597814 , y: 160.54977076425263, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.07094417346130903 , y: 152.75996749369475, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.07028959103426757 , y: 109.11321449699942, label: "B_tree(max_leaf_size=25, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0355807382742782 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.034845686931961356 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.032469249571720926 , y: 19.85096508051361, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.019987062566122014 , y: 10.130651537970946, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.018603561705016525 , y: 9.992203263447662, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.018594725681219677 , y: 8.650563891325543, label: "B_tree(max_leaf_size=25, candidates=20000)" },
+                                                                    { x: 0.013863927885451127 , y: 5.78250566982943, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.013639901127862095 , y: 5.76800322417087, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.013556494299968913 , y: 5.702733200365041, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.013483899219746994 , y: 5.5237272998999725, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.01221997197302794 , y: 4.042033492444728, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.012195280422259445 , y: 3.9973124872845665, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1405,6 +1511,21 @@
                                     (0.07028959103426757, 109.11321449699942)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0355807382742782, 20.0133123256182)
+                                    (0.034845686931961356, 19.942649117209235)
+                                    (0.032469249571720926, 19.85096508051361)
+                                    (0.019987062566122014, 10.130651537970946)
+                                    (0.018603561705016525, 9.992203263447662)
+                                    (0.018594725681219677, 8.650563891325543)
+                                    (0.013863927885451127, 5.78250566982943)
+                                    (0.013639901127862095, 5.76800322417087)
+                                    (0.013556494299968913, 5.702733200365041)
+                                    (0.013483899219746994, 5.5237272998999725)
+                                    (0.01221997197302794, 4.042033492444728)
+                                    (0.012195280422259445, 3.9973124872845665)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -1482,6 +1603,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.2493 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8501 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1616,6 +1746,10 @@
                                                 (0.2493, 10.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8501, 10.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -1750,6 +1884,25 @@
                                                                     { x: 0.1921 , y: 4612.447386766434, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
                                                                     { x: 0.24609999999999999 , y: 6618.854511354446, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 6754.354777984619, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.29100000000000004 , y: 162058.5312031708, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.304 , y: 162376.02040571594, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 163725.64189286807, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 320149.9911277771, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 325264.8003958435, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7505 , y: 560886.2637043762, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.7628 , y: 561408.840139038, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 569921.8051779022, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 597474.824664093, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 802400.0805689392, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 813074.2868711395, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1941,6 +2094,20 @@
                                     (0.2493, 6754.354777984619)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.29100000000000004, 162058.5312031708)
+                                    (0.304, 162376.02040571594)
+                                    (0.3226, 163725.64189286807)
+                                    (0.5222, 320149.9911277771)
+                                    (0.5577, 325264.8003958435)
+                                    (0.7505, 560886.2637043762)
+                                    (0.7628, 561408.840139038)
+                                    (0.769, 569921.8051779022)
+                                    (0.7722, 597474.824664093)
+                                    (0.8489000000000001, 802400.0805689392)
+                                    (0.8501, 813074.2868711395)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -2077,6 +2244,25 @@
                                                                     { x: 0.1518 , y: 160.54977076425263, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.1911 , y: 152.75996749369475, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.1947 , y: 150.17985186479493, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2945 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.30779999999999996 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3262 , y: 19.85096508051361, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5279 , y: 10.130651537970946, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5641 , y: 9.992203263447662, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7579 , y: 5.78250566982943, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.77 , y: 5.76800322417087, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.7765 , y: 5.702733200365041, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7795 , y: 5.5237272998999725, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8558 , y: 4.042033492444728, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8571 , y: 3.9973124872845665, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -2270,6 +2456,20 @@
                                     (0.1947, 150.17985186479493)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.2945, 20.0133123256182)
+                                    (0.30779999999999996, 19.942649117209235)
+                                    (0.3262, 19.85096508051361)
+                                    (0.5279, 10.130651537970946)
+                                    (0.5641, 9.992203263447662)
+                                    (0.7579, 5.78250566982943)
+                                    (0.77, 5.76800322417087)
+                                    (0.7765, 5.702733200365041)
+                                    (0.7795, 5.5237272998999725)
+                                    (0.8558, 4.042033492444728)
+                                    (0.8571, 3.9973124872845665)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -2408,6 +2608,27 @@
                                                                     { x: 0.1584 , y: 160.54977076425263, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.199 , y: 152.75996749369475, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.20179999999999998 , y: 150.17985186479493, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.3194 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.3362 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3548 , y: 19.85096508051361, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5739 , y: 10.130651537970946, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.6143 , y: 9.992203263447662, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.8049 , y: 5.78250566982943, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.8153 , y: 5.76800322417087, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.8199 , y: 5.702733200365041, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.8227 , y: 5.5237272998999725, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8233 , y: 4.966994411050091, label: "B_tree(max_leaf_size=25, candidates=35000)" },
+                                                                    { x: 0.8888 , y: 4.042033492444728, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8903000000000001 , y: 3.9973124872845665, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                                    { x: 0.8909 , y: 3.476299986700925, label: "B_tree(max_leaf_size=25, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -2603,6 +2824,22 @@
                                     (0.20179999999999998, 150.17985186479493)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.3194, 20.0133123256182)
+                                    (0.3362, 19.942649117209235)
+                                    (0.3548, 19.85096508051361)
+                                    (0.5739, 10.130651537970946)
+                                    (0.6143, 9.992203263447662)
+                                    (0.8049, 5.78250566982943)
+                                    (0.8153, 5.76800322417087)
+                                    (0.8199, 5.702733200365041)
+                                    (0.8227, 5.5237272998999725)
+                                    (0.8233, 4.966994411050091)
+                                    (0.8888, 4.042033492444728)
+                                    (0.8903000000000001, 3.9973124872845665)
+                                    (0.8909, 3.476299986700925)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -2738,6 +2975,25 @@
                                                                     { x: 0.1956 , y: 6.2198638916015625, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.24609999999999999 , y: 6.519317626953125, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 6.6318511962890625, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.29100000000000004 , y: 49.66545104980469, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.304 , y: 49.82709884643555, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 50.130248069763184, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 98.25968742370605, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 99.58767890930176, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7505 , y: 172.2412109375, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.7628 , y: 172.61290550231934, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 174.7654676437378, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 180.5102825164795, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 246.6883659362793, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 249.57847595214844, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -2930,6 +3186,20 @@
                                     (0.2493, 6.6318511962890625)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.29100000000000004, 49.66545104980469)
+                                    (0.304, 49.82709884643555)
+                                    (0.3226, 50.130248069763184)
+                                    (0.5222, 98.25968742370605)
+                                    (0.5577, 99.58767890930176)
+                                    (0.7505, 172.2412109375)
+                                    (0.7628, 172.61290550231934)
+                                    (0.769, 174.7654676437378)
+                                    (0.7722, 180.5102825164795)
+                                    (0.8489000000000001, 246.6883659362793)
+                                    (0.8501, 249.57847595214844)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -3068,6 +3338,24 @@
                                                                     { x: 0.1956 , y: 6.540155410766601, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.24609999999999999 , y: 6.783652305603027, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 6.905174255371094, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.29100000000000004 , y: 52.17174291610718, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 52.4405837059021, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 102.15286016464233, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 103.7179946899414, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7505 , y: 178.50821018218994, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.7628 , y: 179.29717302322388, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 181.1325192451477, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 187.19297647476196, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 254.31909561157224, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 257.8089118003845, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -3263,6 +3551,19 @@
                                     (0.2493, 6.905174255371094)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.29100000000000004, 52.17174291610718)
+                                    (0.3226, 52.4405837059021)
+                                    (0.5222, 102.15286016464233)
+                                    (0.5577, 103.7179946899414)
+                                    (0.7505, 178.50821018218994)
+                                    (0.7628, 179.29717302322388)
+                                    (0.769, 181.1325192451477)
+                                    (0.7722, 187.19297647476196)
+                                    (0.8489000000000001, 254.31909561157224)
+                                    (0.8501, 257.8089118003845)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -3403,6 +3704,24 @@
                                                                     { x: 0.1956 , y: 6.710677146911621, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.24609999999999999 , y: 6.973552703857422, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 7.106733322143555, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.29100000000000004 , y: 53.30366849899292, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 53.5263729095459, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 104.09787178039551, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 106.07809305191039, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7505 , y: 182.28930711746216, label: "B_tree(max_leaf_size=1000, candidates=35000)" },
+                                                                    { x: 0.7628 , y: 182.386212348938, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 184.0170407295227, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 191.11196279525757, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 257.93171644210815, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 263.0261540412903, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -3600,6 +3919,19 @@
                                     (0.2493, 7.106733322143555)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.29100000000000004, 53.30366849899292)
+                                    (0.3226, 53.5263729095459)
+                                    (0.5222, 104.09787178039551)
+                                    (0.5577, 106.07809305191039)
+                                    (0.7505, 182.28930711746216)
+                                    (0.7628, 182.386212348938)
+                                    (0.769, 184.0170407295227)
+                                    (0.7722, 191.11196279525757)
+                                    (0.8489000000000001, 257.93171644210815)
+                                    (0.8501, 263.0261540412903)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -3744,6 +4076,23 @@
                                                                     { x: 0.1956 , y: 6.854806423187259, label: "B_tree(max_leaf_size=25, candidates=35000)" },
                                                                     { x: 0.24609999999999999 , y: 7.608843803405801, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.2493 , y: 8.29187178611759, label: "B_tree(max_leaf_size=500, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.304 , y: 54.419068098068244, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
+                                                                    { x: 0.3226 , y: 54.58399200439485, label: "B_tree(max_leaf_size=500, candidates=10000)" },
+                                                                    { x: 0.5222 , y: 105.56609749794008, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
+                                                                    { x: 0.5577 , y: 107.17910242080697, label: "B_tree(max_leaf_size=500, candidates=20000)" },
+                                                                    { x: 0.7628 , y: 184.41547584533703, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
+                                                                    { x: 0.769 , y: 186.18514919281012, label: "B_tree(max_leaf_size=500, candidates=35000)" },
+                                                                    { x: 0.7722 , y: 192.69588589668277, label: "B_tree(max_leaf_size=100, candidates=35000)" },
+                                                                    { x: 0.8489000000000001 , y: 259.9751298427583, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.8501 , y: 267.5944912433625, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -3945,6 +4294,18 @@
                                     (0.2493, 8.29187178611759)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.304, 54.419068098068244)
+                                    (0.3226, 54.58399200439485)
+                                    (0.5222, 105.56609749794008)
+                                    (0.5577, 107.17910242080697)
+                                    (0.7628, 184.41547584533703)
+                                    (0.769, 186.18514919281012)
+                                    (0.7722, 192.69588589668277)
+                                    (0.8489000000000001, 259.9751298427583)
+                                    (0.8501, 267.5944912433625)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
