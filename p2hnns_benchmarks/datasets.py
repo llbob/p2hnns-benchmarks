@@ -549,16 +549,22 @@ def _load_mnist_vectors(fn: str) -> np.ndarray:
     return np.array(vectors)
 
 def fashion_mnist(out_fn: str) -> None:
+    if not os.path.exists("data"):
+        os.mkdir("data")
+        
+    # file path in the data folder
+    fn = os.path.join("data", "fashion-mnist-train.gz")
+    
+    # dl the file if it doesn't exist
     download(
-        "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz",  # noqa
-        "fashion-mnist-train.gz",
+        "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz",
+        fn
     )
-    X = _load_mnist_vectors("fashion-mnist-train.gz")
+
+    X = _load_mnist_vectors(fn)
     X = X.astype(np.float32)
     hyperplanes = create_hyperplanes_rpsd(X)
     write_output(X, hyperplanes, out_fn, "euclidean")
-
-
 
 
 def openai_dbpedia(out_fn: str, distance: str, size: int = None) -> None:
