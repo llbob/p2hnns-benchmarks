@@ -567,41 +567,28 @@ def fashion_mnist(out_fn: str) -> None:
     write_output(X, hyperplanes, out_fn, "euclidean")
 
 
-def openai_dbpedia(out_fn: str, distance: str, size: int = None) -> None:
+def openai_dbpedia(out_fn: str, distance: str) -> None:
     import tempfile
     import pandas as pd
-    # https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K
-    # urls for all the parquet files/shards
-    data_urls = [
-        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00000-of-00004.parquet",
-        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00001-of-00004.parquet",
-        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00002-of-00004.parquet",
-        "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-small-1536-100K/resolve/main/data/train-00003-of-00004.parquet"
-    ]
+
+    # large embedding dataset 26 parquests/shards https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-large-1536-1M
+    base_url = "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-large-1536-1M/resolve/main/data/"
+    data_urls = [f"{base_url}train-{i:05d}-of-00026.parquet" for i in range(26)]
     
-    # as a workaround due to some compatibility ussies with datasets, create a temporary directory to store downloaded parquet files
     with tempfile.TemporaryDirectory() as temp_dir:
         embeddings_data = []
-        
-        # Download each file and load it directly with pandas
+
         for i, url in enumerate(data_urls):
             local_path = os.path.join(temp_dir, f"shard_{i}.parquet")
             download(url, local_path)
             
-            # load the parquet file
             df = pd.read_parquet(local_path)
-            embeddings_data.append(df["text-embedding-3-small-1536-embedding"].tolist())
-            
-        # now combine all
+            embeddings_data.append(df["text-embedding-3-large-1536-embedding"].tolist())
+
         combined_embeddings = []
         for shard in embeddings_data:
             combined_embeddings.extend(shard)
-        
-        # use size limit if its set
-        if size is not None and size < len(combined_embeddings):
-            print(f"Limiting to {size} embeddings")
-            combined_embeddings = combined_embeddings[:size]
-        
+
         points = np.array(combined_embeddings, dtype=np.float32)
         hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, distance)
@@ -640,6 +627,6 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
     "fashion-mnist-784-euclidean": fashion_mnist, # 60.000 points
     "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
-    "openai-dbpedia-1536-euclidean": lambda out_fn: openai_dbpedia(out_fn, "euclidean", 100000), #100.000
+    "openai-dbpedia-1536-euclidean": lambda out_fn: openai_dbpedia(out_fn, "euclidean"), #1.000.000
     "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
 }
