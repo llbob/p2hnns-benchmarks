@@ -8,6 +8,34 @@ import stat
 
 from p2hnns_benchmarks.main import positive_int
 
+def build_generate_queries():
+    """Build the C++ component for generate_queries"""
+    # get paths for source and output files
+    script_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "p2hnns_benchmarks", "generate_queries")
+    source_file = os.path.join(script_dir, "generate.cc")
+    output_file = os.path.join(script_dir, "generate")
+    
+    # Set compilation flags based on platform
+    cxx_flags = "-std=c++11 -O3 -Wno-deprecated-declarations"
+    if platform.system() == "Darwin":  # macOS
+        cxx_flags += " -mmacosx-version-min=10.9"
+    
+    # Build the command
+    cmd = f"g++ {cxx_flags} -o {output_file} {source_file}"
+    
+    try:
+        subprocess.run(cmd, shell=True, check=True)
+        os.chmod(output_file, 
+                os.stat(output_file).st_mode | 
+                stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        print("successfully built generate_queries component")
+        return True
+    except Exception as e:
+        print(f"Failed to build generate_queries component: {e}")
+        print("you may have to build it manually, or for now skip using the bctree queries using Qiang et al's methods")
+        return False
+
+
 
 def build(library, args):
     print("Building %s..." % library)
