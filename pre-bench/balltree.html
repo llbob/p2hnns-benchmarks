@@ -57,10 +57,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 11.826801494537689, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 6.111930456180456, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 3.527898136052699, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 2.467358697127892, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -78,8 +90,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 664.9706967988278, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2892 , y: 629.6164586686153, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -98,8 +110,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6272 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.7232000000000001 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -110,8 +122,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0626 , y: 1094.1752045625417, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.065 , y: 1047.2946350140603, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -233,6 +245,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 11.826801494537689)
+                                    (0.7203999999999999, 6.111930456180456)
+                                    (0.9349999999999999, 3.527898136052699)
+                                    (0.9978, 2.467358697127892)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4288, 153.0861075776438)
                                     (0.4316, 140.9197116562964)
                                     (0.5744, 76.57141348671723)
@@ -301,10 +320,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9978 , y: 25.582345485687256, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9753999999999999 , y: 1.6212067604064941, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.9827999999999999 , y: 2.3337819576263428, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -314,8 +342,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.6083999999999999 , y: 8.486586570739746, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.6178 , y: 10.947855472564697, label: "B_tree(max_leaf_size=50, candidates=50000)" },
@@ -324,8 +352,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.8093 , y: 8.935362577438354, label: "B_tree(max_leaf_size=500, candidates=35000)" },
                                                                     { x: 0.8859999999999999 , y: 11.675371885299683, label: "B_tree(max_leaf_size=100, candidates=50000)" },
@@ -334,8 +362,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.248 , y: 10.227493524551392, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.24969999999999998 , y: 11.433521509170532, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -446,6 +474,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9978, 25.582345485687256)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.9753999999999999, 1.6212067604064941)
                                     (0.9827999999999999, 2.3337819576263428)
                                     (0.9833000000000001, 2.9001853466033936)
@@ -483,10 +515,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9978 , y: 1216216.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9753999999999999 , y: 368128.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.9827999999999999 , y: 368684.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -496,8 +537,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.6083999999999999 , y: 604676.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.6178 , y: 632888.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
@@ -506,8 +547,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.8093 , y: 1204956.0, label: "B_tree(max_leaf_size=500, candidates=35000)" },
                                                                     { x: 0.8859999999999999 , y: 1220728.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
@@ -516,8 +557,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.248 , y: 1011096.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.24969999999999998 , y: 1012324.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -628,6 +669,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9978, 1216216.0)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.9753999999999999, 368128.0)
                                     (0.9827999999999999, 368684.0)
                                     (0.9833000000000001, 374888.0)
@@ -665,10 +710,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 10009, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 20009, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 35009, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 49994, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4316 , y: 10009, label: "B_tree(max_leaf_size=50, candidates=10000)" },
                                                                     { x: 0.6797 , y: 20009, label: "B_tree(max_leaf_size=100, candidates=20000)" },
@@ -679,8 +736,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.2958 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                                     { x: 0.4326 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -691,8 +748,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6272 , y: 10009, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.7232000000000001 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -703,8 +760,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.071 , y: 10009, label: "B_tree(max_leaf_size=25, candidates=10000)" },
                                                                     { x: 0.1232 , y: 20009, label: "B_tree(max_leaf_size=50, candidates=20000)" },
@@ -817,6 +874,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 10009)
+                                    (0.7203999999999999, 20009)
+                                    (0.9349999999999999, 35009)
+                                    (0.9978, 49994)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4316, 10009)
                                     (0.6797, 20009)
                                     (0.8832000000000001, 35009)
@@ -861,10 +925,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.022594449090499128 , y: 11.826801494537689, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.014746134078049217 , y: 6.111930456180456, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.011606726698745209 , y: 3.527898136052699, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.011045969496682479 , y: 2.467358697127892, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.028257571511008838 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.021430617904191575 , y: 76.57141348671723, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
@@ -879,8 +955,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.05826110299704759 , y: 664.9706967988278, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.053703646271012505 , y: 629.6164586686153, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -898,8 +974,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.08259977686474138 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.07423305420308578 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -911,8 +987,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.31284833494160336 , y: 1094.1752045625417, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.30813086231622483 , y: 1047.2946350140603, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1030,6 +1106,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.022594449090499128, 11.826801494537689)
+                                    (0.014746134078049217, 6.111930456180456)
+                                    (0.011606726698745209, 3.527898136052699)
+                                    (0.011045969496682479, 2.467358697127892)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.028257571511008838, 153.0861075776438)
                                     (0.021430617904191575, 76.57141348671723)
                                     (0.01927273355836607, 74.21682155754281)
@@ -1091,10 +1174,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9978 , y: 10.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9833000000000001 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
@@ -1102,8 +1194,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.6178 , y: 10.0, label: "B_tree(max_leaf_size=50, candidates=50000)" },
                                                             ]
@@ -1111,8 +1203,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.8859999999999999 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
                                                             ]
@@ -1120,8 +1212,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.24969999999999998 , y: 10.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
                                                             ]
@@ -1231,6 +1323,10 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.9978, 10.0)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.9833000000000001, 10.0)
                             };
             \addlegendentry{ fashion-mnist-784-euclidean (k = 10) };
@@ -1263,10 +1359,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 102835.58074105835, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 198990.4840573158, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 344742.38005091663, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 492922.24977897457, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 2408.3439433784483, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 2709.3441755771632, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -1283,8 +1391,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 909.3272875194549, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2892 , y: 965.1463071422577, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -1303,8 +1411,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6272 , y: 22885.714980577464, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.7232000000000001 , y: 44283.09367735291, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -1315,8 +1423,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0626 , y: 927.0690797691345, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.065 , y: 965.4360541877746, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1438,6 +1546,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 102835.58074105835)
+                                    (0.7203999999999999, 198990.4840573158)
+                                    (0.9349999999999999, 344742.38005091663)
+                                    (0.9978, 492922.24977897457)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4288, 2408.3439433784483)
                                     (0.4316, 2709.3441755771632)
                                     (0.6319, 4814.005256225586)
@@ -1505,10 +1620,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45810000000000006 , y: 11.826801494537689, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7234 , y: 6.111930456180456, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9375 , y: 3.527898136052699, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9987999999999999 , y: 2.467358697127892, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.43079999999999996 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4335 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -1526,8 +1653,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.1736 , y: 664.9706967988278, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.1839 , y: 629.6164586686153, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -1546,8 +1673,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.2509 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.398 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -1558,8 +1685,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0487 , y: 1094.1752045625417, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.0531 , y: 1047.2946350140603, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1678,6 +1805,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45810000000000006, 11.826801494537689)
+                                    (0.7234, 6.111930456180456)
+                                    (0.9375, 3.527898136052699)
+                                    (0.9987999999999999, 2.467358697127892)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.43079999999999996, 153.0861075776438)
                                     (0.4335, 140.9197116562964)
                                     (0.5765, 76.57141348671723)
@@ -1743,10 +1877,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.496 , y: 11.826801494537689, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7695000000000001 , y: 6.111930456180456, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9602 , y: 3.527898136052699, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9997999999999999 , y: 2.467358697127892, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4671 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.47000000000000003 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -1763,8 +1909,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.191 , y: 664.9706967988278, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2032 , y: 629.6164586686153, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -1783,8 +1929,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.3283 , y: 52.651009637348714, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.4957 , y: 27.2102940408663, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -1795,8 +1941,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0523 , y: 1094.1752045625417, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.05600000000000001 , y: 1047.2946350140603, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1917,6 +2063,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.496, 11.826801494537689)
+                                    (0.7695000000000001, 6.111930456180456)
+                                    (0.9602, 3.527898136052699)
+                                    (0.9997999999999999, 2.467358697127892)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4671, 153.0861075776438)
                                     (0.47000000000000003, 140.9197116562964)
                                     (0.6209, 76.57141348671723)
@@ -1983,10 +2136,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 81.19797706604004, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 162.0422601699829, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 280.6391716003418, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 401.6075134277344, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 6.486773490905762, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 6.992697715759277, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -2004,8 +2169,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 1.4908313751220703, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.28959999999999997 , y: 1.5703439712524414, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -2023,8 +2188,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6272 , y: 18.23580265045166, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.7232000000000001 , y: 36.214470863342285, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -2035,8 +2200,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.065 , y: 0.8749961853027344, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.0666 , y: 0.8908510208129883, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -2157,6 +2322,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 81.19797706604004)
+                                    (0.7203999999999999, 162.0422601699829)
+                                    (0.9349999999999999, 280.6391716003418)
+                                    (0.9978, 401.6075134277344)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4288, 6.486773490905762)
                                     (0.4316, 6.992697715759277)
                                     (0.5744, 12.917280197143555)
@@ -2223,10 +2395,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 101.68590545654297, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 171.69994115829468, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 300.8812665939331, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 423.2418894767761, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 6.8261027336120605, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 7.418882846832275, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -2242,8 +2426,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 1.605987548828125, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2892 , y: 1.6938686370849607, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -2262,8 +2446,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6272 , y: 19.117403030395508, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.7232000000000001 , y: 37.36088275909424, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -2274,8 +2458,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0626 , y: 1.003265380859375, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.0648 , y: 1.0559797286987305, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -2396,6 +2580,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 101.68590545654297)
+                                    (0.7203999999999999, 171.69994115829468)
+                                    (0.9349999999999999, 300.8812665939331)
+                                    (0.9978, 423.2418894767761)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4288, 6.8261027336120605)
                                     (0.4316, 7.418882846832275)
                                     (0.6319, 13.587141036987305)
@@ -2461,10 +2652,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 146.0124397277831, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 196.29339456558222, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 337.2310447692871, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 496.6831946372984, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 7.028656005859375, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 7.488975524902344, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -2481,8 +2684,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 1.6632795333862302, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2892 , y: 1.7605352401733396, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -2499,8 +2702,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6128 , y: 26.28072261810302, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                                     { x: 0.6187 , y: 30.349979400634744, label: "B_tree(max_leaf_size=25, candidates=10000)" },
@@ -2513,8 +2716,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0626 , y: 1.3365173339843748, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.0648 , y: 1.4271688461303706, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -2633,6 +2836,13 @@
             cycle list name = black white
             ]
                                 \addplot coordinates {
+                                                (0.45570000000000005, 146.0124397277831)
+                                    (0.7203999999999999, 196.29339456558222)
+                                    (0.9349999999999999, 337.2310447692871)
+                                    (0.9978, 496.6831946372984)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
+                                \addplot coordinates {
                                                 (0.4288, 7.028656005859375)
                                     (0.4316, 7.488975524902344)
                                     (0.6148, 13.801736831665039)
@@ -2697,10 +2907,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            label: "cifar10-3072-euclidean (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.45570000000000005 , y: 260.6500895023467, label: "B_tree(max_leaf_size=50, candidates=10000)" },
+                                                                    { x: 0.7203999999999999 , y: 270.7072336673838, label: "B_tree(max_leaf_size=50, candidates=20000)" },
+                                                                    { x: 0.9349999999999999 , y: 421.2288813591157, label: "B_tree(max_leaf_size=50, candidates=35000)" },
+                                                                    { x: 0.9978 , y: 629.9476361274736, label: "B_tree(max_leaf_size=50, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "fashion-mnist-784-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4288 , y: 7.218343257904072, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.4316 , y: 7.554326534271244, label: "B_tree(max_leaf_size=50, candidates=10000)" },
@@ -2718,8 +2940,8 @@
                                                 {
                             label: "nytimes-256-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.28159999999999996 , y: 1.7340424060821553, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.2892 , y: 1.99559569358826, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -2733,8 +2955,8 @@
                                                 {
                             label: "openai-dbpedia-1536-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.6128 , y: 67.89416790009093, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                                     { x: 0.6272 , y: 70.1497728824839, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -2747,8 +2969,8 @@
                                                 {
                             label: "sift-128-euclidean (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0626 , y: 1.8256039619445832, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.0648 , y: 1.9764263629913486, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -2866,6 +3088,13 @@
             legend style = { anchor=west},
             cycle list name = black white
             ]
+                                \addplot coordinates {
+                                                (0.45570000000000005, 260.6500895023467)
+                                    (0.7203999999999999, 270.7072336673838)
+                                    (0.9349999999999999, 421.2288813591157)
+                                    (0.9978, 629.9476361274736)
+                            };
+            \addlegendentry{ cifar10-3072-euclidean (k = 10) };
                                 \addplot coordinates {
                                                 (0.4288, 7.218343257904072)
                                     (0.4316, 7.554326534271244)

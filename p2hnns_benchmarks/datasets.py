@@ -8,7 +8,6 @@ import time, gdown
 import h5py
 import numpy as np
 import zipfile
-from datasets import load_dataset
 from typing import Any, Callable, Dict, Tuple
 from sklearn.decomposition import PCA
 # from p2hnns_benchmarks import generate_queries
@@ -50,8 +49,7 @@ def get_dataset_fn(dataset_name: str) -> str:
 
 def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     """
-    Fetches a dataset by downloading it from a known URL or creating it locally
-    if it's not already present. The dataset file is then opened for reading,
+    Creates a dataset locally if it's not already present. The dataset file is then opened for reading,
     and the file handle and the dimension of the dataset are returned.
 
     Args:
@@ -62,17 +60,16 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
             the dimension of the dataset.
     """
     hdf5_filename = get_dataset_fn(dataset_name)
-    try:
-        dataset_url = f"https://ann-benchmarks.com/{dataset_name}.hdf5"
-        download(dataset_url, hdf5_filename)
-    except:
-        traceback.print_exc()
-        print(f"Cannot download {dataset_url}")
+    
+    if not os.path.exists(hdf5_filename):
         if dataset_name in DATASETS:
-            print("Creating dataset locally")
+            print(f"Creating dataset {dataset_name} locally")
             DATASETS[dataset_name](hdf5_filename)
+        else:
+            raise ValueError(f"Unknown dataset: {dataset_name}. The dataset is not available in the DATASETS dictionary.")
 
     hdf5_file = h5py.File(hdf5_filename, "r")
+
 
     # here for backward compatibility, to ensure old datasets can still be used with newer versions
     # cast to integer because the json parser (later on) cannot interpret numpy integers
@@ -272,7 +269,7 @@ def sift(out_fn: str) -> None:
         write_output(points, hyperplanes, out_fn, "euclidean")
 
 
-def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str = "rpsd") -> None:
+def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str = "rpsd", dimensions: int = 512) -> None:
     import tarfile
     import pickle
     url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
@@ -301,9 +298,10 @@ def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str
 
         X = X[:size] if size is not None else X
 
-        # apply PCA to reduce the dimensionality to 512 from the original 3072(32x32x3), this seems to be a standard for the benchmarks we're comparing to here in the field of p2hnns
-        pca = PCA(n_components=512, random_state=42)
-        X = pca.fit_transform(X)
+        # apply PCA to reduce the dimensionality to 512, if set, from the original 3072(32x32x3), this seems to be a standard for the benchmarks we're comparing to here in the field of p2hnns
+        if dimensions != 3072:
+            pca = PCA(n_components=dimensions, random_state=42)
+            X = pca.fit_transform(X)
 
         points = np.array(X)
         # labels = np.array(labels)
@@ -458,7 +456,7 @@ def gist(out_fn: str, distance: str, size: int = None) -> None:
         hyperplanes = create_hyperplanes_rpsd(points)
         write_output(points, hyperplanes, out_fn, distance)
 
-def trevi(out_fn: str, distance: str, size: int = None) -> None:
+def trevi(out_fn: str, distance: str, size: int = None, dimensions: int = 4096) -> None:
     
     from PIL import Image
     # url for the trevi dataset
@@ -511,6 +509,12 @@ def trevi(out_fn: str, distance: str, size: int = None) -> None:
     
     # make ds by convert to numpy array
     patch_vectors = patch_vectors[:size] if size is not None else patch_vectors
+    
+    if dimensions != 4096:
+        pca = PCA(n_components=dimensions, random_state=42)
+        patch_vectors = pca.fit_transform(patch_vectors)
+
+    points = np.array(patch_vectors)
     points = np.array(patch_vectors)
     hyperplanes = create_hyperplanes_rpsd(points)
     write_output(points, hyperplanes, out_fn, distance)
@@ -567,33 +571,6 @@ def fashion_mnist(out_fn: str) -> None:
     write_output(X, hyperplanes, out_fn, "euclidean")
 
 
-def openai_dbpedia(out_fn: str, distance: str) -> None:
-    import tempfile
-    import pandas as pd
-
-    # large embedding dataset 26 parquests/shards https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-large-1536-1M
-    base_url = "https://huggingface.co/datasets/Qdrant/dbpedia-entities-openai3-text-embedding-3-large-1536-1M/resolve/main/data/"
-    data_urls = [f"{base_url}train-{i:05d}-of-00026.parquet" for i in range(26)]
-    
-    with tempfile.TemporaryDirectory() as temp_dir:
-        embeddings_data = []
-
-        for i, url in enumerate(data_urls):
-            local_path = os.path.join(temp_dir, f"shard_{i}.parquet")
-            download(url, local_path)
-            
-            df = pd.read_parquet(local_path)
-            embeddings_data.append(df["text-embedding-3-large-1536-embedding"].tolist())
-
-        combined_embeddings = []
-        for shard in embeddings_data:
-            combined_embeddings.extend(shard)
-
-        points = np.array(combined_embeddings, dtype=np.float32)
-        hyperplanes = create_hyperplanes_rpsd(points)
-        write_output(points, hyperplanes, out_fn, distance)
-
-
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
     # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
@@ -624,9 +601,10 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
     "sift-128-euclidean": sift, 
     "glove-200-euclidean": lambda out_fn: glove(out_fn, 200, "euclidean"),
-    "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean"),
+    "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "rpsd", 512),
     "fashion-mnist-784-euclidean": fashion_mnist, # 60.000 points
     "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
-    "openai-dbpedia-1536-euclidean": lambda out_fn: openai_dbpedia(out_fn, "euclidean"), #1.000.000
-    "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean"),
+    "trevi-2048-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 2048),
+    "cifar10-3072-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "rpsd", 3072),
+    "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 4096),
 }
