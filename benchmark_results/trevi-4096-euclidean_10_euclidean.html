@@ -59,8 +59,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.29100000000000004 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.304 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -78,8 +78,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 197.58894886058232, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.039400000000000004 , y: 196.06109370601624, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -99,17 +99,52 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 8.131018819893244, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.013500000000000002 , y: 202.02987253243623, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.014099999999999998 , y: 201.19763879975935, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 197.88294746281875, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0147 , y: 196.12448878180498, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 194.5561169524998, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0498 , y: 114.63375271104617, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0517 , y: 106.3696579844563, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0519 , y: 104.30373153996305, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0531 , y: 104.21966621213224, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 101.92106802427159, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 71.37405171197672, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 71.13382645706717, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 70.61356433373093, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.093 , y: 66.84794310845906, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 66.36712168680148, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 65.51007131849111, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 64.35521158341763, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 63.895116501649504, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 62.6718738228396, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 12.979153793214344, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 12.914120579647422, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 12.42201191561913, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 12.294060575668494, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 12.080742533348275, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.41950000000000004 , y: 11.914007055478306, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4316 , y: 11.880329643979408, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 11.592254517454549, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 119.91615512057476, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 83.38818250437558, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -128,8 +163,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0514 , y: 9.989239886755096, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.0939 , y: 8.679654091560991, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -144,8 +179,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.013500000000000002 , y: 90.59963430555133, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0152 , y: 89.12505387170144, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -301,6 +336,36 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.013500000000000002, 202.02987253243623)
+                                    (0.014099999999999998, 201.19763879975935)
+                                    (0.014199999999999999, 197.88294746281875)
+                                    (0.0147, 196.12448878180498)
+                                    (0.014799999999999999, 194.5561169524998)
+                                    (0.0498, 114.63375271104617)
+                                    (0.0517, 106.3696579844563)
+                                    (0.0519, 104.30373153996305)
+                                    (0.0531, 104.21966621213224)
+                                    (0.0533, 101.92106802427159)
+                                    (0.089, 71.37405171197672)
+                                    (0.0913, 71.13382645706717)
+                                    (0.09280000000000001, 70.61356433373093)
+                                    (0.093, 66.84794310845906)
+                                    (0.09340000000000001, 66.36712168680148)
+                                    (0.0977, 65.51007131849111)
+                                    (0.09809999999999999, 64.35521158341763)
+                                    (0.10069999999999998, 63.895116501649504)
+                                    (0.10129999999999999, 62.6718738228396)
+                                    (0.3699, 12.979153793214344)
+                                    (0.391, 12.914120579647422)
+                                    (0.3923, 12.42201191561913)
+                                    (0.3932, 12.294060575668494)
+                                    (0.4183, 12.080742533348275)
+                                    (0.41950000000000004, 11.914007055478306)
+                                    (0.4316, 11.880329643979408)
+                                    (0.433, 11.592254517454549)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 119.91615512057476)
                                     (0.0043, 83.38818250437558)
                                     (0.023799999999999998, 33.825340232331634)
@@ -361,8 +426,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8461000000000001 , y: 21.301631927490234, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.8489000000000001 , y: 25.600125312805176, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -372,8 +437,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.8049 , y: 13.310030698776245, label: "BC_tree(leaf_size=10000, candidates=40000, c=10.000000)" },
                                                                     { x: 0.8065 , y: 16.696699619293213, label: "BC_tree(leaf_size=5000, candidates=40000, c=10.000000)" },
@@ -384,17 +449,26 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 0.00027179718017578125, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.433 , y: 11709.717495203018, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.3785 , y: 588.7694096565247, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                                     { x: 0.3805 , y: 589.8732917308807, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
@@ -405,8 +479,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.2177 , y: 36.27193570137024, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.23370000000000002 , y: 69.56424331665039, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -418,8 +492,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.42969999999999997 , y: 282.5202810764313, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
@@ -546,6 +620,10 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.433, 11709.717495203018)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.3785, 588.7694096565247)
                                     (0.3805, 589.8732917308807)
                                     (0.38130000000000003, 950.4950485229492)
@@ -583,8 +661,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8461000000000001 , y: 3238208.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.8489000000000001 , y: 3243328.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -594,8 +672,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.8049 , y: 3238720.0, label: "BC_tree(leaf_size=10000, candidates=40000, c=10.000000)" },
                                                                     { x: 0.8065 , y: 3239360.0, label: "BC_tree(leaf_size=5000, candidates=40000, c=10.000000)" },
@@ -606,16 +684,25 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
+                                                            ]
+                        },
+                                                {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.433 , y: 8228104.0, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
                                                             ]
                         },
                                                 {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.3805 , y: 14225128.0, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=40000)" },
                                                                     { x: 0.38130000000000003 , y: 26829896.0, label: "FH(m_hashers=32, scale_factor=2, sep_threshold=2, candidates=40000)" },
@@ -625,8 +712,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.2177 , y: 1848840.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.23370000000000002 , y: 2061888.0, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -638,8 +725,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.42969999999999997 , y: 1899208.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
@@ -765,6 +852,10 @@
                                         };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.433, 8228104.0)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.3805, 14225128.0)
                                     (0.38130000000000003, 26829896.0)
                                     (0.38170000000000004, 52039392.0)
@@ -801,8 +892,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.3226 , y: 10009, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.5577 , y: 20009, label: "B_tree(max_leaf_size=500, candidates=20000)" },
@@ -813,8 +904,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.0419 , y: 1009, label: "BC_tree(leaf_size=100, candidates=1000, c=10.000000)" },
                                                                     { x: 0.1718 , y: 5009, label: "BC_tree(leaf_size=100, candidates=5000, c=10.000000)" },
@@ -825,17 +916,56 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 101120, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.013800000000000002 , y: 172, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.013900000000000001 , y: 175, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.014099999999999998 , y: 195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 198, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0144 , y: 201, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.014499999999999999 , y: 206, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0147 , y: 208, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 216, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.047599999999999996 , y: 633, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0491 , y: 647, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0498 , y: 656, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0517 , y: 787, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0531 , y: 813, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 860, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 1199, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 1231, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 1246, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.093 , y: 1413, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 1449, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 1528, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 1595, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 1600, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 1702, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 3315, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.38439999999999996 , y: 3428, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 3486, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 4642, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 5058, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 5346, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.4316 , y: 5821, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 6912, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0043 , y: 1009, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
                                                                     { x: 0.0258 , y: 5009, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=5000)" },
@@ -846,8 +976,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0025 , y: 439, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.0034000000000000002 , y: 451, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
@@ -892,8 +1022,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0152 , y: 1775, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0158 , y: 1894, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -1033,6 +1163,40 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.013800000000000002, 172)
+                                    (0.013900000000000001, 175)
+                                    (0.014099999999999998, 195)
+                                    (0.014199999999999999, 198)
+                                    (0.0144, 201)
+                                    (0.014499999999999999, 206)
+                                    (0.0147, 208)
+                                    (0.014799999999999999, 216)
+                                    (0.047599999999999996, 633)
+                                    (0.0491, 647)
+                                    (0.0498, 656)
+                                    (0.0517, 787)
+                                    (0.0531, 813)
+                                    (0.0533, 860)
+                                    (0.089, 1199)
+                                    (0.0913, 1231)
+                                    (0.09280000000000001, 1246)
+                                    (0.093, 1413)
+                                    (0.09340000000000001, 1449)
+                                    (0.0977, 1528)
+                                    (0.09809999999999999, 1595)
+                                    (0.10069999999999998, 1600)
+                                    (0.10129999999999999, 1702)
+                                    (0.3699, 3315)
+                                    (0.38439999999999996, 3428)
+                                    (0.391, 3486)
+                                    (0.3923, 4642)
+                                    (0.3932, 5058)
+                                    (0.4183, 5346)
+                                    (0.4316, 5821)
+                                    (0.433, 6912)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0043, 1009)
                                     (0.0258, 5009)
                                     (0.11279999999999998, 15009)
@@ -1115,8 +1279,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.0355807382742782 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.034845686931961356 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1135,8 +1299,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.4277159179394044 , y: 197.58894886058232, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.2691411712407042 , y: 196.06109370601624, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -1154,17 +1318,52 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.010593214161913547 , y: 8.131018819893244, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8432193279237638 , y: 202.02987253243623, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.7972403517253317 , y: 201.19763879975935, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.7967467982574186 , y: 197.88294746281875, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.7636500313736034 , y: 196.12448878180498, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.7625883474981452 , y: 194.5561169524998, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.20794223103682327 , y: 114.63375271104617, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.19774812017635837 , y: 106.3696579844563, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.19695829351700064 , y: 104.30373153996305, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.1923242524042332 , y: 104.21966621213224, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.19144097160496248 , y: 101.92106802427159, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.1162283226273339 , y: 71.37405171197672, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.11243717132109478 , y: 71.13382645706717, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.11049567500634254 , y: 70.61356433373093, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.10996147328517204 , y: 66.84794310845906, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.1097335352956725 , y: 66.36712168680148, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.10401835750587173 , y: 65.51007131849111, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.10361127468674838 , y: 64.35521158341763, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10114536779660839 , y: 63.895116501649504, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10062865171044984 , y: 62.6718738228396, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.02774302953678448 , y: 12.979153793214344, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.02623915400854326 , y: 12.914120579647422, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.02601902630084079 , y: 12.42201191561913, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.02592267174203493 , y: 12.294060575668494, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.02444450586516842 , y: 12.080742533348275, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.024318732016942606 , y: 11.914007055478306, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.023706697062922374 , y: 11.880329643979408, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.02357262967180274 , y: 11.592254517454549, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 40.93234181304555 , y: 119.91615512057476, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 40.89229098496799 , y: 119.41693682054864, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -1183,8 +1382,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.22245599760893855 , y: 9.989239886755096, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.12112551268278786 , y: 8.679654091560991, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -1199,8 +1398,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 1.263549434277451 , y: 90.59963430555133, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.9748924069707455 , y: 89.12505387170144, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -1355,6 +1554,36 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.8432193279237638, 202.02987253243623)
+                                    (0.7972403517253317, 201.19763879975935)
+                                    (0.7967467982574186, 197.88294746281875)
+                                    (0.7636500313736034, 196.12448878180498)
+                                    (0.7625883474981452, 194.5561169524998)
+                                    (0.20794223103682327, 114.63375271104617)
+                                    (0.19774812017635837, 106.3696579844563)
+                                    (0.19695829351700064, 104.30373153996305)
+                                    (0.1923242524042332, 104.21966621213224)
+                                    (0.19144097160496248, 101.92106802427159)
+                                    (0.1162283226273339, 71.37405171197672)
+                                    (0.11243717132109478, 71.13382645706717)
+                                    (0.11049567500634254, 70.61356433373093)
+                                    (0.10996147328517204, 66.84794310845906)
+                                    (0.1097335352956725, 66.36712168680148)
+                                    (0.10401835750587173, 65.51007131849111)
+                                    (0.10361127468674838, 64.35521158341763)
+                                    (0.10114536779660839, 63.895116501649504)
+                                    (0.10062865171044984, 62.6718738228396)
+                                    (0.02774302953678448, 12.979153793214344)
+                                    (0.02623915400854326, 12.914120579647422)
+                                    (0.02601902630084079, 12.42201191561913)
+                                    (0.02592267174203493, 12.294060575668494)
+                                    (0.02444450586516842, 12.080742533348275)
+                                    (0.024318732016942606, 11.914007055478306)
+                                    (0.023706697062922374, 11.880329643979408)
+                                    (0.02357262967180274, 11.592254517454549)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (40.93234181304555, 119.91615512057476)
                                     (40.89229098496799, 119.41693682054864)
                                     (40.033208490960334, 103.06620120357069)
@@ -1415,8 +1644,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8501 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
@@ -1424,8 +1653,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.8107 , y: 10.0, label: "BC_tree(leaf_size=100, candidates=40000, c=10.000000)" },
                                                             ]
@@ -1433,17 +1662,26 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 10.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.433 , y: 10.0, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.38170000000000004 , y: 10.0, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=40000)" },
                                                             ]
@@ -1451,8 +1689,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.4072 , y: 10.0, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
                                                             ]
@@ -1460,8 +1698,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.42969999999999997 , y: 10.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
@@ -1583,6 +1821,10 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.433, 10.0)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.38170000000000004, 10.0)
                             };
             \addlegendentry{ fh };
@@ -1613,8 +1855,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.29100000000000004 , y: 162058.5312031708, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.304 , y: 162376.02040571594, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1632,8 +1874,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 16391.20010848999, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.039400000000000004 , y: 16548.331638223648, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -1653,16 +1895,51 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
+                                                            ]
+                        },
+                                                {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.013500000000000002 , y: 40727.16522987938, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.014099999999999998 , y: 40895.629039608, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 41580.66223238372, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0147 , y: 41953.47583112907, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 42291.674653482434, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0498 , y: 71777.32391558647, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0517 , y: 77353.8634598446, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0519 , y: 78885.9984059868, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0531 , y: 78949.62917317581, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 80730.1587346058, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 115281.4475658989, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 115670.7632614994, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 116522.99494630624, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.093 , y: 123086.86875600815, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 123978.61758763502, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 125600.59597550011, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 127854.50933270075, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 128775.1623363514, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 131288.6227601738, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 633947.646440691, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 637140.0939966012, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 662380.9456867599, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 669274.7241122646, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 681092.5716930676, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.41950000000000004 , y: 690624.4021583442, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4316 , y: 692582.1291642151, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 709793.2492433529, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
                                                             ]
                         },
                                                 {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 118625.61792192841, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.023799999999999998 , y: 420546.48681413836, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=5000)" },
@@ -1679,8 +1956,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0514 , y: 185083.15156705855, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.0939 , y: 213008.48864444732, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -1695,8 +1972,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0152 , y: 21309.473795482634, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0158 , y: 44866.74397634983, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -1844,6 +2121,36 @@
                                         };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.013500000000000002, 40727.16522987938)
+                                    (0.014099999999999998, 40895.629039608)
+                                    (0.014199999999999999, 41580.66223238372)
+                                    (0.0147, 41953.47583112907)
+                                    (0.014799999999999999, 42291.674653482434)
+                                    (0.0498, 71777.32391558647)
+                                    (0.0517, 77353.8634598446)
+                                    (0.0519, 78885.9984059868)
+                                    (0.0531, 78949.62917317581)
+                                    (0.0533, 80730.1587346058)
+                                    (0.089, 115281.4475658989)
+                                    (0.0913, 115670.7632614994)
+                                    (0.09280000000000001, 116522.99494630624)
+                                    (0.093, 123086.86875600815)
+                                    (0.09340000000000001, 123978.61758763502)
+                                    (0.0977, 125600.59597550011)
+                                    (0.09809999999999999, 127854.50933270075)
+                                    (0.10069999999999998, 128775.1623363514)
+                                    (0.10129999999999999, 131288.6227601738)
+                                    (0.3699, 633947.646440691)
+                                    (0.391, 637140.0939966012)
+                                    (0.3923, 662380.9456867599)
+                                    (0.3932, 669274.7241122646)
+                                    (0.4183, 681092.5716930676)
+                                    (0.41950000000000004, 690624.4021583442)
+                                    (0.4316, 692582.1291642151)
+                                    (0.433, 709793.2492433529)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 118625.61792192841)
                                     (0.023799999999999998, 420546.48681413836)
                                     (0.0258, 421106.4326020279)
@@ -1895,8 +2202,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.2945 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.30779999999999996 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -1914,8 +2221,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.028199999999999996 , y: 197.58894886058232, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0398 , y: 196.06109370601624, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -1935,17 +2242,52 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9984 , y: 8.131018819893244, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0137 , y: 202.02987253243623, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.014299999999999998 , y: 201.19763879975935, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0144 , y: 197.88294746281875, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0149 , y: 196.12448878180498, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.015 , y: 194.5561169524998, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0503 , y: 114.63375271104617, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0522 , y: 106.3696579844563, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0524 , y: 104.30373153996305, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0536 , y: 104.21966621213224, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0538 , y: 101.92106802427159, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0898 , y: 71.37405171197672, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0921 , y: 71.13382645706717, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.0936 , y: 70.61356433373093, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0939 , y: 66.84794310845906, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0943 , y: 66.36712168680148, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0986 , y: 65.51007131849111, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.099 , y: 64.35521158341763, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.1016 , y: 63.895116501649504, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.1022 , y: 62.6718738228396, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3744 , y: 12.979153793214344, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.3955 , y: 12.914120579647422, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3972 , y: 12.42201191561913, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3981 , y: 12.294060575668494, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4234 , y: 12.080742533348275, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.42460000000000003 , y: 11.914007055478306, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4367 , y: 11.880329643979408, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.43810000000000004 , y: 11.592254517454549, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 119.91615512057476, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 83.38818250437558, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -1963,8 +2305,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0516 , y: 9.989239886755096, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.09419999999999999 , y: 8.679654091560991, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -1979,8 +2321,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0137 , y: 90.59963430555133, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0154 , y: 89.12505387170144, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -2136,6 +2478,36 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.0137, 202.02987253243623)
+                                    (0.014299999999999998, 201.19763879975935)
+                                    (0.0144, 197.88294746281875)
+                                    (0.0149, 196.12448878180498)
+                                    (0.015, 194.5561169524998)
+                                    (0.0503, 114.63375271104617)
+                                    (0.0522, 106.3696579844563)
+                                    (0.0524, 104.30373153996305)
+                                    (0.0536, 104.21966621213224)
+                                    (0.0538, 101.92106802427159)
+                                    (0.0898, 71.37405171197672)
+                                    (0.0921, 71.13382645706717)
+                                    (0.0936, 70.61356433373093)
+                                    (0.0939, 66.84794310845906)
+                                    (0.0943, 66.36712168680148)
+                                    (0.0986, 65.51007131849111)
+                                    (0.099, 64.35521158341763)
+                                    (0.1016, 63.895116501649504)
+                                    (0.1022, 62.6718738228396)
+                                    (0.3744, 12.979153793214344)
+                                    (0.3955, 12.914120579647422)
+                                    (0.3972, 12.42201191561913)
+                                    (0.3981, 12.294060575668494)
+                                    (0.4234, 12.080742533348275)
+                                    (0.42460000000000003, 11.914007055478306)
+                                    (0.4367, 11.880329643979408)
+                                    (0.43810000000000004, 11.592254517454549)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 119.91615512057476)
                                     (0.0043, 83.38818250437558)
                                     (0.0241, 33.825340232331634)
@@ -2195,8 +2567,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.3194 , y: 20.0133123256182, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.3362 , y: 19.942649117209235, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -2216,8 +2588,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.0316 , y: 197.58894886058232, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0429 , y: 196.06109370601624, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -2237,17 +2609,52 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 1.0 , y: 8.131018819893244, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0152 , y: 202.02987253243623, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.016 , y: 201.19763879975935, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0161 , y: 197.88294746281875, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0167 , y: 196.12448878180498, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.016800000000000002 , y: 194.5561169524998, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.054900000000000004 , y: 114.63375271104617, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.057199999999999994 , y: 106.3696579844563, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.057499999999999996 , y: 104.30373153996305, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0586 , y: 104.21966621213224, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.058899999999999994 , y: 101.92106802427159, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.098 , y: 71.37405171197672, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.1006 , y: 71.13382645706717, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.1021 , y: 70.61356433373093, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.1026 , y: 66.84794310845906, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.1031 , y: 66.36712168680148, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.1078 , y: 65.51007131849111, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.1083 , y: 64.35521158341763, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.1109 , y: 63.895116501649504, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.1116 , y: 62.6718738228396, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.4096 , y: 12.979153793214344, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.4325 , y: 12.914120579647422, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.4343 , y: 12.42201191561913, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.4354 , y: 12.294060575668494, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4627 , y: 12.080742533348275, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.4641 , y: 11.914007055478306, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.477 , y: 11.880329643979408, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.47859999999999997 , y: 11.592254517454549, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.004 , y: 119.91615512057476, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0045 , y: 83.38818250437558, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -2264,8 +2671,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.056100000000000004 , y: 9.989239886755096, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.10149999999999999 , y: 8.679654091560991, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -2280,8 +2687,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.014799999999999999 , y: 90.59963430555133, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0171 , y: 89.12505387170144, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -2439,6 +2846,36 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.0152, 202.02987253243623)
+                                    (0.016, 201.19763879975935)
+                                    (0.0161, 197.88294746281875)
+                                    (0.0167, 196.12448878180498)
+                                    (0.016800000000000002, 194.5561169524998)
+                                    (0.054900000000000004, 114.63375271104617)
+                                    (0.057199999999999994, 106.3696579844563)
+                                    (0.057499999999999996, 104.30373153996305)
+                                    (0.0586, 104.21966621213224)
+                                    (0.058899999999999994, 101.92106802427159)
+                                    (0.098, 71.37405171197672)
+                                    (0.1006, 71.13382645706717)
+                                    (0.1021, 70.61356433373093)
+                                    (0.1026, 66.84794310845906)
+                                    (0.1031, 66.36712168680148)
+                                    (0.1078, 65.51007131849111)
+                                    (0.1083, 64.35521158341763)
+                                    (0.1109, 63.895116501649504)
+                                    (0.1116, 62.6718738228396)
+                                    (0.4096, 12.979153793214344)
+                                    (0.4325, 12.914120579647422)
+                                    (0.4343, 12.42201191561913)
+                                    (0.4354, 12.294060575668494)
+                                    (0.4627, 12.080742533348275)
+                                    (0.4641, 11.914007055478306)
+                                    (0.477, 11.880329643979408)
+                                    (0.47859999999999997, 11.592254517454549)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.004, 119.91615512057476)
                                     (0.0045, 83.38818250437558)
                                     (0.0258, 33.825340232331634)
@@ -2497,8 +2934,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.29100000000000004 , y: 49.66545104980469, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.304 , y: 49.82709884643555, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
@@ -2516,8 +2953,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 5.0307512283325195, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.039400000000000004 , y: 5.059957504272461, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -2537,17 +2974,53 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 122.7024793624878, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.013500000000000002 , y: 4.911899566650391, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=1)" },
+                                                                    { x: 0.014099999999999998 , y: 4.948616027832031, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 5.013823509216309, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0147 , y: 5.059480667114258, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 5.10561466217041, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0498 , y: 8.707046508789062, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0517 , y: 9.386539459228516, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0519 , y: 9.586095809936523, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0531 , y: 9.597063064575195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 9.797215461730957, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 14.061808586120605, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 14.10818099975586, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 14.215350151062012, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.093 , y: 15.002965927124023, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 15.115499496459961, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 15.30158519744873, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 15.591979026794434, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 15.641570091247559, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 15.987634658813477, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 77.83329486846924, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.38439999999999996 , y: 78.19688320159912, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 78.30917835235596, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 81.39777183532715, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 81.94577693939209, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 83.45091342926025, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.41950000000000004 , y: 84.30945873260498, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4316 , y: 84.67590808868408, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 86.71009540557861, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 8.304834365844727, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 11.913418769836426, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -2566,8 +3039,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0514 , y: 94.41816806793213, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.0939 , y: 114.68958854675293, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -2582,8 +3055,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.013500000000000002 , y: 10.957598686218262, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0152 , y: 11.159658432006836, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -2740,6 +3213,37 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.013500000000000002, 4.911899566650391)
+                                    (0.014099999999999998, 4.948616027832031)
+                                    (0.014199999999999999, 5.013823509216309)
+                                    (0.0147, 5.059480667114258)
+                                    (0.014799999999999999, 5.10561466217041)
+                                    (0.0498, 8.707046508789062)
+                                    (0.0517, 9.386539459228516)
+                                    (0.0519, 9.586095809936523)
+                                    (0.0531, 9.597063064575195)
+                                    (0.0533, 9.797215461730957)
+                                    (0.089, 14.061808586120605)
+                                    (0.0913, 14.10818099975586)
+                                    (0.09280000000000001, 14.215350151062012)
+                                    (0.093, 15.002965927124023)
+                                    (0.09340000000000001, 15.115499496459961)
+                                    (0.0977, 15.30158519744873)
+                                    (0.09809999999999999, 15.591979026794434)
+                                    (0.10069999999999998, 15.641570091247559)
+                                    (0.10129999999999999, 15.987634658813477)
+                                    (0.3699, 77.83329486846924)
+                                    (0.38439999999999996, 78.19688320159912)
+                                    (0.391, 78.30917835235596)
+                                    (0.3923, 81.39777183532715)
+                                    (0.3932, 81.94577693939209)
+                                    (0.4183, 83.45091342926025)
+                                    (0.41950000000000004, 84.30945873260498)
+                                    (0.4316, 84.67590808868408)
+                                    (0.433, 86.71009540557861)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 8.304834365844727)
                                     (0.0043, 11.913418769836426)
                                     (0.023799999999999998, 29.394865036010742)
@@ -2801,8 +3305,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.29100000000000004 , y: 52.17174291610718, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.3226 , y: 52.4405837059021, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -2819,8 +3323,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 5.284607410430908, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.039400000000000004 , y: 5.3612589836120605, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -2840,17 +3344,52 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 125.23795366287233, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.014099999999999998 , y: 5.383038520812988, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.014199999999999999 , y: 5.471682548522948, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0144 , y: 5.531001091003418, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0147 , y: 5.604386329650879, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 5.632472038269043, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0498 , y: 9.400010108947754, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0517 , y: 10.02873182296753, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.0519 , y: 10.16237735748291, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0531 , y: 10.167860984802246, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 10.303032398223877, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 15.141487121582031, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 15.154147148132324, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 15.289390087127686, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.093 , y: 16.01889133453369, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 16.152071952819824, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 16.18286371231079, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 16.45299196243286, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 16.747605800628662, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 16.904783248901367, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 88.3075475692749, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 88.61033916473389, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 91.84457063674927, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 92.67325401306152, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 94.58191394805908, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.41950000000000004 , y: 95.05907297134398, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4316 , y: 95.62944173812866, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 97.63960838317871, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 8.794713020324707, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 13.004565238952637, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -2869,8 +3408,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0939 , y: 119.51408386230469, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
                                                                     { x: 0.1593 , y: 154.07202243804932, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
@@ -2884,8 +3423,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.013500000000000002 , y: 11.624276638031006, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0152 , y: 11.856281757354736, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -3041,6 +3580,36 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.014099999999999998, 5.383038520812988)
+                                    (0.014199999999999999, 5.471682548522948)
+                                    (0.0144, 5.531001091003418)
+                                    (0.0147, 5.604386329650879)
+                                    (0.014799999999999999, 5.632472038269043)
+                                    (0.0498, 9.400010108947754)
+                                    (0.0517, 10.02873182296753)
+                                    (0.0519, 10.16237735748291)
+                                    (0.0531, 10.167860984802246)
+                                    (0.0533, 10.303032398223877)
+                                    (0.089, 15.141487121582031)
+                                    (0.0913, 15.154147148132324)
+                                    (0.09280000000000001, 15.289390087127686)
+                                    (0.093, 16.01889133453369)
+                                    (0.09340000000000001, 16.152071952819824)
+                                    (0.0977, 16.18286371231079)
+                                    (0.09809999999999999, 16.45299196243286)
+                                    (0.10069999999999998, 16.747605800628662)
+                                    (0.10129999999999999, 16.904783248901367)
+                                    (0.3699, 88.3075475692749)
+                                    (0.391, 88.61033916473389)
+                                    (0.3923, 91.84457063674927)
+                                    (0.3932, 92.67325401306152)
+                                    (0.4183, 94.58191394805908)
+                                    (0.41950000000000004, 95.05907297134398)
+                                    (0.4316, 95.62944173812866)
+                                    (0.433, 97.63960838317871)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 8.794713020324707)
                                     (0.0043, 13.004565238952637)
                                     (0.023799999999999998, 30.756545066833496)
@@ -3101,8 +3670,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.29100000000000004 , y: 53.30366849899292, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
                                                                     { x: 0.3226 , y: 53.5263729095459, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -3119,8 +3688,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 5.411953926086426, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0308 , y: 5.644562244415283, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
@@ -3140,17 +3709,46 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 127.45450496673583, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.014099999999999998 , y: 5.564205646514892, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0147 , y: 5.799341201782227, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 5.931661128997803, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0498 , y: 9.774739742279053, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0531 , y: 10.40980577468872, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.0533 , y: 10.569238662719727, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.089 , y: 15.771505832672121, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.0913 , y: 16.042637825012207, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.1, flag=0)" },
+                                                                    { x: 0.09280000000000001 , y: 16.07745885848999, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.09340000000000001 , y: 16.526713371276855, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.0977 , y: 16.843020915985107, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 16.87734365463257, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10069999999999998 , y: 17.20540761947632, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 17.312331199645996, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.391 , y: 92.32679605484007, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 95.93016147613524, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 96.2104082107544, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 99.25102233886717, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.41950000000000004 , y: 99.58740949630737, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.4316 , y: 100.83235263824463, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 103.06336879730225, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 9.196488857269285, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 13.530478477478027, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=4, candidates=1000)" },
@@ -3165,8 +3763,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0939 , y: 122.18733072280884, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
                                                                     { x: 0.1593 , y: 157.66771078109738, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
@@ -3180,8 +3778,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.013500000000000002 , y: 12.047178745269775, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0152 , y: 12.17822551727295, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -3336,6 +3934,30 @@
                             };
             \addlegendentry{ bruteforce };
                                 \addplot coordinates {
+                                                (0.014099999999999998, 5.564205646514892)
+                                    (0.0147, 5.799341201782227)
+                                    (0.014799999999999999, 5.931661128997803)
+                                    (0.0498, 9.774739742279053)
+                                    (0.0531, 10.40980577468872)
+                                    (0.0533, 10.569238662719727)
+                                    (0.089, 15.771505832672121)
+                                    (0.0913, 16.042637825012207)
+                                    (0.09280000000000001, 16.07745885848999)
+                                    (0.09340000000000001, 16.526713371276855)
+                                    (0.0977, 16.843020915985107)
+                                    (0.09809999999999999, 16.87734365463257)
+                                    (0.10069999999999998, 17.20540761947632)
+                                    (0.10129999999999999, 17.312331199645996)
+                                    (0.391, 92.32679605484007)
+                                    (0.3923, 95.93016147613524)
+                                    (0.3932, 96.2104082107544)
+                                    (0.4183, 99.25102233886717)
+                                    (0.41950000000000004, 99.58740949630737)
+                                    (0.4316, 100.83235263824463)
+                                    (0.433, 103.06336879730225)
+                            };
+            \addlegendentry{ bt-mqh };
+                                \addplot coordinates {
                                                 (0.0038, 9.196488857269285)
                                     (0.0043, 13.530478477478027)
                                     (0.0258, 31.545047760009762)
@@ -3391,8 +4013,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(76, 76, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.304 , y: 54.419068098068244, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.3226 , y: 54.58399200439485, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -3408,8 +4030,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.027800000000000002 , y: 5.607748746871961, label: "BC_tree(leaf_size=10000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0308 , y: 5.684727907180796, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
@@ -3428,17 +4050,44 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(229, 204, 229, 1)",
                             data: [
                                                                     { x: 0.9929 , y: 129.36701655387893, label: "BruteForce()" },
                                                             ]
                         },
                                                 {
+                            label: "bt-mqh",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.014099999999999998 , y: 5.71355700492864, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0147 , y: 6.1078925132751545, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.014799999999999999 , y: 6.5502712726593195, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=250, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.048799999999999996 , y: 10.101231098175083, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.0498 , y: 10.109754323959423, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.0519 , y: 10.693297863006675, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.0533 , y: 10.813059568405157, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=1000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.0849 , y: 16.345386981964122, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=1)" },
+                                                                    { x: 0.0854 , y: 16.437868595123298, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.3, flag=1)" },
+                                                                    { x: 0.09280000000000001 , y: 16.52762007713326, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.09809999999999999 , y: 17.325991153717073, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=5, delta=0.5, flag=0)" },
+                                                                    { x: 0.10129999999999999 , y: 18.281015872955347, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=2000, l0=7, delta=0.5, flag=0)" },
+                                                                    { x: 0.3699 , y: 94.46907305717473, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.1, flag=0)" },
+                                                                    { x: 0.391 , y: 94.95750427246108, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.1, flag=0)" },
+                                                                    { x: 0.3923 , y: 98.59343385696492, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.3, flag=0)" },
+                                                                    { x: 0.3932 , y: 99.57042813301103, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=3, delta=0.5, flag=0)" },
+                                                                    { x: 0.4183 , y: 103.16127252578778, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=5, delta=0.3, flag=0)" },
+                                                                    { x: 0.4316 , y: 104.2460901737214, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.3, flag=0)" },
+                                                                    { x: 0.433 , y: 107.52616047859199, label: "BT_MQH(max_leaf_size=25, M2=16, level=4, m_level=1, m_num=64 initial_topk=10000, l0=7, delta=0.5, flag=0)" },
+                                                            ]
+                        },
+                                                {
                             label: "fh",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(76, 229, 229, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(76, 76, 153, 1)",
                             data: [
                                                                     { x: 0.0038 , y: 9.530490875244329, label: "FH(m_hashers=16, scale_factor=2, sep_threshold=2, candidates=1000)" },
                                                                     { x: 0.0043 , y: 13.935917377472128, label: "FH(m_hashers=64, scale_factor=2, sep_threshold=2, candidates=1000)" },
@@ -3454,8 +4103,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(229, 102, 102, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(76, 229, 229, 1)",
                             data: [
                                                                     { x: 0.0939 , y: 124.32253789901743, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
                                                                     { x: 0.1593 , y: 159.83306789398208, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
@@ -3469,8 +4118,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.014199999999999999 , y: 12.44626736640931, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0152 , y: 12.898431777954317, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -3623,6 +4272,28 @@
                                                 (0.9929, 129.36701655387893)
                             };
             \addlegendentry{ bruteforce };
+                                \addplot coordinates {
+                                                (0.014099999999999998, 5.71355700492864)
+                                    (0.0147, 6.1078925132751545)
+                                    (0.014799999999999999, 6.5502712726593195)
+                                    (0.048799999999999996, 10.101231098175083)
+                                    (0.0498, 10.109754323959423)
+                                    (0.0519, 10.693297863006675)
+                                    (0.0533, 10.813059568405157)
+                                    (0.0849, 16.345386981964122)
+                                    (0.0854, 16.437868595123298)
+                                    (0.09280000000000001, 16.52762007713326)
+                                    (0.09809999999999999, 17.325991153717073)
+                                    (0.10129999999999999, 18.281015872955347)
+                                    (0.3699, 94.46907305717473)
+                                    (0.391, 94.95750427246108)
+                                    (0.3923, 98.59343385696492)
+                                    (0.3932, 99.57042813301103)
+                                    (0.4183, 103.16127252578778)
+                                    (0.4316, 104.2460901737214)
+                                    (0.433, 107.52616047859199)
+                            };
+            \addlegendentry{ bt-mqh };
                                 \addplot coordinates {
                                                 (0.0038, 9.530490875244329)
                                     (0.0043, 13.935917377472128)
