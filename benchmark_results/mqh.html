@@ -221,6 +221,30 @@
                                                                     { x: 0.9711000000000001 , y: 2.0270818720768693, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.10149999999999999 , y: 20.964308801879874, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10469999999999999 , y: 20.657496919749157, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1093 , y: 19.419800728115664, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 18.826125432317546, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3948 , y: 8.868904798761406, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4107 , y: 8.781773496843911, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4227 , y: 8.15457255063572, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 7.766732112906449, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6804 , y: 5.670062302506215, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7059 , y: 5.627062237088318, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7273 , y: 5.146932827628164, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 4.916994274593929, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 4.628812616846355, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 4.60535014774938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8773 , y: 4.213096153064475, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 4.0287800604249195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
                                                 ]},
                         options: {
                             responsive: false,
@@ -455,6 +479,25 @@
                                     (0.9711000000000001, 2.0270818720768693)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.10149999999999999, 20.964308801879874)
+                                    (0.10469999999999999, 20.657496919749157)
+                                    (0.1093, 19.419800728115664)
+                                    (0.1153, 18.826125432317546)
+                                    (0.3948, 8.868904798761406)
+                                    (0.4107, 8.781773496843911)
+                                    (0.4227, 8.15457255063572)
+                                    (0.45099999999999996, 7.766732112906449)
+                                    (0.6804, 5.670062302506215)
+                                    (0.7059, 5.627062237088318)
+                                    (0.7273, 5.146932827628164)
+                                    (0.7735000000000001, 4.916994274593929)
+                                    (0.8214, 4.628812616846355)
+                                    (0.8529, 4.60535014774938)
+                                    (0.8773, 4.213096153064475)
+                                    (0.8798, 4.0287800604249195)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -532,6 +575,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.9711000000000001 , y: 381.8734140396118, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8798 , y: 11585.054861545563, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -666,6 +718,10 @@
                                                 (0.9711000000000001, 381.8734140396118)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8798, 11585.054861545563)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -744,6 +800,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.9711000000000001 , y: 1839360.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8798 , y: 8228100.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -879,6 +944,10 @@
                                                 (0.9711000000000001, 1839360.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8798, 8228100.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -1047,6 +1116,30 @@
                                                                     { x: 0.9509000000000001 , y: 910471, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9664999999999999 , y: 920296, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9711000000000001 , y: 924867, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.10149999999999999 , y: 935, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10469999999999999 , y: 938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1093 , y: 2637, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 3332, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3948 , y: 7080, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4107 , y: 7326, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4227 , y: 11825, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 14206, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6804 , y: 37104, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7059 , y: 37350, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7273 , y: 42152, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 44533, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 57328, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 57574, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8773 , y: 62376, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 66576, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -1272,6 +1365,25 @@
                                     (0.9711000000000001, 924867)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.10149999999999999, 935)
+                                    (0.10469999999999999, 938)
+                                    (0.1093, 2637)
+                                    (0.1153, 3332)
+                                    (0.3948, 7080)
+                                    (0.4107, 7326)
+                                    (0.4227, 11825)
+                                    (0.45099999999999996, 14206)
+                                    (0.6804, 37104)
+                                    (0.7059, 37350)
+                                    (0.7273, 42152)
+                                    (0.7735000000000001, 44533)
+                                    (0.8214, 57328)
+                                    (0.8529, 57574)
+                                    (0.8773, 62376)
+                                    (0.8798, 66576)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -1475,6 +1587,37 @@
                                                                     { x: 0.04270492685189771 , y: 2.2795287970044473, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.041344661854830524 , y: 2.131767787089314, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.04067159818042222 , y: 2.0270818720768693, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 54.280667482837536 , y: 20.964308801879874, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 54.28049541559474 , y: 20.657496919749157, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 54.27420861923361 , y: 20.4646495143633, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 54.18567503597521 , y: 19.419800728115664, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 54.1660133649312 , y: 18.826125432317546, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 54.14237451665483 , y: 16.90472979685498, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 8.883805097812823 , y: 8.868904798761406, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.883461559944548 , y: 8.781773496843911, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.88159050597179 , y: 8.627526892802372, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=1, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.849734528846145 , y: 8.15457255063572, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.841247544609496 , y: 7.766732112906449, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.840473178627649 , y: 7.659592552797632, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 8.83392024609656 , y: 7.071487896401235, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.31516735623027636 , y: 5.670062302506215, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.31478371720130294 , y: 5.627062237088318, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.3104233532464335 , y: 5.146932827628164, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.3087307591876463 , y: 4.96380761293677, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.3081918806359952 , y: 4.916994274593929, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.30730130443850806 , y: 4.887060339021052, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.01292753943868534 , y: 4.628812616846355, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.012443367015447696 , y: 4.60535014774938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.012059385071484371 , y: 4.213096153064475, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.011987625911961158 , y: 4.0287800604249195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -1735,6 +1878,32 @@
                                     (0.04067159818042222, 2.0270818720768693)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (54.280667482837536, 20.964308801879874)
+                                    (54.28049541559474, 20.657496919749157)
+                                    (54.27420861923361, 20.4646495143633)
+                                    (54.18567503597521, 19.419800728115664)
+                                    (54.1660133649312, 18.826125432317546)
+                                    (54.14237451665483, 16.90472979685498)
+                                    (8.883805097812823, 8.868904798761406)
+                                    (8.883461559944548, 8.781773496843911)
+                                    (8.88159050597179, 8.627526892802372)
+                                    (8.849734528846145, 8.15457255063572)
+                                    (8.841247544609496, 7.766732112906449)
+                                    (8.840473178627649, 7.659592552797632)
+                                    (8.83392024609656, 7.071487896401235)
+                                    (0.31516735623027636, 5.670062302506215)
+                                    (0.31478371720130294, 5.627062237088318)
+                                    (0.3104233532464335, 5.146932827628164)
+                                    (0.3087307591876463, 4.96380761293677)
+                                    (0.3081918806359952, 4.916994274593929)
+                                    (0.30730130443850806, 4.887060339021052)
+                                    (0.01292753943868534, 4.628812616846355)
+                                    (0.012443367015447696, 4.60535014774938)
+                                    (0.012059385071484371, 4.213096153064475)
+                                    (0.011987625911961158, 4.0287800604249195)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -1812,6 +1981,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.9711000000000001 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.8798 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -1946,6 +2124,10 @@
                                                 (0.9711000000000001, 10.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.8798, 10.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -2125,6 +2307,30 @@
                                                                     { x: 0.9263999999999999 , y: 806903.6032434081, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9664999999999999 , y: 862833.1899655152, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9711000000000001 , y: 907393.0487649535, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.10149999999999999 , y: 392481.33948791027, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10469999999999999 , y: 398310.600358057, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1093 , y: 423696.41765105724, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 437057.5363253117, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3948 , y: 927747.0202576875, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4107 , y: 936951.972509551, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4227 , y: 1009016.7141082763, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 1059403.090049529, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6804 , y: 1451148.0758091689, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7059 , y: 1462237.248020482, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7273 , y: 1598641.4191831828, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 1673400.3621917008, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 1777583.2985881087, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 1786639.3946225883, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8773 , y: 1952981.7742268085, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 2042330.4019063711, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -2361,6 +2567,25 @@
                                     (0.9711000000000001, 907393.0487649535)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.10149999999999999, 392481.33948791027)
+                                    (0.10469999999999999, 398310.600358057)
+                                    (0.1093, 423696.41765105724)
+                                    (0.1153, 437057.5363253117)
+                                    (0.3948, 927747.0202576875)
+                                    (0.4107, 936951.972509551)
+                                    (0.4227, 1009016.7141082763)
+                                    (0.45099999999999996, 1059403.090049529)
+                                    (0.6804, 1451148.0758091689)
+                                    (0.7059, 1462237.248020482)
+                                    (0.7273, 1598641.4191831828)
+                                    (0.7735000000000001, 1673400.3621917008)
+                                    (0.8214, 1777583.2985881087)
+                                    (0.8529, 1786639.3946225883)
+                                    (0.8773, 1952981.7742268085)
+                                    (0.8798, 2042330.4019063711)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -2543,6 +2768,30 @@
                                                                     { x: 0.8359 , y: 2.2795287970044473, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9018 , y: 2.131767787089314, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9076000000000001 , y: 2.0270818720768693, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.1024 , y: 20.964308801879874, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1056 , y: 20.657496919749157, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1102 , y: 19.419800728115664, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.11610000000000001 , y: 18.826125432317546, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3982 , y: 8.868904798761406, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4138 , y: 8.781773496843911, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.42619999999999997 , y: 8.15457255063572, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4542 , y: 7.766732112906449, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6868000000000001 , y: 5.670062302506215, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7121000000000001 , y: 5.627062237088318, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7339 , y: 5.146932827628164, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7798 , y: 4.916994274593929, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8285 , y: 4.628812616846355, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8599 , y: 4.60535014774938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8844 , y: 4.213096153064475, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8869 , y: 4.0287800604249195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -2782,6 +3031,25 @@
                                     (0.9076000000000001, 2.0270818720768693)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.1024, 20.964308801879874)
+                                    (0.1056, 20.657496919749157)
+                                    (0.1102, 19.419800728115664)
+                                    (0.11610000000000001, 18.826125432317546)
+                                    (0.3982, 8.868904798761406)
+                                    (0.4138, 8.781773496843911)
+                                    (0.42619999999999997, 8.15457255063572)
+                                    (0.4542, 7.766732112906449)
+                                    (0.6868000000000001, 5.670062302506215)
+                                    (0.7121000000000001, 5.627062237088318)
+                                    (0.7339, 5.146932827628164)
+                                    (0.7798, 4.916994274593929)
+                                    (0.8285, 4.628812616846355)
+                                    (0.8599, 4.60535014774938)
+                                    (0.8844, 4.213096153064475)
+                                    (0.8869, 4.0287800604249195)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -2963,6 +3231,30 @@
                                                                     { x: 0.8513999999999999 , y: 2.2795287970044473, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9156000000000001 , y: 2.131767787089314, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9211 , y: 2.0270818720768693, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.1109 , y: 20.964308801879874, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1142 , y: 20.657496919749157, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.118 , y: 19.419800728115664, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1237 , y: 18.826125432317546, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.4276 , y: 8.868904798761406, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4422 , y: 8.781773496843911, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45309999999999995 , y: 8.15457255063572, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.476 , y: 7.766732112906449, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.7344 , y: 5.670062302506215, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7584 , y: 5.627062237088318, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7746000000000001 , y: 5.146932827628164, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8095000000000001 , y: 4.916994274593929, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8821 , y: 4.628812616846355, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.9106 , y: 4.60535014774938, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.9291 , y: 4.213096153064475, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.9309 , y: 4.0287800604249195, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -3201,6 +3493,25 @@
                                     (0.9211, 2.0270818720768693)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.1109, 20.964308801879874)
+                                    (0.1142, 20.657496919749157)
+                                    (0.118, 19.419800728115664)
+                                    (0.1237, 18.826125432317546)
+                                    (0.4276, 8.868904798761406)
+                                    (0.4422, 8.781773496843911)
+                                    (0.45309999999999995, 8.15457255063572)
+                                    (0.476, 7.766732112906449)
+                                    (0.7344, 5.670062302506215)
+                                    (0.7584, 5.627062237088318)
+                                    (0.7746000000000001, 5.146932827628164)
+                                    (0.8095000000000001, 4.916994274593929)
+                                    (0.8821, 4.628812616846355)
+                                    (0.9106, 4.60535014774938)
+                                    (0.9291, 4.213096153064475)
+                                    (0.9309, 4.0287800604249195)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -3391,6 +3702,33 @@
                                                                     { x: 0.9263999999999999 , y: 430.1619529724121, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9664999999999999 , y: 454.9450874328613, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.9711000000000001 , y: 482.5247526168823, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.10149999999999999 , y: 55.21523952484131, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10469999999999999 , y: 56.533217430114746, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1093 , y: 62.629103660583496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10980000000000001 , y: 63.62617015838623, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 67.69931316375732, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3948 , y: 117.77591705322266, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4107 , y: 120.9338903427124, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4227 , y: 134.61780548095703, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4241 , y: 140.56885242462158, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 143.54896545410156, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6804 , y: 182.92272090911865, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7059 , y: 185.94396114349365, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7273 , y: 207.24153518676758, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7293999999999999 , y: 215.48283100128174, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 218.4537649154663, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 220.6963300704956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 221.46427631378174, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8773 , y: 244.51613426208496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 254.33027744293213, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -3638,6 +3976,28 @@
                                     (0.9711000000000001, 482.5247526168823)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.10149999999999999, 55.21523952484131)
+                                    (0.10469999999999999, 56.533217430114746)
+                                    (0.1093, 62.629103660583496)
+                                    (0.10980000000000001, 63.62617015838623)
+                                    (0.1153, 67.69931316375732)
+                                    (0.3948, 117.77591705322266)
+                                    (0.4107, 120.9338903427124)
+                                    (0.4227, 134.61780548095703)
+                                    (0.4241, 140.56885242462158)
+                                    (0.45099999999999996, 143.54896545410156)
+                                    (0.6804, 182.92272090911865)
+                                    (0.7059, 185.94396114349365)
+                                    (0.7273, 207.24153518676758)
+                                    (0.7293999999999999, 215.48283100128174)
+                                    (0.7735000000000001, 218.4537649154663)
+                                    (0.8214, 220.6963300704956)
+                                    (0.8529, 221.46427631378174)
+                                    (0.8773, 244.51613426208496)
+                                    (0.8798, 254.33027744293213)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -3779,6 +4139,26 @@
                                                                     { x: 0.6567000000000001 , y: 538.7370944023132, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
                                                                     { x: 0.7028 , y: 542.60333776474, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
                                                                     { x: 0.9711000000000001 , y: 660.022509098053, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.1059 , y: 82.69144296646118, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 83.0795407295227, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.3937 , y: 198.13966751098633, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4241 , y: 198.28120470046997, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 199.50698614120483, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.6804 , y: 306.8890571594238, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7059 , y: 307.72963762283325, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7293999999999999 , y: 311.4379048347473, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 311.75317764282227, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 354.8364162445068, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 357.58408308029175, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 369.3784475326538, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -3977,6 +4357,21 @@
                                     (0.9711000000000001, 660.022509098053)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.1059, 82.69144296646118)
+                                    (0.1153, 83.0795407295227)
+                                    (0.3937, 198.13966751098633)
+                                    (0.4241, 198.28120470046997)
+                                    (0.45099999999999996, 199.50698614120483)
+                                    (0.6804, 306.8890571594238)
+                                    (0.7059, 307.72963762283325)
+                                    (0.7293999999999999, 311.4379048347473)
+                                    (0.7735000000000001, 311.75317764282227)
+                                    (0.8214, 354.8364162445068)
+                                    (0.8529, 357.58408308029175)
+                                    (0.8798, 369.3784475326538)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -4117,6 +4512,25 @@
                                                                     { x: 0.6567000000000001 , y: 573.505687713623, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
                                                                     { x: 0.7028 , y: 581.5598154067993, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
                                                                     { x: 0.9711000000000001 , y: 689.9516844749451, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.1059 , y: 84.04147148132324, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 84.73349094390868, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.4227 , y: 200.96238374710083, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4241 , y: 201.139497756958, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 203.7222933769226, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.7059 , y: 314.9134111404419, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7293999999999999 , y: 318.753879070282, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 318.967022895813, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 376.1320400238037, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 381.11780166625977, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 382.598009109497, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -4314,6 +4728,20 @@
                                     (0.9711000000000001, 689.9516844749451)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.1059, 84.04147148132324)
+                                    (0.1153, 84.73349094390868)
+                                    (0.4227, 200.96238374710083)
+                                    (0.4241, 201.139497756958)
+                                    (0.45099999999999996, 203.7222933769226)
+                                    (0.7059, 314.9134111404419)
+                                    (0.7293999999999999, 318.753879070282)
+                                    (0.7735000000000001, 318.967022895813)
+                                    (0.8214, 376.1320400238037)
+                                    (0.8529, 381.11780166625977)
+                                    (0.8798, 382.598009109497)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -4454,6 +4882,27 @@
                                                                     { x: 0.2988 , y: 399.047189474106, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
                                                                     { x: 0.7028 , y: 593.3799481391915, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
                                                                     { x: 0.9711000000000001 , y: 717.2971601486219, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.1059 , y: 85.66766643524171, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.10980000000000001 , y: 87.16734194755568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1153 , y: 87.82940125465404, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.4227 , y: 203.84579753875738, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4241 , y: 205.40622401237536, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.45099999999999996 , y: 206.84806799888642, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.7059 , y: 319.48451709747326, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7293999999999999 , y: 320.8320856094364, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.7735000000000001 , y: 324.14608526229864, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.3, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.8214 , y: 384.3235042095193, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8529 , y: 388.1962015628815, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8773 , y: 395.4011492729188, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
+                                                                    { x: 0.8798 , y: 395.55198287963896, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -4651,6 +5100,22 @@
                                     (0.9711000000000001, 717.2971601486219)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.1059, 85.66766643524171)
+                                    (0.10980000000000001, 87.16734194755568)
+                                    (0.1153, 87.82940125465404)
+                                    (0.4227, 203.84579753875738)
+                                    (0.4241, 205.40622401237536)
+                                    (0.45099999999999996, 206.84806799888642)
+                                    (0.7059, 319.48451709747326)
+                                    (0.7293999999999999, 320.8320856094364)
+                                    (0.7735000000000001, 324.14608526229864)
+                                    (0.8214, 384.3235042095193)
+                                    (0.8529, 388.1962015628815)
+                                    (0.8773, 395.4011492729188)
+                                    (0.8798, 395.55198287963896)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }

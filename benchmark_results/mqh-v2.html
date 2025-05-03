@@ -237,6 +237,18 @@
                                                                     { x: 0.8515 , y: 2.562128136407325, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 89.94079926958096, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 52.11622900780849, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 36.61832216951238, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 32.03035322680625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
                                                 ]},
                         options: {
                             responsive: false,
@@ -482,6 +494,13 @@
                                     (0.8515, 2.562128136407325)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 89.94079926958096)
+                                    (0.1383, 52.11622900780849)
+                                    (0.2351, 36.61832216951238)
+                                    (0.2835, 32.03035322680625)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -568,6 +587,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8515 , y: 394.10291266441345, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2835 , y: 11599.896925210953, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -706,6 +734,10 @@
                                                 (0.8515, 394.10291266441345)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.2835, 11599.896925210953)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -792,6 +824,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8515 , y: 1839356.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2835 , y: 8228100.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -930,6 +971,10 @@
                                                 (0.8515, 1839356.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.2835, 8228100.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -1116,6 +1161,18 @@
                                                                     { x: 0.7812 , y: 449406, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 450214, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 479603, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 935, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.058499999999999996 , y: 2637, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 2830, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2835 , y: 2920, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -1354,6 +1411,13 @@
                                     (0.8515, 479603)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 935)
+                                    (0.058499999999999996, 2637)
+                                    (0.1383, 2830)
+                                    (0.2835, 2920)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -1552,6 +1616,18 @@
                                                                     { x: 0.045721726861320776 , y: 2.9155316875760375, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.04341106900726418 , y: 2.562128136407325, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.04242562989103946 , y: 2.518950139073595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 54.52782488861744 , y: 89.94079926958096, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 9.096542913803335 , y: 52.11622900780849, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.4072737691096353 , y: 36.61832216951238, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.03936391882123974 , y: 32.03035322680625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -1802,6 +1878,13 @@
                                     (0.04242562989103946, 2.518950139073595)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (54.52782488861744, 89.94079926958096)
+                                    (9.096542913803335, 52.11622900780849)
+                                    (0.4072737691096353, 36.61832216951238)
+                                    (0.03936391882123974, 32.03035322680625)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -1888,6 +1971,15 @@
                             borderColor: "rgba(127, 229, 76, 1)",
                             data: [
                                                                     { x: 0.8515 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2835 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -2026,6 +2118,10 @@
                                                 (0.8515, 10.0)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.2835, 10.0)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -2221,6 +2317,18 @@
                                                                     { x: 0.7812 , y: 553923.8825722437, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 630881.8414967165, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 717901.6435060845, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 91483.50989563465, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 157879.8035975933, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 224698.98980927467, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 256884.46024110317, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -2468,6 +2576,13 @@
                                     (0.8515, 717901.6435060845)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 91483.50989563465)
+                                    (0.1383, 157879.8035975933)
+                                    (0.2351, 224698.98980927467)
+                                    (0.2835, 256884.46024110317)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -2660,6 +2775,18 @@
                                                                     { x: 0.7041000000000001 , y: 3.3205934206314134, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.7551 , y: 2.9155316875760375, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.7633 , y: 2.562128136407325, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0382 , y: 89.94079926958096, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1399 , y: 52.11622900780849, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2374 , y: 36.61832216951238, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.286 , y: 32.03035322680625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -2904,6 +3031,13 @@
                                     (0.7633, 2.562128136407325)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0382, 89.94079926958096)
+                                    (0.1399, 52.11622900780849)
+                                    (0.2374, 36.61832216951238)
+                                    (0.286, 32.03035322680625)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -3095,6 +3229,18 @@
                                                                     { x: 0.7141 , y: 3.3205934206314134, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.7664 , y: 2.9155316875760375, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.775 , y: 2.562128136407325, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0419 , y: 89.94079926958096, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1528 , y: 52.11622900780849, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2595 , y: 36.61832216951238, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.3125 , y: 32.03035322680625, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -3338,6 +3484,13 @@
                                     (0.775, 2.562128136407325)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0419, 89.94079926958096)
+                                    (0.1528, 52.11622900780849)
+                                    (0.2595, 36.61832216951238)
+                                    (0.3125, 32.03035322680625)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -3531,6 +3684,18 @@
                                                                     { x: 0.7812 , y: 291.675329208374, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 346.41778469085693, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 398.13387393951416, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 10.616064071655273, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 17.714619636535645, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 26.88145637512207, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 30.188918113708496, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -3776,6 +3941,13 @@
                                     (0.8515, 398.13387393951416)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 10.616064071655273)
+                                    (0.1383, 17.714619636535645)
+                                    (0.2351, 26.88145637512207)
+                                    (0.2835, 30.188918113708496)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -3982,6 +4154,18 @@
                                                                     { x: 0.7812 , y: 456.4574718475341, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 483.95396471023554, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 520.7855582237243, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 15.97602367401123, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 29.02299165725708, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 39.93300199508667, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 42.81483888626098, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -4240,6 +4424,13 @@
                                     (0.8515, 520.7855582237243)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 15.97602367401123)
+                                    (0.1383, 29.02299165725708)
+                                    (0.2351, 39.93300199508667)
+                                    (0.2835, 42.81483888626098)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -4430,6 +4621,18 @@
                                                                     { x: 0.7812 , y: 566.6013741493223, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 576.673800945282, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 589.5284008979797, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 20.18871307373046, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 35.970706939697266, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 48.03635120391845, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 52.719094753265345, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -4672,6 +4875,13 @@
                                     (0.8515, 589.5284008979797)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 20.18871307373046)
+                                    (0.1383, 35.970706939697266)
+                                    (0.2351, 48.03635120391845)
+                                    (0.2835, 52.719094753265345)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -4858,6 +5068,19 @@
                                                                     { x: 0.7834 , y: 638.0659918785119, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8426 , y: 640.0471966266633, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=1.0)" },
                                                                     { x: 0.8515 , y: 661.1532838344581, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.5, flag=0, initial_candidates_fraction=1.0)" },
+                                                            ]
+                        },
+                                                {
+                            label: "trevi-4096-euclidean (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0379 , y: 24.96891951560998, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.058499999999999996 , y: 42.83288836479206, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
+                                                                    { x: 0.1383 , y: 43.44718241691696, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.5)" },
+                                                                    { x: 0.2351 , y: 62.67864847183291, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.8)" },
+                                                                    { x: 0.2835 , y: 68.38208198547417, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=1.0)" },
                                                             ]
                         },
                                                 ]},
@@ -5096,6 +5319,14 @@
                                     (0.8515, 661.1532838344581)
                             };
             \addlegendentry{ sift-128-euclidean (k = 10) };
+                                \addplot coordinates {
+                                                (0.0379, 24.96891951560998)
+                                    (0.058499999999999996, 42.83288836479206)
+                                    (0.1383, 43.44718241691696)
+                                    (0.2351, 62.67864847183291)
+                                    (0.2835, 68.38208198547417)
+                            };
+            \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
