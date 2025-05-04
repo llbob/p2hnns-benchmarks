@@ -59,8 +59,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8842000000000001 , y: 959.6129246877424, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.898 , y: 922.5251603029728, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -78,8 +78,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.3782 , y: 8242.404233702584, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.44480000000000003 , y: 8212.933355525314, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -98,8 +98,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 15.712351712035959, label: "BruteForce()" },
                                                             ]
@@ -248,7 +248,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 38.868820270757595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 21.42101985887472, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -269,8 +269,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4897 , y: 25.075110325029566, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.5378000000000001 , y: 17.901802813069956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -290,8 +290,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 1779.3517672807122, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 1643.7782369189192, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -405,8 +405,7 @@
                 </script>
                 <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -415,10 +414,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8842000000000001, 959.6129246877424)
                                     (0.898, 922.5251603029728)
                                     (0.8986000000000001, 809.6649303437487)
@@ -432,7 +437,14 @@
                                     (0.9715999999999999, 191.68573787810402)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3782, 8242.404233702584)
                                     (0.44480000000000003, 8212.933355525314)
                                     (0.4626, 8034.418686619084)
@@ -447,11 +459,25 @@
                                     (0.966, 235.15955826847198)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 15.712351712035959)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1829, 2295.753000573623)
                                     (0.183, 2236.5172155085947)
                                     (0.18839999999999998, 2228.8467537132797)
@@ -482,7 +508,14 @@
                                     (0.9273999999999999, 20.958896037738548)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 4710.758597297519)
                                     (0.8211999999999999, 1111.0762618834688)
                                     (0.9602999999999999, 395.41174613954706)
@@ -493,7 +526,14 @@
                                     (0.9951000000000001, 88.63147287224021)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0616, 457.2704936146488)
                                     (0.5892000000000001, 431.9219721647804)
                                     (0.5934999999999999, 361.51902836520605)
@@ -511,7 +551,14 @@
                                     (0.8961, 52.16230149759127)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.12, 805.3800248355514)
                                     (0.1207, 800.078285247866)
                                     (0.1227, 774.914112520681)
@@ -550,7 +597,14 @@
                                     (0.7921, 63.640003215453504)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6021, 11.761121159526379)
                                     (0.6289, 10.47107256682038)
                                     (0.6292, 9.412781484015653)
@@ -566,7 +620,14 @@
                                     (1.0, 2.0181646491558447)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 38.868820270757595)
                                     (0.924, 21.42101985887472)
                                     (0.9247, 21.14666663197937)
@@ -583,7 +644,14 @@
                                     (0.9904999999999999, 4.17956887142981)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4897, 25.075110325029566)
                                     (0.5378000000000001, 17.901802813069956)
                                     (0.575, 17.10925238671457)
@@ -599,7 +667,14 @@
                                     (0.9978999999999999, 2.419148764831477)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 1779.3517672807122)
                                     (0.4646, 1643.7782369189192)
                                     (0.4709, 1381.4866538431136)
@@ -640,8 +715,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.9653 , y: 15.834686756134033, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.9695 , y: 17.919652462005615, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -651,8 +726,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.958 , y: 12.807666301727295, label: "BC_tree(leaf_size=10000, candidates=40000, c=10.000000)" },
                                                                     { x: 0.9582 , y: 14.528089761734009, label: "BC_tree(leaf_size=5000, candidates=40000, c=10.000000)" },
@@ -663,8 +738,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 0.00028252601623535156, label: "BruteForce()" },
                                                             ]
@@ -722,7 +797,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9904999999999999 , y: 364.54803824424744, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
@@ -730,8 +805,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9978999999999999 , y: 385.9713497161865, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
                                                             ]
@@ -739,8 +814,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.9811 , y: 27.477737426757812, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                                     { x: 0.9868 , y: 38.13739848136902, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
@@ -840,8 +915,7 @@
                 </script>
                 <div id="plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -850,59 +924,135 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9653, 15.834686756134033)
                                     (0.9695, 17.919652462005615)
                                     (0.9715999999999999, 19.64185404777527)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.958, 12.807666301727295)
                                     (0.9582, 14.528089761734009)
                                     (0.9654999999999999, 15.293490886688232)
                                     (0.966, 16.336371421813965)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 0.00028252601623535156)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9273999999999999, 417.23981738090515)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9945999999999999, 25.462316513061523)
                                     (0.9949999999999999, 25.68654179573059)
                                     (0.9951000000000001, 31.3517849445343)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8926999999999999, 6.006217002868652)
                                     (0.8961, 11.450723886489868)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.7553, 399.31659841537476)
                                     (0.7921, 411.0691068172455)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 354.4518575668335)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9904999999999999, 364.54803824424744)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9978999999999999, 385.9713497161865)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9811, 27.477737426757812)
                                     (0.9868, 38.13739848136902)
                                     (0.9909000000000001, 61.49185752868652)
@@ -929,8 +1079,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.9653 , y: 792804.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
                                                                     { x: 0.9695 , y: 794300.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
@@ -940,8 +1090,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.958 , y: 804424.0, label: "BC_tree(leaf_size=10000, candidates=40000, c=10.000000)" },
                                                                     { x: 0.9582 , y: 804628.0, label: "BC_tree(leaf_size=5000, candidates=40000, c=10.000000)" },
@@ -952,8 +1102,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                             ]
                         },
@@ -1011,7 +1161,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9904999999999999 , y: 1627396.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
@@ -1019,8 +1169,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9978999999999999 , y: 1593240.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
                                                             ]
@@ -1028,8 +1178,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.9811 , y: 530536.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                                     { x: 0.9868 , y: 624460.0, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
@@ -1129,8 +1279,7 @@
                 </script>
                 <div id="plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1139,59 +1288,135 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9653, 792804.0)
                                     (0.9695, 794300.0)
                                     (0.9715999999999999, 796432.0)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.958, 804424.0)
                                     (0.9582, 804628.0)
                                     (0.9654999999999999, 806228.0)
                                     (0.966, 808600.0)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                         };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9273999999999999, 1874588.0)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9945999999999999, 537828.0)
                                     (0.9949999999999999, 537836.0)
                                     (0.9951000000000001, 678080.0)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8926999999999999, 550868.0)
                                     (0.8958999999999999, 557696.0)
                                     (0.8961, 700340.0)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.7553, 1593236.0)
                                     (0.7921, 1721764.0)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 1593236.0)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9904999999999999, 1627396.0)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9978999999999999, 1593240.0)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9811, 530536.0)
                                     (0.9868, 624460.0)
                                     (0.9909000000000001, 812312.0)
@@ -1218,8 +1443,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8986000000000001 , y: 10009, label: "B_tree(max_leaf_size=100, candidates=10000)" },
                                                                     { x: 0.9378 , y: 20009, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
@@ -1230,8 +1455,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.4729 , y: 1009, label: "BC_tree(leaf_size=100, candidates=1000, c=10.000000)" },
                                                                     { x: 0.8273999999999999 , y: 5009, label: "BC_tree(leaf_size=5000, candidates=5000, c=10.000000)" },
@@ -1242,8 +1467,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 1000000, label: "BruteForce()" },
                                                             ]
@@ -1392,7 +1617,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 2003, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 2658, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -1413,8 +1638,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4655 , y: 431, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.4897 , y: 438, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
@@ -1433,8 +1658,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.4709 , y: 1789, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.48929999999999996 , y: 1866, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -1542,8 +1767,7 @@
                 </script>
                 <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1552,28 +1776,55 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8986000000000001, 10009)
                                     (0.9378, 20009)
                                     (0.9605, 35009)
                                     (0.9715999999999999, 50009)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4729, 1009)
                                     (0.8273999999999999, 5009)
                                     (0.9021000000000001, 10009)
                                     (0.966, 40009)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 1000000)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.183, 121)
                                     (0.1906, 145)
                                     (0.1943, 162)
@@ -1613,14 +1864,28 @@
                                     (0.9273999999999999, 7206)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 1009)
                                     (0.8211999999999999, 5009)
                                     (0.962, 15009)
                                     (0.9951000000000001, 40009)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.064, 234)
                                     (0.0656, 245)
                                     (0.0685, 251)
@@ -1648,7 +1913,14 @@
                                     (0.8961, 50009)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1255, 75)
                                     (0.1264, 128)
                                     (0.1291, 140)
@@ -1676,7 +1948,14 @@
                                     (0.7921, 8344)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6019, 370)
                                     (0.6021, 380)
                                     (0.8119, 1561)
@@ -1688,7 +1967,14 @@
                                     (1.0, 186284)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 2003)
                                     (0.924, 2658)
                                     (0.9247, 2840)
@@ -1705,7 +1991,14 @@
                                     (0.9904999999999999, 253086)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4655, 431)
                                     (0.4897, 438)
                                     (0.6869, 593)
@@ -1720,7 +2013,14 @@
                                     (0.9978999999999999, 320934)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4709, 1789)
                                     (0.48929999999999996, 1866)
                                     (0.8121, 7609)
@@ -1755,8 +2055,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.24257242636386933 , y: 959.6129246877424, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.24135755399419342 , y: 809.6649303437487, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -1769,8 +2069,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 1.0778143923985357 , y: 8242.404233702584, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.34661608016786605 , y: 1883.302950024696, label: "BC_tree(leaf_size=5000, candidates=5000, c=10.000000)" },
@@ -1781,8 +2081,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.010803711469819743 , y: 15.712351712035959, label: "BruteForce()" },
                                                             ]
@@ -1931,7 +2231,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.1653484509395425 , y: 38.868820270757595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.1427302555263397 , y: 21.42101985887472, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -1951,8 +2251,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 3.4025436275351812 , y: 25.075110325029566, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 3.002578160100459 , y: 17.901802813069956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -1971,8 +2271,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 1.0838444863448486 , y: 1779.3517672807122, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 1.0045702103179104 , y: 1643.7782369189192, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -2087,8 +2387,7 @@
                 </script>
                 <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2097,10 +2396,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.24257242636386933, 959.6129246877424)
                                     (0.24135755399419342, 809.6649303437487)
                                     (0.22798733042587338, 646.6678743914802)
@@ -2109,18 +2414,39 @@
                                     (0.07562172983936537, 196.53581301005582)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0778143923985357, 8242.404233702584)
                                     (0.34661608016786605, 1883.302950024696)
                                     (0.22953914052089458, 945.924935448798)
                                     (0.08614532668620972, 239.44898071148185)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.010803711469819743, 15.712351712035959)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (2.57368774373292, 2295.753000573623)
                                     (2.5728556714757462, 2236.5172155085947)
                                     (2.5241417179935213, 2228.8467537132797)
@@ -2153,7 +2479,14 @@
                                     (0.1645427601711294, 20.958896037738548)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.1752212470973626, 4710.758597297519)
                                     (1.1751560032339432, 4612.688703470923)
                                     (0.255678997497609, 1111.0762618834688)
@@ -2165,7 +2498,14 @@
                                     (0.0428397013744729, 88.63147287224021)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (8.46304433810323, 457.2704936146488)
                                     (1.7681818696052432, 431.9219721647804)
                                     (1.6939964117456419, 337.7879072801548)
@@ -2185,7 +2525,14 @@
                                     (0.19958325039289065, 48.13845369536336)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (9.403165184605065, 805.3800248355514)
                                     (9.400945424523913, 800.078285247866)
                                     (9.38344398755894, 774.914112520681)
@@ -2218,7 +2565,14 @@
                                     (0.5199835670711764, 63.640003215453504)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (2.591682415656275, 11.761121159526379)
                                     (2.408053279425374, 10.47107256682038)
                                     (2.4025830880736687, 9.412781484015653)
@@ -2235,7 +2589,14 @@
                                     (0.011301891893888654, 2.0181646491558447)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1653484509395425, 38.868820270757595)
                                     (0.1427302555263397, 21.42101985887472)
                                     (0.13994380859304728, 21.14666663197937)
@@ -2251,7 +2612,14 @@
                                     (0.033838082084715546, 4.17956887142981)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (3.4025436275351812, 25.075110325029566)
                                     (3.002578160100459, 17.901802813069956)
                                     (2.753581741783728, 17.10925238671457)
@@ -2266,7 +2634,14 @@
                                     (0.0179753231478701, 2.419148764831477)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0838444863448486, 1779.3517672807122)
                                     (1.0045702103179104, 1643.7782369189192)
                                     (0.9204975912437884, 1381.4866538431136)
@@ -2308,8 +2683,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.9715999999999999 , y: 10.0, label: "B_tree(max_leaf_size=500, candidates=50000)" },
                                                             ]
@@ -2317,8 +2692,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.966 , y: 10.0, label: "BC_tree(leaf_size=500, candidates=40000, c=10.000000)" },
                                                             ]
@@ -2326,8 +2701,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 10.0, label: "BruteForce()" },
                                                             ]
@@ -2381,7 +2756,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9904999999999999 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=1, initial_candidates=2000)" },
                                                             ]
@@ -2389,8 +2764,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.9978999999999999 , y: 10.0, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=1, initial_candidates_fraction=1.0)" },
                                                             ]
@@ -2398,8 +2773,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.9954000000000001 , y: 10.0, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
@@ -2495,8 +2870,7 @@
                 </script>
                 <div id="plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2505,50 +2879,126 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9715999999999999, 10.0)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.966, 10.0)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 10.0)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9273999999999999, 10.0)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9951000000000001, 10.0)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8961, 10.0)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.7921, 10.0)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 10.0)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9904999999999999, 10.0)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9978999999999999, 10.0)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9954000000000001, 10.0)
                             };
             \addlegendentry{ nh };
@@ -2571,8 +3021,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8842000000000001 , y: 826.1706148424148, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.898 , y: 861.006327176094, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -2589,8 +3039,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.3782 , y: 97.62054580020904, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.44480000000000003 , y: 98.16565715312957, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -2610,8 +3060,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                             ]
                         },
@@ -2755,7 +3205,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 41868.932184297555, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 75971.9196714983, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -2776,8 +3226,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4897 , y: 63538.7034931469, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.5378000000000001 , y: 88998.85763666153, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -2797,8 +3247,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 298.162516122818, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 379.89309383392333, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -2910,8 +3360,7 @@
                 </script>
                 <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2920,10 +3369,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8842000000000001, 826.1706148424148)
                                     (0.898, 861.006327176094)
                                     (0.8986000000000001, 1003.7189083328248)
@@ -2936,7 +3391,14 @@
                                     (0.9715999999999999, 4154.88397215271)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3782, 97.62054580020904)
                                     (0.44480000000000003, 98.16565715312957)
                                     (0.4626, 100.64200429916383)
@@ -2952,10 +3414,24 @@
                                     (0.966, 3438.5164096832273)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                         };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1829, 816.5460306625366)
                                     (0.183, 838.1728461561204)
                                     (0.18839999999999998, 841.0573750200272)
@@ -2986,7 +3462,14 @@
                                     (0.9273999999999999, 89441.16124363709)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 114.17014667415617)
                                     (0.8211999999999999, 484.06038221740727)
                                     (0.9602999999999999, 1360.1720364933012)
@@ -2996,7 +3479,14 @@
                                     (0.9951000000000001, 7650.55547454834)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.5892000000000001, 1275.387767931938)
                                     (0.597, 1553.816301042557)
                                     (0.6987, 2294.4331003007887)
@@ -3013,7 +3503,14 @@
                                     (0.8961, 13426.171389932631)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.12, 1978.2412660722732)
                                     (0.1207, 1991.3501333265306)
                                     (0.1227, 2056.0162400674817)
@@ -3050,7 +3547,14 @@
                                     (0.7921, 27054.744076158524)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6021, 135467.01699518587)
                                     (0.6289, 152156.71458991716)
                                     (0.6292, 169263.88896901227)
@@ -3066,7 +3570,14 @@
                                     (1.0, 789451.9412310686)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 41868.932184297555)
                                     (0.924, 75971.9196714983)
                                     (0.9247, 76957.56633052253)
@@ -3083,7 +3594,14 @@
                                     (0.9904999999999999, 389369.346471201)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4897, 63538.7034931469)
                                     (0.5378000000000001, 88998.85763666153)
                                     (0.575, 93121.54406215667)
@@ -3099,7 +3617,14 @@
                                     (0.9978999999999999, 658595.2973053264)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 298.162516122818)
                                     (0.4646, 379.89309383392333)
                                     (0.4709, 587.9984419250488)
@@ -3138,8 +3663,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.036199999999999996 , y: 959.6129246877424, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.0363 , y: 921.857269297982, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -3152,8 +3677,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.0068000000000000005 , y: 8242.404233702584, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0077 , y: 8034.418686619084, label: "BC_tree(leaf_size=500, candidates=1000, c=10.000000)" },
@@ -3167,8 +3692,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.9987 , y: 15.712351712035959, label: "BruteForce()" },
                                                             ]
@@ -3289,7 +3814,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.0315 , y: 38.868820270757595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.038400000000000004 , y: 21.42101985887472, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -3309,8 +3834,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0214 , y: 25.075110325029566, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.025500000000000002 , y: 17.901802813069956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -3331,8 +3856,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.0049 , y: 1779.3517672807122, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0050999999999999995 , y: 1381.4866538431136, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -3442,8 +3967,7 @@
                 </script>
                 <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -3452,10 +3976,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.036199999999999996, 959.6129246877424)
                                     (0.0363, 921.857269297982)
                                     (0.0392, 809.6649303437487)
@@ -3464,7 +3994,14 @@
                                     (0.11710000000000001, 196.53581301005582)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0068000000000000005, 8242.404233702584)
                                     (0.0077, 8034.418686619084)
                                     (0.023, 1883.302950024696)
@@ -3474,11 +4011,25 @@
                                     (0.10200000000000001, 239.44898071148185)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9987, 15.712351712035959)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0021000000000000003, 2295.753000573623)
                                     (0.0021999999999999997, 2228.8467537132797)
                                     (0.0057, 727.6217029971192)
@@ -3499,7 +4050,14 @@
                                     (0.046700000000000005, 21.206314082862473)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0055, 4710.758597297519)
                                     (0.0057, 4612.688703470923)
                                     (0.0058000000000000005, 4365.792322424848)
@@ -3513,7 +4071,14 @@
                                     (0.1248, 86.46982963874434)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0005, 457.2704936146488)
                                     (0.0049, 431.9219721647804)
                                     (0.0054, 361.51902836520605)
@@ -3528,7 +4093,14 @@
                                     (0.053200000000000004, 53.7700509037534)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.00030000000000000003, 805.3800248355514)
                                     (0.0005, 535.1766369584775)
                                     (0.0018, 436.52002814590367)
@@ -3550,7 +4122,14 @@
                                     (0.0215, 63.640003215453504)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0327, 11.761121159526379)
                                     (0.036699999999999997, 10.47107256682038)
                                     (0.12079999999999999, 4.754908043473021)
@@ -3565,7 +4144,14 @@
                                     (0.9435, 2.0181646491558447)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0315, 38.868820270757595)
                                     (0.038400000000000004, 21.42101985887472)
                                     (0.040400000000000005, 21.14666663197937)
@@ -3581,7 +4167,14 @@
                                     (0.42590000000000006, 4.17956887142981)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0214, 25.075110325029566)
                                     (0.025500000000000002, 17.901802813069956)
                                     (0.028100000000000003, 17.10925238671457)
@@ -3598,7 +4191,14 @@
                                     (0.7014, 2.419148764831477)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0049, 1779.3517672807122)
                                     (0.0050999999999999995, 1381.4866538431136)
                                     (0.006500000000000001, 1249.0426635973931)
@@ -3635,8 +4235,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.0395 , y: 959.6129246877424, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.0427 , y: 809.6649303437487, label: "B_tree(max_leaf_size=100, candidates=10000)" },
@@ -3648,8 +4248,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.0070999999999999995 , y: 8242.404233702584, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.0085 , y: 8034.418686619084, label: "BC_tree(leaf_size=500, candidates=1000, c=10.000000)" },
@@ -3663,8 +4263,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 15.712351712035959, label: "BruteForce()" },
                                                             ]
@@ -3784,7 +4384,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.0342 , y: 38.868820270757595, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.0418 , y: 21.42101985887472, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -3804,8 +4404,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.023799999999999998 , y: 25.075110325029566, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.028399999999999998 , y: 17.901802813069956, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -3825,8 +4425,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.0050999999999999995 , y: 1779.3517672807122, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.0054 , y: 1643.7782369189192, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -3938,8 +4538,7 @@
                 </script>
                 <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -3948,10 +4547,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0395, 959.6129246877424)
                                     (0.0427, 809.6649303437487)
                                     (0.0673, 485.9248411938009)
@@ -3959,7 +4564,14 @@
                                     (0.12689999999999999, 196.53581301005582)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0070999999999999995, 8242.404233702584)
                                     (0.0085, 8034.418686619084)
                                     (0.0247, 1883.302950024696)
@@ -3969,11 +4581,25 @@
                                     (0.11069999999999999, 239.44898071148185)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 15.712351712035959)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0024000000000000002, 2295.753000573623)
                                     (0.0025, 2228.8467537132797)
                                     (0.0063, 727.6217029971192)
@@ -3995,7 +4621,14 @@
                                     (0.0509, 20.958896037738548)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0060999999999999995, 4710.758597297519)
                                     (0.0062, 4612.688703470923)
                                     (0.006500000000000001, 4365.792322424848)
@@ -4008,7 +4641,14 @@
                                     (0.1329, 92.22696294457721)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0005, 457.2704936146488)
                                     (0.0055, 431.9219721647804)
                                     (0.006, 361.51902836520605)
@@ -4022,7 +4662,14 @@
                                     (0.0588, 53.7700509037534)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.00030000000000000003, 805.3800248355514)
                                     (0.0005, 535.1766369584775)
                                     (0.002, 436.52002814590367)
@@ -4044,7 +4691,14 @@
                                     (0.023200000000000002, 63.640003215453504)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0364, 11.761121159526379)
                                     (0.0407, 10.47107256682038)
                                     (0.1339, 4.754908043473021)
@@ -4059,7 +4713,14 @@
                                     (0.9679, 2.0181646491558447)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0342, 38.868820270757595)
                                     (0.0418, 21.42101985887472)
                                     (0.0442, 21.14666663197937)
@@ -4075,7 +4736,14 @@
                                     (0.4638, 4.17956887142981)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.023799999999999998, 25.075110325029566)
                                     (0.028399999999999998, 17.901802813069956)
                                     (0.0311, 17.10925238671457)
@@ -4091,7 +4759,14 @@
                                     (0.7216, 2.419148764831477)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0050999999999999995, 1779.3517672807122)
                                     (0.0054, 1643.7782369189192)
                                     (0.0055, 1381.4866538431136)
@@ -4130,8 +4805,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8842000000000001 , y: 1.0465383529663086, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.898 , y: 1.0790824890136719, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -4148,8 +4823,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.44480000000000003 , y: 0.11992454528808594, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.4626 , y: 0.12254714965820312, label: "BC_tree(leaf_size=500, candidates=1000, c=10.000000)" },
@@ -4168,8 +4843,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 63.97581100463867, label: "BruteForce()" },
                                                             ]
@@ -4333,7 +5008,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 18.915772438049316, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 34.13355350494385, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -4354,8 +5029,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4897 , y: 34.191012382507324, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.5378000000000001 , y: 46.219825744628906, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates_fraction=0.2)" },
@@ -4375,8 +5050,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 0.5619525909423828, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 0.605463981628418, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -4490,8 +5165,7 @@
                 </script>
                 <div id="plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -4500,10 +5174,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8842000000000001, 1.0465383529663086)
                                     (0.898, 1.0790824890136719)
                                     (0.8986000000000001, 1.2254714965820312)
@@ -4516,7 +5196,14 @@
                                     (0.9715999999999999, 5.207538604736328)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.44480000000000003, 0.11992454528808594)
                                     (0.4626, 0.12254714965820312)
                                     (0.4729, 0.1380443572998047)
@@ -4531,11 +5218,25 @@
                                     (0.966, 4.236340522766113)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 63.97581100463867)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1829, 0.43570995330810547)
                                     (0.1906, 0.44608116149902344)
                                     (0.1907, 0.44739246368408203)
@@ -4566,7 +5267,14 @@
                                     (0.9273999999999999, 47.84834384918213)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 0.20754337310791016)
                                     (0.8211999999999999, 0.8802413940429688)
                                     (0.9602999999999999, 2.482295036315918)
@@ -4577,7 +5285,14 @@
                                     (0.9951000000000001, 11.418700218200684)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0616, 2.1638870239257812)
                                     (0.0629, 2.271413803100586)
                                     (0.5892000000000001, 2.307295799255371)
@@ -4596,7 +5311,14 @@
                                     (0.8961, 19.011616706848145)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.12, 1.2557506561279297)
                                     (0.1207, 1.2668371200561523)
                                     (0.1263, 1.287698745727539)
@@ -4646,7 +5368,14 @@
                                     (0.7921, 16.47794246673584)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6021, 103.49738597869873)
                                     (0.6209, 110.33201217651367)
                                     (0.6289, 118.71373653411865)
@@ -4665,7 +5394,14 @@
                                     (1.0, 569.4756507873535)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 18.915772438049316)
                                     (0.924, 34.13355350494385)
                                     (0.9247, 34.23202037811279)
@@ -4682,7 +5418,14 @@
                                     (0.9904999999999999, 270.07365226745605)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4897, 34.191012382507324)
                                     (0.5378000000000001, 46.219825744628906)
                                     (0.575, 47.725558280944824)
@@ -4698,7 +5441,14 @@
                                     (0.9978999999999999, 410.9466075897217)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 0.5619525909423828)
                                     (0.4646, 0.605463981628418)
                                     (0.4709, 0.7228851318359375)
@@ -4739,8 +5489,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8842000000000001 , y: 1.1375069618225098, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.8949 , y: 1.1713743209838867, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -4759,8 +5509,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.3782 , y: 0.14568567276000977, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.44480000000000003 , y: 0.14808177947998044, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
@@ -4777,8 +5527,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 68.0318832397461, label: "BruteForce()" },
                                                             ]
@@ -4915,7 +5665,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 54.887878894805894, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 102.90071964263915, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -4933,8 +5683,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4897 , y: 79.03493642807007, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.5447 , y: 99.06232357025146, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
@@ -4955,8 +5705,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 0.6694793701171875, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 0.7073879241943359, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -5068,8 +5818,7 @@
                 </script>
                 <div id="plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -5078,10 +5827,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8842000000000001, 1.1375069618225098)
                                     (0.8949, 1.1713743209838867)
                                     (0.898, 1.1830449104309082)
@@ -5096,7 +5851,14 @@
                                     (0.9715999999999999, 5.378067493438721)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3782, 0.14568567276000977)
                                     (0.44480000000000003, 0.14808177947998044)
                                     (0.4626, 0.15238523483276364)
@@ -5109,11 +5871,25 @@
                                     (0.966, 4.396450519561768)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 68.0318832397461)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1907, 0.506889820098877)
                                     (0.1943, 0.5147457122802734)
                                     (0.1957, 0.5164384841918945)
@@ -5142,7 +5918,14 @@
                                     (0.9273999999999999, 55.637550354003906)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 0.24390220642089844)
                                     (0.8182, 0.9813666343688964)
                                     (0.8211999999999999, 0.994265079498291)
@@ -5153,7 +5936,14 @@
                                     (0.9951000000000001, 12.673342227935791)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0616, 2.356886863708496)
                                     (0.5892000000000001, 2.4795889854431152)
                                     (0.5934999999999999, 2.9579758644104004)
@@ -5171,7 +5961,14 @@
                                     (0.8961, 20.335614681243896)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1263, 1.4165401458740234)
                                     (0.1272, 1.4787673950195312)
                                     (0.1273, 1.5188336372375488)
@@ -5205,7 +6002,14 @@
                                     (0.7921, 17.676806449890137)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6209, 138.55689764022827)
                                     (0.6292, 139.0015602111816)
                                     (0.8342, 337.0267987251281)
@@ -5216,7 +6020,14 @@
                                     (1.0, 664.8579239845276)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 54.887878894805894)
                                     (0.924, 102.90071964263915)
                                     (0.9247, 103.83934974670409)
@@ -5230,7 +6041,14 @@
                                     (0.9904999999999999, 349.6317267417907)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4897, 79.03493642807007)
                                     (0.5447, 99.06232357025146)
                                     (0.575, 109.65676307678221)
@@ -5247,7 +6065,14 @@
                                     (0.9978999999999999, 563.9865398406982)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 0.6694793701171875)
                                     (0.4646, 0.7073879241943359)
                                     (0.4709, 0.8046627044677734)
@@ -5286,8 +6111,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8842000000000001 , y: 1.1754918098449707, label: "B_tree(max_leaf_size=5000, candidates=10000)" },
                                                                     { x: 0.8949 , y: 1.2086224555969238, label: "B_tree(max_leaf_size=500, candidates=10000)" },
@@ -5306,8 +6131,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.44480000000000003 , y: 0.16522645950317383, label: "BC_tree(leaf_size=1000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.4626 , y: 0.1699972152709961, label: "BC_tree(leaf_size=500, candidates=1000, c=10.000000)" },
@@ -5324,8 +6149,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 69.59956169128418, label: "BruteForce()" },
                                                             ]
@@ -5456,7 +6281,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 60.95268011093139, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=7, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 110.94140529632568, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -5474,8 +6299,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4655 , y: 103.16013097763062, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.4897 , y: 103.37963581085205, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
@@ -5499,8 +6324,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 0.7293295860290526, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 0.7656455039978026, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -5610,8 +6435,7 @@
                 </script>
                 <div id="plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -5620,10 +6444,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8842000000000001, 1.1754918098449707)
                                     (0.8949, 1.2086224555969238)
                                     (0.898, 1.2939000129699707)
@@ -5638,7 +6468,14 @@
                                     (0.9715999999999999, 5.53349494934082)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.44480000000000003, 0.16522645950317383)
                                     (0.4626, 0.1699972152709961)
                                     (0.4729, 0.195772647857666)
@@ -5651,11 +6488,25 @@
                                     (0.966, 4.641561508178711)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 69.59956169128418)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1907, 0.5371713638305664)
                                     (0.1957, 0.547196865081787)
                                     (0.1968, 0.5503201484680176)
@@ -5680,7 +6531,14 @@
                                     (0.9273999999999999, 58.90153169631958)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 0.2811527252197265)
                                     (0.8182, 1.0242629051208496)
                                     (0.8194000000000001, 1.0495448112487793)
@@ -5693,7 +6551,14 @@
                                     (0.9951000000000001, 13.766453266143797)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0616, 2.4755382537841797)
                                     (0.5892000000000001, 2.598576545715332)
                                     (0.5934999999999999, 3.2479476928710933)
@@ -5711,7 +6576,14 @@
                                     (0.8961, 21.378443241119385)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1263, 1.4768218994140625)
                                     (0.1273, 1.557619571685791)
                                     (0.1291, 2.2569823265075684)
@@ -5740,7 +6612,14 @@
                                     (0.7921, 18.118669986724854)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6209, 142.93550729751587)
                                     (0.6289, 145.41186571121216)
                                     (0.6292, 145.84389686584473)
@@ -5752,7 +6631,14 @@
                                     (1.0, 698.2239556312561)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 60.95268011093139)
                                     (0.924, 110.94140529632568)
                                     (0.9247, 114.95138168334961)
@@ -5766,7 +6652,14 @@
                                     (0.9904999999999999, 363.27367305755615)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4655, 103.16013097763062)
                                     (0.4897, 103.37963581085205)
                                     (0.5447, 116.07680082321166)
@@ -5786,7 +6679,14 @@
                                     (0.9978999999999999, 604.7392416000366)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 0.7293295860290526)
                                     (0.4646, 0.7656455039978026)
                                     (0.4709, 0.8533024787902832)
@@ -5823,8 +6723,8 @@
                                                 {
                             label: "balltree",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "circle",
+                            borderColor: "rgba(153, 153, 153, 1)",
                             data: [
                                                                     { x: 0.8949 , y: 1.2979621887207042, label: "B_tree(max_leaf_size=500, candidates=10000)" },
                                                                     { x: 0.898 , y: 1.5363745689392094, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
@@ -5842,8 +6742,8 @@
                                                 {
                             label: "bctree",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(102, 127, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
                                                                     { x: 0.3782 , y: 0.24657964706421392, label: "BC_tree(leaf_size=5000, candidates=1000, c=10.000000)" },
                                                                     { x: 0.4626 , y: 0.2553935050964398, label: "BC_tree(leaf_size=500, candidates=1000, c=10.000000)" },
@@ -5859,8 +6759,8 @@
                                                 {
                             label: "bruteforce",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 1.0 , y: 70.24935412406926, label: "BruteForce()" },
                                                             ]
@@ -5975,7 +6875,7 @@
                             label: "mqh-kjl",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 229, 153, 1)",
+                            borderColor: "rgba(204, 76, 229, 1)",
                             data: [
                                                                     { x: 0.9198000000000001 , y: 63.82292771339453, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=0, initial_candidates=2000)" },
                                                                     { x: 0.924 , y: 115.37176299095184, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.3, flag=0, initial_candidates=2000)" },
@@ -5993,8 +6893,8 @@
                                                 {
                             label: "mqh-v2",
                             fill: false,
-                            pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.4897 , y: 108.84689283370983, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=5, delta=0.1, flag=0, initial_candidates_fraction=0.2)" },
                                                                     { x: 0.5447 , y: 122.81927442550695, label: "MQH(M2=16, level=4, m_level=1, m_num=64, l0=3, delta=0.1, flag=1, initial_candidates_fraction=0.2)" },
@@ -6016,8 +6916,8 @@
                                                 {
                             label: "nh",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(102, 127, 229, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(204, 229, 153, 1)",
                             data: [
                                                                     { x: 0.45199999999999996 , y: 0.793322563171396, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
                                                                     { x: 0.4646 , y: 0.9880120754241948, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
@@ -6127,8 +7027,7 @@
                 </script>
                 <div id="plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -6137,10 +7036,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.8949, 1.2979621887207042)
                                     (0.898, 1.5363745689392094)
                                     (0.8986000000000001, 2.1510493755340607)
@@ -6154,7 +7059,14 @@
                                     (0.9715999999999999, 6.573952198028568)
                             };
             \addlegendentry{ balltree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3782, 0.24657964706421392)
                                     (0.4626, 0.2553935050964398)
                                     (0.4729, 0.2725400924682642)
@@ -6166,11 +7078,25 @@
                                     (0.966, 6.170409917831433)
                             };
             \addlegendentry{ bctree };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (1.0, 70.24935412406926)
                             };
             \addlegendentry{ bruteforce };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1968, 0.5871922969818301)
                                     (0.5594, 1.8124706745147716)
                                     (0.5619, 1.8845043182373087)
@@ -6189,7 +7115,14 @@
                                     (0.9273999999999999, 64.42730236053491)
                             };
             \addlegendentry{ bt-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=violet!90!black,
+                mark=x,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.27149999999999996, 0.509194374084488)
                                     (0.8211999999999999, 1.753987312316932)
                                     (0.9602999999999999, 4.718987226486289)
@@ -6200,7 +7133,14 @@
                                     (0.9951000000000001, 15.466948270797754)
                             };
             \addlegendentry{ fh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=teal!90!black,
+                mark=pentagon,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0616, 2.9161345958709965)
                                     (0.5892000000000001, 2.9751045703888046)
                                     (0.597, 3.6297175884246853)
@@ -6217,7 +7157,14 @@
                                     (0.8961, 22.34774494171145)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=magenta!90!black,
+                mark=star,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1248, 1.6156764030456894)
                                     (0.12490000000000001, 1.6242158412933663)
                                     (0.1258, 1.6571407318115567)
@@ -6241,7 +7188,14 @@
                                     (0.7921, 18.782999277114946)
                             };
             \addlegendentry{ mh-mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=olive!90!black,
+                mark=otimes,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.6292, 148.2423887252809)
                                     (0.8342, 361.3130638599399)
                                     (0.8345, 363.04197359085106)
@@ -6251,7 +7205,14 @@
                                     (1.0, 717.0177159309417)
                             };
             \addlegendentry{ mqh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=cyan!70!black,
+                mark=asterisk,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.9198000000000001, 63.82292771339453)
                                     (0.924, 115.37176299095184)
                                     (0.9247, 127.47954034805315)
@@ -6265,7 +7226,14 @@
                                     (0.9904999999999999, 379.8017792701732)
                             };
             \addlegendentry{ mqh-kjl };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=brown!90!black,
+                mark=oplus,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4897, 108.84689283370983)
                                     (0.5447, 122.81927442550695)
                                     (0.575, 128.06148815155092)
@@ -6283,7 +7251,14 @@
                                     (0.9978999999999999, 636.0708706378956)
                             };
             \addlegendentry{ mqh-v2 };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=lime!70!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.45199999999999996, 0.793322563171396)
                                     (0.4646, 0.9880120754241948)
                                     (0.4709, 1.0219595432281583)
