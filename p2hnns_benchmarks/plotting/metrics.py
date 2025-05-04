@@ -11,7 +11,7 @@ def epsilon_threshold(data, count, epsilon):
     return data[count - 1] * (1 + epsilon)
 
 
-def get_recall_values(dataset_distances, run_distances, count, threshold, epsilon=1e-3):
+def get_recall_values(dataset_distances, run_distances, count, threshold, epsilon=1e-5):
     recalls = np.zeros(len(run_distances))
     for i in range(len(run_distances)):
         t = threshold(dataset_distances[i], count, epsilon)
@@ -23,7 +23,7 @@ def get_recall_values(dataset_distances, run_distances, count, threshold, epsilo
     return (np.mean(recalls) / float(count), np.std(recalls) / float(count), recalls)
 
 
-def knn(dataset_distances, run_distances, count, metrics, epsilon=1e-3):
+def knn(dataset_distances, run_distances, count, metrics, epsilon=1e-5):
     if "knn" not in metrics:
         print("Computing knn metrics")
         knn_metrics = metrics.create_group("knn")
