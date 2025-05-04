@@ -59,8 +59,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4023 , y: 1250.2944417798205, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.43520000000000003 , y: 955.5699035067374, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
@@ -71,10 +71,33 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 1606.1760921512162, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 1207.8083150740197, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9849 , y: 779.3002821739527, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 1606.1576401839634, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4868 , y: 1079.8837188046548, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 755.823191998874, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 731.7576735212073, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0708 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -174,8 +197,7 @@
                 </script>
                 <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -184,10 +206,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4023, 1250.2944417798205)
                                     (0.43520000000000003, 955.5699035067374)
                                     (0.6603, 618.0082568995238)
@@ -196,7 +224,41 @@
                                     (0.667, 371.05246791721333)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 1606.1760921512162)
+                                    (0.8364, 1207.8083150740197)
+                                    (0.9849, 779.3002821739527)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 1606.1576401839634)
+                                    (0.4868, 1079.8837188046548)
+                                    (0.5902999999999999, 755.823191998874)
+                                    (0.5911, 731.7576735212073)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 59323.69664224492)
                                     (0.0708, 46053.80240244197)
                                     (0.1281, 44458.97329898984)
@@ -223,8 +285,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4023 , y: 0.11179947853088379, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
                                                                     { x: 0.40650000000000003 , y: 0.2081611156463623, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -233,10 +295,30 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 0.08026528358459473, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.9849 , y: 0.15586137771606445, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 0.08189988136291504, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.5911 , y: 0.1572730541229248, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.2672 , y: 0.07393670082092285, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
                                                             ]
@@ -332,8 +414,7 @@
                 </script>
                 <div id="plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -342,17 +423,54 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4023, 0.11179947853088379)
                                     (0.40650000000000003, 0.2081611156463623)
                                     (0.6628999999999999, 0.21044492721557617)
                                     (0.667, 0.4073667526245117)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 0.08026528358459473)
+                                    (0.9849, 0.15586137771606445)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 0.08189988136291504)
+                                    (0.5911, 0.1572730541229248)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.2672, 0.07393670082092285)
                             };
             \addlegendentry{ glove-25-angular-20k (k = 10) };
@@ -375,8 +493,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4023 , y: 23596.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
                                                                     { x: 0.40650000000000003 , y: 24384.0, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -385,10 +503,31 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 23708.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.9849 , y: 27960.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 23604.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.47640000000000005 , y: 24316.0, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.5911 , y: 27560.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0458 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
                                                                     { x: 0.2672 , y: 8576.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
@@ -485,8 +624,7 @@
                 </script>
                 <div id="plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -495,17 +633,55 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4023, 23596.0)
                                     (0.40650000000000003, 24384.0)
                                     (0.6628999999999999, 27656.0)
                                     (0.667, 33836.0)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 23708.0)
+                                    (0.9849, 27960.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 23604.0)
+                                    (0.47640000000000005, 24316.0)
+                                    (0.5911, 27560.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0458, 6528.0)
                                     (0.2672, 8576.0)
                             };
@@ -529,8 +705,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.0319 , y: 258, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.0327 , y: 277, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
@@ -563,10 +739,86 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.05 , y: 284, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.054400000000000004 , y: 298, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0548 , y: 321, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.058499999999999996 , y: 323, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.058699999999999995 , y: 329, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.0856 , y: 411, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0895 , y: 437, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0901 , y: 442, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.0918 , y: 473, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0927 , y: 476, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.0949 , y: 528, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0987 , y: 545, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.0996 , y: 547, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.10189999999999999 , y: 569, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.1479 , y: 779, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.15009999999999998 , y: 791, label: "MH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.1524 , y: 816, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.15789999999999998 , y: 838, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.16 , y: 841, label: "MH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.1611 , y: 859, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.1618 , y: 864, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.16240000000000002 , y: 865, label: "MH(M_proj_vectors=8, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.1651 , y: 884, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.7896 , y: 4504, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.7956000000000001 , y: 4557, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.796 , y: 4562, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8413 , y: 5009, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9802 , y: 8004, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.9804999999999999 , y: 8026, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.9842000000000001 , y: 8110, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.9846 , y: 8129, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.9849 , y: 8161, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.0936 , y: 274, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.09459999999999999 , y: 285, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.0986 , y: 298, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.0994 , y: 305, label: "MH(M_proj_vectors=16, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.0996 , y: 311, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.10049999999999999 , y: 317, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.1329 , y: 427, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.1368 , y: 452, label: "MH(M_proj_vectors=8, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.1376 , y: 457, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.1382 , y: 467, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.1444 , y: 511, label: "MH(M_proj_vectors=8, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.1461 , y: 527, label: "MH(M_proj_vectors=4, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.1477 , y: 534, label: "MH(M_proj_vectors=8, bit_string_length=16, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.1861 , y: 780, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.1933 , y: 829, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.1953 , y: 851, label: "MH(M_proj_vectors=16, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.1963 , y: 913, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.45919999999999994 , y: 4500, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.46349999999999997 , y: 4536, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4638 , y: 4543, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4732 , y: 4564, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.4763 , y: 4650, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.47640000000000005 , y: 4656, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.4868 , y: 5009, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5896 , y: 8085, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5901 , y: 8102, label: "MH(M_proj_vectors=16, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.5902999999999999 , y: 8187, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 8208, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0791 , y: 1, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
                                                                     { x: 0.1281 , y: 2, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
@@ -668,8 +920,7 @@
                 </script>
                 <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -678,10 +929,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0319, 258)
                                     (0.0327, 277)
                                     (0.0361, 282)
@@ -712,7 +969,94 @@
                                     (0.667, 8066)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.05, 284)
+                                    (0.054400000000000004, 298)
+                                    (0.0548, 321)
+                                    (0.058499999999999996, 323)
+                                    (0.058699999999999995, 329)
+                                    (0.0856, 411)
+                                    (0.0895, 437)
+                                    (0.0901, 442)
+                                    (0.0918, 473)
+                                    (0.0927, 476)
+                                    (0.0949, 528)
+                                    (0.0987, 545)
+                                    (0.0996, 547)
+                                    (0.10189999999999999, 569)
+                                    (0.1479, 779)
+                                    (0.15009999999999998, 791)
+                                    (0.1524, 816)
+                                    (0.15789999999999998, 838)
+                                    (0.16, 841)
+                                    (0.1611, 859)
+                                    (0.1618, 864)
+                                    (0.16240000000000002, 865)
+                                    (0.1651, 884)
+                                    (0.7896, 4504)
+                                    (0.7956000000000001, 4557)
+                                    (0.796, 4562)
+                                    (0.8413, 5009)
+                                    (0.9802, 8004)
+                                    (0.9804999999999999, 8026)
+                                    (0.9842000000000001, 8110)
+                                    (0.9846, 8129)
+                                    (0.9849, 8161)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.0936, 274)
+                                    (0.09459999999999999, 285)
+                                    (0.0986, 298)
+                                    (0.0994, 305)
+                                    (0.0996, 311)
+                                    (0.10049999999999999, 317)
+                                    (0.1329, 427)
+                                    (0.1368, 452)
+                                    (0.1376, 457)
+                                    (0.1382, 467)
+                                    (0.1444, 511)
+                                    (0.1461, 527)
+                                    (0.1477, 534)
+                                    (0.1861, 780)
+                                    (0.1933, 829)
+                                    (0.1953, 851)
+                                    (0.1963, 913)
+                                    (0.45919999999999994, 4500)
+                                    (0.46349999999999997, 4536)
+                                    (0.4638, 4543)
+                                    (0.4732, 4564)
+                                    (0.4763, 4650)
+                                    (0.47640000000000005, 4656)
+                                    (0.4868, 5009)
+                                    (0.5896, 8085)
+                                    (0.5901, 8102)
+                                    (0.5902999999999999, 8187)
+                                    (0.5911, 8208)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0791, 1)
                                     (0.1281, 2)
                                     (0.1328, 5)
@@ -741,8 +1085,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.05589660950718542 , y: 1250.2944417798205, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.055259094489797315 , y: 734.701313187791, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -754,10 +1098,32 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.04761895671695641 , y: 1606.1760921512162, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.043339816761925234 , y: 1207.8083150740197, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.026819047670036008 , y: 779.3002821739527, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.06570615227073698 , y: 1606.1576401839634, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.04347196667301413 , y: 755.823191998874, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.04267992320832146 , y: 731.7576735212073, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.18851453102491042 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
                                                                     { x: 0.18681953797855416 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
@@ -854,8 +1220,7 @@
                 </script>
                 <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -864,10 +1229,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.05589660950718542, 1250.2944417798205)
                                     (0.055259094489797315, 734.701313187791)
                                     (0.054757362961005696, 734.4317960353713)
@@ -877,7 +1248,40 @@
                                     (0.036554107162843255, 371.05246791721333)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.04761895671695641, 1606.1760921512162)
+                                    (0.043339816761925234, 1207.8083150740197)
+                                    (0.026819047670036008, 779.3002821739527)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.06570615227073698, 1606.1576401839634)
+                                    (0.04347196667301413, 755.823191998874)
+                                    (0.04267992320832146, 731.7576735212073)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.18851453102491042, 29267.963183933796)
                                     (0.18681953797855416, 27511.20964462344)
                             };
@@ -901,17 +1305,35 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.667 , y: 10.0, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.9849 , y: 10.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.5911 , y: 10.0, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0396 , y: 2.394, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=4, candidates=20000)" },
                                                                     { x: 0.0414 , y: 2.425, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=20000)" },
@@ -1032,8 +1454,7 @@
                 </script>
                 <div id="plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1042,14 +1463,49 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.667, 10.0)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.9849, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.5911, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0396, 2.394)
                                     (0.0414, 2.425)
                                     (0.0418, 2.456)
@@ -1097,8 +1553,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4023 , y: 18.87235455226898, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.43520000000000003 , y: 28.941891010284426, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
@@ -1109,10 +1565,33 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 14.760523529052735, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 23.14936869621277, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9849 , y: 35.87833937644958, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 14.69594229698181, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4868 , y: 25.52126633644104, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 36.463554296493534, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 37.662741365432744, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.18158005332946775, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0867 , y: 0.27679412841796874, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
@@ -1211,8 +1690,7 @@
                 </script>
                 <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1221,10 +1699,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4023, 18.87235455226898)
                                     (0.43520000000000003, 28.941891010284426)
                                     (0.6603, 44.750211168289184)
@@ -1233,7 +1717,41 @@
                                     (0.667, 91.18926007938386)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 14.760523529052735)
+                                    (0.8364, 23.14936869621277)
+                                    (0.9849, 35.87833937644958)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 14.69594229698181)
+                                    (0.4868, 25.52126633644104)
+                                    (0.5902999999999999, 36.463554296493534)
+                                    (0.5911, 37.662741365432744)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.18158005332946775)
                                     (0.0867, 0.27679412841796874)
                                     (0.2611, 0.29739001464843745)
@@ -1259,8 +1777,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.2344 , y: 1250.2944417798205, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.2425 , y: 955.5699035067374, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
@@ -1271,10 +1789,33 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2303 , y: 1606.1760921512162, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.2552 , y: 1207.8083150740197, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.41159999999999997 , y: 779.3002821739527, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.3659 , y: 1606.1576401839634, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.378 , y: 1079.8837188046548, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.46580000000000005 , y: 755.823191998874, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4665 , y: 731.7576735212073, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0668 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0712 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -1374,8 +1915,7 @@
                 </script>
                 <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1384,10 +1924,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.2344, 1250.2944417798205)
                                     (0.2425, 955.5699035067374)
                                     (0.4072, 618.0082568995238)
@@ -1396,7 +1942,41 @@
                                     (0.4135, 371.05246791721333)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.2303, 1606.1760921512162)
+                                    (0.2552, 1207.8083150740197)
+                                    (0.41159999999999997, 779.3002821739527)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.3659, 1606.1576401839634)
+                                    (0.378, 1079.8837188046548)
+                                    (0.46580000000000005, 755.823191998874)
+                                    (0.4665, 731.7576735212073)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0668, 59323.69664224492)
                                     (0.0712, 46053.80240244197)
                                     (0.1292, 44458.97329898984)
@@ -1423,8 +2003,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.25739999999999996 , y: 1250.2944417798205, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.2684 , y: 955.5699035067374, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
@@ -1434,10 +2014,33 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.24900000000000003 , y: 1606.1760921512162, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.2783 , y: 1207.8083150740197, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.4485 , y: 779.3002821739527, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.37679999999999997 , y: 1606.1576401839634, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.39180000000000004 , y: 1079.8837188046548, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.48 , y: 755.823191998874, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.4807 , y: 731.7576735212073, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0732 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0779 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -1537,8 +2140,7 @@
                 </script>
                 <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1547,10 +2149,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.25739999999999996, 1250.2944417798205)
                                     (0.2684, 955.5699035067374)
                                     (0.4476, 618.0082568995238)
@@ -1558,7 +2166,41 @@
                                     (0.45119999999999993, 371.05246791721333)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24900000000000003, 1606.1760921512162)
+                                    (0.2783, 1207.8083150740197)
+                                    (0.4485, 779.3002821739527)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.37679999999999997, 1606.1576401839634)
+                                    (0.39180000000000004, 1079.8837188046548)
+                                    (0.48, 755.823191998874)
+                                    (0.4807, 731.7576735212073)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0732, 59323.69664224492)
                                     (0.0779, 46053.80240244197)
                                     (0.1413, 44458.97329898984)
@@ -1585,8 +2227,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.3928 , y: 0.7836818695068359, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.4023 , y: 0.7848739624023438, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -1598,10 +2240,34 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.778 , y: 0.6085634231567383, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.7867 , y: 0.6091594696044922, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 0.8065700531005859, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9849 , y: 1.2650489807128906, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 0.6091594696044922, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4868 , y: 0.87738037109375, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 1.2781620025634766, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 1.3103485107421875, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.011444091796875, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
                                                                     { x: 0.0791 , y: 0.012636184692382812, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
@@ -1701,8 +2367,7 @@
                 </script>
                 <div id="plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1711,10 +2376,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3928, 0.7836818695068359)
                                     (0.4023, 0.7848739624023438)
                                     (0.43520000000000003, 1.0263919830322266)
@@ -1724,7 +2395,42 @@
                                     (0.667, 2.6410818099975586)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.778, 0.6085634231567383)
+                                    (0.7867, 0.6091594696044922)
+                                    (0.8364, 0.8065700531005859)
+                                    (0.9849, 1.2650489807128906)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 0.6091594696044922)
+                                    (0.4868, 0.87738037109375)
+                                    (0.5902999999999999, 1.2781620025634766)
+                                    (0.5911, 1.3103485107421875)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.011444091796875)
                                     (0.0791, 0.012636184692382812)
                                     (0.0867, 0.0152587890625)
@@ -1751,8 +2457,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.3928 , y: 0.8931517601013182, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
                                                                     { x: 0.4006 , y: 0.8943557739257812, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
@@ -1764,10 +2470,33 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 0.7067680358886718, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 0.9657859802246089, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9849 , y: 1.381278038024902, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 0.7168173789978025, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4868 , y: 1.1780858039855957, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 1.590108871459961, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 1.6739010810852049, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.015020370483398438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
                                                                     { x: 0.0791 , y: 0.016224384307861318, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
@@ -1867,8 +2596,7 @@
                 </script>
                 <div id="plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1877,10 +2605,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.3928, 0.8931517601013182)
                                     (0.4006, 0.8943557739257812)
                                     (0.4023, 0.9029150009155273)
@@ -1890,7 +2624,41 @@
                                     (0.667, 2.9921770095825195)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 0.7067680358886718)
+                                    (0.8364, 0.9657859802246089)
+                                    (0.9849, 1.381278038024902)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 0.7168173789978025)
+                                    (0.4868, 1.1780858039855957)
+                                    (0.5902999999999999, 1.590108871459961)
+                                    (0.5911, 1.6739010810852049)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.015020370483398438)
                                     (0.0791, 0.016224384307861318)
                                     (0.0867, 0.018835067749023438)
@@ -1917,8 +2685,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4023 , y: 0.9827733039855957, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
                                                                     { x: 0.43520000000000003 , y: 1.2908887863159177, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
@@ -1928,10 +2696,35 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 0.8300566673278807, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 1.0721898078918457, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9843999999999999 , y: 1.6056370735168457, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.9849 , y: 1.6268444061279295, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=50000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.4638 , y: 0.8542776107788086, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4732 , y: 1.416926383972168, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.4868 , y: 1.4252305030822752, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 1.785469055175781, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 1.9121170043945312, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.03221988677978513, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=5000)" },
                                                                     { x: 0.0867 , y: 0.033383369445800774, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
@@ -2031,8 +2824,7 @@
                 </script>
                 <div id="plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2041,10 +2833,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4023, 0.9827733039855957)
                                     (0.43520000000000003, 1.2908887863159177)
                                     (0.6628999999999999, 1.907241344451904)
@@ -2052,7 +2850,43 @@
                                     (0.667, 3.1450724601745605)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 0.8300566673278807)
+                                    (0.8364, 1.0721898078918457)
+                                    (0.9843999999999999, 1.6056370735168457)
+                                    (0.9849, 1.6268444061279295)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4638, 0.8542776107788086)
+                                    (0.4732, 1.416926383972168)
+                                    (0.4868, 1.4252305030822752)
+                                    (0.5902999999999999, 1.785469055175781)
+                                    (0.5911, 1.9121170043945312)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.03221988677978513)
                                     (0.0867, 0.033383369445800774)
                                     (0.1281, 0.03362655639648437)
@@ -2079,8 +2913,8 @@
                                                 {
                             label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "circle",
-                            borderColor: "rgba(153, 153, 153, 1)",
+                            pointStyle: "star",
+                            borderColor: "rgba(102, 127, 76, 1)",
                             data: [
                                                                     { x: 0.4006 , y: 1.0619740486145286, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=10000)" },
                                                                     { x: 0.4023 , y: 1.10290241241457, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
@@ -2091,10 +2925,36 @@
                                                             ]
                         },
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
                             pointStyle: "rect",
-                            borderColor: "rgba(204, 76, 229, 1)",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.7867 , y: 0.9944410324096891, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.8364 , y: 1.3233816623687886, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.9849 , y: 1.7731709480285907, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.1382 , y: 0.900038957595826, label: "MH(M_proj_vectors=4, bit_string_length=8, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.4638 , y: 0.9777061939239672, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=20000)" },
+                                                                    { x: 0.4732 , y: 1.5552923679351887, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.47640000000000005 , y: 1.6305916309356732, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=4, interval_ratio=0.990000, candidates=50000)" },
+                                                                    { x: 0.48419999999999996 , y: 1.909264564514161, label: "MH(M_proj_vectors=8, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=5000)" },
+                                                                    { x: 0.5902999999999999 , y: 1.9414875507354776, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=10000)" },
+                                                                    { x: 0.5911 , y: 2.1791377067566127, label: "MH(M_proj_vectors=4, bit_string_length=4, l_hash_tables=8, interval_ratio=0.990000, candidates=20000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-angular-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "triangle",
+                            borderColor: "rgba(229, 204, 76, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.07310390472447788, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0708 , y: 0.08931946754491273, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -2195,8 +3055,7 @@
                 </script>
                 <div id="plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2205,10 +3064,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.4006, 1.0619740486145286)
                                     (0.4023, 1.10290241241457)
                                     (0.43520000000000003, 1.6662383079529604)
@@ -2217,7 +3082,44 @@
                                     (0.667, 3.43512582778937)
                             };
             \addlegendentry{ glove-100-euclidean-20k (k = 10) };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7867, 0.9944410324096891)
+                                    (0.8364, 1.3233816623687886)
+                                    (0.9849, 1.7731709480285907)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=green!70!black,
+                mark=triangle,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.1382, 0.900038957595826)
+                                    (0.4638, 0.9777061939239672)
+                                    (0.4732, 1.5552923679351887)
+                                    (0.47640000000000005, 1.6305916309356732)
+                                    (0.48419999999999996, 1.909264564514161)
+                                    (0.5902999999999999, 1.9414875507354776)
+                                    (0.5911, 2.1791377067566127)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=orange!90!black,
+                mark=diamond,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.07310390472447788)
                                     (0.0708, 0.08931946754491273)
                                     (0.1281, 3.029118299484254)

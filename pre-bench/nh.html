@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>mh-orig</title>
+        <title>nh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for mh-orig</h2>
+                                                        <h2>Plots for nh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,33 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2077 , y: 7579.332365957279, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 7070.533319622596, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 2544.2475299415723, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 2316.9033301552336, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9986 , y: 1183.0346956050091, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9987 , y: 1179.2286368160323, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 750.4955076419204, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 10230.309179780872, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 9048.88720130481, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5158 , y: 3193.6965233566866, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 3155.8519731298, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6724 , y: 1555.4991848499278, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7271 , y: 888.9329720211989, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7282 , y: 882.2364861851864, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -177,11 +196,32 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.048799999999999996, 66405.4969760299)
-                                    (0.35209999999999997, 47244.857960305475)
+                                                (0.2077, 7579.332365957279)
+                                    (0.2116, 7070.533319622596)
+                                    (0.8175000000000001, 2544.2475299415723)
+                                    (0.8231999999999999, 2316.9033301552336)
+                                    (0.9986, 1183.0346956050091)
+                                    (0.9987, 1179.2286368160323)
+                                    (1.0, 750.4955076419204)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 10230.309179780872)
+                                    (0.24900000000000003, 9048.88720130481)
+                                    (0.5158, 3193.6965233566866)
+                                    (0.5196, 3155.8519731298)
+                                    (0.6724, 1555.4991848499278)
+                                    (0.7271, 888.9329720211989)
+                                    (0.7282, 882.2364861851864)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -199,12 +239,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 0.462324857711792, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7282 , y: 0.358182430267334, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -317,9 +366,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.35209999999999997, 0.03841423988342285)
+                                                (1.0, 0.462324857711792)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7282, 0.358182430267334)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -337,12 +397,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 15680.0, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7282 , y: 15628.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -455,9 +524,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.35209999999999997, 5888.0)
+                                                (1.0, 15680.0)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7282, 15628.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -475,13 +555,47 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 0.18680000000000002 , y: 1126, label: "NH(m_hashers=256, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.1903 , y: 1167, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2077 , y: 1324, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 1449, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.7293000000000001 , y: 4407, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7297 , y: 4546, label: "NH(m_hashers=256, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.7575999999999999 , y: 5190, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8175000000000001 , y: 5383, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 6540, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9945999999999999 , y: 9448, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.998 , y: 10565, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9986 , y: 10671, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9987 , y: 11687, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 15877, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.2343 , y: 1146, label: "NH(m_hashers=256, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 1164, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4795 , y: 4274, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 4370, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6405000000000001 , y: 9601, label: "NH(m_hashers=256, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6481 , y: 10182, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6634 , y: 10463, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6675 , y: 10962, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6724 , y: 11544, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7142999999999999 , y: 15684, label: "NH(m_hashers=256, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7181 , y: 16575, label: "NH(m_hashers=128, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.721 , y: 17273, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7243999999999999 , y: 17644, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7282 , y: 17775, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -594,10 +708,46 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.0639, 1)
-                                    (0.35209999999999997, 147)
+                                                (0.18680000000000002, 1126)
+                                    (0.1903, 1167)
+                                    (0.2077, 1324)
+                                    (0.2116, 1449)
+                                    (0.7293000000000001, 4407)
+                                    (0.7297, 4546)
+                                    (0.7575999999999999, 5190)
+                                    (0.8175000000000001, 5383)
+                                    (0.8231999999999999, 6540)
+                                    (0.9945999999999999, 9448)
+                                    (0.998, 10565)
+                                    (0.9986, 10671)
+                                    (0.9987, 11687)
+                                    (1.0, 15877)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.2343, 1146)
+                                    (0.24900000000000003, 1164)
+                                    (0.4795, 4274)
+                                    (0.5196, 4370)
+                                    (0.6405000000000001, 9601)
+                                    (0.6481, 10182)
+                                    (0.6634, 10463)
+                                    (0.6675, 10962)
+                                    (0.6724, 11544)
+                                    (0.7142999999999999, 15684)
+                                    (0.7181, 16575)
+                                    (0.721, 17273)
+                                    (0.7243999999999999, 17644)
+                                    (0.7282, 17775)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -615,12 +765,36 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.20218761302867808 , y: 7579.332365957279, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.19865746139969648 , y: 7070.533319622596, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.04485086151745076 , y: 2544.2475299415723, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.04415545475256469 , y: 2316.9033301552336, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.02007179097289517 , y: 1183.0346956050091, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.019209611289428826 , y: 1179.2286368160323, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.012293706589534463 , y: 750.4955076419204, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.011920035456244782 , y: 694.1973019297749, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.10647675859470403 , y: 10230.309179780872, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10581098155656307 , y: 9048.88720130481, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.10554795671973766 , y: 6805.344582809394, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.045681931310184706 , y: 3193.6965233566866, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.04420860038984711 , y: 3155.8519731298, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.043648213477273795 , y: 2219.2155107370713, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.028606219538244698 , y: 1555.4991848499278, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.02829364299785624 , y: 1211.22295485215, label: "NH(m_hashers=32, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.02294235938060925 , y: 888.9329720211989, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -733,9 +907,35 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.1477833891513366, 47244.857960305475)
+                                                (0.20218761302867808, 7579.332365957279)
+                                    (0.19865746139969648, 7070.533319622596)
+                                    (0.04485086151745076, 2544.2475299415723)
+                                    (0.04415545475256469, 2316.9033301552336)
+                                    (0.02007179097289517, 1183.0346956050091)
+                                    (0.019209611289428826, 1179.2286368160323)
+                                    (0.012293706589534463, 750.4955076419204)
+                                    (0.011920035456244782, 694.1973019297749)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.10647675859470403, 10230.309179780872)
+                                    (0.10581098155656307, 9048.88720130481)
+                                    (0.10554795671973766, 6805.344582809394)
+                                    (0.045681931310184706, 3193.6965233566866)
+                                    (0.04420860038984711, 3155.8519731298)
+                                    (0.043648213477273795, 2219.2155107370713)
+                                    (0.028606219538244698, 1555.4991848499278)
+                                    (0.02829364299785624, 1211.22295485215)
+                                    (0.02294235938060925, 888.9329720211989)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -753,16 +953,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 2.739, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 3.581, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "NH(m_hashers=64, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7282 , y: 10.0, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -875,13 +1080,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.823)
-                                    (0.020999999999999998, 1.14)
-                                    (0.048799999999999996, 2.739)
-                                    (0.0639, 3.581)
-                                    (0.35209999999999997, 10.0)
+                                                (1.0, 10.0)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7282, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -899,14 +1111,33 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.12462731933593751, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2077 , y: 2.073533556938171, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 2.2176544952392576, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 6.177071929931642, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 6.76765396118164, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9986 , y: 13.254049148559568, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9987 , y: 13.327356128692626, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 20.892863235473634, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 1.5276175651550292, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 1.7279472770690918, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5158 , y: 4.893389176368713, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 4.954605010986328, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6724 , y: 10.046935512542724, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7271 , y: 17.589627668380736, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7282 , y: 17.71407127761841, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1019,11 +1250,32 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.07663531494140625)
-                                    (0.020999999999999998, 0.09405798339843749)
-                                    (0.35209999999999997, 0.12462731933593751)
+                                                (0.2077, 2.073533556938171)
+                                    (0.2116, 2.2176544952392576)
+                                    (0.8175000000000001, 6.177071929931642)
+                                    (0.8231999999999999, 6.76765396118164)
+                                    (0.9986, 13.254049148559568)
+                                    (0.9987, 13.327356128692626)
+                                    (1.0, 20.892863235473634)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 1.5276175651550292)
+                                    (0.24900000000000003, 1.7279472770690918)
+                                    (0.5158, 4.893389176368713)
+                                    (0.5196, 4.954605010986328)
+                                    (0.6724, 10.046935512542724)
+                                    (0.7271, 17.589627668380736)
+                                    (0.7282, 17.71407127761841)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1041,14 +1293,32 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3539 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0578 , y: 7579.332365957279, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2509 , y: 2544.2475299415723, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5528 , y: 1183.0346956050091, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.5783 , y: 1179.2286368160323, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.8943 , y: 750.4955076419204, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9218999999999999 , y: 694.1973019297749, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.21190000000000003 , y: 10230.309179780872, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.21230000000000002 , y: 9048.88720130481, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4056 , y: 3193.6965233566866, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.4107 , y: 3155.8519731298, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5441 , y: 1555.4991848499278, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6128 , y: 888.9329720211989, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.6174000000000001 , y: 882.2364861851864, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1161,11 +1431,31 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.0495, 66405.4969760299)
-                                    (0.3539, 47244.857960305475)
+                                                (0.0578, 7579.332365957279)
+                                    (0.2509, 2544.2475299415723)
+                                    (0.5528, 1183.0346956050091)
+                                    (0.5783, 1179.2286368160323)
+                                    (0.8943, 750.4955076419204)
+                                    (0.9218999999999999, 694.1973019297749)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.21190000000000003, 10230.309179780872)
+                                    (0.21230000000000002, 9048.88720130481)
+                                    (0.4056, 3193.6965233566866)
+                                    (0.4107, 3155.8519731298)
+                                    (0.5441, 1555.4991848499278)
+                                    (0.6128, 888.9329720211989)
+                                    (0.6174000000000001, 882.2364861851864)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1183,14 +1473,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3671 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.0628 , y: 7579.332365957279, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2747 , y: 2544.2475299415723, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6013 , y: 1183.0346956050091, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6285999999999999 , y: 1179.2286368160323, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9342 , y: 750.4955076419204, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.9542999999999999 , y: 694.1973019297749, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.22080000000000002 , y: 10230.309179780872, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.4182 , y: 3193.6965233566866, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.4218 , y: 3155.8519731298, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5593 , y: 1555.4991848499278, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6263 , y: 888.9329720211989, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.6299 , y: 882.2364861851864, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1303,11 +1610,30 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.015, 76831.41909838618)
-                                    (0.0538, 66405.4969760299)
-                                    (0.3671, 47244.857960305475)
+                                                (0.0628, 7579.332365957279)
+                                    (0.2747, 2544.2475299415723)
+                                    (0.6013, 1183.0346956050091)
+                                    (0.6285999999999999, 1179.2286368160323)
+                                    (0.9342, 750.4955076419204)
+                                    (0.9542999999999999, 694.1973019297749)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.22080000000000002, 10230.309179780872)
+                                    (0.4182, 3193.6965233566866)
+                                    (0.4218, 3155.8519731298)
+                                    (0.5593, 1555.4991848499278)
+                                    (0.6263, 888.9329720211989)
+                                    (0.6299, 882.2364861851864)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1325,16 +1651,32 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.010251998901367188, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 0.012874603271484375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=300000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.013113021850585938, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=50000)" },
+                                                                    { x: 0.2077 , y: 0.12874603271484375, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 0.13768672943115234, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 0.3857612609863281, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 0.41294097900390625, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9986 , y: 0.8307695388793945, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9987 , y: 0.8347034454345703, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 1.3141632080078125, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 0.09441375732421875, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 0.10585784912109375, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5158 , y: 0.2994537353515625, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 0.30422210693359375, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6724 , y: 0.6315708160400391, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7282 , y: 1.0586977005004883, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1447,13 +1789,31 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.008344650268554688)
-                                    (0.020999999999999998, 0.009298324584960938)
-                                    (0.048799999999999996, 0.010251998901367188)
-                                    (0.0639, 0.012874603271484375)
-                                    (0.35209999999999997, 0.013113021850585938)
+                                                (0.2077, 0.12874603271484375)
+                                    (0.2116, 0.13768672943115234)
+                                    (0.8175000000000001, 0.3857612609863281)
+                                    (0.8231999999999999, 0.41294097900390625)
+                                    (0.9986, 0.8307695388793945)
+                                    (0.9987, 0.8347034454345703)
+                                    (1.0, 1.3141632080078125)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 0.09441375732421875)
+                                    (0.24900000000000003, 0.10585784912109375)
+                                    (0.5158, 0.2994537353515625)
+                                    (0.5196, 0.30422210693359375)
+                                    (0.6724, 0.6315708160400391)
+                                    (0.7282, 1.0586977005004883)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1471,16 +1831,31 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.011205673217773438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.015735626220703125, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.018596649169921875, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2077 , y: 0.17142295837402344, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 0.1842975616455078, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 0.5009531974792479, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 0.5799055099487304, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9987 , y: 1.011192798614502, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 1.5307426452636719, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 0.133514404296875, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 0.1537919044494629, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5196 , y: 0.43178796768188477, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6724 , y: 0.7725596427917479, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7271 , y: 1.5034914016723628, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                                    { x: 0.7282 , y: 1.6027450561523438, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1593,13 +1968,30 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.0095367431640625)
-                                    (0.020999999999999998, 0.010251998901367188)
-                                    (0.048799999999999996, 0.011205673217773438)
-                                    (0.0639, 0.015735626220703125)
-                                    (0.35209999999999997, 0.018596649169921875)
+                                                (0.2077, 0.17142295837402344)
+                                    (0.2116, 0.1842975616455078)
+                                    (0.8175000000000001, 0.5009531974792479)
+                                    (0.8231999999999999, 0.5799055099487304)
+                                    (0.9987, 1.011192798614502)
+                                    (1.0, 1.5307426452636719)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 0.133514404296875)
+                                    (0.24900000000000003, 0.1537919044494629)
+                                    (0.5196, 0.43178796768188477)
+                                    (0.6724, 0.7725596427917479)
+                                    (0.7271, 1.5034914016723628)
+                                    (0.7282, 1.6027450561523438)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1617,15 +2009,30 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.03053903579711912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.03697156906127928, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2116 , y: 0.21530628204345703, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 0.5875134468078613, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 0.7317805290222167, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9987 , y: 1.2172150611877441, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 1.8168902397155757, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 0.16619682312011716, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 0.2072024345397949, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5158 , y: 0.5230188369750975, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 0.5360054969787598, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6724 , y: 0.9825301170349119, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7282 , y: 1.9777965545654297, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1738,12 +2145,29 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.020999999999999998, 0.017647743225097653)
-                                    (0.048799999999999996, 0.02027034759521484)
-                                    (0.0639, 0.03053903579711912)
-                                    (0.35209999999999997, 0.03697156906127928)
+                                                (0.2116, 0.21530628204345703)
+                                    (0.8175000000000001, 0.5875134468078613)
+                                    (0.8231999999999999, 0.7317805290222167)
+                                    (0.9987, 1.2172150611877441)
+                                    (1.0, 1.8168902397155757)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 0.16619682312011716)
+                                    (0.24900000000000003, 0.2072024345397949)
+                                    (0.5158, 0.5230188369750975)
+                                    (0.5196, 0.5360054969787598)
+                                    (0.6724, 0.9825301170349119)
+                                    (0.7282, 1.9777965545654297)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1761,14 +2185,33 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 3.0356068611145934, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.2077 , y: 0.2961575984954871, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.2116 , y: 0.3693299293518084, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.8175000000000001 , y: 0.7367694377899435, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.8231999999999999 , y: 1.1456854343414382, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.9986 , y: 1.4273493289947883, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.9987 , y: 1.574160337448131, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 1.0 , y: 2.3964803218841677, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.24769999999999998 , y: 0.27445793151855813, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.24900000000000003 , y: 0.2949728965759322, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=1000)" },
+                                                                    { x: 0.5158 , y: 0.6336076259613368, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.5196 , y: 0.6468968391418732, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=5000)" },
+                                                                    { x: 0.6675 , y: 1.2507886886597148, label: "NH(m_hashers=16, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.6724 , y: 1.3475697040558101, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=15000)" },
+                                                                    { x: 0.7282 , y: 2.3349573612213246, label: "NH(m_hashers=8, scale_factor=2.000000, bucket_width=0, candidates=40000)" },
                                                             ]
                         },
                                                 ]},
@@ -1881,11 +2324,32 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.020999999999999998, 0.07869911193901513)
-                                    (0.048799999999999996, 0.4324717521669824)
-                                    (0.35209999999999997, 3.0356068611145934)
+                                                (0.2077, 0.2961575984954871)
+                                    (0.2116, 0.3693299293518084)
+                                    (0.8175000000000001, 0.7367694377899435)
+                                    (0.8231999999999999, 1.1456854343414382)
+                                    (0.9986, 1.4273493289947883)
+                                    (0.9987, 1.574160337448131)
+                                    (1.0, 2.3964803218841677)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.24769999999999998, 0.27445793151855813)
+                                    (0.24900000000000003, 0.2949728965759322)
+                                    (0.5158, 0.6336076259613368)
+                                    (0.5196, 0.6468968391418732)
+                                    (0.6675, 1.2507886886597148)
+                                    (0.6724, 1.3475697040558101)
+                                    (0.7282, 2.3349573612213246)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
