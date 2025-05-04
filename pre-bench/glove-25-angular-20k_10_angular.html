@@ -59,8 +59,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0708 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -72,8 +72,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
@@ -171,8 +171,7 @@
                 </script>
                 <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -181,10 +180,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 59323.69664224492)
                                     (0.0708, 46053.80240244197)
                                     (0.1281, 44458.97329898984)
@@ -192,7 +197,14 @@
                                     (0.2672, 27511.20964462344)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 76831.41909838618)
                                     (0.048799999999999996, 66405.4969760299)
                                     (0.35209999999999997, 47244.857960305475)
@@ -217,8 +229,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.2672 , y: 0.07393670082092285, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
                                                             ]
@@ -226,8 +238,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
                                                             ]
@@ -323,8 +335,7 @@
                 </script>
                 <div id="plot_d5b87b45dd7c7a54f22b748320d000984654b80ebdd0996632b0ec2f" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -333,14 +344,27 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.2672, 0.07393670082092285)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.35209999999999997, 0.03841423988342285)
                             };
             \addlegendentry{ mh-orig };
@@ -363,8 +387,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0458 , y: 6528.0, label: "MH(M_proj_vectors=8, m_single_hashers=64, l_hash_tables=4, candidates=5000)" },
                                                                     { x: 0.2672 , y: 8576.0, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=10000)" },
@@ -373,8 +397,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
                                                             ]
@@ -470,8 +494,7 @@
                 </script>
                 <div id="plot_07ee1fe78788ca066ade4226be532a7124a755a5c245aed904f83c58" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -480,15 +503,28 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0458, 6528.0)
                                     (0.2672, 8576.0)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.35209999999999997, 5888.0)
                             };
             \addlegendentry{ mh-orig };
@@ -511,8 +547,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0791 , y: 1, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
                                                                     { x: 0.1281 , y: 2, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=16, candidates=5000)" },
@@ -526,8 +562,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
                                                                     { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
@@ -624,8 +660,7 @@
                 </script>
                 <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -634,10 +669,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0791, 1)
                                     (0.1281, 2)
                                     (0.1328, 5)
@@ -647,7 +688,14 @@
                                     (0.2672, 401)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0639, 1)
                                     (0.35209999999999997, 147)
                             };
@@ -671,8 +719,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.18851453102491042 , y: 29267.963183933796, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=8, candidates=5000)" },
                                                                     { x: 0.18681953797855416 , y: 27511.20964462344, label: "MH(M_proj_vectors=4, m_single_hashers=8, l_hash_tables=8, candidates=20000)" },
@@ -681,8 +729,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
                                                             ]
@@ -778,8 +826,7 @@
                 </script>
                 <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -788,15 +835,28 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.18851453102491042, 29267.963183933796)
                                     (0.18681953797855416, 27511.20964462344)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.1477833891513366, 47244.857960305475)
                             };
             \addlegendentry{ mh-orig };
@@ -819,8 +879,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0396 , y: 2.394, label: "MH(M_proj_vectors=8, m_single_hashers=256, l_hash_tables=4, candidates=20000)" },
                                                                     { x: 0.0414 , y: 2.425, label: "MH(M_proj_vectors=16, m_single_hashers=64, l_hash_tables=4, candidates=20000)" },
@@ -853,8 +913,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
@@ -954,8 +1014,7 @@
                 </script>
                 <div id="plot_c0690990447577cebd31f2e5186bbe5fa49710fe6da3b2cd675b3ab0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -964,10 +1023,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0396, 2.394)
                                     (0.0414, 2.425)
                                     (0.0418, 2.456)
@@ -996,7 +1061,14 @@
                                     (0.2672, 10.0)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 0.823)
                                     (0.020999999999999998, 1.14)
                                     (0.048799999999999996, 2.739)
@@ -1023,8 +1095,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.18158005332946775, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0867 , y: 0.27679412841796874, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
@@ -1035,8 +1107,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
@@ -1134,8 +1206,7 @@
                 </script>
                 <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1144,17 +1215,30 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.18158005332946775)
                                     (0.0867, 0.27679412841796874)
                                     (0.2611, 0.29739001464843745)
                                     (0.2672, 0.31172747802734374)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 0.07663531494140625)
                                     (0.020999999999999998, 0.09405798339843749)
                                     (0.35209999999999997, 0.12462731933593751)
@@ -1179,8 +1263,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0668 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0712 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -1192,8 +1276,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
@@ -1291,8 +1375,7 @@
                 </script>
                 <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1301,10 +1384,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0668, 59323.69664224492)
                                     (0.0712, 46053.80240244197)
                                     (0.1292, 44458.97329898984)
@@ -1312,7 +1401,14 @@
                                     (0.2687, 27511.20964462344)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 76831.41909838618)
                                     (0.0495, 66405.4969760299)
                                     (0.3539, 47244.857960305475)
@@ -1337,8 +1433,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0732 , y: 59323.69664224492, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0779 , y: 46053.80240244197, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -1350,8 +1446,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
@@ -1449,8 +1545,7 @@
                 </script>
                 <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1459,10 +1554,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0732, 59323.69664224492)
                                     (0.0779, 46053.80240244197)
                                     (0.1413, 44458.97329898984)
@@ -1470,7 +1571,14 @@
                                     (0.2842, 27511.20964462344)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.015, 76831.41909838618)
                                     (0.0538, 66405.4969760299)
                                     (0.3671, 47244.857960305475)
@@ -1495,8 +1603,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.011444091796875, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
                                                                     { x: 0.0791 , y: 0.012636184692382812, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
@@ -1508,8 +1616,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
@@ -1609,8 +1717,7 @@
                 </script>
                 <div id="plot_379dbc630bb8253196f80e10c27605d256fce906dc4d1f5993a2f1c3" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1619,10 +1726,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.011444091796875)
                                     (0.0791, 0.012636184692382812)
                                     (0.0867, 0.0152587890625)
@@ -1630,7 +1743,14 @@
                                     (0.2672, 0.018596649169921875)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 0.008344650268554688)
                                     (0.020999999999999998, 0.009298324584960938)
                                     (0.048799999999999996, 0.010251998901367188)
@@ -1657,8 +1777,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.015020370483398438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=20000)" },
                                                                     { x: 0.0791 , y: 0.016224384307861318, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=10, candidates=20000)" },
@@ -1670,8 +1790,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
                                                                     { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
@@ -1771,8 +1891,7 @@
                 </script>
                 <div id="plot_7e91b6a69b168cb7cdccf962ec24ce732e01d9e22947af7350855723" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1781,10 +1900,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.015020370483398438)
                                     (0.0791, 0.016224384307861318)
                                     (0.0867, 0.018835067749023438)
@@ -1792,7 +1917,14 @@
                                     (0.2672, 0.030517578125)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.013900000000000001, 0.0095367431640625)
                                     (0.020999999999999998, 0.010251998901367188)
                                     (0.048799999999999996, 0.011205673217773438)
@@ -1819,8 +1951,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.03221988677978513, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=5000)" },
                                                                     { x: 0.0867 , y: 0.033383369445800774, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
@@ -1832,8 +1964,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
                                                                     { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
@@ -1932,8 +2064,7 @@
                 </script>
                 <div id="plot_97b429b44518cf3a38185f59edd789f96d1ba8261748cdb943e03c33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -1942,10 +2073,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.03221988677978513)
                                     (0.0867, 0.033383369445800774)
                                     (0.1281, 0.03362655639648437)
@@ -1953,7 +2090,14 @@
                                     (0.2672, 0.048646926879882806)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.020999999999999998, 0.017647743225097653)
                                     (0.048799999999999996, 0.02027034759521484)
                                     (0.0639, 0.03053903579711912)
@@ -1979,8 +2123,8 @@
                                                 {
                             label: "mh",
                             fill: false,
-                            pointStyle: "star",
-                            borderColor: "rgba(127, 229, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
                                                                     { x: 0.0661 , y: 0.07310390472447788, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=8, candidates=10000)" },
                                                                     { x: 0.0708 , y: 0.08931946754491273, label: "MH(M_proj_vectors=4, m_single_hashers=32, l_hash_tables=10, candidates=20000)" },
@@ -1993,8 +2137,8 @@
                                                 {
                             label: "mh-orig",
                             fill: false,
-                            pointStyle: "cross",
-                            borderColor: "rgba(229, 204, 229, 1)",
+                            pointStyle: "triangle",
+                            borderColor: "rgba(153, 76, 127, 1)",
                             data: [
                                                                     { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
                                                                     { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
@@ -2092,8 +2236,7 @@
                 </script>
                 <div id="plot_7bb441369999f89e269cfe342f46703d81f7a016b634723fefd5fd33" style="display:none">
                     <pre>
-                    
-\begin{figure}
+                    \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -2102,10 +2245,16 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=red!90!black,
+                mark=o,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.0661, 0.07310390472447788)
                                     (0.0708, 0.08931946754491273)
                                     (0.1281, 3.029118299484254)
@@ -2114,7 +2263,14 @@
                                     (0.2672, 4.04821252822894)
                             };
             \addlegendentry{ mh };
-                                \addplot coordinates {
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
                                                 (0.020999999999999998, 0.07869911193901513)
                                     (0.048799999999999996, 0.4324717521669824)
                                     (0.35209999999999997, 3.0356068611145934)

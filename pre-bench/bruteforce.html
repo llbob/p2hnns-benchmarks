@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>mh-orig</title>
+        <title>bruteforce</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for mh-orig</h2>
+                                                        <h2>Plots for bruteforce</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,14 +57,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 111.53775212778609, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 1716.0843217969057, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -177,11 +184,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.048799999999999996, 66405.4969760299)
-                                    (0.35209999999999997, 47244.857960305475)
+                                                (1.0, 111.53775212778609)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 1716.0843217969057)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -199,12 +215,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 0.03841423988342285, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 0.00016379356384277344, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 0.0001373291015625, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -317,9 +342,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.35209999999999997, 0.03841423988342285)
+                                                (1.0, 0.00016379356384277344)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 0.0001373291015625)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -337,12 +373,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.35209999999999997 , y: 5888.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
                                                             ]
                         },
                                                 ]},
@@ -455,9 +498,18 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.35209999999999997, 5888.0)
-                            };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+                                        };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                        };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -475,13 +527,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.0639 , y: 1, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 147, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 20000, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 20000, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -594,10 +654,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.0639, 1)
-                                    (0.35209999999999997, 147)
+                                                (1.0, 20000)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 20000)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -615,12 +685,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.1477833891513366 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 0.010911162749454598 , y: 111.53775212778609, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.022260366651590095 , y: 1716.0843217969057, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -733,9 +812,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.1477833891513366, 47244.857960305475)
+                                                (0.010911162749454598, 111.53775212778609)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.022260366651590095, 1716.0843217969057)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -753,16 +843,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.823, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 1.14, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 2.739, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 3.581, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=100000)" },
-                                                                    { x: 0.35209999999999997 , y: 10.0, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=1100000)" },
+                                                                    { x: 1.0 , y: 10.0, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 10.0, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -875,13 +970,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.823)
-                                    (0.020999999999999998, 1.14)
-                                    (0.048799999999999996, 2.739)
-                                    (0.0639, 3.581)
-                                    (0.35209999999999997, 10.0)
+                                                (1.0, 10.0)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 10.0)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -899,14 +1001,19 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.07663531494140625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.09405798339843749, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.12462731933593751, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
                                                             ]
                         },
                                                 ]},
@@ -1019,11 +1126,18 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.07663531494140625)
-                                    (0.020999999999999998, 0.09405798339843749)
-                                    (0.35209999999999997, 0.12462731933593751)
-                            };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+                                        };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                        };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1041,14 +1155,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0495 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3539 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 111.53775212778609, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.6282 , y: 1716.0843217969057, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1161,11 +1282,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 76831.41909838618)
-                                    (0.0495, 66405.4969760299)
-                                    (0.3539, 47244.857960305475)
+                                                (1.0, 111.53775212778609)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.6282, 1716.0843217969057)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1183,14 +1313,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.015 , y: 76831.41909838618, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.0538 , y: 66405.4969760299, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.3671 , y: 47244.857960305475, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 111.53775212778609, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.6401 , y: 1716.0843217969057, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1303,11 +1440,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.015, 76831.41909838618)
-                                    (0.0538, 66405.4969760299)
-                                    (0.3671, 47244.857960305475)
+                                                (1.0, 111.53775212778609)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.6401, 1716.0843217969057)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1325,16 +1471,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.008344650268554688, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.009298324584960938, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.010251998901367188, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1150000)" },
-                                                                    { x: 0.0639 , y: 0.012874603271484375, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=300000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.013113021850585938, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=50000)" },
+                                                                    { x: 1.0 , y: 9.072065353393555, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 0.5860328674316406, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1447,13 +1598,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.008344650268554688)
-                                    (0.020999999999999998, 0.009298324584960938)
-                                    (0.048799999999999996, 0.010251998901367188)
-                                    (0.0639, 0.012874603271484375)
-                                    (0.35209999999999997, 0.013113021850585938)
+                                                (1.0, 9.072065353393555)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 0.5860328674316406)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1471,16 +1629,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.013900000000000001 , y: 0.0095367431640625, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=2, candidates=100000)" },
-                                                                    { x: 0.020999999999999998 , y: 0.010251998901367188, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=500000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.011205673217773438, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.015735626220703125, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.018596649169921875, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 9.319818019866943, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 0.6600022315979004, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1593,13 +1756,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.013900000000000001, 0.0095367431640625)
-                                    (0.020999999999999998, 0.010251998901367188)
-                                    (0.048799999999999996, 0.011205673217773438)
-                                    (0.0639, 0.015735626220703125)
-                                    (0.35209999999999997, 0.018596649169921875)
+                                                (1.0, 9.319818019866943)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 0.6600022315979004)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1617,15 +1787,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.017647743225097653, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=300000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.02027034759521484, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=1100000)" },
-                                                                    { x: 0.0639 , y: 0.03053903579711912, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=6, candidates=500000)" },
-                                                                    { x: 0.35209999999999997 , y: 0.03697156906127928, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 9.521479606628416, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 0.7682228088378906, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1738,12 +1914,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.020999999999999998, 0.017647743225097653)
-                                    (0.048799999999999996, 0.02027034759521484)
-                                    (0.0639, 0.03053903579711912)
-                                    (0.35209999999999997, 0.03697156906127928)
+                                                (1.0, 9.521479606628416)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 0.7682228088378906)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1761,14 +1945,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "glove-25-angular-20k (k = 10)",
+                            label: "glove-100-euclidean-20k-grn (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
                             data: [
-                                                                    { x: 0.020999999999999998 , y: 0.07869911193901513, label: "MH(M_proj_vectors=8, m_single_hashers=16, l_hash_tables=2, candidates=1100000)" },
-                                                                    { x: 0.048799999999999996 , y: 0.4324717521669824, label: "MH(M_proj_vectors=4, m_single_hashers=16, l_hash_tables=6, candidates=10000)" },
-                                                                    { x: 0.35209999999999997 , y: 3.0356068611145934, label: "MH(M_proj_vectors=8, m_single_hashers=8, l_hash_tables=2, candidates=800000)" },
+                                                                    { x: 1.0 , y: 10.004749536514325, label: "BruteForce()" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-100-euclidean-20k-psm (k = 10)",
+                            fill: false,
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
+                            data: [
+                                                                    { x: 0.7365999999999999 , y: 1.2332060337066746, label: "BruteForce()" },
                                                             ]
                         },
                                                 ]},
@@ -1881,11 +2072,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.020999999999999998, 0.07869911193901513)
-                                    (0.048799999999999996, 0.4324717521669824)
-                                    (0.35209999999999997, 3.0356068611145934)
+                                                (1.0, 10.004749536514325)
                             };
-            \addlegendentry{ glove-25-angular-20k (k = 10) };
+            \addlegendentry{ glove-100-euclidean-20k-grn (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.7365999999999999, 1.2332060337066746)
+                            };
+            \addlegendentry{ glove-100-euclidean-20k-psm (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }

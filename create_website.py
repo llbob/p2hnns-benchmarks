@@ -122,7 +122,12 @@ def create_plot(all_data, xn, yn, linestyle, j2_env, additional_label="", plotty
     render_all_points = plottype == "bubble"
     plot_data = get_lines(all_data, xn, yn, render_all_points)
     latex_code = j2_env.get_template("latex.template").render(
-        plot_data=plot_data, caption=get_plot_label(xm, ym), xlabel=xm["description"], ylabel=ym["description"]
+        plot_data=plot_data, 
+        caption=get_plot_label(xm, ym), 
+        xlabel=xm["description"], 
+        ylabel=ym["description"],
+        linestyle=linestyle,  # Pass the linestyle dictionary to the template
+        point_styles=point_styles  # Pass the point_styles dictionary to the template
     )
     plot_data = get_lines(all_data, xn, yn, render_all_points)
     button_label = hashlib.sha224((get_plot_label(xm, ym) + additional_label).encode("utf-8")).hexdigest()

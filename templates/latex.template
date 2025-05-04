@@ -1,4 +1,3 @@
-
 \begin{figure}
     \centering
     \begin{tikzpicture}
@@ -8,14 +7,52 @@
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
-            legend style = { anchor=west},
-            cycle list name = black white
+            legend style = { anchor=west}
             ]
         {% for algo in plot_data %}
+            {% set color_index = loop.index0 % 12 %}
+            {% if color_index == 0 %}{% set tikz_color = "red!90!black" %}
+            {% elif color_index == 1 %}{% set tikz_color = "blue!80!black" %}
+            {% elif color_index == 2 %}{% set tikz_color = "green!70!black" %}
+            {% elif color_index == 3 %}{% set tikz_color = "orange!90!black" %}
+            {% elif color_index == 4 %}{% set tikz_color = "violet!90!black" %}
+            {% elif color_index == 5 %}{% set tikz_color = "teal!90!black" %}
+            {% elif color_index == 6 %}{% set tikz_color = "magenta!90!black" %}
+            {% elif color_index == 7 %}{% set tikz_color = "olive!90!black" %}
+            {% elif color_index == 8 %}{% set tikz_color = "cyan!70!black" %}
+            {% elif color_index == 9 %}{% set tikz_color = "brown!90!black" %}
+            {% elif color_index == 10 %}{% set tikz_color = "lime!70!black" %}
+            {% else %}{% set tikz_color = "purple!80!black" %}
+            {% endif %}
+            
+            {% set mark_index = loop.index0 % 10 %}
+            {% if mark_index == 0 %}{% set tikz_mark = "o" %}
+            {% elif mark_index == 1 %}{% set tikz_mark = "square" %}
+            {% elif mark_index == 2 %}{% set tikz_mark = "triangle" %}
+            {% elif mark_index == 3 %}{% set tikz_mark = "diamond" %}
+            {% elif mark_index == 4 %}{% set tikz_mark = "x" %}
+            {% elif mark_index == 5 %}{% set tikz_mark = "pentagon" %}
+            {% elif mark_index == 6 %}{% set tikz_mark = "star" %}
+            {% elif mark_index == 7 %}{% set tikz_mark = "otimes" %}
+            {% elif mark_index == 8 %}{% set tikz_mark = "asterisk" %}
+            {% else %}{% set tikz_mark = "oplus" %}
+            {% endif %}
+            
             {% if algo.scatter %}
-            \addplot [only marks] coordinates {
+            \addplot [
+                color={{ tikz_color }},
+                mark={{ tikz_mark }},
+                mark size=2.5pt,
+                line width=1.2pt,
+                only marks
+            ] coordinates {
             {% else %}
-            \addplot coordinates {
+            \addplot [
+                color={{ tikz_color }},
+                mark={{ tikz_mark }},
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
             {% endif %}
                 {% for coord in algo.coords %}
                     ({{ coord[0]}}, {{ coord[1] }})
