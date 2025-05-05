@@ -44,12 +44,12 @@ void create_dir(                    // create directory
 }
 
 // -----------------------------------------------------------------------------
-int read_bin_data(                  // read bin data from disk
-    int   n,                            // number of data points
-    int   d,                            // data dimension
-    const char *fname,                  // address of data set
-    float &M,                           // max l2-norm
-    float *data)                        // data (return)
+int read_bin_data_unshifted(        // read bin data without shifting
+    int   n,                        // number of data points
+    int   d,                        // data dimension
+    const char *fname,              // address of data set
+    float &M,                       // max l2-norm (return)
+    float *data)                    // data (return)
 {
     gettimeofday(&g_start_time, NULL);
 
@@ -80,15 +80,15 @@ int read_bin_data(                  // read bin data from disk
     float *center = new float[d];
     for (int i = 0; i < d; ++i) center[i] = (min_coord[i]+max_coord[i])/2.0f;
 
-    // shift the data by the center & find the max l2-norm to the center
+    // Find max l2-norm to the center WITHOUT shifting the data
     M = -1.0f;
     for (int i = 0; i < n; ++i) {
-        float *point = data + (u64)i*(d+1);
-        // shift the data by the center
+        const float *point = data + (u64)i*(d+1);
+        // Calculate distance to center without modifying the original data
         float norm = 0.0f;
         for (int j = 0; j < d; ++j) {
-            float val = point[j] - center[j];
-            point[j] = val; norm += val * val;
+            float diff = point[j] - center[j];
+            norm += diff * diff;
         }
         norm = sqrt(norm);
         // find the max l2-norm to the center
@@ -101,7 +101,7 @@ int read_bin_data(                  // read bin data from disk
     gettimeofday(&g_end_time, NULL);
     float running_time = g_end_time.tv_sec - g_start_time.tv_sec + 
         (g_end_time.tv_usec - g_start_time.tv_usec) / 1000000.0f;
-    printf("Read Data: %f Seconds\n\n", running_time);
+    printf("Read Data (Unshifted): %f Seconds\n\n", running_time);
     
     return 0;
 }
@@ -370,7 +370,7 @@ int main(int nargs, char** args)
     if (orig == 1) {
         read_bin_data(n, d, infile, M, data);
     } else {
-        read_bin_data(n, d, infile, data);
+        read_bin_data_unshifted(n, d, infile, data);
     }
     
     // write data to disk
