@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>fashion-mnist-784-euclidean (k = 10)</title>
+        <title>eh</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -47,7 +47,7 @@
             </nav>
 
                     <div class="container">
-                                                        <h2>Plots for fashion-mnist-784-euclidean (k = 10)</h2>
+                                                        <h2>Plots for eh</h2>
                                                                 <h3>Recall/Queries per second (1/s)</h3>
             <div id="RecallQueries per second (1/s)">
             <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
@@ -57,22 +57,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.5744 , y: 76.57141348671723, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
-                                                                    { x: 0.6319 , y: 76.47021147804692, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 74.21682155754281, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 44.48808830794904, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8728 , y: 43.08445226660592, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 42.00497717894991, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9753999999999999 , y: 31.10519270302228, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 30.606932268345723, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 29.339370659312873, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 20.471700764513308, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 1707.2036411192157, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 671.2630609937686, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6982999999999999 , y: 606.935113007063, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -185,19 +186,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 153.0861075776438)
-                                    (0.4316, 140.9197116562964)
-                                    (0.5744, 76.57141348671723)
-                                    (0.6319, 76.47021147804692)
-                                    (0.6797, 74.21682155754281)
-                                    (0.8537000000000001, 44.48808830794904)
-                                    (0.8728, 43.08445226660592)
-                                    (0.8832000000000001, 42.00497717894991)
-                                    (0.9753999999999999, 31.10519270302228)
-                                    (0.9827999999999999, 30.606932268345723)
-                                    (0.9833000000000001, 29.339370659312873)
+                                                (0.0093, 20.471700764513308)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 1707.2036411192157)
+                                    (0.5119, 671.2630609937686)
+                                    (0.6982999999999999, 606.935113007063)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -215,14 +219,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.9753999999999999 , y: 1.6212067604064941, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 2.3337819576263428, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 2.9001853466033936, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 66.39765429496765, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 0.5100178718566895, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.6982999999999999 , y: 1.4107604026794434, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -335,11 +347,21 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.9753999999999999, 1.6212067604064941)
-                                    (0.9827999999999999, 2.3337819576263428)
-                                    (0.9833000000000001, 2.9001853466033936)
+                                                (0.0093, 66.39765429496765)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 0.5100178718566895)
+                                    (0.6982999999999999, 1.4107604026794434)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Build time (s) tradeoff - down and to the right is better }
@@ -357,14 +379,22 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.9753999999999999 , y: 368128.0, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 368684.0, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 374888.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 176568.0, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 7660.0, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.6982999999999999 , y: 11648.0, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -477,11 +507,21 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.9753999999999999, 368128.0)
-                                    (0.9827999999999999, 368684.0)
-                                    (0.9833000000000001, 374888.0)
+                                                (0.0093, 176568.0)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 7660.0)
+                                    (0.6982999999999999, 11648.0)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB) tradeoff - down and to the right is better }
@@ -499,15 +539,35 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4316 , y: 10009, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6797 , y: 20009, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8832000000000001 , y: 35009, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9833000000000001 , y: 50009, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 52, label: "EH(m_hashers=32, l_hash_tables=8, candidates=10000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.0034000000000000002 , y: 39, label: "EH(m_hashers=16, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.0039 , y: 44, label: "EH(m_hashers=16, l_hash_tables=4, candidates=50000)" },
+                                                                    { x: 0.0073999999999999995 , y: 58, label: "EH(m_hashers=16, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.0085 , y: 67, label: "EH(m_hashers=16, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0086 , y: 70, label: "EH(m_hashers=16, l_hash_tables=8, candidates=50000)" },
+                                                                    { x: 0.0315 , y: 217, label: "EH(m_hashers=8, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.0322 , y: 222, label: "EH(m_hashers=8, l_hash_tables=4, candidates=50000)" },
+                                                                    { x: 0.0629 , y: 618, label: "EH(m_hashers=8, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.0639 , y: 625, label: "EH(m_hashers=8, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.0643 , y: 627, label: "EH(m_hashers=8, l_hash_tables=8, candidates=50000)" },
+                                                                    { x: 0.42489999999999994 , y: 3825, label: "EH(m_hashers=4, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.4408 , y: 3868, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 5009, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6968 , y: 6890, label: "EH(m_hashers=4, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.6982999999999999 , y: 6892, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -620,12 +680,34 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4316, 10009)
-                                    (0.6797, 20009)
-                                    (0.8832000000000001, 35009)
-                                    (0.9833000000000001, 50009)
+                                                (0.0093, 52)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.0034000000000000002, 39)
+                                    (0.0039, 44)
+                                    (0.0073999999999999995, 58)
+                                    (0.0085, 67)
+                                    (0.0086, 70)
+                                    (0.0315, 217)
+                                    (0.0322, 222)
+                                    (0.0629, 618)
+                                    (0.0639, 625)
+                                    (0.0643, 627)
+                                    (0.42489999999999994, 3825)
+                                    (0.4408, 3868)
+                                    (0.5119, 5009)
+                                    (0.6968, 6890)
+                                    (0.6982999999999999, 6892)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Distance computations tradeoff - down and to the right is better }
@@ -643,19 +725,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.028257571511008838 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.021430617904191575 , y: 76.57141348671723, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
-                                                                    { x: 0.01927273355836607 , y: 74.21682155754281, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.01392364064934705 , y: 44.48808830794904, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.013772366706419754 , y: 43.08445226660592, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.012846249471358212 , y: 42.00497717894991, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.011448414643768555 , y: 31.10519270302228, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.011204925095471526 , y: 30.606932268345723, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.764530927971306 , y: 20.471700764513308, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.05119987668976324 , y: 1707.2036411192157, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.041711055584377724 , y: 671.2630609937686, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.028388705226913533 , y: 606.935113007063, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -768,16 +854,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.028257571511008838, 153.0861075776438)
-                                    (0.021430617904191575, 76.57141348671723)
-                                    (0.01927273355836607, 74.21682155754281)
-                                    (0.01392364064934705, 44.48808830794904)
-                                    (0.013772366706419754, 43.08445226660592)
-                                    (0.012846249471358212, 42.00497717894991)
-                                    (0.011448414643768555, 31.10519270302228)
-                                    (0.011204925095471526, 30.606932268345723)
+                                                (0.764530927971306, 20.471700764513308)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.05119987668976324, 1707.2036411192157)
+                                    (0.041711055584377724, 671.2630609937686)
+                                    (0.028388705226913533, 606.935113007063)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
@@ -795,12 +887,21 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.9833000000000001 , y: 10.0, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 10.0, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.6982999999999999 , y: 10.0, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -913,9 +1014,20 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.9833000000000001, 10.0)
+                                                (0.0093, 10.0)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.6982999999999999, 10.0)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Candidates generated tradeoff - down and to the right is better }
@@ -933,21 +1045,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 2408.3439433784483, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 2709.3441755771632, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6319 , y: 4814.005256225586, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 5051.253774177551, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 8274.754299438478, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8728 , y: 8573.487199378967, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 8924.847129493714, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9753999999999999 , y: 11834.937128173828, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 12045.767826960564, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 12777.642859254836, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 8624.979528133392, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 4.486869530677796, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 17.352362548828125, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6982999999999999 , y: 19.191507873535155, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1060,18 +1174,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 2408.3439433784483)
-                                    (0.4316, 2709.3441755771632)
-                                    (0.6319, 4814.005256225586)
-                                    (0.6797, 5051.253774177551)
-                                    (0.8537000000000001, 8274.754299438478)
-                                    (0.8728, 8573.487199378967)
-                                    (0.8832000000000001, 8924.847129493714)
-                                    (0.9753999999999999, 11834.937128173828)
-                                    (0.9827999999999999, 12045.767826960564)
-                                    (0.9833000000000001, 12777.642859254836)
+                                                (0.0093, 8624.979528133392)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 4.486869530677796)
+                                    (0.5119, 17.352362548828125)
+                                    (0.6982999999999999, 19.191507873535155)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
@@ -1089,22 +1207,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.43079999999999996 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4335 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.5765 , y: 76.57141348671723, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
-                                                                    { x: 0.6339 , y: 76.47021147804692, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.6816 , y: 74.21682155754281, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8550000000000001 , y: 44.48808830794904, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8744 , y: 43.08445226660592, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.8845000000000001 , y: 42.00497717894991, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9757 , y: 31.10519270302228, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.983 , y: 30.606932268345723, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9837999999999999 , y: 29.339370659312873, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0072 , y: 20.471700764513308, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.2373 , y: 1707.2036411192157, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.2752 , y: 671.2630609937686, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.3962 , y: 606.935113007063, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1217,19 +1336,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.43079999999999996, 153.0861075776438)
-                                    (0.4335, 140.9197116562964)
-                                    (0.5765, 76.57141348671723)
-                                    (0.6339, 76.47021147804692)
-                                    (0.6816, 74.21682155754281)
-                                    (0.8550000000000001, 44.48808830794904)
-                                    (0.8744, 43.08445226660592)
-                                    (0.8845000000000001, 42.00497717894991)
-                                    (0.9757, 31.10519270302228)
-                                    (0.983, 30.606932268345723)
-                                    (0.9837999999999999, 29.339370659312873)
+                                                (0.0072, 20.471700764513308)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.2373, 1707.2036411192157)
+                                    (0.2752, 671.2630609937686)
+                                    (0.3962, 606.935113007063)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1247,21 +1369,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4671 , y: 153.0861075776438, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.47000000000000003 , y: 140.9197116562964, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6209 , y: 76.57141348671723, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
-                                                                    { x: 0.6812 , y: 76.47021147804692, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.7277 , y: 74.21682155754281, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8901999999999999 , y: 44.48808830794904, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.9105000000000001 , y: 43.08445226660592, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.9176 , y: 42.00497717894991, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9875 , y: 31.10519270302228, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9917999999999999 , y: 30.606932268345723, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
+                                                                    { x: 0.0077 , y: 20.471700764513308, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.25870000000000004 , y: 1707.2036411192157, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.3016 , y: 671.2630609937686, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.4342 , y: 606.935113007063, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1374,18 +1498,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4671, 153.0861075776438)
-                                    (0.47000000000000003, 140.9197116562964)
-                                    (0.6209, 76.57141348671723)
-                                    (0.6812, 76.47021147804692)
-                                    (0.7277, 74.21682155754281)
-                                    (0.8901999999999999, 44.48808830794904)
-                                    (0.9105000000000001, 43.08445226660592)
-                                    (0.9176, 42.00497717894991)
-                                    (0.9875, 31.10519270302228)
-                                    (0.9917999999999999, 30.606932268345723)
+                                                (0.0077, 20.471700764513308)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.25870000000000004, 1707.2036411192157)
+                                    (0.3016, 671.2630609937686)
+                                    (0.4342, 606.935113007063)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
@@ -1403,22 +1531,24 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 6.486773490905762, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 6.992697715759277, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.5744 , y: 12.917280197143555, label: "B_tree(max_leaf_size=1000, candidates=20000)" },
-                                                                    { x: 0.6319 , y: 12.951135635375977, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 13.322234153747559, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 22.317051887512207, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8728 , y: 22.99213409423828, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 23.64039421081543, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9753999999999999 , y: 31.909823417663574, label: "B_tree(max_leaf_size=5000, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 32.50253200531006, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 33.81609916687012, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 48.73776435852051, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.42489999999999994 , y: 0.2942085266113281, label: "EH(m_hashers=4, l_hash_tables=4, candidates=5000)" },
+                                                                    { x: 0.4408 , y: 0.2944469451904297, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 0.5457401275634766, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6982999999999999 , y: 0.5980730056762695, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1531,19 +1661,23 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 6.486773490905762)
-                                    (0.4316, 6.992697715759277)
-                                    (0.5744, 12.917280197143555)
-                                    (0.6319, 12.951135635375977)
-                                    (0.6797, 13.322234153747559)
-                                    (0.8537000000000001, 22.317051887512207)
-                                    (0.8728, 22.99213409423828)
-                                    (0.8832000000000001, 23.64039421081543)
-                                    (0.9753999999999999, 31.909823417663574)
-                                    (0.9827999999999999, 32.50253200531006)
-                                    (0.9833000000000001, 33.81609916687012)
+                                                (0.0093, 48.73776435852051)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.42489999999999994, 0.2942085266113281)
+                                    (0.4408, 0.2944469451904297)
+                                    (0.5119, 0.5457401275634766)
+                                    (0.6982999999999999, 0.5980730056762695)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 50 (millis) tradeoff - down and to the right is better }
@@ -1561,20 +1695,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 6.8261027336120605, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 7.418882846832275, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6319 , y: 13.587141036987305, label: "B_tree(max_leaf_size=5000, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 13.996458053588865, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 23.29995632171631, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8728 , y: 24.236822128295895, label: "B_tree(max_leaf_size=500, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 24.676632881164547, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9827999999999999 , y: 33.602190017700195, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 35.67745685577392, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 49.356651306152344, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 4.288804531097412, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 7.557177543640137, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6982999999999999 , y: 7.654297351837158, label: "EH(m_hashers=4, l_hash_tables=8, candidates=50000)" },
                                                             ]
                         },
                                                 ]},
@@ -1687,17 +1824,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 6.8261027336120605)
-                                    (0.4316, 7.418882846832275)
-                                    (0.6319, 13.587141036987305)
-                                    (0.6797, 13.996458053588865)
-                                    (0.8537000000000001, 23.29995632171631)
-                                    (0.8728, 24.236822128295895)
-                                    (0.8832000000000001, 24.676632881164547)
-                                    (0.9827999999999999, 33.602190017700195)
-                                    (0.9833000000000001, 35.67745685577392)
+                                                (0.0093, 49.356651306152344)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 4.288804531097412)
+                                    (0.5119, 7.557177543640137)
+                                    (0.6982999999999999, 7.654297351837158)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 95 (millis) tradeoff - down and to the right is better }
@@ -1715,21 +1857,25 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 7.028656005859375, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 7.488975524902344, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6148 , y: 13.801736831665039, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                                    { x: 0.6181 , y: 14.929189682006836, label: "B_tree(max_leaf_size=50, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 14.982006549835205, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 24.996590614318833, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 26.302328109741207, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9782 , y: 36.104042530059814, label: "B_tree(max_leaf_size=500, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 38.52392911911011, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 40.11751174926758, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 50.245816707611084, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4407 , y: 4.364755153656006, label: "EH(m_hashers=4, l_hash_tables=4, candidates=10000)" },
+                                                                    { x: 0.4408 , y: 4.404604434967041, label: "EH(m_hashers=4, l_hash_tables=4, candidates=20000)" },
+                                                                    { x: 0.5119 , y: 8.651504516601562, label: "EH(m_hashers=4, l_hash_tables=8, candidates=5000)" },
+                                                                    { x: 0.6968 , y: 8.706827163696289, label: "EH(m_hashers=4, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.6982999999999999 , y: 8.707525730133057, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1842,18 +1988,24 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 7.028656005859375)
-                                    (0.4316, 7.488975524902344)
-                                    (0.6148, 13.801736831665039)
-                                    (0.6181, 14.929189682006836)
-                                    (0.6797, 14.982006549835205)
-                                    (0.8537000000000001, 24.996590614318833)
-                                    (0.8832000000000001, 26.302328109741207)
-                                    (0.9782, 36.104042530059814)
-                                    (0.9827999999999999, 38.52392911911011)
-                                    (0.9833000000000001, 40.11751174926758)
+                                                (0.0093, 50.245816707611084)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4407, 4.364755153656006)
+                                    (0.4408, 4.404604434967041)
+                                    (0.5119, 8.651504516601562)
+                                    (0.6968, 8.706827163696289)
+                                    (0.6982999999999999, 8.707525730133057)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99 (millis) tradeoff - down and to the right is better }
@@ -1871,22 +2023,23 @@
                                         type: "line",
                                         data: { datasets: [
                                                 {
-                            label: "balltree",
+                            label: "glove-100-euclidean-20k (k = 10)",
                             fill: false,
-                            pointStyle: "triangle",
-                            borderColor: "rgba(229, 204, 76, 1)",
+                            pointStyle: "cross",
+                            borderColor: "rgba(102, 127, 229, 1)",
                             data: [
-                                                                    { x: 0.4288 , y: 7.218343257904072, label: "B_tree(max_leaf_size=1000, candidates=10000)" },
-                                                                    { x: 0.4316 , y: 7.554326534271244, label: "B_tree(max_leaf_size=50, candidates=10000)" },
-                                                                    { x: 0.6148 , y: 13.933675289154055, label: "B_tree(max_leaf_size=500, candidates=20000)" },
-                                                                    { x: 0.6198 , y: 15.848963975906443, label: "B_tree(max_leaf_size=25, candidates=20000)" },
-                                                                    { x: 0.6797 , y: 19.08323264122155, label: "B_tree(max_leaf_size=100, candidates=20000)" },
-                                                                    { x: 0.8537000000000001 , y: 34.11671066284203, label: "B_tree(max_leaf_size=5000, candidates=35000)" },
-                                                                    { x: 0.8775999999999999 , y: 39.15300488472003, label: "B_tree(max_leaf_size=50, candidates=35000)" },
-                                                                    { x: 0.8832000000000001 , y: 39.57229542732428, label: "B_tree(max_leaf_size=100, candidates=35000)" },
-                                                                    { x: 0.9782 , y: 43.12621307373052, label: "B_tree(max_leaf_size=500, candidates=50000)" },
-                                                                    { x: 0.9827999999999999 , y: 44.878726243974924, label: "B_tree(max_leaf_size=1000, candidates=50000)" },
-                                                                    { x: 0.9833000000000001 , y: 62.64930200576867, label: "B_tree(max_leaf_size=100, candidates=50000)" },
+                                                                    { x: 0.0093 , y: 51.39723777771167, label: "EH(m_hashers=32, l_hash_tables=8, candidates=1150000)" },
+                                                            ]
+                        },
+                                                {
+                            label: "glove-25-euclidean-20k (k = 10)",
+                            fill: false,
+                            pointStyle: "rect",
+                            borderColor: "rgba(229, 102, 102, 1)",
+                            data: [
+                                                                    { x: 0.4408 , y: 7.316854000091555, label: "EH(m_hashers=4, l_hash_tables=4, candidates=50000)" },
+                                                                    { x: 0.6968 , y: 9.55899548530588, label: "EH(m_hashers=4, l_hash_tables=8, candidates=10000)" },
+                                                                    { x: 0.6982999999999999 , y: 9.661703824996952, label: "EH(m_hashers=4, l_hash_tables=8, candidates=20000)" },
                                                             ]
                         },
                                                 ]},
@@ -1999,19 +2152,22 @@
                 mark size=2.5pt,
                 line width=1pt
             ] coordinates {
-                                                (0.4288, 7.218343257904072)
-                                    (0.4316, 7.554326534271244)
-                                    (0.6148, 13.933675289154055)
-                                    (0.6198, 15.848963975906443)
-                                    (0.6797, 19.08323264122155)
-                                    (0.8537000000000001, 34.11671066284203)
-                                    (0.8775999999999999, 39.15300488472003)
-                                    (0.8832000000000001, 39.57229542732428)
-                                    (0.9782, 43.12621307373052)
-                                    (0.9827999999999999, 44.878726243974924)
-                                    (0.9833000000000001, 62.64930200576867)
+                                                (0.0093, 51.39723777771167)
                             };
-            \addlegendentry{ balltree };
+            \addlegendentry{ glove-100-euclidean-20k (k = 10) };
+                                                        
+                                                
+                        \addplot [
+                color=blue!80!black,
+                mark=square,
+                mark size=2.5pt,
+                line width=1pt
+            ] coordinates {
+                                                (0.4408, 7.316854000091555)
+                                    (0.6968, 9.55899548530588)
+                                    (0.6982999999999999, 9.661703824996952)
+                            };
+            \addlegendentry{ glove-25-euclidean-20k (k = 10) };
             \end{axis}
     \end{tikzpicture}
     \caption{ Recall-Percentile 99.9 (millis) tradeoff - down and to the right is better }
