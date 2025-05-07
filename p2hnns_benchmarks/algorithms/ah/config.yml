@@ -1,0 +1,17 @@
+float:
+  any:
+  - base_args: ['@metric']
+    constructor: AH
+    disabled: false
+    docker_tag: p2hnns-benchmarks-ah
+    module: p2hnns_benchmarks.algorithms.ah
+    name: ah
+    run_groups:
+      AH:
+        args: [
+          [4, 8, 16], # bit string length
+          [4,8], #l hash tables
+        ]
+        query_args: [
+          [5000, 10000, 20000, 50000]
+        ]
