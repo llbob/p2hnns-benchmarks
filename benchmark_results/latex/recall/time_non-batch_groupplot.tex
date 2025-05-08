@@ -20,7 +20,16 @@
             width = 5cm,
             xtick = {0, 0.25, 0.5, 0.75, 1},
             ymode = log,
-            xlabel = { Recall },
+            log basis y=10,
+            scaled y ticks = false,
+            yticklabel style={
+                font=\tiny,
+                /pgf/number format/.cd,
+                                fixed,
+                precision=0
+                            },
+                        log ticks with fixed point,
+                        xlabel = { Recall },
             ylabel = { QPS (1/s) },
             xlabel style={font=\footnotesize},
             ylabel style={font=\footnotesize},
