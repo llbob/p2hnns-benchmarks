@@ -1,0 +1,91 @@
+\begin{figure}[htbp]
+\centering
+    % Center the group plot using a centered minipage
+    \begin{minipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.65, every mark/.append style={mark size=1.5pt}]
+        % Create the group plot
+        \begin{groupplot}[
+            group style = {
+                group size = {{ cols }} by {{ rows }},
+                horizontal sep = 1.5cm,
+                vertical sep = 2.5cm,
+                % These settings control where labels appear
+                xlabels at=edge bottom,
+                ylabels at=edge left
+            },
+            grid = both,
+            grid style = {line width=.1pt, draw=gray!30},
+            major grid style = {line width=.2pt, draw=gray!50},
+            height = 4.5cm,
+            width = 5cm,
+            xtick = {0, 0.25, 0.5, 0.75, 1},
+            ymode = {{ ymode }},
+            xlabel = { {{ xlabel }} },
+            ylabel = { {{ ylabel }} },
+            xlabel style={font=\footnotesize},
+            ylabel style={font=\footnotesize},
+            xticklabel style={font=\tiny},
+            yticklabel style={font=\tiny},
+            tick label style={font=\footnotesize},
+            label style={font=\footnotesize},
+            title style={yshift=0.3em, font=\footnotesize}
+        ]
+
+        
+        {% for plot in group_plots %}
+        \nextgroupplot[
+            title = { {{ plot.title }} }
+        ]
+        
+        {% for algo in plot.plot_data %}
+        \addplot [
+            color={{ algo.tikz_color }},
+            mark={{ algo.tikz_mark }},
+            mark size=1.5pt,
+            line width=1pt
+            {% if algo.scatter %},only marks{% endif %}
+        ] coordinates {
+            {% for coord in algo.coords %}
+                ({{ coord[0]}}, {{ coord[1] }})
+            {% endfor %}
+        };
+        {% endfor %}
+        {% endfor %}
+        \end{groupplot}
+    \end{tikzpicture}
+    \end{minipage}
+    
+    % Create legend as a separate entity to save vertical space
+    \begin{tikzpicture}[baseline, trim axis left, trim axis right]
+        \begin{axis}[
+            hide axis,
+            scale only axis,
+            height=0pt,
+            width=0.95\textwidth,
+            legend style={
+                draw=none,
+                fill=none,
+                font=\footnotesize,
+                legend columns={{ (all_algorithms|length > 8) and "5" or "4" }},
+                column sep=0.8em,
+                % Center the legend horizontally
+                anchor=center,
+                at={(0.5,0)}
+            }
+        ]
+        {% for algo in all_algorithms %}
+        \addplot[
+            color={{ algo_to_color[algo] }},
+            mark={{ algo_to_mark[algo] }},
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ {{ algo }} };
+        {% endfor %}
+        \end{axis}
+    \end{tikzpicture}
+    
+\caption{ {{ caption }} }
+\label{plot:{{ caption | replace(" ", "_") | replace(",", "") | lower }}}
+\end{figure}

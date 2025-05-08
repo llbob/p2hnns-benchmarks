@@ -4,6 +4,7 @@ mpl.use("Agg")  # noqa
 import argparse
 import hashlib
 import os
+import math
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -75,6 +76,8 @@ def get_distance_from_desc(desc):
 def get_dataset_label(desc):
     return "{} (k = {})".format(get_dataset_from_desc(desc), get_count_from_desc(desc))
 
+def get_dataset_label_wo_count(desc):
+    return "{}".format(get_dataset_from_desc(desc))
 
 def directory_path(s):
     if not os.path.isdir(s):
@@ -102,6 +105,7 @@ parser.add_argument("--outputdir", help="Select output directory", default=".", 
 parser.add_argument("--latex", help="generates latex code for each plot", action="store_true")
 parser.add_argument("--scatter", help="create scatterplot for data", action="store_true")
 parser.add_argument("--recompute", help="Clears the cache and recomputes the metrics", action="store_true")
+parser.add_argument("--groupplots", help="Generate group plots for datasets", action="store_true")
 args = parser.parse_args()
 
 
@@ -145,6 +149,230 @@ def create_plot(all_data, xn, yn, linestyle, j2_env, additional_label="", plotty
         render_all_points=render_all_points,
     )
 
+def create_groupplot_template(template_dir):
+    template_path = os.path.join(template_dir, "groupplot.template")
+    if os.path.exists(template_path):
+        os.remove(template_path)
+        
+    groupplot_template = r"""\begin{figure}[htbp]
+\centering
+    \begin{minipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.65, every mark/.append style={mark size=1.5pt}]
+        % Create the group plot
+        \begin{groupplot}[
+            group style = {
+                group size = {{ cols }} by {{ rows }},
+                horizontal sep = 1.5cm,
+                vertical sep = 2.5cm,
+                % These settings control where labels appear
+                xlabels at=edge bottom,
+                ylabels at=edge left
+            },
+            grid = both,
+            grid style = {line width=.1pt, draw=gray!30},
+            major grid style = {line width=.2pt, draw=gray!50},
+            height = 4.5cm,
+            width = 5cm,
+            xtick = {0, 0.25, 0.5, 0.75, 1},
+            ymode = {{ ymode }},
+            xlabel = { {{ xlabel }} },
+            ylabel = { {{ ylabel }} },
+            xlabel style={font=\footnotesize},
+            ylabel style={font=\footnotesize},
+            xticklabel style={font=\tiny},
+            yticklabel style={font=\tiny},
+            tick label style={font=\footnotesize},
+            label style={font=\footnotesize},
+            title style={yshift=0.3em, font=\footnotesize}
+        ]
+
+        
+        {% for plot in group_plots %}
+        \nextgroupplot[
+            title = { {{ plot.title }} }
+        ]
+        
+        {% for algo in plot.plot_data %}
+        \addplot [
+            color={{ algo.tikz_color }},
+            mark={{ algo.tikz_mark }},
+            mark size=1.5pt,
+            line width=1pt
+            {% if algo.scatter %},only marks{% endif %}
+        ] coordinates {
+            {% for coord in algo.coords %}
+                ({{ coord[0]}}, {{ coord[1] }})
+            {% endfor %}
+        };
+        {% endfor %}
+        {% endfor %}
+        \end{groupplot}
+    \end{tikzpicture}
+    \end{minipage}
+    
+    \begin{tikzpicture}[baseline, trim axis left, trim axis right]
+        \begin{axis}[
+            hide axis,
+            scale only axis,
+            height=0pt,
+            width=0.95\textwidth,
+            legend style={
+                draw=none,
+                fill=none,
+                font=\footnotesize,
+                legend columns={{ (all_algorithms|length > 8) and "5" or "4" }},
+                column sep=0.8em,
+                anchor=center,
+                at={(0.5,0)}
+            }
+        ]
+        {% for algo in all_algorithms %}
+        \addplot[
+            color={{ algo_to_color[algo] }},
+            mark={{ algo_to_mark[algo] }},
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ {{ algo }} };
+        {% endfor %}
+        \end{axis}
+    \end{tikzpicture}
+    
+\caption{ {{ caption }} }
+\label{plot:{{ caption | replace(" ", "_") | replace(",", "") | lower }}}
+\end{figure}"""
+    
+    with open(template_path, "w") as f:
+        f.write(groupplot_template)
+
+
+def create_group_latex(datasets, plot_variants, linestyles, j2_env, output_dir, metrics, mode="non-batch"):
+    os.makedirs(output_dir, exist_ok=True)
+    
+    available_datasets = list(datasets[mode].keys())
+    
+    if not available_datasets:
+        print(f"No datasets found for {mode} mode.")
+        return
+    
+    print(f"Found {len(available_datasets)} datasets")
+    
+    all_algorithms = set()
+    for dataset_name in available_datasets:
+        all_algorithms.update(datasets[mode][dataset_name].keys())
+    all_algorithms = sorted(list(all_algorithms), key=lambda x: x.lower())
+    
+
+    tikz_colors = [
+
+        "red!90!black", "blue!80!black", "green!70!black", "orange!90!black", 
+        "violet!90!black", "teal!90!black", "magenta!90!black", "olive!90!black", 
+        "cyan!70!black", "brown!90!black", "lime!70!black", "purple!80!black",
+
+        "red!70!black", "blue!60!black", "green!50!black", "orange!70!black",
+        "violet!70!black", "teal!70!black", "magenta!70!black", "olive!70!black",
+
+        "red!30!black", "blue!40!black", "green!30!black", "orange!40!black",
+        "violet!40!black", "teal!40!black", "magenta!40!black", "olive!40!black",
+
+        "red!50!blue", "blue!50!green", "green!50!orange", "orange!50!violet",
+        "violet!50!teal", "teal!50!magenta", "magenta!50!olive", "olive!50!cyan",
+        "red!50!green", "blue!50!purple", "teal!50!blue", "orange!50!brown"
+    ]
+    
+
+    tikz_marks = [
+        "o", "square", "triangle", "diamond", "x", "pentagon", 
+        "star", "otimes", "asterisk", "oplus", "+", "Mercedes star",
+        "halfsquare*", "halfcircle*", "triangle*", "square*", "diamond*"
+    ]
+    
+
+    algo_to_color = {algo: tikz_colors[i % len(tikz_colors)] for i, algo in enumerate(all_algorithms)}
+    algo_to_mark = {algo: tikz_marks[i % len(tikz_marks)] for i, algo in enumerate(all_algorithms)}
+    
+
+    for plot_name, (xn, yn) in plot_variants.items():
+        xm, ym = metrics[xn], metrics[yn]
+        print(f"Creating group plot for {plot_name}: {xm['description']} vs {ym['description']}")
+        
+        num_plots = len(available_datasets)
+        cols = math.ceil(math.sqrt(num_plots))
+        rows = math.ceil(num_plots / cols)
+        
+        group_plots = []
+        for i, dataset_name in enumerate(available_datasets):
+
+            dataset_label = get_dataset_label_wo_count(dataset_name)
+            
+
+            row = i // cols + 1
+            col = i % cols + 1
+            
+
+            algo_data = []
+            if dataset_name in datasets[mode]:
+                for algo in all_algorithms:  # assure we use consistent order of algorithms
+                    if algo in datasets[mode][dataset_name]:
+                        try:
+                            plot_data = prepare_data(datasets[mode][dataset_name][algo], xn, yn)
+                            
+
+                            xs, ys, ls, axs, ays, als = create_pointset(plot_data, xn, yn)
+                            
+                            color = algo_to_color[algo]
+                            mark = algo_to_mark[algo]
+                            
+                            algo_data.append({
+                                "name": algo,
+                                "coords": list(zip(xs, ys)),
+                                "tikz_color": color,
+                                "tikz_mark": mark,
+                                "scatter": False
+                            })
+                        except Exception as e:
+                            print(f"Error processing algorithm {algo} for dataset {dataset_name}: {e}")
+            
+            group_plots.append({
+                "title": dataset_label,
+                "plot_data": algo_data,
+                "row": row,
+                "col": col
+            })
+        
+
+        try:
+            group_latex = j2_env.get_template("groupplot.template").render(
+                group_plots=group_plots,
+                rows=rows,
+                cols=cols,
+                xlabel=xm["description"],
+                ylabel=ym["description"],
+                caption=f"{plot_name.replace('/', ' vs ')} - Comparison across datasets",
+                ymode="log" if yn == "qps" else "linear",  # Use log scale for QPS
+                all_algorithms=all_algorithms,
+                algo_to_color=algo_to_color,
+                algo_to_mark=algo_to_mark
+            )
+            
+
+            if "/" in plot_name:
+
+                parts = plot_name.split("/")
+                subdir = os.path.join(output_dir, parts[0])
+                os.makedirs(subdir, exist_ok=True)
+                
+                filename = os.path.join(subdir, f"{parts[1]}_{mode}_groupplot.tex")
+            else:
+                filename = os.path.join(output_dir, f"{plot_name}_{mode}_groupplot.tex")
+            
+            with open(filename, "w") as f:
+                f.write(group_latex)
+            
+            print(f"successfully generated group plot for {plot_name}")
+        except Exception as e:
+            print(f"err!! generating latex for {plot_name}: {e}")
 
 def build_detail_site(data, label_func, j2_env, linestyles, batch=False):
     for (name, runs) in data.items():
@@ -228,18 +456,34 @@ def load_all_results():
 
 j2_env = Environment(loader=FileSystemLoader("./templates/"), trim_blocks=True)
 j2_env.globals.update(zip=zip, len=len)
+
+
+if args.groupplots:
+    create_groupplot_template("./templates/")
+
 runs_by_ds, runs_by_algo = load_all_results()
 dataset_names = [get_dataset_label(x) for x in list(runs_by_ds["batch"].keys()) + list(runs_by_ds["non-batch"].keys())]
 algorithm_names = list(runs_by_algo["batch"].keys()) + list(runs_by_algo["non-batch"].keys())
 
 linestyles = {**create_linestyles(dataset_names), **create_linestyles(algorithm_names)}
 
+
 build_detail_site(runs_by_ds["non-batch"], lambda label: get_dataset_label(label), j2_env, linestyles, False)
-
 build_detail_site(runs_by_ds["batch"], lambda label: get_dataset_label(label), j2_env, linestyles, True)
-
 build_detail_site(runs_by_algo["non-batch"], lambda x: x, j2_env, linestyles, False)
-
 build_detail_site(runs_by_algo["batch"], lambda x: x, j2_env, linestyles, True)
 
+
 build_index_site(runs_by_ds, runs_by_algo, j2_env, "index.html")
+
+# generate group plots if requested
+if args.groupplots and args.latex:
+    # create a 'latex' directory if it doesn't exist
+    latex_dir = os.path.join(args.outputdir, "latex/")
+    os.makedirs(latex_dir, exist_ok=True)
+    
+    for mode in ["non-batch", "batch"]:
+        if runs_by_ds[mode]:  # Only if we have data for this mode
+            create_group_latex(runs_by_ds, plot_variants, linestyles, j2_env, latex_dir, metrics, mode)
+    
+    print(f"All group plots have been generated in {latex_dir}")
