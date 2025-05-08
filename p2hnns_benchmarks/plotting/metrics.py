@@ -116,7 +116,7 @@ all_metrics = {
         "lim": [0.0, 1.03],
     },
     "epsilon": {
-        "description": "Epsilon 0.01 Recall",
+        "description": "Eps 0.01 Recall",
         "function": lambda true_distances, run_distances, metrics, times, run_attrs: epsilon(
             true_distances, run_distances, run_attrs["count"], metrics
         ).attrs[
@@ -125,7 +125,7 @@ all_metrics = {
         "worst": float("-inf"),
     },
     "largeepsilon": {
-        "description": "Epsilon 0.1 Recall",
+        "description": "Eps 0.1 Recall",
         "function": lambda true_distances, run_distances, metrics, times, run_attrs: epsilon(
             true_distances, run_distances, run_attrs["count"], metrics, 0.1
         ).attrs[
@@ -141,7 +141,7 @@ all_metrics = {
         "worst": float("inf"),
     },
     "qps": {
-        "description": "Queries per second (1/s)",
+        "description": "QPS (1/s)",
         "function": lambda true_distances, run_distances, metrics, times, run_attrs: queries_per_second(
             true_distances, run_attrs
         ),  # noqa
@@ -168,7 +168,7 @@ all_metrics = {
         "worst": float("inf"),
     },
     "distcomps": {
-        "description": "Distance computations",
+        "description": "Distance comp.",
         "function": lambda true_distances, run_distances, metrics, times, run_attrs: dist_computations(
             true_distances, run_attrs
         ),  # noqa
@@ -196,7 +196,7 @@ all_metrics = {
         "worst": float("inf"),
     },
     "queriessize": {
-        "description": "Index size (kB)/Queries per second (s)",
+        "description": "Index size (kB)/QPS (s)",
         "function": lambda true_distances, run_distances, metrics, times, run_attrs: index_size(
             true_distances, run_attrs
         )
