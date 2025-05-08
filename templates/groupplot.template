@@ -1,6 +1,5 @@
 \begin{figure}[htbp]
 \centering
-    % Center the group plot using a centered minipage
     \begin{minipage}{\textwidth}
     \centering
     \begin{tikzpicture}[scale=0.65, every mark/.append style={mark size=1.5pt}]
@@ -56,7 +55,6 @@
     \end{tikzpicture}
     \end{minipage}
     
-    % Create legend as a separate entity to save vertical space
     \begin{tikzpicture}[baseline, trim axis left, trim axis right]
         \begin{axis}[
             hide axis,
@@ -69,7 +67,6 @@
                 font=\footnotesize,
                 legend columns={{ (all_algorithms|length > 8) and "5" or "4" }},
                 column sep=0.8em,
-                % Center the legend horizontally
                 anchor=center,
                 at={(0.5,0)}
             }

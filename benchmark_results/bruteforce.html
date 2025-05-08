@@ -48,11 +48,11 @@
 
                     <div class="container">
                                                         <h2>Plots for bruteforce</h2>
-                                                                <h3>Recall/Queries per second (1/s)</h3>
-            <div id="RecallQueries per second (1/s)">
-            <canvas id="chartRecallQueries per second (1/s)" width="800" height="600"></canvas>
+                                                                <h3>Recall/QPS (1/s)</h3>
+            <div id="RecallQPS (1/s)">
+            <canvas id="chartRecallQPS (1/s)" width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartRecallQueries per second (1/s)");
+                var ctx = document.getElementById("chartRecallQPS (1/s)");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -151,7 +151,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                                text: 'Recall-QPS (1/s) tradeoff - up and to the right is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -178,7 +178,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Queries per second (1/s) '
+                                        labelString: ' QPS (1/s) '
                                     }
                                 }]
                             }
@@ -227,22 +227,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_463092eb3306ccb7526cd693e3d3d66e78b2db0c8735c91936957518" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").click(function() {
-                        $("#plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726").toggle();
+                    $("#button_463092eb3306ccb7526cd693e3d3d66e78b2db0c8735c91936957518").click(function() {
+                        $("#plot_463092eb3306ccb7526cd693e3d3d66e78b2db0c8735c91936957518").toggle();
                     });
                 </script>
-                <div id="plot_403dedc119d4b11e52d29cfe9e0175f44eb4db818479c17902450726" style="display:none">
+                <div id="plot_463092eb3306ccb7526cd693e3d3d66e78b2db0c8735c91936957518" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={ Recall },
-            ylabel={ Queries per second (1/s) },
+            ylabel={ QPS (1/s) },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -360,7 +360,7 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \caption{ Recall-QPS (1/s) tradeoff - up and to the right is better }
     \label{}
 \end{figure}
                     </pre>
@@ -982,11 +982,11 @@
                     </pre>
                 </div>
             
-                                    <h3>Recall/Distance computations</h3>
-            <div id="RecallDistance computations">
-            <canvas id="chartRecallDistance computations" width="800" height="600"></canvas>
+                                    <h3>Recall/Distance comp.</h3>
+            <div id="RecallDistance comp.">
+            <canvas id="chartRecallDistance comp." width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartRecallDistance computations");
+                var ctx = document.getElementById("chartRecallDistance comp.");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -1085,7 +1085,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Recall-Distance computations tradeoff - down and to the right is better'
+                                text: 'Recall-Distance comp. tradeoff - down and to the right is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -1112,7 +1112,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Distance computations '
+                                        labelString: ' Distance comp. '
                                     }
                                 }]
                             }
@@ -1161,22 +1161,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_70a2a3f45fed099232f167bde3a8ec3e47581c7ec969d72f37995302" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").click(function() {
-                        $("#plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879").toggle();
+                    $("#button_70a2a3f45fed099232f167bde3a8ec3e47581c7ec969d72f37995302").click(function() {
+                        $("#plot_70a2a3f45fed099232f167bde3a8ec3e47581c7ec969d72f37995302").toggle();
                     });
                 </script>
-                <div id="plot_a9f40cd540d4fd4abd4a954f159e6ecbaeebe85950ad9434f2962879" style="display:none">
+                <div id="plot_70a2a3f45fed099232f167bde3a8ec3e47581c7ec969d72f37995302" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={ Recall },
-            ylabel={ Distance computations },
+            ylabel={ Distance comp. },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -1294,17 +1294,17 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Recall-Distance computations tradeoff - down and to the right is better }
+    \caption{ Recall-Distance comp. tradeoff - down and to the right is better }
     \label{}
 \end{figure}
                     </pre>
                 </div>
             
-                                    <h3>Relative Error/Queries per second (1/s)</h3>
-            <div id="Relative ErrorQueries per second (1/s)">
-            <canvas id="chartRelative ErrorQueries per second (1/s)" width="800" height="600"></canvas>
+                                    <h3>Relative Error/QPS (1/s)</h3>
+            <div id="Relative ErrorQPS (1/s)">
+            <canvas id="chartRelative ErrorQPS (1/s)" width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartRelative ErrorQueries per second (1/s)");
+                var ctx = document.getElementById("chartRelative ErrorQPS (1/s)");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -1403,7 +1403,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Relative Error-Queries per second (1/s) tradeoff - up and to the left is better'
+                                text: 'Relative Error-QPS (1/s) tradeoff - up and to the left is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -1430,7 +1430,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Queries per second (1/s) '
+                                        labelString: ' QPS (1/s) '
                                     }
                                 }]
                             }
@@ -1479,22 +1479,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_847ece86768f5c50761fca6f43d75b193f69ba2e172511027989abec" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").click(function() {
-                        $("#plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3").toggle();
+                    $("#button_847ece86768f5c50761fca6f43d75b193f69ba2e172511027989abec").click(function() {
+                        $("#plot_847ece86768f5c50761fca6f43d75b193f69ba2e172511027989abec").toggle();
                     });
                 </script>
-                <div id="plot_3e91651a72b37e6d7b80811c33ee867edccd6ab6cde092183a3c51a3" style="display:none">
+                <div id="plot_847ece86768f5c50761fca6f43d75b193f69ba2e172511027989abec" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={ Relative Error },
-            ylabel={ Queries per second (1/s) },
+            ylabel={ QPS (1/s) },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -1612,7 +1612,7 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Relative Error-Queries per second (1/s) tradeoff - up and to the left is better }
+    \caption{ Relative Error-QPS (1/s) tradeoff - up and to the left is better }
     \label{}
 \end{figure}
                     </pre>
@@ -1936,11 +1936,11 @@
                     </pre>
                 </div>
             
-                                    <h3>Recall/Index size (kB)/Queries per second (s)</h3>
-            <div id="RecallIndex size (kB)/Queries per second (s)">
-            <canvas id="chartRecallIndex size (kB)/Queries per second (s)" width="800" height="600"></canvas>
+                                    <h3>Recall/Index size (kB)/QPS (s)</h3>
+            <div id="RecallIndex size (kB)/QPS (s)">
+            <canvas id="chartRecallIndex size (kB)/QPS (s)" width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartRecallIndex size (kB)/Queries per second (s)");
+                var ctx = document.getElementById("chartRecallIndex size (kB)/QPS (s)");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -2029,7 +2029,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better'
+                                text: 'Recall-Index size (kB)/QPS (s) tradeoff - down and to the right is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -2056,7 +2056,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Index size (kB)/Queries per second (s) '
+                                        labelString: ' Index size (kB)/QPS (s) '
                                     }
                                 }]
                             }
@@ -2105,22 +2105,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_489edb8c814378befff4bb875a0149a6f91f1882aca4872c49c10c09" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").click(function() {
-                        $("#plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5").toggle();
+                    $("#button_489edb8c814378befff4bb875a0149a6f91f1882aca4872c49c10c09").click(function() {
+                        $("#plot_489edb8c814378befff4bb875a0149a6f91f1882aca4872c49c10c09").toggle();
                     });
                 </script>
-                <div id="plot_860e487de321d09b5f29821da1f80802d102ef6329941a745db597e5" style="display:none">
+                <div id="plot_489edb8c814378befff4bb875a0149a6f91f1882aca4872c49c10c09" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             xlabel={ Recall },
-            ylabel={ Index size (kB)/Queries per second (s) },
+            ylabel={ Index size (kB)/QPS (s) },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -2228,17 +2228,17 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Recall-Index size (kB)/Queries per second (s) tradeoff - down and to the right is better }
+    \caption{ Recall-Index size (kB)/QPS (s) tradeoff - down and to the right is better }
     \label{}
 \end{figure}
                     </pre>
                 </div>
             
-                                    <h3>Epsilon 0.01 Recall/Queries per second (1/s)</h3>
-            <div id="Epsilon 0.01 RecallQueries per second (1/s)">
-            <canvas id="chartEpsilon 0.01 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+                                    <h3>Eps 0.01 Recall/QPS (1/s)</h3>
+            <div id="Eps 0.01 RecallQPS (1/s)">
+            <canvas id="chartEps 0.01 RecallQPS (1/s)" width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartEpsilon 0.01 RecallQueries per second (1/s)");
+                var ctx = document.getElementById("chartEps 0.01 RecallQPS (1/s)");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -2337,7 +2337,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                                text: 'Eps 0.01 Recall-QPS (1/s) tradeoff - up and to the right is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -2356,7 +2356,7 @@
                                     position: 'bottom',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Epsilon 0.01 Recall   '
+                                        labelString: ' Eps 0.01 Recall   '
                                     }
                                 }],
                                 yAxes: [{
@@ -2364,7 +2364,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Queries per second (1/s) '
+                                        labelString: ' QPS (1/s) '
                                     }
                                 }]
                             }
@@ -2413,22 +2413,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_791e726617186a02382bfaf83b6dd4e912dc2ac8bd3e607137513696" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").click(function() {
-                        $("#plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0").toggle();
+                    $("#button_791e726617186a02382bfaf83b6dd4e912dc2ac8bd3e607137513696").click(function() {
+                        $("#plot_791e726617186a02382bfaf83b6dd4e912dc2ac8bd3e607137513696").toggle();
                     });
                 </script>
-                <div id="plot_c7aa5ac4d17d00aab0301c6953850242a3209f4f562afb70ff0b15b0" style="display:none">
+                <div id="plot_791e726617186a02382bfaf83b6dd4e912dc2ac8bd3e607137513696" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={ Epsilon 0.01 Recall },
-            ylabel={ Queries per second (1/s) },
+            xlabel={ Eps 0.01 Recall },
+            ylabel={ QPS (1/s) },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -2546,17 +2546,17 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Epsilon 0.01 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \caption{ Eps 0.01 Recall-QPS (1/s) tradeoff - up and to the right is better }
     \label{}
 \end{figure}
                     </pre>
                 </div>
             
-                                    <h3>Epsilon 0.1 Recall/Queries per second (1/s)</h3>
-            <div id="Epsilon 0.1 RecallQueries per second (1/s)">
-            <canvas id="chartEpsilon 0.1 RecallQueries per second (1/s)" width="800" height="600"></canvas>
+                                    <h3>Eps 0.1 Recall/QPS (1/s)</h3>
+            <div id="Eps 0.1 RecallQPS (1/s)">
+            <canvas id="chartEps 0.1 RecallQPS (1/s)" width="800" height="600"></canvas>
             <script>
-                var ctx = document.getElementById("chartEpsilon 0.1 RecallQueries per second (1/s)");
+                var ctx = document.getElementById("chartEps 0.1 RecallQPS (1/s)");
                 var chart = new Chart(ctx, {
                                         type: "line",
                                         data: { datasets: [
@@ -2655,7 +2655,7 @@
                             responsive: false,
                             title:{
                                 display:true,
-                                text: 'Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better'
+                                text: 'Eps 0.1 Recall-QPS (1/s) tradeoff - up and to the right is better'
                             },
                             tooltips: {
                                 callbacks: {
@@ -2674,7 +2674,7 @@
                                     position: 'bottom',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Epsilon 0.1 Recall   '
+                                        labelString: ' Eps 0.1 Recall   '
                                     }
                                 }],
                                 yAxes: [{
@@ -2682,7 +2682,7 @@
                                     type: 'logarithmic',
                                     scaleLabel: {
                                         display: true,
-                                        labelString: ' Queries per second (1/s) '
+                                        labelString: ' QPS (1/s) '
                                     }
                                 }]
                             }
@@ -2731,22 +2731,22 @@
             </div>
                             <div class="row">
                     <div class="col-md-4 text-center">
-                        <button type="button" id="button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" class="btn btn-default" >Toggle latex code</button>
+                        <button type="button" id="button_33311b16c65b13155352e2853467e7f89e063a169c63bcd8614f3e77" class="btn btn-default" >Toggle latex code</button>
                     </div>
                 </div>
                 <script>
-                    $("#button_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").click(function() {
-                        $("#plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2").toggle();
+                    $("#button_33311b16c65b13155352e2853467e7f89e063a169c63bcd8614f3e77").click(function() {
+                        $("#plot_33311b16c65b13155352e2853467e7f89e063a169c63bcd8614f3e77").toggle();
                     });
                 </script>
-                <div id="plot_fdf55584c449a37ba9ac7a22dca0e0f2488fbb8170bfc96e021843a2" style="display:none">
+                <div id="plot_33311b16c65b13155352e2853467e7f89e063a169c63bcd8614f3e77" style="display:none">
                     <pre>
                     \begin{figure}
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            xlabel={ Epsilon 0.1 Recall },
-            ylabel={ Queries per second (1/s) },
+            xlabel={ Eps 0.1 Recall },
+            ylabel={ QPS (1/s) },
             ymode = log,
             yticklabel style={/pgf/number format/fixed,
                               /pgf/number format/precision=3},
@@ -2864,7 +2864,7 @@
             \addlegendentry{ trevi-4096-euclidean (k = 10) };
             \end{axis}
     \end{tikzpicture}
-    \caption{ Epsilon 0.1 Recall-Queries per second (1/s) tradeoff - up and to the right is better }
+    \caption{ Eps 0.1 Recall-QPS (1/s) tradeoff - up and to the right is better }
     \label{}
 \end{figure}
                     </pre>

@@ -1,0 +1,1276 @@
+\begin{figure}[htbp]
+\centering
+    \begin{minipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.65, every mark/.append style={mark size=1.5pt}]
+        % Create the group plot
+        \begin{groupplot}[
+            group style = {
+                group size = 4 by 3,
+                horizontal sep = 1.5cm,
+                vertical sep = 2.5cm,
+                % These settings control where labels appear
+                xlabels at=edge bottom,
+                ylabels at=edge left
+            },
+            grid = both,
+            grid style = {line width=.1pt, draw=gray!30},
+            major grid style = {line width=.2pt, draw=gray!50},
+            height = 4.5cm,
+            width = 5cm,
+            xtick = {0, 0.25, 0.5, 0.75, 1},
+            ymode = linear,
+            xlabel = { Recall },
+            ylabel = { Build time (s) },
+            xlabel style={font=\footnotesize},
+            ylabel style={font=\footnotesize},
+            xticklabel style={font=\tiny},
+            yticklabel style={font=\tiny},
+            tick label style={font=\footnotesize},
+            label style={font=\footnotesize},
+            title style={yshift=0.3em, font=\footnotesize}
+        ]
+
+        
+                \nextgroupplot[
+            title = { trevi-4096-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8461000000000001, 21.301631927490234)
+                            (0.8489000000000001, 25.600125312805176)
+                            (0.8501, 29.836978673934937)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8049, 13.310030698776245)
+                            (0.8065, 16.696699619293213)
+                            (0.8076000000000001, 25.653686046600342)
+                            (0.8107, 32.04091262817383)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9929, 0.00027179718017578125)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.433, 11709.717495203018)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.3944, 11699.24492263794)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.3785, 588.7694096565247)
+                            (0.3805, 589.8732917308807)
+                            (0.38130000000000003, 950.4950485229492)
+                            (0.38170000000000004, 1777.7102267742157)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.2177, 36.27193570137024)
+                            (0.23370000000000002, 69.56424331665039)
+                            (0.3386, 69.66912007331848)
+                            (0.3821, 136.1999032497406)
+                            (0.4072, 268.80417132377625)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.011600000000000001, 11672.95532655716)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8798, 11585.054861545563)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7325, 11655.525495529175)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8813000000000001, 11599.896925210953)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.42969999999999997, 282.5202810764313)
+                    };
+                        \nextgroupplot[
+            title = { deep10m-96-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9731, 177.74964809417725)
+                            (0.975, 224.34585118293762)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9723, 140.59971499443054)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.0002789497375488281)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9589000000000001, 1902.5547235012054)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9430999999999999, 1910.5165870189667)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7933, 259.0427348613739)
+                            (0.795, 319.04064893722534)
+                            (0.7952, 451.9243676662445)
+                            (0.7956000000000001, 456.65114879608154)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8992000000000001, 55.98536705970764)
+                            (0.8997999999999999, 104.95484399795532)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8096, 1736.1810767650604)
+                            (0.8158, 1825.0810778141022)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9404999999999999, 1591.1343982219696)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9911, 1665.5344591140747)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8240999999999999, 1627.4750180244446)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9208000000000001, 324.8484880924225)
+                            (0.9307000000000001, 501.3739244937897)
+                            (0.9372, 840.0193564891815)
+                            (0.9384, 3094.122076511383)
+                            (0.9406000000000001, 6195.98455286026)
+                    };
+                        \nextgroupplot[
+            title = { glove-25-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.978, 5.69340443611145)
+                            (0.9784, 6.429529428482056)
+                            (0.9827, 7.010652542114258)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9712999999999999, 4.1625893115997314)
+                            (0.9715999999999999, 5.2431960105896)
+                            (0.974, 5.426664113998413)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.00022840499877929688)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7802, 221.52190375328064)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6032, 222.99136328697205)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9608000000000001, 9.504552841186523)
+                            (0.9612, 9.572721719741821)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8805999999999999, 1.907350778579712)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6333, 216.7723150253296)
+                            (0.6655, 219.35877442359924)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 181.7923686504364)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9903000000000001, 186.71535801887512)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9992000000000001, 213.6974232196808)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9301, 13.85828948020935)
+                    };
+                        \nextgroupplot[
+            title = { sift-128-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.24609999999999999, 14.642911672592163)
+                            (0.2493, 17.278897762298584)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.20179999999999998, 12.01766324043274)
+                            (0.2083, 12.438732385635376)
+                            (0.20870000000000002, 14.10308313369751)
+                            (0.21259999999999998, 15.059098482131958)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.0002968311309814453)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.09090000000000001, 420.425493478775)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.08199999999999999, 416.6591341495514)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.0601, 36.10692477226257)
+                            (0.060899999999999996, 36.304073333740234)
+                            (0.061399999999999996, 44.6589732170105)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.07970000000000001, 8.303024291992188)
+                            (0.0813, 15.29399561882019)
+                            (0.0847, 28.990959882736206)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.0199, 412.15882873535156)
+                            (0.0333, 432.43293929100037)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9711000000000001, 381.8734140396118)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6248, 393.38818979263306)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8515, 394.10291266441345)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.11040000000000001, 34.2802677154541)
+                            (0.1163, 43.67885446548462)
+                            (0.1167, 63.93118405342102)
+                            (0.1189, 106.90562868118286)
+                    };
+                        \nextgroupplot[
+            title = { fashion-mnist-784-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9785999999999999, 2.651897668838501)
+                            (0.9833999999999999, 3.644834041595459)
+                            (0.9845, 4.766846418380737)
+                            (0.9849, 5.1658124923706055)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9285, 1.7797422409057617)
+                            (0.9364000000000001, 2.292909860610962)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.000286102294921875)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5916, 1060.6886174678802)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5474, 1061.4490869045258)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6503, 23.01564621925354)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.2287, 4.256772756576538)
+                            (0.4109, 8.255039691925049)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.0166, 1068.5467176437378)
+                            (0.032600000000000004, 1068.7945306301117)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9765, 1052.5070261955261)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7645, 1062.104959487915)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8992000000000001, 1067.1878907680511)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6793, 15.177943468093872)
+                            (0.6799999999999999, 126.91592454910278)
+                    };
+                        \nextgroupplot[
+            title = { glove-200-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5439, 41.337106704711914)
+                            (0.5514, 45.79136347770691)
+                            (0.5523, 53.27443718910217)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5316, 29.73098659515381)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.0003077983856201172)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.4018, 745.5695905685425)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.3772, 734.1272859573364)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7692, 76.51220440864563)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.4274, 17.007681131362915)
+                            (0.42910000000000004, 31.752697229385376)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.3291, 714.7785604000092)
+                            (0.337, 744.2909121513367)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9162000000000001, 680.2578527927399)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8304, 701.1760005950928)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8196999999999999, 678.2772238254547)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.635, 69.26591467857361)
+                            (0.6516, 86.31025314331055)
+                            (0.6543, 122.20105838775635)
+                            (0.6634, 202.37130904197693)
+                    };
+                        \nextgroupplot[
+            title = { cifar10-512-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9999, 0.9870715141296387)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9644, 0.7508208751678467)
+                            (0.9710000000000001, 0.9228410720825195)
+                            (0.9722, 1.4381508827209473)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.00023984909057617188)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6105, 515.5511784553528)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5163, 509.5039701461792)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8122, 8.497428894042969)
+                            (0.8131, 8.581430196762085)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.22440000000000002, 2.314427137374878)
+                            (0.4128, 4.428887605667114)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.0187, 515.2433414459229)
+                            (0.0371, 523.9802167415619)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9545, 515.234052658081)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.808, 513.41051197052)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8944000000000001, 511.895210981369)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5602, 5.037541389465332)
+                    };
+                        \nextgroupplot[
+            title = { glove-100-euclidean }
+        ]
+        
+                \addplot [
+            color=red!90!black,
+            mark=o,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6255, 425.1353921890259)
+                    };
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.757, 21.665255784988403)
+                            (0.7692, 25.783196687698364)
+                            (0.8010999999999999, 29.98444700241089)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7287, 16.504424333572388)
+                            (0.73, 18.645862579345703)
+                            (0.7443, 20.728420972824097)
+                    };
+                \addplot [
+            color=orange!90!black,
+            mark=diamond,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6238, 4.308042764663696)
+                            (0.6288, 7.388447999954224)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.0002491474151611328)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5745, 449.9672145843506)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.5109, 450.5612289905548)
+                    };
+                \addplot [
+            color=olive!90!black,
+            mark=otimes,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6255, 427.96528577804565)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8797, 35.84559345245361)
+                            (0.8811, 36.20997595787048)
+                            (0.8813000000000001, 45.375641107559204)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.6192, 7.216185569763184)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.46909999999999996, 445.7330799102783)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9945, 385.15651774406433)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9365, 397.5323655605316)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9659000000000001, 419.3593454360962)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8003, 35.15856957435608)
+                            (0.8079000000000001, 47.70292544364929)
+                    };
+                        \nextgroupplot[
+            title = { music-100-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9653, 15.834686756134033)
+                            (0.9695, 17.919652462005615)
+                            (0.9715999999999999, 19.64185404777527)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.958, 12.807666301727295)
+                            (0.9582, 14.528089761734009)
+                            (0.9654999999999999, 15.293490886688232)
+                            (0.966, 16.336371421813965)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.00028252601623535156)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9273999999999999, 417.23981738090515)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8897, 410.2272515296936)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9945999999999999, 25.462316513061523)
+                            (0.9949999999999999, 25.68654179573059)
+                            (0.9951000000000001, 31.3517849445343)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8926999999999999, 6.006217002868652)
+                            (0.8961, 11.450723886489868)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.7553, 399.31659841537476)
+                            (0.7921, 411.0691068172455)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 354.4518575668335)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9904999999999999, 364.54803824424744)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9978999999999999, 385.9713497161865)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9811, 27.477737426757812)
+                            (0.9868, 38.13739848136902)
+                            (0.9909000000000001, 61.49185752868652)
+                            (0.9938, 108.81932759284973)
+                            (0.9954000000000001, 213.95387983322144)
+                    };
+                        \nextgroupplot[
+            title = { gist-960-euclidean }
+        ]
+        
+                \addplot [
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9991, 120.79809236526489)
+                            (0.9992000000000001, 141.3734679222107)
+                            (1.0, 165.17899656295776)
+                    };
+                \addplot [
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9991, 96.52102470397949)
+                            (0.9992000000000001, 118.95203280448914)
+                            (0.9999, 144.13236927986145)
+                    };
+                \addplot [
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (1.0, 0.0002570152282714844)
+                    };
+                \addplot [
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9974000000000001, 3655.277858734131)
+                    };
+                \addplot [
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9965999999999999, 3679.7343878746033)
+                    };
+                \addplot [
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9832000000000001, 502.5143802165985)
+                            (0.9833000000000001, 506.1759741306305)
+                            (0.984, 805.5767941474915)
+                    };
+                \addplot [
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9667, 83.74053239822388)
+                    };
+                \addplot [
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.8218, 3621.9261326789856)
+                            (0.8724000000000001, 3769.56121635437)
+                    };
+                \addplot [
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9997999999999999, 3483.589256286621)
+                    };
+                \addplot [
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9992000000000001, 3542.6597599983215)
+                    };
+                \addplot [
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9939, 3481.157161951065)
+                    };
+                \addplot [
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+                    ] coordinates {
+                            (0.9812, 366.0912687778473)
+                    };
+                        \end{groupplot}
+    \end{tikzpicture}
+    \end{minipage}
+    
+    \begin{tikzpicture}[baseline, trim axis left, trim axis right]
+        \begin{axis}[
+            hide axis,
+            scale only axis,
+            height=0pt,
+            width=0.95\textwidth,
+            legend style={
+                draw=none,
+                fill=none,
+                font=\footnotesize,
+                legend columns=5,
+                column sep=0.8em,
+                anchor=center,
+                at={(0.5,0)}
+            }
+        ]
+                \addplot[
+            color=red!90!black,
+            mark=o,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ ah };
+                \addplot[
+            color=blue!80!black,
+            mark=square,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ balltree };
+                \addplot[
+            color=green!70!black,
+            mark=triangle,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ bctree };
+                \addplot[
+            color=orange!90!black,
+            mark=diamond,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ bh };
+                \addplot[
+            color=violet!90!black,
+            mark=x,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ bruteforce };
+                \addplot[
+            color=teal!90!black,
+            mark=pentagon,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ bt-mqh };
+                \addplot[
+            color=magenta!90!black,
+            mark=star,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ bt-mqh-v2 };
+                \addplot[
+            color=olive!90!black,
+            mark=otimes,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ eh };
+                \addplot[
+            color=cyan!70!black,
+            mark=asterisk,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ fh };
+                \addplot[
+            color=brown!90!black,
+            mark=oplus,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ mh };
+                \addplot[
+            color=lime!70!black,
+            mark=+,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ mh-mqh };
+                \addplot[
+            color=purple!80!black,
+            mark=Mercedes star,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ mqh };
+                \addplot[
+            color=red!70!black,
+            mark=halfsquare*,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ mqh-kjl };
+                \addplot[
+            color=blue!60!black,
+            mark=halfcircle*,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ mqh-v2 };
+                \addplot[
+            color=green!50!black,
+            mark=triangle*,
+            mark size=1.5pt,
+            line width=1pt
+        ] coordinates {(0,0)};
+        \addlegendentry{ nh };
+                \end{axis}
+    \end{tikzpicture}
+    
+\caption{ recall vs buildtime - Comparison across datasets }
+\label{plot:recall_vs_buildtime_-_comparison_across_datasets}
+\end{figure}
