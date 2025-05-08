@@ -181,14 +181,10 @@ def create_groupplot_template(template_dir):
             yticklabel style={
                 font=\tiny,
                 /pgf/number format/.cd,
-                {% if ymode == "log" %}
                 fixed,
                 precision=0
-                {% endif %}
             },
-            {% if ymode == "log" %}
             log ticks with fixed point,
-            {% endif %}
             xlabel = { {{ xlabel }} },
             ylabel = { {{ ylabel }} },
             xlabel style={font=\footnotesize},
@@ -363,7 +359,7 @@ def create_group_latex(datasets, plot_variants, linestyles, j2_env, output_dir, 
                 xlabel=xm["description"],
                 ylabel=ym["description"],
                 caption=f"{plot_name.replace('/', ' vs ')} - Comparison across datasets",
-                ymode="log" if yn == "qps" else "linear",  # Use log scale for QPS
+                ymode="log",
                 all_algorithms=all_algorithms,
                 algo_to_color=algo_to_color,
                 algo_to_mark=algo_to_mark
