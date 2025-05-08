@@ -176,6 +176,19 @@ def create_groupplot_template(template_dir):
             width = 5cm,
             xtick = {0, 0.25, 0.5, 0.75, 1},
             ymode = {{ ymode }},
+            log basis y=10,
+            scaled y ticks = false,
+            yticklabel style={
+                font=\tiny,
+                /pgf/number format/.cd,
+                {% if ymode == "log" %}
+                fixed,
+                precision=0
+                {% endif %}
+            },
+            {% if ymode == "log" %}
+            log ticks with fixed point,
+            {% endif %}
             xlabel = { {{ xlabel }} },
             ylabel = { {{ ylabel }} },
             xlabel style={font=\footnotesize},
