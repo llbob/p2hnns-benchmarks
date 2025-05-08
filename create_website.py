@@ -158,13 +158,13 @@ def create_groupplot_template(template_dir):
 \centering
     \begin{minipage}{\textwidth}
     \centering
-    \begin{tikzpicture}[scale=0.65, every mark/.append style={mark size=1.5pt}]
+    \begin{tikzpicture}[scale=0.95, every mark/.append style={mark size=1.5pt}]
         % Create the group plot
         \begin{groupplot}[
             group style = {
                 group size = {{ cols }} by {{ rows }},
-                horizontal sep = 1.5cm,
-                vertical sep = 2.5cm,
+                horizontal sep = 1.2cm,
+                vertical sep = 1.5cm,
                 % These settings control where labels appear
                 xlabels at=edge bottom,
                 ylabels at=edge left
