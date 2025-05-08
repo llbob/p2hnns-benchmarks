@@ -307,8 +307,9 @@ def create_group_latex(datasets, plot_variants, linestyles, j2_env, output_dir, 
         print(f"Creating group plot for {plot_name}: {xm['description']} vs {ym['description']}")
         
         num_plots = len(available_datasets)
-        cols = math.ceil(math.sqrt(num_plots))
+        cols = min(3, num_plots)
         rows = math.ceil(num_plots / cols)
+
         
         group_plots = []
         for i, dataset_name in enumerate(available_datasets):
