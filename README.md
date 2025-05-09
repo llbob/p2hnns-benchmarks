@@ -32,5 +32,3 @@ python compute-lid.py data/<dataset_name>.hdf5 > <dataset_name>-lid.txt
 
 Expansion:
 python compute-expansion.py data/<dataset_name>.hdf5 > <dataset_name>-expansion.txt
-
-
