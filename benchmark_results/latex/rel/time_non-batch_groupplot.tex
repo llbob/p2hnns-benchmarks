@@ -6,7 +6,7 @@
         % Create the group plot
         \begin{groupplot}[
             group style = {
-                group size = 4 by 3,
+                group size = 3 by 4,
                 horizontal sep = 1.5cm,
                 vertical sep = 2.5cm,
                 % These settings control where labels appear
@@ -25,11 +25,11 @@
             yticklabel style={
                 font=\tiny,
                 /pgf/number format/.cd,
-                                fixed,
+                fixed,
                 precision=0
-                            },
-                        log ticks with fixed point,
-                        xlabel = { Relative Error },
+            },
+            log ticks with fixed point,
+            xlabel = { Relative Error },
             ylabel = { QPS (1/s) },
             xlabel style={font=\footnotesize},
             ylabel style={font=\footnotesize},
