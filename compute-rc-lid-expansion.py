@@ -7,10 +7,8 @@ from p2hnns_benchmarks.distance import euc_p2hdist, ang_p2hdist
 
 DATASETS = [
     "glove-100-euclidean",
-    "music-100-euclidean",
+    "music-100-euclidean"
 ]
-
-THRESHOLD_PERCENTAGE = 0.10  # 10% of values rather than the eg. 10.000 largest or smallest as in the original code, this is due to our limitied amount of hyperplane queries, as we currently generate only 1000 hyperplanes, compared to the P2P original in which the queries are taken from larger test sets.
 
 def compute_lid(file_path, k=100):
     f = h5py.File(file_path)
@@ -64,12 +62,10 @@ def compute_rc(file_path, k=10, samples=1000):
     print("rc std:", np.std(estimates))
     return estimates
 
-def plot_distribution_box_grid(data_dict, metric_name, threshold_type='largest', 
-                              threshold_percentage=0.10, clip_max=None, auto_clip=True):
+def plot_distribution_box_grid(data_dict, metric_name, clip_max=None, auto_clip=True):
     sorted_datasets = sorted(
         data_dict.keys(),
-        key=lambda k: np.nanmedian(data_dict[k]),
-        reverse=(threshold_type != 'largest')
+        key=lambda k: np.nanmedian(data_dict[k])
     )
 
     all_data = []
@@ -123,22 +119,6 @@ def plot_distribution_box_grid(data_dict, metric_name, threshold_type='largest',
         for p in [p25, p50, p75]:
             ax.axvline(p, color='black', lw=1)
 
-        sorted_vals = np.sort(data)
-        
-        # Calculate threshold index based on percentage
-        threshold_index = int(len(sorted_vals) * threshold_percentage)
-        # Ensure we have at least one element for indexing
-        threshold_index = max(1, min(threshold_index, len(sorted_vals) - 1))
-        
-        if threshold_type == 'largest':
-            # For 'largest', we want the top X% (index from the end)
-            threshold = sorted_vals[-threshold_index]
-        else:
-            # For 'smallest', we want the bottom X% (index from the beginning)
-            threshold = sorted_vals[threshold_index]
-            
-        ax.axvline(threshold, color='red', lw=2)
-
         ax.text(xlim[1]*0.97, max(y)*0.8, dataset,
                 ha='right', va='center', fontsize=9,
                 bbox=dict(facecolor='white', edgecolor='black'))
@@ -178,25 +158,19 @@ def main():
     plot_distribution_box_grid(
         lid_results,
         metric_name="Local Intrinsic Dimensionality",
-        threshold_type='largest',
-        threshold_percentage=THRESHOLD_PERCENTAGE,
-        auto_clip=False
+        clip_max=15,
     )
 
     plot_distribution_box_grid(
         exp_results,
         metric_name="Expansion",
-        threshold_type='smallest',
-        threshold_percentage=THRESHOLD_PERCENTAGE,
         clip_max=1.5
     )
 
     plot_distribution_box_grid(
         rc_results,
         metric_name="Relative Contrast",
-        threshold_type='smallest',
-        threshold_percentage=THRESHOLD_PERCENTAGE,
-        clip_max=15000
+        clip_max=50000
     )
 
 if __name__ == "__main__":

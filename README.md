@@ -32,3 +32,6 @@ python compute-lid.py data/<dataset_name>.hdf5 > <dataset_name>-lid.txt
 
 Expansion:
 python compute-expansion.py data/<dataset_name>.hdf5 > <dataset_name>-expansion.txt
+
+Or tather use our adaptation of them generating plots for predefined datasets through: 
+python compute-rc-lid-expansion.py
