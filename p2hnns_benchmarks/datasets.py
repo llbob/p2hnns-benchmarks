@@ -589,6 +589,9 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     # 100 dims - 20k points
     "glove-100-euclidean-20k-grn": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="grn"),
     "glove-100-euclidean-20k-psm": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="psm"),
+    # 100 dims - all points
+    "glove-100-euclidean-grn": lambda out_fn: glove(out_fn, 100, "euclidean", None, hyperplane_method="grn"),
+    "glove-100-euclidean-psm": lambda out_fn: glove(out_fn, 100, "euclidean", None, hyperplane_method="psm"),
 
     # ========================================================================
     # Here are the datasets that are not currently used
