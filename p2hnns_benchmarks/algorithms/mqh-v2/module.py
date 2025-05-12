@@ -41,7 +41,7 @@ class BT_MQH_v2(BaseANN):
         self._mqh = mqh.MQH(d, self._M2, self._level, self._m_level, self._m_num)
         self._mqh.build_index(self._data)
         
-        # For BTree, add ones column after any normalization
+        # For BTree, add ones column
         ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
         self._candidate_data = numpy.hstack((self._data, ones_column))
 
@@ -163,7 +163,7 @@ class MH_MQH_v2(BaseANN):
         self._mqh = mqh.MQH(d, self._M2, self._level, self._m_level, self._m_num)
         self._mqh.build_index(self._data)
         
-        # For MH, add ones column after any normalization
+        # For MH, add ones column
         ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
         self._candidate_data = numpy.hstack((self._data, ones_column))
 

@@ -21,7 +21,7 @@ class MH(BaseANN):
             # Normalize for angular distance
             self._data = self._data / numpy.linalg.norm(self._data, axis=1)[:, numpy.newaxis]
 
-        # Always add ones column after any normalization
+        # Always add ones column
         ones_column = numpy.ones((self._data.shape[0], 1), dtype=numpy.float32)
         self._data = numpy.hstack((self._data, ones_column))
 

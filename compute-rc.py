@@ -13,7 +13,7 @@ k = 10
 if len(sys.argv) > 2:
     k = int(sys.argv[2])
 
-samples = 3000
+samples = 1000
 m = len(f['normals'])
 
 distances = np.array(f['distances'])
@@ -30,16 +30,11 @@ random_matrix = np.array([random.choice(f['points']) for _ in range(samples)])
 # calculate average distances from random points to each hyperplane
 hyperplane_avg_distances = np.zeros(m, dtype=float)
 
-if 'euclidean' in sys.argv[1]:
-    for i in range(m):
-        hyperplane = (normals[i], biases[i])
-        distances_to_hyperplane = np.array([euc_p2hdist(x, hyperplane) for x in random_matrix])
-        hyperplane_avg_distances[i] = np.mean(distances_to_hyperplane)
-elif 'angular' in sys.argv[1]:
-    for i in range(m):
-        hyperplane = (normals[i], biases[i])
-        distances_to_hyperplane = np.array([ang_p2hdist(x, hyperplane) for x in random_matrix])
-        hyperplane_avg_distances[i] = np.mean(distances_to_hyperplane)
+
+for i in range(m):
+    hyperplane = (normals[i], biases[i])
+    distances_to_hyperplane = np.array([euc_p2hdist(x, hyperplane) for x in random_matrix])
+    hyperplane_avg_distances[i] = np.mean(distances_to_hyperplane)
 
 assert len(hyperplane_avg_distances) == len(normals)
 
@@ -55,6 +50,7 @@ for i in range(len(normals)):
 for i, e in enumerate(estimates):
     print(i, e)
 
+print("rc average:", np.mean(estimates))
 
 
 
