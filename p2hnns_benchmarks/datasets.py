@@ -76,9 +76,9 @@ def get_dataset(dataset_name: str) -> Tuple[h5py.File, int]:
     dimension = int(hdf5_file.attrs["dimension"]) if "dimension" in hdf5_file.attrs else len(hdf5_file["points"][0])
     return hdf5_file, dimension
 
-def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
+def create_hyperplanes_psm(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
     """
-    random point sample distance (rpsd) ?
+    random point sample distance (psm) ?
     This method generates hyperplanes by randomly selecting five points from the dataset and using them to:
 
     create normal vectors by taking the difference between the mean of two 5 point samples of points. 
@@ -138,9 +138,9 @@ def create_hyperplanes_rpsd(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[n
     
     return unit_normals, biases
 
-# def create_hyperplanes_bctree(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
+# def create_hyperplanes_grn(X: np.ndarray, n_hyperplanes: int = 1000) -> Tuple[np.ndarray, np.ndarray]:
 #     """
-#     (bctree) method to create hyperplanes and biases.
+#     (grn) method to create hyperplanes and biases.
     
 #     The implementation follows a similar approach to Qiang et als implementation in https://github.com/HuangQiang/BC-Tree
     
@@ -216,7 +216,7 @@ def write_output(
             distances_ds[i] = [dist for _, dist in res]
 
 
-def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_method:str = "rpsd") -> None:
+def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_method:str = "psm") -> None:
     url = "http://nlp.stanford.edu/data/glove.twitter.27B.zip"
     fn = os.path.join("data", "glove.twitter.27B.zip")
     download(url, fn)
@@ -229,10 +229,10 @@ def glove(out_fn: str, d: int, distance: str, size: int = None, hyperplane_metho
             X.append(np.array(v))
         X = X[:size] if size is not None else X
         points = np.array(X)
-        if hyperplane_method == "rpsd":
-            hyperplanes = create_hyperplanes_rpsd(points)
-        # elif hyperplane_method == "bctree":
-        #     hyperplanes = create_hyperplanes_bctree(points)
+        if hyperplane_method == "psm":
+            hyperplanes = create_hyperplanes_psm(points)
+        # elif hyperplane_method == "grn":
+        #     hyperplanes = create_hyperplanes_grn(points)
         else:
             raise ValueError(f"unknown hyperplane method: {hyperplane_method}")
         write_output(points, hyperplanes, out_fn, distance)
@@ -265,11 +265,11 @@ def sift(out_fn: str) -> None:
     with tarfile.open(fn, "r:gz") as t:
         X = _get_irisa_matrix(t, "sift/sift_base.fvecs")
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpsd(points)
+        hyperplanes = create_hyperplanes_psm(points)
         write_output(points, hyperplanes, out_fn, "euclidean")
 
 
-def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str = "rpsd", dimensions: int = 512) -> None:
+def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str = "psm", dimensions: int = 512) -> None:
     import tarfile
     import pickle
     url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
@@ -306,10 +306,10 @@ def cifar10(out_fn: str, distance: str, size: int = None, hyperplane_method: str
         points = np.array(X)
         # labels = np.array(labels)
         
-        if hyperplane_method == "rpsd":
-            hyperplanes = create_hyperplanes_rpsd(points)
-        # elif hyperplane_method == "bctree":
-        #     hyperplanes = create_hyperplanes_bctree(points)
+        if hyperplane_method == "psm":
+            hyperplanes = create_hyperplanes_psm(points)
+        # elif hyperplane_method == "grn":
+        #     hyperplanes = create_hyperplanes_grn(points)
         # elif hyperplane_method == "svm-basic":
         #     hyperplanes = create_hyperplanes_svm(points, labels)
         # elif hyperplane_method == "svm-advanced":
@@ -396,7 +396,7 @@ def deepm(out_fn: str, distance: str, count:int) -> None:
         print(f"Loaded {count} vectors of dimension {dim}")
     
     points = np.array(X)
-    hyperplanes = create_hyperplanes_rpsd(points)
+    hyperplanes = create_hyperplanes_psm(points)
     write_output(points, hyperplanes, out_fn, distance)
 
 
@@ -437,7 +437,7 @@ def music100(out_fn: str, distance: str) -> None:
         X = np.fromfile(bin_fn, dtype=np.float32).reshape(databaseSize, dimension)
 
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpsd(points)
+        hyperplanes = create_hyperplanes_psm(points)
         write_output(points, hyperplanes, out_fn, distance)
 
     except Exception as e:
@@ -453,7 +453,7 @@ def gist(out_fn: str, distance: str, size: int = None) -> None:
         X = _get_irisa_matrix(t, "gist/gist_base.fvecs")
         X = X[:size] if size is not None else X
         points = np.array(X)
-        hyperplanes = create_hyperplanes_rpsd(points)
+        hyperplanes = create_hyperplanes_psm(points)
         write_output(points, hyperplanes, out_fn, distance)
 
 def trevi(out_fn: str, distance: str, size: int = None, dimensions: int = 4096) -> None:
@@ -516,7 +516,7 @@ def trevi(out_fn: str, distance: str, size: int = None, dimensions: int = 4096) 
 
     points = np.array(patch_vectors)
     points = np.array(patch_vectors)
-    hyperplanes = create_hyperplanes_rpsd(points)
+    hyperplanes = create_hyperplanes_psm(points)
     write_output(points, hyperplanes, out_fn, distance)
     
     # clean up temp directory
@@ -567,13 +567,13 @@ def fashion_mnist(out_fn: str) -> None:
 
     X = _load_mnist_vectors(fn)
     X = X.astype(np.float32)
-    hyperplanes = create_hyperplanes_rpsd(X)
+    hyperplanes = create_hyperplanes_psm(X)
     write_output(X, hyperplanes, out_fn, "euclidean")
 
 
 DATASETS: Dict[str, Callable[[str], None]] = {
     # ========================================================================
-    # Here are datasets that are used as testers - all 'med' covers datasets of 20k points only
+    # Here are datasets that are used as testers - all '20k' covers datasets of 20k points only
     "glove-25-euclidean-20k": lambda out_fn: glove(out_fn, 25, "euclidean", 20000),
     "glove-25-angular-20k": lambda out_fn: glove(out_fn, 25, "angular", 20000),
     "glove-100-euclidean-20k": lambda out_fn: glove(out_fn, 100, "euclidean", 20000),
@@ -583,13 +583,13 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "trevi-4096-euclidean-20k": lambda out_fn: trevi(out_fn, "euclidean", 20000),
 
     # ========================================================================
-    # Here are the datasets that are used to demonstrate the hyperplane methods
+    # Here are the datasets that are used to demonstrate the hyperplane methods -> for this consider the branch feature/queries-generation-wrapper                              
     # 25 dims - 20k points
-    # "glove-25-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="bctree"),
-    "glove-25-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="rpsd"),
+    # "glove-25-euclidean-20k-grn": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="grn"),
+    "glove-25-euclidean-20k-psm": lambda out_fn: glove(out_fn, 25, "euclidean", 20000, hyperplane_method="psm"),
     # 100 dims - 20k points
-    # "glove-100-euclidean-20k-bctree": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="bctree"),
-    "glove-100-euclidean-20k-rpsd": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="rpsd"),
+    # "glove-100-euclidean-20k-grn": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="grn"),
+    "glove-100-euclidean-20k-psm": lambda out_fn: glove(out_fn, 100, "euclidean", 20000, hyperplane_method="psm"),
 
     # ========================================================================
     # Here are the datasets that are not currently used
@@ -601,10 +601,10 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "music-100-euclidean": lambda out_fn: music100(out_fn, "euclidean"),
     "sift-128-euclidean": sift, 
     "glove-200-euclidean": lambda out_fn: glove(out_fn, 200, "euclidean"),
-    "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "rpsd", 512),
+    "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "psm", 512),
     "fashion-mnist-784-euclidean": fashion_mnist, # 60.000 points
     "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
     "trevi-2048-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 2048),
-    "cifar10-3072-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "rpsd", 3072),
+    "cifar10-3072-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "psm", 3072),
     "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 4096),
 }
