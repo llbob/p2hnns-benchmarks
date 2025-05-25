@@ -1,6 +1,6 @@
-# Benchmarking P2HNNS Algorithms
+Intro to P2HNNS-benchmarks
 ==============================
-P2HNNS-benchmarks is a benchmarking environment for point-to-hyperplane approximate nearest neighbor search algorithms, it's a fork of ANN-BENCHMARKS developed by Martin Aumueller, Erik Bernhardsson, and Alec Faitfull.
+P2HNNS-benchmarks is a benchmarking environment for point-to-hyperplane approximate nearest neighbor search algorithms, it's a fork of ANN-BENCHMARKS developed by Martin Aumueller, Erik Bernhardsson, and Alec Faitfull. See https://github.com/erikbern/ann-benchmarks.
 
 The results have been made available on https://p2hnns-benchmarks.com/.
 
