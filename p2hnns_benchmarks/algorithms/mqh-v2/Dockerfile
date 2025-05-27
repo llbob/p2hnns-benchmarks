@@ -41,7 +41,6 @@ RUN git clone https://github.com/HuangQiang/BC-Tree.git && \
 # Copy the setup files from the algorithm directory
 COPY p2hnns_benchmarks/algorithms/mqh-v2/binding/setup_bt.py \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/python_wrapper_bt.cpp \
-     p2hnns_benchmarks/algorithms/mqh-v2/binding/CMakeLists.txt \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/ball_node.h \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/ball_tree.h \
      /home/app/BC-Tree/
@@ -75,7 +74,6 @@ RUN git clone https://github.com/HuangQiang/P2HNNS.git && \
 # Copy the setup files from the algorithm directory
 COPY p2hnns_benchmarks/algorithms/mqh-v2/binding/setup_mh.py \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/python_wrapper_mh.cpp \
-     p2hnns_benchmarks/algorithms/mqh-v2/binding/CMakeLists.txt \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/baseline.h \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/mh.h \
      p2hnns_benchmarks/algorithms/mqh-v2/binding/bh.h \

@@ -38,7 +38,6 @@ RUN git clone https://github.com/HuangQiang/BC-Tree.git && \
 # Copy the setup files from the algorithm directory
 COPY p2hnns_benchmarks/algorithms/balltree/binding/setup.py \
      p2hnns_benchmarks/algorithms/balltree/binding/python_wrapper_bt.cpp \
-     p2hnns_benchmarks/algorithms/balltree/binding/CMakeLists.txt \
      /home/app/BC-Tree/
 
 # Build the module in /home/app

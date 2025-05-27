@@ -38,7 +38,6 @@ RUN git clone https://github.com/HuangQiang/P2HNNS.git && \
 # Copy the setup files from the algorithm directory
 COPY p2hnns_benchmarks/algorithms/mh-orig/binding/setup.py \
      p2hnns_benchmarks/algorithms/mh-orig/binding/python_wrapper_mh.cpp \
-     p2hnns_benchmarks/algorithms/mh-orig/binding/CMakeLists.txt \
      /home/app/P2HNNS/
 
 # Build the module in /home/app
