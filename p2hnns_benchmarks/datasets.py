@@ -604,7 +604,5 @@ DATASETS: Dict[str, Callable[[str], None]] = {
     "cifar10-512-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "psm", 512),
     "fashion-mnist-784-euclidean": fashion_mnist, # 60.000 points
     "gist-960-euclidean": lambda out_fn: gist(out_fn, "euclidean"),
-    "trevi-2048-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 2048),
-    "cifar10-3072-euclidean": lambda out_fn: cifar10(out_fn, "euclidean", None, "psm", 3072),
     "trevi-4096-euclidean": lambda out_fn: trevi(out_fn, "euclidean", None, 4096),
 }
