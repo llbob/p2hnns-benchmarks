@@ -4,13 +4,10 @@ P2HNNS-benchmarks is a benchmarking environment for point-to-hyperplane approxim
 
 The results have been made available on https://p2hnns-benchmarks.com/.
 
-
-We recommend using conda or pyenv to create a virtual environment running python 3.10 which is currently what we've been testing with.
-
 Installation of the benchmarking setup
 ==============================
 
-Have python 3.10 installed and cd into the repo, then run the following commands:
+Have Docker installed and running and python 3.10 (3.10 is currently the only supported python version) installed and cd into the repo, then run the following commands:
 
 ```
 pip install -r requirements.txt
